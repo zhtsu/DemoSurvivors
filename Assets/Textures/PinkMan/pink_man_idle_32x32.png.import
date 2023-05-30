@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvnu0yef01425"
-path="res://.godot/imported/ninja_frog_walk_32x32.png-b3100350049ddd660aa11137e798f13c.ctex"
+uid="uid://dij2oujani33l"
+path="res://.godot/imported/pink_man_idle_32x32.png-282787a990cb426ca2a87b4d48016b50.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/ninja_frog_walk_32x32.png"
-dest_files=["res://.godot/imported/ninja_frog_walk_32x32.png-b3100350049ddd660aa11137e798f13c.ctex"]
+source_file="res://Assets/Textures/PinkMan/pink_man_idle_32x32.png"
+dest_files=["res://.godot/imported/pink_man_idle_32x32.png-282787a990cb426ca2a87b4d48016b50.ctex"]
 
 [params]
 

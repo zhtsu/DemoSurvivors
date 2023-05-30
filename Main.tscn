@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmblsohcrthdx"]
+[gd_scene load_steps=3 format=3 uid="uid://bmblsohcrthdx"]
 
-[ext_resource type="PackedScene" uid="uid://b7gqwvs2cfp7w" path="res://Scenes/Characters/NinjaFrog/NinjaFrog.tscn" id="1_0wmxf"]
+[ext_resource type="PackedScene" uid="uid://bhegiykf6vjs6" path="res://Scenes/Player/NinjaFrog/NinjaFrog.tscn" id="1_eoc6d"]
+[ext_resource type="PackedScene" uid="uid://2pt8fm4skkwa" path="res://Scenes/Player/PinkMan/PinkMan.tscn" id="2_olceq"]
 
 [node name="Main" type="Node"]
 
-[node name="Node2D" parent="." instance=ExtResource("1_0wmxf")]
+[node name="NinjaFrog" parent="." instance=ExtResource("1_eoc6d")]
+
+[node name="PinkMan" parent="." instance=ExtResource("2_olceq")]
+SpawnPostion = Vector2(200, 100)

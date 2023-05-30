@@ -1,30 +1,23 @@
-extends Node2D
+extends CharacterBase
 
-class_name Character
-
-enum CharacterState {
-	IDLE,
-	WALK,
-	DAMAGE
-}
-
-enum CharacterDirection {
-	UP,
-	DOWN,
-	LEFT,
-	RIGHT
-}
-
-@export var Speed:int = 1
+class_name Player
 
 var KeyMap = {}
-var Direction = CharacterDirection.RIGHT
-var State = CharacterState.IDLE
-var HP = 100
 var EXP = 0
 
-func InitCharacter():
-	$AnimatedSprite2D.play("Idle")
+
+# Called when the node enters the scene tree for the first time.
+func InitPlayer():
+	InitCharacter()
+	LoadAndInitKeyMap()
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func UpdatePlayer(delta):
+	UpdateMove(delta)
+	UpdateAnimation()
+	UpdateDirection()
+
 
 func LoadAndInitKeyMap():
 	var KeyMapJsonFile = FileAccess.open("res://Assets/JSONs/key_map.json", FileAccess.READ)
@@ -34,7 +27,8 @@ func LoadAndInitKeyMap():
 	else:
 		print_debug("Failed to load and initialized key_map")
 
-func ListenForMove(delta):
+
+func UpdateMove(delta):
 	var Velocity:Vector2 = Vector2(0, 0)
 	if Input.is_action_pressed("Up"):
 		Velocity.y = -1
@@ -56,18 +50,3 @@ func ListenForMove(delta):
 		Direction = CharacterDirection.RIGHT
 	elif Velocity.x < 0:
 		Direction = CharacterDirection.LEFT
-	
-func UpdateAnimation():
-	if State == CharacterState.IDLE:
-		$AnimatedSprite2D.play("Idle")
-	elif State == CharacterState.WALK:
-		$AnimatedSprite2D.play("Walk")
-	elif State == CharacterState.DAMAGE:
-		$AnimatedSprite2D.play("Damage")
-		
-func UpdateDirection():
-	if Direction == CharacterDirection.RIGHT:
-		$AnimatedSprite2D.flip_h = false
-	elif Direction == CharacterDirection.LEFT:
-		$AnimatedSprite2D.flip_h = true
-	

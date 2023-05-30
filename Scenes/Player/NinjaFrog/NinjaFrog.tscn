@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhegiykf6vjs6"]
+
+[ext_resource type="PackedScene" uid="uid://br0olcq7qiu5n" path="res://Scenes/Player/Player.tscn" id="1_6dwur"]
+[ext_resource type="Script" path="res://Scenes/Player/NinjaFrog/NinjaFrog.gd" id="1_hsci4"]
+
+[node name="Node2D" instance=ExtResource("1_6dwur")]
+script = ExtResource("1_hsci4")
+SpawnPostion = Vector2(100, 100)
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+animation = &"Idle"
+frame = 0
+frame_progress = 0.0
+
+[node name="CollisionShape2D" parent="CharacterBody2D" index="0"]
+position = Vector2(0, 1.33333)
