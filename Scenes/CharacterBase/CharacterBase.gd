@@ -5,7 +5,9 @@ class_name CharacterBase
 enum CharacterState {
 	IDLE,
 	WALK,
-	DAMAGE
+	DAMAGE,
+	APPEARING,
+	DISAPPEARING
 }
 
 enum CharacterDirection {
@@ -27,7 +29,7 @@ func InitCharacter():
 	position = SpawnPostion
 
 
-func UpdateAnimation():
+func UpdateCharacterAnimation():
 	if State == CharacterState.IDLE:
 		$AnimatedSprite2D.play("Idle")
 	elif State == CharacterState.WALK:
@@ -36,7 +38,7 @@ func UpdateAnimation():
 		$AnimatedSprite2D.play("Damage")
 
 
-func UpdateDirection():
+func UpdateCharacterDirection():
 	if Direction == CharacterDirection.RIGHT:
 		$AnimatedSprite2D.flip_h = false
 	elif Direction == CharacterDirection.LEFT:

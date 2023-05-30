@@ -10,13 +10,31 @@ var EXP = 0
 func InitPlayer():
 	InitCharacter()
 	LoadAndInitKeyMap()
+	$EffectAnimator.hide()
+	Appearing()
+	
+func Appearing():
+	State = CharacterState.APPEARING
 
+func Disappearing():
+	State = CharacterState.DISAPPEARING
+
+func UpdatePlayerAnimation():
+	super.UpdateCharacterAnimation()
+	if State == CharacterState.APPEARING:
+		$AnimatedSprite2D.hide()
+		$EffectAnimator.show()
+		$EffectAnimator.play("Appearing")
+	elif State == CharacterState.DISAPPEARING:
+		$AnimatedSprite2D.hide()
+		$EffectAnimator.show()
+		$EffectAnimator.play("Disappearing")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func UpdatePlayer(delta):
 	UpdateMove(delta)
-	UpdateAnimation()
-	UpdateDirection()
+	UpdatePlayerAnimation()
+	UpdateCharacterDirection()
 
 
 func LoadAndInitKeyMap():
@@ -29,6 +47,9 @@ func LoadAndInitKeyMap():
 
 
 func UpdateMove(delta):
+	if State == CharacterState.APPEARING or State == CharacterState.DISAPPEARING:
+		return
+	
 	var Velocity:Vector2 = Vector2(0, 0)
 	if Input.is_action_pressed("Up"):
 		Velocity.y = -1
@@ -45,8 +66,14 @@ func UpdateMove(delta):
 		State = CharacterState.WALK
 	else:
 		State = CharacterState.IDLE
-		
+	
 	if Velocity.x > 0:
 		Direction = CharacterDirection.RIGHT
 	elif Velocity.x < 0:
 		Direction = CharacterDirection.LEFT
+
+
+func _on_effect_animator_animation_finished():
+	State = CharacterState.IDLE
+	$AnimatedSprite2D.show()
+	$EffectAnimator.hide()

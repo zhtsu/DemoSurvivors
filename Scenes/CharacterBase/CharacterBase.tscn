@@ -127,6 +127,11 @@ region = Rect2(352, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rtnxp"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"Appearing",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yidut")
@@ -152,6 +157,11 @@ animations = [{
 "loop": true,
 "name": &"Damage",
 "speed": 20.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Disappearing",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -238,14 +248,14 @@ animations = [{
 [node name="CharacterBase" type="Node2D" groups=["character"]]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_p77r0")
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rtnxp")
-animation = &"Damage"
-frame = 3
-frame_progress = 0.456645
+animation = &"Disappearing"
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_dxgr4")
