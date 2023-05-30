@@ -1,7 +1,7 @@
 [gd_scene load_steps=37 format=3 uid="uid://b2ibypwy3lavl"]
 
 [ext_resource type="Script" path="res://Scenes/Player/MaskDude/MaskDude.gd" id="1_21d68"]
-[ext_resource type="PackedScene" uid="uid://dgngke02y3hf1" path="res://Scenes/Player/Player.tscn" id="1_jxdk1"]
+[ext_resource type="PackedScene" uid="uid://olrjehh0du76" path="res://Scenes/Player/Player.tscn" id="1_jxdk1"]
 [ext_resource type="Texture2D" uid="uid://rb78y6dlmmef" path="res://Assets/Textures/MaskDude/mask_dude_damage_32x32.png" id="3_s3c44"]
 [ext_resource type="Texture2D" uid="uid://cxlx8wpybk3sy" path="res://Assets/Textures/MaskDude/mask_dude_idle_32x32.png" id="4_gbdpm"]
 [ext_resource type="Texture2D" uid="uid://b2nrgcpp5uk6" path="res://Assets/Textures/MaskDude/mask_dude_walk_32x32.png" id="5_vty6h"]

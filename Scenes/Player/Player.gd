@@ -1,4 +1,4 @@
-extends CharacterBase
+extends Character
 
 class_name Player
 

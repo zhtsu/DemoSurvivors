@@ -1,6 +1,6 @@
 extends Node2D
 
-class_name CharacterBase
+class_name Character
 
 enum CharacterState {
 	IDLE,

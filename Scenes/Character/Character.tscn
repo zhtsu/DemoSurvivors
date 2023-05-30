@@ -1,128 +1,128 @@
-[gd_scene load_steps=37 format=3 uid="uid://bb00jmvvdh23a"]
+[gd_scene load_steps=37 format=3 uid="uid://dxx2elvn8s6am"]
 
-[ext_resource type="Script" path="res://Scenes/CharacterBase/CharacterBase.gd" id="1_p77r0"]
-[ext_resource type="Texture2D" uid="uid://o15w0120jtfw" path="res://Assets/Textures/NinjaFrog/ninja_frog_damage_32x32.png" id="2_01usp"]
-[ext_resource type="Texture2D" uid="uid://bogo67r4r3i78" path="res://Assets/Textures/NinjaFrog/ninja_frog_idle_32x32.png" id="3_p5dab"]
-[ext_resource type="Texture2D" uid="uid://dvnu0yef01425" path="res://Assets/Textures/NinjaFrog/ninja_frog_walk_32x32.png" id="4_p2ld6"]
+[ext_resource type="Script" path="res://Scenes/Character/Character.gd" id="1_htsf6"]
+[ext_resource type="Texture2D" uid="uid://o15w0120jtfw" path="res://Assets/Textures/NinjaFrog/ninja_frog_damage_32x32.png" id="2_tnsv4"]
+[ext_resource type="Texture2D" uid="uid://bogo67r4r3i78" path="res://Assets/Textures/NinjaFrog/ninja_frog_idle_32x32.png" id="3_mum6d"]
+[ext_resource type="Texture2D" uid="uid://dvnu0yef01425" path="res://Assets/Textures/NinjaFrog/ninja_frog_walk_32x32.png" id="4_r4q1k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yidut"]
-atlas = ExtResource("2_01usp")
+atlas = ExtResource("2_tnsv4")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o717h"]
-atlas = ExtResource("2_01usp")
+atlas = ExtResource("2_tnsv4")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vupnp"]
-atlas = ExtResource("2_01usp")
+atlas = ExtResource("2_tnsv4")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8uop2"]
-atlas = ExtResource("2_01usp")
+atlas = ExtResource("2_tnsv4")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cp45p"]
-atlas = ExtResource("2_01usp")
+atlas = ExtResource("2_tnsv4")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hpx4i"]
-atlas = ExtResource("2_01usp")
+atlas = ExtResource("2_tnsv4")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5n67n"]
-atlas = ExtResource("2_01usp")
+atlas = ExtResource("2_tnsv4")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rvj2s"]
-atlas = ExtResource("3_p5dab")
+atlas = ExtResource("3_mum6d")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8p2ty"]
-atlas = ExtResource("3_p5dab")
+atlas = ExtResource("3_mum6d")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uoksr"]
-atlas = ExtResource("3_p5dab")
+atlas = ExtResource("3_mum6d")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hapts"]
-atlas = ExtResource("3_p5dab")
+atlas = ExtResource("3_mum6d")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_meqov"]
-atlas = ExtResource("3_p5dab")
+atlas = ExtResource("3_mum6d")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pfunx"]
-atlas = ExtResource("3_p5dab")
+atlas = ExtResource("3_mum6d")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_35clc"]
-atlas = ExtResource("3_p5dab")
+atlas = ExtResource("3_mum6d")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_claaf"]
-atlas = ExtResource("3_p5dab")
+atlas = ExtResource("3_mum6d")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m4677"]
-atlas = ExtResource("3_p5dab")
+atlas = ExtResource("3_mum6d")
 region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f66fg"]
-atlas = ExtResource("3_p5dab")
+atlas = ExtResource("3_mum6d")
 region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ruury"]
-atlas = ExtResource("3_p5dab")
+atlas = ExtResource("3_mum6d")
 region = Rect2(320, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uykpu"]
-atlas = ExtResource("4_p2ld6")
+atlas = ExtResource("4_r4q1k")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c8qvu"]
-atlas = ExtResource("4_p2ld6")
+atlas = ExtResource("4_r4q1k")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kcv8y"]
-atlas = ExtResource("4_p2ld6")
+atlas = ExtResource("4_r4q1k")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f6vs6"]
-atlas = ExtResource("4_p2ld6")
+atlas = ExtResource("4_r4q1k")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fmd3m"]
-atlas = ExtResource("4_p2ld6")
+atlas = ExtResource("4_r4q1k")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kraul"]
-atlas = ExtResource("4_p2ld6")
+atlas = ExtResource("4_r4q1k")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dxybi"]
-atlas = ExtResource("4_p2ld6")
+atlas = ExtResource("4_r4q1k")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dx8br"]
-atlas = ExtResource("4_p2ld6")
+atlas = ExtResource("4_r4q1k")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_835dd"]
-atlas = ExtResource("4_p2ld6")
+atlas = ExtResource("4_r4q1k")
 region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mupll"]
-atlas = ExtResource("4_p2ld6")
+atlas = ExtResource("4_r4q1k")
 region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xc6mm"]
-atlas = ExtResource("4_p2ld6")
+atlas = ExtResource("4_r4q1k")
 region = Rect2(320, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kr0l0"]
-atlas = ExtResource("4_p2ld6")
+atlas = ExtResource("4_r4q1k")
 region = Rect2(352, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rtnxp"]
@@ -247,7 +247,7 @@ animations = [{
 
 [node name="CharacterBase" type="Node2D" groups=["character"]]
 scale = Vector2(1.5, 1.5)
-script = ExtResource("1_p77r0")
+script = ExtResource("1_htsf6")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
