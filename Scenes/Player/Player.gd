@@ -13,11 +13,14 @@ func InitPlayer():
 	$EffectAnimator.hide()
 	Appearing()
 	
+	
 func Appearing():
 	State = CharacterState.APPEARING
 
+
 func Disappearing():
 	State = CharacterState.DISAPPEARING
+
 
 func UpdatePlayerAnimation():
 	super.UpdateCharacterAnimation()
@@ -30,7 +33,7 @@ func UpdatePlayerAnimation():
 		$EffectAnimator.show()
 		$EffectAnimator.play("Disappearing")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func UpdatePlayer(delta):
 	UpdateMove(delta)
 	UpdatePlayerAnimation()
