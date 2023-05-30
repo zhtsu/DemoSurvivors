@@ -1,6 +1,6 @@
-[gd_scene load_steps=37 format=3 uid="uid://2pt8fm4skkwa"]
+[gd_scene load_steps=37 format=3 uid="uid://cgyiybi0sgt8k"]
 
-[ext_resource type="PackedScene" uid="uid://br0olcq7qiu5n" path="res://Scenes/Player/Player.tscn" id="1_tg7w3"]
+[ext_resource type="PackedScene" uid="uid://dgngke02y3hf1" path="res://Scenes/Player/Player.tscn" id="1_tg7w3"]
 [ext_resource type="Texture2D" uid="uid://dbqo2n6f4rvk6" path="res://Assets/Textures/PinkMan/pink_man_damage_32x32.png" id="2_kx0fa"]
 [ext_resource type="Script" path="res://Scenes/Player/PinkMan/PinkMan.gd" id="2_uev46"]
 [ext_resource type="Texture2D" uid="uid://dij2oujani33l" path="res://Assets/Textures/PinkMan/pink_man_idle_32x32.png" id="2_uxebl"]
@@ -234,14 +234,15 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="Node2D" instance=ExtResource("1_tg7w3")]
+[node name="PinkMan" instance=ExtResource("1_tg7w3")]
 script = ExtResource("2_uev46")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_sl7ke")
-frame = 6
-frame_progress = 0.593618
+animation = &"Idle"
+frame = 0
+frame_progress = 0.0
 
 [node name="CollisionShape2D" parent="CharacterBody2D" index="0"]
 visible = false
-position = Vector2(0.666667, 1.33333)
+position = Vector2(0, 1)

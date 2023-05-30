@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhegiykf6vjs6"]
+[gd_scene load_steps=3 format=3 uid="uid://ch6virhvhqaca"]
 
-[ext_resource type="PackedScene" uid="uid://br0olcq7qiu5n" path="res://Scenes/Player/Player.tscn" id="1_6dwur"]
+[ext_resource type="PackedScene" uid="uid://dgngke02y3hf1" path="res://Scenes/Player/Player.tscn" id="1_6dwur"]
 [ext_resource type="Script" path="res://Scenes/Player/NinjaFrog/NinjaFrog.gd" id="1_hsci4"]
 
-[node name="Node2D" instance=ExtResource("1_6dwur")]
+[node name="NinjaFrog" instance=ExtResource("1_6dwur")]
 script = ExtResource("1_hsci4")
 SpawnPostion = Vector2(100, 100)
 

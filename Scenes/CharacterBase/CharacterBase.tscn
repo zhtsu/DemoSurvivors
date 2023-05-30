@@ -235,7 +235,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dxgr4"]
 
-[node name="Node2D" type="Node2D" groups=["character"]]
+[node name="CharacterBase" type="Node2D" groups=["character"]]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_p77r0")
 
