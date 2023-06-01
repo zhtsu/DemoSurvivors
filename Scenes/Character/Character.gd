@@ -18,15 +18,19 @@ enum CharacterDirection {
 }
 
 @export var Speed:int = 1
-@export var SpawnPostion = Vector2(0, 0)
+@export var SpawnPosition = Vector2(0, 0):
+	set = SetSpawnPosition
 
 var Direction = CharacterDirection.RIGHT
 var State = CharacterState.IDLE
 var HP = 100
 
+func SetSpawnPosition(Position:Vector2):
+	SpawnPosition = Position
+
 func InitCharacter():
 	$AnimatedSprite2D.play("Idle")
-	position = SpawnPostion
+	position = SpawnPosition
 
 
 func UpdateCharacterAnimation():

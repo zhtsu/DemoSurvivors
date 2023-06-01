@@ -5,6 +5,7 @@
 
 [node name="Item" type="Node2D" groups=["item"]]
 script = ExtResource("1_fkpwn")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ffyb3")

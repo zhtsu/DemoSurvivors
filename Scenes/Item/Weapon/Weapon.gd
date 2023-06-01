@@ -1,6 +1,5 @@
 extends Node2D
 
-
 @export var PhysicalAtk = 0.0
 @export var MagicAtk = 0.0
 

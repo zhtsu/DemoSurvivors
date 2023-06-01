@@ -1,19 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnpucq324a4kl"]
+[gd_scene load_steps=2 format=3 uid="uid://dnpucq324a4kl"]
 
-[ext_resource type="PackedScene" uid="uid://ch6virhvhqaca" path="res://Scenes/Player/NinjaFrog/NinjaFrog.tscn" id="1_eoc6d"]
-[ext_resource type="PackedScene" uid="uid://cgyiybi0sgt8k" path="res://Scenes/Player/PinkMan/PinkMan.tscn" id="2_olceq"]
-[ext_resource type="PackedScene" uid="uid://b2ibypwy3lavl" path="res://Scenes/Player/MaskDude/MaskDude.tscn" id="3_bt1yw"]
-[ext_resource type="PackedScene" uid="uid://ob1xok2o4ioy" path="res://Scenes/Player/VirtualGuy/VirtualGuy.tscn" id="4_kmjqa"]
+[ext_resource type="Script" path="res://Main.gd" id="1_f1bjh"]
 
 [node name="Main" type="Node"]
-
-[node name="NinjaFrog" parent="." instance=ExtResource("1_eoc6d")]
-
-[node name="PinkMan" parent="." instance=ExtResource("2_olceq")]
-SpawnPostion = Vector2(200, 100)
-
-[node name="MaskDude" parent="." instance=ExtResource("3_bt1yw")]
-SpawnPostion = Vector2(100, 200)
-
-[node name="VirtualGuy" parent="." instance=ExtResource("4_kmjqa")]
-SpawnPostion = Vector2(200, 200)
+script = ExtResource("1_f1bjh")
