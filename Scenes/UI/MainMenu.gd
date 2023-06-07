@@ -21,3 +21,4 @@ func _on_exit_button_pressed():
 
 func _on_setting_button_button_down():
 	var SettingMenu = SettingMenuScene.instantiate()
+	add_child(SettingMenu)

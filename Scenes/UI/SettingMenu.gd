@@ -6,7 +6,8 @@ var SpeakerCrossedTexture = load("res://Assets/Textures/Icons/speaker_crossed.pn
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	self.show()
+	$AnimationPlayer.play("Enter")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,3 +21,12 @@ func _on_speaker_button_button_down():
 		$ColorRect/VBoxContainer/SpeakerButton.icon = SpeakerTexture
 	else:
 		$ColorRect/VBoxContainer/SpeakerButton.icon = SpeakerCrossedTexture
+
+
+func _on_background_button_down():
+	$AnimationPlayer.play("Exit")
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "Exit":
+		self.hide()

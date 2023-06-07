@@ -1,11 +1,65 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdpbtu48cbhc6"]
+[gd_scene load_steps=9 format=3 uid="uid://bdpbtu48cbhc6"]
 
 [ext_resource type="Script" path="res://Scenes/UI/SettingMenu.gd" id="1_8vr4a"]
 [ext_resource type="Texture2D" uid="uid://dn3kvp5esi4rr" path="res://Assets/Textures/Icons/speaker_0.png" id="1_yogqo"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xsfgx"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uai8i"]
 
+[sub_resource type="Animation" id="Animation_jxcnp"]
+resource_name = "Enter"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-400, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ndqi4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-300, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1iill"]
+resource_name = "Exit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-400, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bahpr"]
+_data = {
+"Enter": SubResource("Animation_jxcnp"),
+"Exit": SubResource("Animation_1iill"),
+"RESET": SubResource("Animation_ndqi4")
+}
 
 [node name="SettingMenu" type="Control"]
 layout_mode = 3
@@ -13,26 +67,29 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -300.0
-offset_right = -300.0
+offset_right = 852.0
+offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8vr4a")
 metadata/_edit_group_ = true
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 1, 0)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xsfgx")
+flat = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_right = 0.174
+anchor_bottom = 0.5
 grow_vertical = 2
 color = Color(0.223529, 0.243137, 0.27451, 1)
 
@@ -63,4 +120,6 @@ libraries = {
 "": SubResource("AnimationLibrary_bahpr")
 }
 
+[connection signal="button_down" from="Background" to="." method="_on_background_button_down"]
 [connection signal="button_down" from="ColorRect/VBoxContainer/SpeakerButton" to="." method="_on_speaker_button_button_down"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
