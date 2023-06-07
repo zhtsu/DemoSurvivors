@@ -1,4 +1,4 @@
-[gd_scene load_steps=146 format=3 uid="uid://svdqnhmua150"]
+[gd_scene load_steps=140 format=3 uid="uid://svdqnhmua150"]
 
 [ext_resource type="Texture2D" uid="uid://o15w0120jtfw" path="res://Assets/Textures/NinjaFrog/ninja_frog_damage_32x32.png" id="1_1aoq6"]
 [ext_resource type="Texture2D" uid="uid://bogo67r4r3i78" path="res://Assets/Textures/NinjaFrog/ninja_frog_idle_32x32.png" id="1_73f2s"]
@@ -13,6 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://d3rn3a60g46o7" path="res://Assets/Textures/VirtualGuy/virtual_guy_damage_32x32.png" id="10_ob6b0"]
 [ext_resource type="Texture2D" uid="uid://c1u5sp3bt78gh" path="res://Assets/Textures/VirtualGuy/virtual_guy_idle_32x32.png" id="11_oukto"]
 [ext_resource type="Texture2D" uid="uid://baduujxb8erf1" path="res://Assets/Textures/VirtualGuy/virtual_guy_walk_32x32.png" id="12_uq3dl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_25jgu"]
+font_size = 100
+shadow_size = 20
+shadow_color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fsbkh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ysujs"]
 atlas = ExtResource("10_ob6b0")
@@ -936,61 +943,6 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="LabelSettings" id="LabelSettings_25jgu"]
-font_size = 100
-outline_size = 60
-outline_color = Color(0.501961, 0, 0, 0.501961)
-
-[sub_resource type="Animation" id="Animation_a1pdy"]
-resource_name = "TitleAnim"
-length = 4.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:label_settings:outline_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 4),
-"transitions": PackedFloat32Array(0.406126, 2.92817, 7.72748),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0.501961, 0, 0, 1), Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_225v4"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:label_settings:outline_color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.501961, 0, 0, 0.501961)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ikxxw"]
-_data = {
-"RESET": SubResource("Animation_225v4"),
-"TitleAnim": SubResource("Animation_a1pdy")
-}
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_84hop"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xr6io"]
-bg_color = Color(0.501961, 0, 0, 0.501961)
-skew = Vector2(-1, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xch0g"]
-bg_color = Color(0, 0, 0, 0.501961)
-skew = Vector2(-1, 0)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fsbkh"]
-
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -1000,85 +952,76 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_keouq")
 
-[node name="PlayerShow" type="Node" parent="."]
-
-[node name="VirtualBoyGuy" type="AnimatedSprite2D" parent="PlayerShow"]
-position = Vector2(764, 247)
-scale = Vector2(-6, 6)
-sprite_frames = SubResource("SpriteFrames_6jrkg")
-animation = &"Idle"
-
-[node name="MaskDudeIdle" type="AnimatedSprite2D" parent="PlayerShow"]
-position = Vector2(647, 328)
-scale = Vector2(-6, 6)
-sprite_frames = SubResource("SpriteFrames_jyv0w")
-animation = &"Idle"
-
-[node name="PinkManIdle" type="AnimatedSprite2D" parent="PlayerShow"]
-position = Vector2(861, 333)
-scale = Vector2(6, 6)
-sprite_frames = SubResource("SpriteFrames_udpob")
-animation = &"Idle"
-
-[node name="NinjaFrogIdle" type="AnimatedSprite2D" parent="PlayerShow"]
-position = Vector2(762, 435)
-scale = Vector2(6, 6)
-sprite_frames = SubResource("SpriteFrames_ax6ea")
-animation = &"Idle"
-
-[node name="Title" type="Label" parent="."]
-layout_mode = 2
-offset_left = 44.0
-offset_top = 128.0
-offset_right = 448.0
-offset_bottom = 268.0
+[node name="TextBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -156.5
+offset_top = -208.0
+offset_right = 156.5
+offset_bottom = 208.0
+grow_horizontal = 2
 grow_vertical = 2
-text = "PURGER"
+metadata/_edit_group_ = true
+
+[node name="Title" type="Label" parent="TextBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "TITLE"
 label_settings = SubResource("LabelSettings_25jgu")
 
-[node name="TitleAnimationPlayer" type="AnimationPlayer" parent="Title"]
-libraries = {
-"": SubResource("AnimationLibrary_ikxxw")
-}
-
-[node name="MenuItems" type="VBoxContainer" parent="."]
+[node name="MenuItems" type="VBoxContainer" parent="TextBox"]
 layout_mode = 2
-offset_left = 80.0
-offset_top = 278.0
-offset_right = 393.0
-offset_bottom = 552.0
 size_flags_vertical = 3
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="StartButton" type="Button" parent="MenuItems"]
+[node name="StartButton" type="Button" parent="TextBox/MenuItems"]
 clip_contents = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxEmpty_84hop")
-theme_override_styles/hover = SubResource("StyleBoxFlat_xr6io")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_xch0g")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_fsbkh")
 text = "START"
 
-[node name="SettingButton" type="Button" parent="MenuItems"]
+[node name="SettingButton" type="Button" parent="TextBox/MenuItems"]
 clip_contents = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxEmpty_84hop")
-theme_override_styles/hover = SubResource("StyleBoxFlat_xr6io")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_xch0g")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fsbkh")
 text = "SETTING"
 
-[node name="ExitButton" type="Button" parent="MenuItems"]
+[node name="ExitButton" type="Button" parent="TextBox/MenuItems"]
 clip_contents = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxEmpty_84hop")
-theme_override_styles/hover = SubResource("StyleBoxFlat_xr6io")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_xch0g")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fsbkh")
 text = "EXIT"
 
-[connection signal="pressed" from="MenuItems/ExitButton" to="." method="_on_exit_button_pressed"]
+[node name="VirtualBoyGuy" type="AnimatedSprite2D" parent="."]
+position = Vector2(325, 179)
+scale = Vector2(-5, 5)
+sprite_frames = SubResource("SpriteFrames_6jrkg")
+animation = &"Idle"
+
+[node name="MaskDudeIdle" type="AnimatedSprite2D" parent="."]
+position = Vector2(298, 405)
+scale = Vector2(-5, 5)
+sprite_frames = SubResource("SpriteFrames_jyv0w")
+animation = &"Idle"
+
+[node name="PinkManIdle" type="AnimatedSprite2D" parent="."]
+position = Vector2(856, 400)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_udpob")
+animation = &"Idle"
+
+[node name="NinjaFrogIdle" type="AnimatedSprite2D" parent="."]
+position = Vector2(820, 176)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_ax6ea")
+animation = &"Idle"
+
+[connection signal="button_down" from="TextBox/MenuItems/SettingButton" to="." method="_on_setting_button_button_down"]
+[connection signal="pressed" from="TextBox/MenuItems/ExitButton" to="." method="_on_exit_button_pressed"]

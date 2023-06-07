@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdpbtu48cbhc6"]
+
+[ext_resource type="Script" path="res://Scenes/UI/SettingMenu.gd" id="1_8vr4a"]
+[ext_resource type="Texture2D" uid="uid://dn3kvp5esi4rr" path="res://Assets/Textures/Icons/speaker_0.png" id="1_yogqo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uai8i"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bahpr"]
+
+[node name="SettingMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_right = -300.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8vr4a")
+metadata/_edit_group_ = true
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+color = Color(0.223529, 0.243137, 0.27451, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpeakerButton" type="Button" parent="ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_uai8i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uai8i")
+icon = ExtResource("1_yogqo")
+flat = true
+text_overrun_behavior = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bahpr")
+}
+
+[connection signal="button_down" from="ColorRect/VBoxContainer/SpeakerButton" to="." method="_on_speaker_button_button_down"]
