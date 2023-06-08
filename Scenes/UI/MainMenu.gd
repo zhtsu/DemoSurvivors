@@ -15,10 +15,27 @@ func _process(delta):
 	pass
 
 
-func _on_exit_button_pressed():
-	get_tree().quit()
-
-
 func _on_setting_button_button_down():
+	$ButtonDownSound.play()
 	var SettingMenu = SettingMenuScene.instantiate()
 	add_child(SettingMenu)
+
+
+func _on_start_button_mouse_entered():
+	$ButtonHoveredSound.play()
+
+
+func _on_setting_button_mouse_entered():
+	$ButtonHoveredSound.play()
+
+
+func _on_exit_button_mouse_entered():
+	$ButtonHoveredSound.play()
+
+
+func _on_start_button_button_down():
+	$ButtonDownSound.play()
+
+
+func _on_exit_button_button_down():
+	get_tree().quit()

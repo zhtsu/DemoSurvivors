@@ -1,4 +1,4 @@
-[gd_scene load_steps=140 format=3 uid="uid://svdqnhmua150"]
+[gd_scene load_steps=142 format=3 uid="uid://svdqnhmua150"]
 
 [ext_resource type="Texture2D" uid="uid://o15w0120jtfw" path="res://Assets/Textures/NinjaFrog/ninja_frog_damage_32x32.png" id="1_1aoq6"]
 [ext_resource type="Texture2D" uid="uid://bogo67r4r3i78" path="res://Assets/Textures/NinjaFrog/ninja_frog_idle_32x32.png" id="1_73f2s"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://d3rn3a60g46o7" path="res://Assets/Textures/VirtualGuy/virtual_guy_damage_32x32.png" id="10_ob6b0"]
 [ext_resource type="Texture2D" uid="uid://c1u5sp3bt78gh" path="res://Assets/Textures/VirtualGuy/virtual_guy_idle_32x32.png" id="11_oukto"]
 [ext_resource type="Texture2D" uid="uid://baduujxb8erf1" path="res://Assets/Textures/VirtualGuy/virtual_guy_walk_32x32.png" id="12_uq3dl"]
+[ext_resource type="AudioStream" uid="uid://d3wxbl064iu8l" path="res://Assets/Sounds/button_hover.mp3" id="14_voiwh"]
+[ext_resource type="AudioStream" uid="uid://bxodhr4xud0hs" path="res://Assets/Sounds/button_down.mp3" id="15_iqskt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_25jgu"]
 font_size = 100
@@ -1023,5 +1025,15 @@ scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_ax6ea")
 animation = &"Idle"
 
+[node name="ButtonHoveredSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_voiwh")
+
+[node name="ButtonDownSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_iqskt")
+
+[connection signal="button_down" from="TextBox/MenuItems/StartButton" to="." method="_on_start_button_button_down"]
+[connection signal="mouse_entered" from="TextBox/MenuItems/StartButton" to="." method="_on_start_button_mouse_entered"]
 [connection signal="button_down" from="TextBox/MenuItems/SettingButton" to="." method="_on_setting_button_button_down"]
-[connection signal="pressed" from="TextBox/MenuItems/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="mouse_entered" from="TextBox/MenuItems/SettingButton" to="." method="_on_setting_button_mouse_entered"]
+[connection signal="button_down" from="TextBox/MenuItems/ExitButton" to="." method="_on_exit_button_button_down"]
+[connection signal="mouse_entered" from="TextBox/MenuItems/ExitButton" to="." method="_on_exit_button_mouse_entered"]
