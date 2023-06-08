@@ -2,7 +2,7 @@ extends Character
 
 class_name Player
 
-var KeyMap = {}
+var KeyMap:Dictionary
 var EXP = 0
 
 
@@ -43,8 +43,8 @@ func UpdatePlayer(delta):
 func LoadAndInitKeyMap():
 	var KeyMapJsonFile = FileAccess.open("res://Assets/JSONs/key_map.json", FileAccess.READ)
 	if (KeyMapJsonFile):
-		KeyMap = KeyMapJsonFile.get_as_text()
-		print_debug("Success to load and initialized key_map:\n" + KeyMap)
+		KeyMap = JSON.parse_string(KeyMapJsonFile.get_as_text()) 
+		print_debug("Success to load and initialized key_map:\n" + JSON.stringify(KeyMap))
 	else:
 		print_debug("Failed to load and initialized key_map")
 

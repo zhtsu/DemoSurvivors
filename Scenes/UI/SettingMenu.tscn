@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1cbkidjpwlj2"]
+[gd_scene load_steps=11 format=3 uid="uid://d1cbkidjpwlj2"]
 
 [ext_resource type="Script" path="res://Scenes/UI/SettingMenu.gd" id="1_8vr4a"]
 [ext_resource type="Texture2D" uid="uid://dn3kvp5esi4rr" path="res://Assets/Textures/Icons/speaker.png" id="2_2q1hs"]
@@ -11,15 +11,13 @@ bg_color = Color(0, 0, 0, 0.705882)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uai8i"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6o1ew"]
-
 [sub_resource type="Animation" id="Animation_jxcnp"]
 resource_name = "Enter"
 length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:position")
+tracks/0/path = NodePath("Background/ColorRect:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -35,7 +33,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:position")
+tracks/0/path = NodePath("Background/ColorRect:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -50,7 +48,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect/VBoxContainer/SpeakerButton:rotation")
+tracks/0/path = NodePath("Background/ColorRect/VBoxContainer/SpeakerButton:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -62,7 +60,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:position")
+tracks/1/path = NodePath("Background/ColorRect:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -103,18 +101,14 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_wcnfv")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_wcnfv")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xsfgx")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="Background"]
 custom_minimum_size = Vector2(400, 0)
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.347
-anchor_bottom = 1.0
+layout_mode = 0
 offset_left = -400.0
-offset_right = -399.744
-grow_vertical = 2
+offset_bottom = 648.0
 color = Color(0.223529, 0.243137, 0.27451, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/ColorRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -122,7 +116,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SpeakerButton" type="Button" parent="ColorRect/VBoxContainer"]
+[node name="SpeakerButton" type="Button" parent="Background/ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
@@ -131,20 +125,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_uai8i")
 icon = ExtResource("2_2q1hs")
 flat = true
 text_overrun_behavior = 3
-
-[node name="OptionButton" type="OptionButton" parent="ColorRect/VBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_6o1ew")
-clip_text = true
-item_count = 2
-selected = 0
-popup/item_0/text = "ABCDE"
-popup/item_0/id = 0
-popup/item_1/text = "FGHIJ"
-popup/item_1/id = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -155,5 +135,5 @@ libraries = {
 stream = ExtResource("3_pcf6o")
 
 [connection signal="button_down" from="Background" to="." method="_on_background_button_down"]
-[connection signal="button_down" from="ColorRect/VBoxContainer/SpeakerButton" to="." method="_on_speaker_button_button_down"]
+[connection signal="button_down" from="Background/ColorRect/VBoxContainer/SpeakerButton" to="." method="_on_speaker_button_button_down"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

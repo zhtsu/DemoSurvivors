@@ -1,4 +1,4 @@
-[gd_scene load_steps=142 format=3 uid="uid://svdqnhmua150"]
+[gd_scene load_steps=143 format=3 uid="uid://svdqnhmua150"]
 
 [ext_resource type="Texture2D" uid="uid://o15w0120jtfw" path="res://Assets/Textures/NinjaFrog/ninja_frog_damage_32x32.png" id="1_1aoq6"]
 [ext_resource type="Texture2D" uid="uid://bogo67r4r3i78" path="res://Assets/Textures/NinjaFrog/ninja_frog_idle_32x32.png" id="1_73f2s"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://baduujxb8erf1" path="res://Assets/Textures/VirtualGuy/virtual_guy_walk_32x32.png" id="12_uq3dl"]
 [ext_resource type="AudioStream" uid="uid://d3wxbl064iu8l" path="res://Assets/Sounds/button_hover.mp3" id="14_voiwh"]
 [ext_resource type="AudioStream" uid="uid://bxodhr4xud0hs" path="res://Assets/Sounds/button_down.mp3" id="15_iqskt"]
+[ext_resource type="AudioStream" uid="uid://dkcsxaqnj5jwj" path="res://Assets/Musics/doncidaci.mp3" id="16_6eagg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_25jgu"]
 font_size = 100
@@ -207,7 +208,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 20.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -435,7 +436,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 20.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -663,7 +664,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 20.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -901,7 +902,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 20.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -945,7 +946,7 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" groups=["main_menu"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1030,6 +1031,10 @@ stream = ExtResource("14_voiwh")
 
 [node name="ButtonDownSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_iqskt")
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_6eagg")
+volume_db = -10.0
 
 [connection signal="button_down" from="TextBox/MenuItems/StartButton" to="." method="_on_start_button_button_down"]
 [connection signal="mouse_entered" from="TextBox/MenuItems/StartButton" to="." method="_on_start_button_mouse_entered"]
