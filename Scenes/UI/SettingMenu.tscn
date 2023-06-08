@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1cbkidjpwlj2"]
+[gd_scene load_steps=14 format=3 uid="uid://d1cbkidjpwlj2"]
 
 [ext_resource type="Script" path="res://Scenes/UI/SettingMenu.gd" id="1_8vr4a"]
 [ext_resource type="Texture2D" uid="uid://dn3kvp5esi4rr" path="res://Assets/Textures/Icons/speaker.png" id="2_2q1hs"]
+[ext_resource type="Texture2D" uid="uid://whrrinl8cnuj" path="res://Assets/Textures/Icons/full_screen.png" id="2_rxhah"]
 [ext_resource type="AudioStream" uid="uid://bxodhr4xud0hs" path="res://Assets/Sounds/button_down.mp3" id="3_pcf6o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wcnfv"]
@@ -9,7 +10,11 @@ bg_color = Color(0, 0, 0, 0.705882)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xsfgx"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i1t5y"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uai8i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4sfyi"]
 
 [sub_resource type="Animation" id="Animation_jxcnp"]
 resource_name = "Enter"
@@ -48,7 +53,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Background/ColorRect/VBoxContainer/SpeakerButton:rotation")
+tracks/0/path = NodePath("Background/ColorRect/VBoxContainer/SoundsButton:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -116,7 +121,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SpeakerButton" type="Button" parent="Background/ColorRect/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Background/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_i1t5y")
+
+[node name="FullScreenButton" type="Button" parent="Background/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_uai8i")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uai8i")
+icon = ExtResource("2_rxhah")
+flat = true
+text_overrun_behavior = 3
+
+[node name="SoundsButton" type="Button" parent="Background/ColorRect/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
@@ -126,14 +146,20 @@ icon = ExtResource("2_2q1hs")
 flat = true
 text_overrun_behavior = 3
 
+[node name="HSeparator2" type="HSeparator" parent="Background/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_4sfyi")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_bahpr")
 }
 
-[node name="SpeakerDownSound" type="AudioStreamPlayer2D" parent="."]
+[node name="ButtonDownSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_pcf6o")
 
 [connection signal="button_down" from="Background" to="." method="_on_background_button_down"]
-[connection signal="button_down" from="Background/ColorRect/VBoxContainer/SpeakerButton" to="." method="_on_speaker_button_button_down"]
+[connection signal="button_down" from="Background/ColorRect/VBoxContainer/FullScreenButton" to="." method="_on_full_screen_button_button_down"]
+[connection signal="button_down" from="Background/ColorRect/VBoxContainer/SoundsButton" to="." method="_on_sounds_button_button_down"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

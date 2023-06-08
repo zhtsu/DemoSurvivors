@@ -208,7 +208,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 24.0
+"speed": 26.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -436,7 +436,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 24.0
+"speed": 26.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -664,7 +664,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 24.0
+"speed": 26.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -902,7 +902,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
-"speed": 24.0
+"speed": 26.0
 }, {
 "frames": [{
 "duration": 1.0,

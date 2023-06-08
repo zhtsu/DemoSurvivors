@@ -3,39 +3,53 @@ extends Control
 signal open_sounds
 signal close_sounds
 
-var OpenSounds:bool
+# Option settings
+var Settings = {
+	"OpenSounds": true
+}
+
 var SpeakerTexture = load("res://Assets/Textures/Icons/speaker.png")
 var SpeakerCrossedTexture = load("res://Assets/Textures/Icons/speaker_crossed.png")
-var Settings:Dictionary
+var FullScreenTexture = load("res://Assets/Textures/Icons/full_screen.png")
+var NormalScreenTexture = load("res://Assets/Textures/Icons/normal_screen.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.show()
 	$AnimationPlayer.play("Enter")
-	
-	# Read Setting
-	var SettingsJsonFile = FileAccess.open("res://Assets/JSONs/settings.json", FileAccess.READ)
-	if (SettingsJsonFile):
-		Settings = JSON.parse_string(SettingsJsonFile.get_as_text())
-		print_debug("Success to load and initialized settings:\n" + JSON.stringify(Settings))
-	else:
-		print_debug("Failed to load and initialized settings")
-	
-	# Init Settings
-	OpenSounds = Settings["OpenSounds"]
-	
-	UpdateSpeakerIcon()
+	UpdateSettingsIcon()
 
 
-func UpdateSpeakerIcon():
-	if OpenSounds:
-		$Background/ColorRect/VBoxContainer/SpeakerButton.icon = SpeakerTexture
+func InitSettings(InSettings:Dictionary):
+	Settings = InSettings
+
+
+func UpdateSettingsIcon():
+	UpdateSoundsButtonIcon()
+	UpdateFullScreenButtonIcon()
+
+
+func UpdateSoundsButtonIcon():
+	if Settings["OpenSounds"]:
+		$Background/ColorRect/VBoxContainer/SoundsButton.icon = SpeakerTexture
 	else:
-		$Background/ColorRect/VBoxContainer/SpeakerButton.icon = SpeakerCrossedTexture
+		$Background/ColorRect/VBoxContainer/SoundsButton.icon = SpeakerCrossedTexture
+	
+
+func IsFullScreen() -> bool:
+	print_debug(DisplayServer.window_get_mode())
+	return DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
+	
+
+func UpdateFullScreenButtonIcon():
+	if IsFullScreen():
+		$Background/ColorRect/VBoxContainer/FullScreenButton.icon = NormalScreenTexture
+	else:
+		$Background/ColorRect/VBoxContainer/FullScreenButton.icon = FullScreenTexture
 
 
 func EmitSignalForUpdateSounds():
-	if OpenSounds:
+	if Settings["OpenSounds"]:
 		emit_signal("open_sounds")
 	else:
 		emit_signal("close_sounds")
@@ -44,29 +58,39 @@ func EmitSignalForUpdateSounds():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-	
 
 
-
-
-func _on_speaker_button_button_down():
-	$SpeakerDownSound.play()
-	OpenSounds = not OpenSounds
-	Settings["OpenSounds"] = OpenSounds
-	UpdateSpeakerIcon()
+func _on_sounds_button_button_down():
+	$ButtonDownSound.play()
+	Settings["OpenSounds"] = not Settings["OpenSounds"]
+	UpdateSoundsButtonIcon()
 	EmitSignalForUpdateSounds()
 	
 
 func _on_background_button_down():
-	$SpeakerDownSound.play()
+	$ButtonDownSound.play()
 	$AnimationPlayer.play("Exit")
 
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Exit":
-		var SettingsJsonFile = FileAccess.open("res://Assets/JSONs/settings.json", FileAccess.WRITE)
+		var SettingsJsonFile = FileAccess.open("res://Assets/Data/settings.json", FileAccess.WRITE)
+		
 		SettingsJsonFile.store_line(JSON.stringify(Settings))
 		SettingsJsonFile.close()
 		queue_free()
 		
 
+func UpdateFullScreen():
+	if IsFullScreen():
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+
+
+func _on_full_screen_button_button_down():
+	$ButtonDownSound.play()
+	UpdateFullScreen()
+	UpdateFullScreenButtonIcon()
+	
+	

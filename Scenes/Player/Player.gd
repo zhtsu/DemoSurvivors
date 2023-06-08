@@ -2,14 +2,12 @@ extends Character
 
 class_name Player
 
-var KeyMap:Dictionary
+var Health = 100
 var EXP = 0
-
 
 # Called when the node enters the scene tree for the first time.
 func InitPlayer():
 	InitCharacter()
-	LoadAndInitKeyMap()
 	$EffectAnimator.hide()
 	Appearing()
 	
@@ -38,15 +36,6 @@ func UpdatePlayer(delta):
 	UpdateMove(delta)
 	UpdatePlayerAnimation()
 	UpdateCharacterDirection()
-
-
-func LoadAndInitKeyMap():
-	var KeyMapJsonFile = FileAccess.open("res://Assets/JSONs/key_map.json", FileAccess.READ)
-	if (KeyMapJsonFile):
-		KeyMap = JSON.parse_string(KeyMapJsonFile.get_as_text()) 
-		print_debug("Success to load and initialized key_map:\n" + JSON.stringify(KeyMap))
-	else:
-		print_debug("Failed to load and initialized key_map")
 
 
 func UpdateMove(delta):
