@@ -2,6 +2,7 @@ extends Control
 
 var SettingMenu_Scene = preload("res://Scenes/UI/SettingMenu.tscn")
 var Settings:Dictionary
+const SETTINGS_USER_DATA_PATH = "user://settings.json"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,22 +11,31 @@ func _ready():
 	$PinkManIdle.play("Idle")
 	$NinjaFrogIdle.play("Idle")
 	
-	# Read local settings
-	var SettingsJsonFile = FileAccess.open("res://Assets/Data/settings.json", FileAccess.READ)
-	if (SettingsJsonFile):
+	# Create local user data file if not exist
+	if not FileAccess.file_exists(SETTINGS_USER_DATA_PATH):
+		# Read config settings data
+		var SettingsJsonFile = FileAccess.open("res://Assets/Data/settings.json", FileAccess.READ)
 		Settings = JSON.parse_string(SettingsJsonFile.get_as_text())
-		print_debug("Success to load and initialized settings:\n" + JSON.stringify(Settings))
-	else:
-		print_debug("Failed to load and initialized settings")
+		print_debug("Settings:" + JSON.stringify(Settings))
+		SettingsJsonFile.close()
+		# Create user data for settings
+		var SettingsUserDataFile = FileAccess.open(SETTINGS_USER_DATA_PATH, FileAccess.WRITE)
+		SettingsUserDataFile.store_line(JSON.stringify(Settings, "\t"))
+		SettingsUserDataFile.close()
+		print_debug("Success to create settings data file")
+	
+	var SettingsUserDataFile = FileAccess.open(SETTINGS_USER_DATA_PATH, FileAccess.READ)
+	if SettingsUserDataFile == null:
+		print_debug("Fail to load data file")
+		return
+	Settings = JSON.parse_string(SettingsUserDataFile.get_as_text())
+	SettingsUserDataFile.close()
 		
 	if Settings["OpenSounds"]:
-		$BGM.play()
+		PlayBgm()
 	
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 func _on_setting_button_button_down():
@@ -58,8 +68,8 @@ func _on_exit_button_button_down():
 	
 	
 func PlayBgm():
-	$BGM.play()
+	$MainMenuBGM.play()
 	
 
 func StopBgm():
-	$BGM.stop()
+	$MainMenuBGM.stop()

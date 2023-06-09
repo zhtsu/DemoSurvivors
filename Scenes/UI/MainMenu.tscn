@@ -1032,7 +1032,7 @@ stream = ExtResource("14_voiwh")
 [node name="ButtonDownSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_iqskt")
 
-[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+[node name="MainMenuBGM" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("16_6eagg")
 volume_db = -10.0
 

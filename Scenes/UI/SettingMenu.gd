@@ -8,10 +8,10 @@ var Settings = {
 	"OpenSounds": true
 }
 
-var SpeakerTexture = load("res://Assets/Textures/Icons/speaker.png")
-var SpeakerCrossedTexture = load("res://Assets/Textures/Icons/speaker_crossed.png")
-var FullScreenTexture = load("res://Assets/Textures/Icons/full_screen.png")
-var NormalScreenTexture = load("res://Assets/Textures/Icons/normal_screen.png")
+var SpeakerTexture = preload("res://Assets/Textures/Icons/speaker.png")
+var SpeakerCrossedTexture = preload("res://Assets/Textures/Icons/speaker_crossed.png")
+var FullScreenTexture = preload("res://Assets/Textures/Icons/full_screen.png")
+var NormalScreenTexture = preload("res://Assets/Textures/Icons/normal_screen.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,7 +37,6 @@ func UpdateSoundsButtonIcon():
 	
 
 func IsFullScreen() -> bool:
-	print_debug(DisplayServer.window_get_mode())
 	return DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
 	
 
@@ -55,9 +54,6 @@ func EmitSignalForUpdateSounds():
 		emit_signal("close_sounds")
 		
 		
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 func _on_sounds_button_button_down():
@@ -74,9 +70,8 @@ func _on_background_button_down():
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Exit":
-		var SettingsJsonFile = FileAccess.open("res://Assets/Data/settings.json", FileAccess.WRITE)
-		
-		SettingsJsonFile.store_line(JSON.stringify(Settings))
+		var SettingsJsonFile = FileAccess.open("user://settings.json", FileAccess.WRITE)
+		SettingsJsonFile.store_line(JSON.stringify(Settings, "\t"))
 		SettingsJsonFile.close()
 		queue_free()
 		
