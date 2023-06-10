@@ -1,6 +1,7 @@
 extends Control
 
 var SettingMenu_Scene = preload("res://Scenes/UI/SettingMenu.tscn")
+var ExitPopup_Scene = preload("res://Scenes/UI/Popup.tscn")
 var Settings:Dictionary
 const SETTINGS_USER_DATA_PATH = "user://settings.json"
 
@@ -42,8 +43,6 @@ func _on_setting_button_button_down():
 	PlayButtonDownSound()
 	var SettingMenu = SettingMenu_Scene.instantiate()
 	SettingMenu.call("InitSettings", Settings)
-	SettingMenu.connect("open_sounds", Mute)
-	SettingMenu.connect("close_sounds", Sound)
 	add_child(SettingMenu)
 
 
@@ -63,8 +62,15 @@ func _on_start_button_button_down():
 	PlayButtonDownSound()
 
 
-func _on_exit_button_button_down():
+func ExitGame():
 	get_tree().quit()
+
+
+func _on_exit_button_button_down():
+	PlayButtonDownSound()
+	var ExitPopup = ExitPopup_Scene.instantiate()
+	ExitPopup.call("InitPopup", "Are you sure to exit?", ExitGame)
+	add_child(ExitPopup)
 	
 	
 func Mute():
