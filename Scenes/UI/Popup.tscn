@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://5mgkvudu6ww8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wcnfv"]
+bg_color = Color(0, 0, 0, 0.705882)
+
+[sub_resource type="LabelSettings" id="LabelSettings_tjr8i"]
+font_size = 30
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wy12g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_13qrk"]
+
+[node name="Popup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_group_ = true
+
+[node name="Background" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_wcnfv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wcnfv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wcnfv")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_wcnfv")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wcnfv")
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_right = 250.0
+offset_bottom = 300.0
+grow_horizontal = 2
+color = Color(0.223529, 0.243137, 0.27451, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MessageText" type="Label" parent="Background/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Are you sure to exit?"
+label_settings = SubResource("LabelSettings_tjr8i")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="ConfirmButton" type="Button" parent="Background/ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wy12g")
+text = "Confirm"
+
+[node name="CancelButton" type="Button" parent="Background/ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/focus = SubResource("StyleBoxEmpty_13qrk")
+text = "Cancel"

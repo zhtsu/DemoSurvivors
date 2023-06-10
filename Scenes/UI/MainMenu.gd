@@ -30,46 +30,54 @@ func _ready():
 		return
 	Settings = JSON.parse_string(SettingsUserDataFile.get_as_text())
 	SettingsUserDataFile.close()
-		
+	
 	if Settings["OpenSounds"]:
-		PlayBgm()
+		Sound()
 	
 
 
 
 
 func _on_setting_button_button_down():
-	$ButtonDownSound.play()
+	PlayButtonDownSound()
 	var SettingMenu = SettingMenu_Scene.instantiate()
 	SettingMenu.call("InitSettings", Settings)
-	SettingMenu.connect("open_sounds", PlayBgm)
-	SettingMenu.connect("close_sounds", StopBgm)
+	SettingMenu.connect("open_sounds", Mute)
+	SettingMenu.connect("close_sounds", Sound)
 	add_child(SettingMenu)
 
 
 func _on_start_button_mouse_entered():
-	$ButtonHoveredSound.play()
+	PlayButtonHoverSound()
 
 
 func _on_setting_button_mouse_entered():
-	$ButtonHoveredSound.play()
+	PlayButtonHoverSound()
 
 
 func _on_exit_button_mouse_entered():
-	$ButtonHoveredSound.play()
+	PlayButtonHoverSound()
 
 
 func _on_start_button_button_down():
-	$ButtonDownSound.play()
+	PlayButtonDownSound()
 
 
 func _on_exit_button_button_down():
 	get_tree().quit()
 	
 	
-func PlayBgm():
-	$MainMenuBGM.play()
+func Mute():
+	get_tree().get_first_node_in_group("audio_mngr").call("Mute")
 	
 
-func StopBgm():
-	$MainMenuBGM.stop()
+func Sound():
+	get_tree().get_first_node_in_group("audio_mngr").call("Sound")
+	
+	
+func PlayButtonDownSound():
+	get_tree().get_first_node_in_group("audio_mngr").call("PlayButtonDown")
+	
+	
+func PlayButtonHoverSound():
+	get_tree().get_first_node_in_group("audio_mngr").call("PlayButtonHover")

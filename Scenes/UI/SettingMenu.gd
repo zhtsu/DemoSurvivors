@@ -1,7 +1,5 @@
 extends Control
 
-signal open_sounds
-signal close_sounds
 
 # Option settings
 var Settings = {
@@ -47,24 +45,22 @@ func UpdateFullScreenButtonIcon():
 		$Background/ColorRect/VBoxContainer/FullScreenButton.icon = FullScreenTexture
 
 
-func EmitSignalForUpdateSounds():
+func UpdateSoundsState():
 	if Settings["OpenSounds"]:
-		emit_signal("open_sounds")
+		get_tree().get_first_node_in_group("audio_mngr").call("Sound")
 	else:
-		emit_signal("close_sounds")
-		
-		
+		get_tree().get_first_node_in_group("audio_mngr").call("Mute")
 
 
 func _on_sounds_button_button_down():
-	$ButtonDownSound.play()
+	PlayButtonDownSound()
 	Settings["OpenSounds"] = not Settings["OpenSounds"]
 	UpdateSoundsButtonIcon()
-	EmitSignalForUpdateSounds()
+	UpdateSoundsState()
 	
 
 func _on_background_button_down():
-	$ButtonDownSound.play()
+	PlayButtonDownSound()
 	$AnimationPlayer.play("Exit")
 
 
@@ -84,8 +80,10 @@ func UpdateFullScreen():
 
 
 func _on_full_screen_button_button_down():
-	$ButtonDownSound.play()
+	PlayButtonDownSound()
 	UpdateFullScreen()
 	UpdateFullScreenButtonIcon()
 	
 	
+func PlayButtonDownSound():
+	get_tree().get_first_node_in_group("audio_mngr").call("PlayButtonDown")
