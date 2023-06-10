@@ -133,7 +133,6 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_uai8i")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_uai8i")
 icon = ExtResource("2_rxhah")
 flat = true
-text_overrun_behavior = 3
 
 [node name="SoundsButton" type="Button" parent="Background/ColorRect/VBoxContainer"]
 layout_mode = 2

@@ -2,6 +2,7 @@ extends Control
 
 var SettingMenu_Scene = preload("res://Scenes/UI/SettingMenu.tscn")
 var ExitPopup_Scene = preload("res://Scenes/UI/Popup.tscn")
+var PickCharacter_Scene = preload("res://Scenes/UI/PickCharacter.tscn")
 var Settings:Dictionary
 const SETTINGS_USER_DATA_PATH = "user://settings.json"
 
@@ -60,6 +61,8 @@ func _on_exit_button_mouse_entered():
 
 func _on_start_button_button_down():
 	PlayButtonDownSound()
+	var PickCharacter = PickCharacter_Scene.instantiate()
+	add_child(PickCharacter)
 
 
 func ExitGame():

@@ -14,13 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://c1u5sp3bt78gh" path="res://Assets/Textures/VirtualGuy/virtual_guy_idle_32x32.png" id="11_oukto"]
 [ext_resource type="Texture2D" uid="uid://baduujxb8erf1" path="res://Assets/Textures/VirtualGuy/virtual_guy_walk_32x32.png" id="12_uq3dl"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_25jgu"]
-font_size = 100
-shadow_size = 20
-shadow_color = Color(0.196078, 0.196078, 0.196078, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fsbkh"]
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ysujs"]
 atlas = ExtResource("10_ob6b0")
 region = Rect2(0, 0, 32, 32)
@@ -943,6 +936,13 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_25jgu"]
+font_size = 100
+shadow_size = 20
+shadow_color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fsbkh"]
+
 [node name="MainMenu" type="Control" groups=["main_menu"]]
 layout_mode = 3
 anchors_preset = 15
@@ -951,6 +951,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_keouq")
+
+[node name="VirtualBoyGuy" type="AnimatedSprite2D" parent="."]
+position = Vector2(330, 180)
+rotation = -3.14159
+scale = Vector2(5, -5)
+sprite_frames = SubResource("SpriteFrames_6jrkg")
+animation = &"Idle"
+
+[node name="MaskDudeIdle" type="AnimatedSprite2D" parent="."]
+position = Vector2(298, 405)
+scale = Vector2(-5, 5)
+sprite_frames = SubResource("SpriteFrames_jyv0w")
+animation = &"Idle"
+
+[node name="PinkManIdle" type="AnimatedSprite2D" parent="."]
+position = Vector2(856, 400)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_udpob")
+animation = &"Idle"
+
+[node name="NinjaFrogIdle" type="AnimatedSprite2D" parent="."]
+position = Vector2(820, 176)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_ax6ea")
+animation = &"Idle"
 
 [node name="TextBox" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -984,45 +1009,21 @@ clip_contents = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fsbkh")
-text = "START"
+text = "NewGame"
 
 [node name="SettingButton" type="Button" parent="TextBox/MenuItems"]
 clip_contents = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fsbkh")
-text = "SETTING"
+text = "Setting"
 
 [node name="ExitButton" type="Button" parent="TextBox/MenuItems"]
 clip_contents = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fsbkh")
-text = "EXIT"
-
-[node name="VirtualBoyGuy" type="AnimatedSprite2D" parent="."]
-position = Vector2(325, 179)
-scale = Vector2(-5, 5)
-sprite_frames = SubResource("SpriteFrames_6jrkg")
-animation = &"Idle"
-
-[node name="MaskDudeIdle" type="AnimatedSprite2D" parent="."]
-position = Vector2(298, 405)
-scale = Vector2(-5, 5)
-sprite_frames = SubResource("SpriteFrames_jyv0w")
-animation = &"Idle"
-
-[node name="PinkManIdle" type="AnimatedSprite2D" parent="."]
-position = Vector2(856, 400)
-scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_udpob")
-animation = &"Idle"
-
-[node name="NinjaFrogIdle" type="AnimatedSprite2D" parent="."]
-position = Vector2(820, 176)
-scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_ax6ea")
-animation = &"Idle"
+text = "Quit"
 
 [connection signal="button_down" from="TextBox/MenuItems/StartButton" to="." method="_on_start_button_button_down"]
 [connection signal="mouse_entered" from="TextBox/MenuItems/StartButton" to="." method="_on_start_button_mouse_entered"]
