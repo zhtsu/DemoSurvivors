@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scenes/UI/MainMenu.gd" id="1_keouq"]
 [ext_resource type="Texture2D" uid="uid://dvnu0yef01425" path="res://Assets/Textures/NinjaFrog/ninja_frog_walk_32x32.png" id="3_awc0t"]
 [ext_resource type="Texture2D" uid="uid://rb78y6dlmmef" path="res://Assets/Textures/MaskDude/mask_dude_damage_32x32.png" id="4_4gf2u"]
-[ext_resource type="Texture2D" uid="uid://cxlx8wpybk3sy" path="res://Assets/Textures/MaskDude/mask_dude_idle_32x32.png" id="5_saajk"]
+[ext_resource type="Texture2D" uid="uid://cxlx8wpybk3sy" path="res://Assets/Textures/MaskDude/mask_dude_Idle_32x32.png" id="5_saajk"]
 [ext_resource type="Texture2D" uid="uid://b2nrgcpp5uk6" path="res://Assets/Textures/MaskDude/mask_dude_walk_32x32.png" id="6_q6qdd"]
 [ext_resource type="Texture2D" uid="uid://dbqo2n6f4rvk6" path="res://Assets/Textures/PinkMan/pink_man_damage_32x32.png" id="7_4n15l"]
 [ext_resource type="Texture2D" uid="uid://dij2oujani33l" path="res://Assets/Textures/PinkMan/pink_man_idle_32x32.png" id="8_kwfxc"]
@@ -937,7 +937,7 @@ animations = [{
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_25jgu"]
-font_size = 100
+font_size = 80
 shadow_size = 20
 shadow_color = Color(0.196078, 0.196078, 0.196078, 1)
 
@@ -995,8 +995,10 @@ metadata/_edit_group_ = true
 [node name="Title" type="Label" parent="TextBox"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "TITLE"
+text = "Demo
+Survivors"
 label_settings = SubResource("LabelSettings_25jgu")
+horizontal_alignment = 1
 
 [node name="MenuItems" type="VBoxContainer" parent="TextBox"]
 layout_mode = 2
