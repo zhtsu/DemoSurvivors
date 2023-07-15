@@ -1,2 +1,2 @@
-# Godot Demo 2D
+# Demo Survivors
 A Vampire Survivor like game made by Godot Engine
