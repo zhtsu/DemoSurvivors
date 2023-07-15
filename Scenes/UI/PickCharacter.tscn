@@ -1254,7 +1254,7 @@ position = Vector2(120, 120)
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_a4nov")
 animation = &"Walk"
-frame_progress = 0.429237
+frame_progress = 0.57119
 
 [node name="VSeparator2" type="VSeparator" parent="Background/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
