@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://bukknhyre2xfa"]
+
+[ext_resource type="Script" path="res://scenes/mngr/audio_mngr.gd" id="1_tnr5a"]
+[ext_resource type="AudioStream" uid="uid://btafleilp2jc5" path="res://assets/musics/dongcidaci.wav" id="2_f2vb0"]
+[ext_resource type="AudioStream" uid="uid://d3wxbl064iu8l" path="res://assets/sounds/button_hover.mp3" id="3_0tn5k"]
+[ext_resource type="AudioStream" uid="uid://bxodhr4xud0hs" path="res://assets/sounds/button_down.mp3" id="4_tjyk4"]
+
+[node name="AudioMngr" type="Node" groups=["audio_mngr"]]
+script = ExtResource("1_tnr5a")
+
+[node name="MainMenuBgm" type="AudioStreamPlayer2D" parent="." groups=["audio"]]
+stream = ExtResource("2_f2vb0")
+
+[node name="ButtonHover" type="AudioStreamPlayer2D" parent="." groups=["audio"]]
+stream = ExtResource("3_0tn5k")
+
+[node name="ButtonDown" type="AudioStreamPlayer2D" parent="." groups=["audio"]]
+stream = ExtResource("4_tjyk4")

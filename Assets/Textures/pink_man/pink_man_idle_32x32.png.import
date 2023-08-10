@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d6u4ay8qvnwt"
-path="res://.godot/imported/speaker_crossed.png-ea1dabfb6850fc117a0fe23d1535c552.ctex"
+uid="uid://dij2oujani33l"
+path="res://.godot/imported/pink_man_idle_32x32.png-9ddfb1b1a2952c6925d2cffe87e49b76.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/icons/speaker_crossed.png"
-dest_files=["res://.godot/imported/speaker_crossed.png-ea1dabfb6850fc117a0fe23d1535c552.ctex"]
+source_file="res://assets/textures/pink_man/pink_man_idle_32x32.png"
+dest_files=["res://.godot/imported/pink_man_idle_32x32.png-9ddfb1b1a2952c6925d2cffe87e49b76.ctex"]
 
 [params]
 

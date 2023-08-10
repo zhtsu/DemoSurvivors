@@ -1,9 +1,9 @@
 [gd_scene load_steps=37 format=3 uid="uid://dxx2elvn8s6am"]
 
-[ext_resource type="Script" path="res://Scenes/Character/Character.gd" id="1_htsf6"]
-[ext_resource type="Texture2D" uid="uid://o15w0120jtfw" path="res://Assets/Textures/NinjaFrog/ninja_frog_damage_32x32.png" id="2_tnsv4"]
-[ext_resource type="Texture2D" uid="uid://bogo67r4r3i78" path="res://Assets/Textures/NinjaFrog/ninja_frog_idle_32x32.png" id="3_mum6d"]
-[ext_resource type="Texture2D" uid="uid://dvnu0yef01425" path="res://Assets/Textures/NinjaFrog/ninja_frog_walk_32x32.png" id="4_r4q1k"]
+[ext_resource type="Script" path="res://scenes/character/character.gd" id="1_htsf6"]
+[ext_resource type="Texture2D" uid="uid://o15w0120jtfw" path="res://assets/textures/ninja_frog/ninja_frog_damage_32x32.png" id="2_tnsv4"]
+[ext_resource type="Texture2D" uid="uid://bogo67r4r3i78" path="res://assets/textures/ninja_frog/ninja_frog_idle_32x32.png" id="3_mum6d"]
+[ext_resource type="Texture2D" uid="uid://dvnu0yef01425" path="res://assets/textures/ninja_frog/ninja_frog_walk_32x32.png" id="4_r4q1k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yidut"]
 atlas = ExtResource("2_tnsv4")

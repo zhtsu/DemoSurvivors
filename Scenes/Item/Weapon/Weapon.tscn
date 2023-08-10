@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bm4b857x6v5h1"]
 
-[ext_resource type="PackedScene" uid="uid://dc84kvnhdauu8" path="res://Scenes/Item/Item.tscn" id="1_4lgh3"]
-[ext_resource type="Script" path="res://Scenes/Item/Weapon/Weapon.gd" id="2_s7n7h"]
+[ext_resource type="PackedScene" uid="uid://dc84kvnhdauu8" path="res://scenes/item/item.tscn" id="1_4lgh3"]
+[ext_resource type="Script" path="res://scenes/item/weapon/weapon.gd" id="2_s7n7h"]
 
 [node name="Weapon" groups=["weapon"] instance=ExtResource("1_4lgh3")]
 script = ExtResource("2_s7n7h")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d6u4ay8qvnwt"
-path="res://.godot/imported/speaker_crossed.png-ea1dabfb6850fc117a0fe23d1535c552.ctex"
+uid="uid://dvnu0yef01425"
+path="res://.godot/imported/ninja_frog_walk_32x32.png-240f9e1fbc4cd8a8c785f3709dbdea2a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/icons/speaker_crossed.png"
-dest_files=["res://.godot/imported/speaker_crossed.png-ea1dabfb6850fc117a0fe23d1535c552.ctex"]
+source_file="res://assets/textures/ninja_frog/ninja_frog_walk_32x32.png"
+dest_files=["res://.godot/imported/ninja_frog_walk_32x32.png-240f9e1fbc4cd8a8c785f3709dbdea2a.ctex"]
 
 [params]
 

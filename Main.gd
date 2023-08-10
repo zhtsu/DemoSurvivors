@@ -1,8 +1,8 @@
 extends Node
 
 
-var MainMenu_Scene = preload("res://Scenes/UI/MainMenu.tscn")
-var AudioMngr_Scene = preload("res://Scenes/Mngr/AudioMngr.tscn")
+var MainMenu_Scene = preload("res://scenes/ui/main_menu.tscn")
+var AudioMngr_Scene = preload("res://scenes/mngr/audio_mngr.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
