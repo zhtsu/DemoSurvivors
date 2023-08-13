@@ -9,25 +9,23 @@ func _ready():
 	$AnimationPlayer.play("Enter")
 
 
-
-
-func InitPopup(Message:String, ConfirmCallback:Callable, CancelCallback:Callable = Cancel):
-	$Background/ColorRect/VBoxContainer/MessageText.set_text(Message)
-	self.connect("confirm", ConfirmCallback)
-	self.connect("cancel", CancelCallback)
+func init_popup(message : String, confirm_callback : Callable, cancel_callback : Callable = _cancel):
+	$Background/ColorRect/VBoxContainer/MessageText.set_text(message)
+	self.connect("confirm", confirm_callback)
+	self.connect("cancel", cancel_callback)
 
 
 func _on_confirm_button_button_down():
-	PlayButtonDownSound()
+	_play_button_down_sound()
 	emit_signal("confirm")
 
 
 func _on_cancel_button_button_down():
-	PlayButtonDownSound()
+	_play_button_down_sound()
 	emit_signal("cancel")
 	
 	
-func Cancel():
+func _cancel():
 	$AnimationPlayer.play("Cancel")
 
 
@@ -37,19 +35,19 @@ func _on_animation_player_animation_finished(anim_name):
 
 
 func _on_confirm_button_mouse_entered():
-	PlayButtonHoverSound()
+	_play_button_hover_sound()
 	pass # Replace with function body.
 
 
 func _on_cancel_button_mouse_entered():
-	PlayButtonHoverSound()
+	_play_button_hover_sound()
 	pass # Replace with function body.
 	
 	
-func PlayButtonDownSound():
-	get_tree().get_first_node_in_group("audio_mngr").call("PlayButtonDown")
+func _play_button_down_sound():
+	get_tree().get_first_node_in_group("audio_mngr").call("play_button_down")
 	
 	
-func PlayButtonHoverSound():
-	get_tree().get_first_node_in_group("audio_mngr").call("PlayButtonHover")
+func _play_button_hover_sound():
+	get_tree().get_first_node_in_group("audio_mngr").call("play_button_hover")
 

@@ -1,24 +1,24 @@
 extends Node
 
 
-var Volume:float = 1.0
+var volume:float = 1.0
 
 
-func Mute():
+func mute():
 	$MainMenuBgm.stop()
 	
 	
-func Sound():
+func loud():
 	$MainMenuBgm.play()
 
 
-func PlayMainMenuBgm():
+func play_main_menu_bgm():
 	$MainMenuBgm.play()
 	
 	
-func PlayButtonHover():
+func play_button_hover():
 	$ButtonHover.play()
 	
 	
-func PlayButtonDown():
+func play_button_down():
 	$ButtonDown.play()

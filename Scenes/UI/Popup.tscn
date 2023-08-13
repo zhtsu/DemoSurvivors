@@ -12,6 +12,22 @@ font_size = 30
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_13qrk"]
 
+[sub_resource type="Animation" id="Animation_hy2fj"]
+resource_name = "Cancel"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background/ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(326, 0), Vector2(326, -300)]
+}
+
 [sub_resource type="Animation" id="Animation_csfk4"]
 resource_name = "Enter"
 length = 0.2
@@ -41,22 +57,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(326, -300)]
-}
-
-[sub_resource type="Animation" id="Animation_hy2fj"]
-resource_name = "Cancel"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Background/ColorRect:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(326, 0), Vector2(326, -300)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m452b"]
@@ -121,13 +121,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wy12g")
-text = "Confirm"
+text = "Yes"
 
 [node name="CancelButton" type="Button" parent="Background/ColorRect/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/focus = SubResource("StyleBoxEmpty_13qrk")
-text = "Cancel"
+text = "No"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

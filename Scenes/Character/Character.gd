@@ -17,34 +17,34 @@ enum CharacterDirection {
 	RIGHT
 }
 
-@export var Speed:int = 1
-@export var SpawnPosition = Vector2(0, 0):
-	set = SetSpawnPosition
+@export var speed:int = 1
+@export var spawn_position = Vector2(0, 0):
+	set = _set_spawnPosition
 
-var Direction = CharacterDirection.RIGHT
-var State = CharacterState.IDLE
-var HP = 100
+var direction = CharacterDirection.RIGHT
+var state = CharacterState.IDLE
+var hp = 100
 
-func SetSpawnPosition(Position:Vector2):
-	SpawnPosition = Position
+func _set_spawnPosition(in_position : Vector2):
+	spawn_position = in_position
 
 func InitCharacter():
 	$AnimatedSprite2D.play("Idle")
-	position = SpawnPosition
+	position = spawn_position
 
 
 func UpdateCharacterAnimation():
-	if State == CharacterState.IDLE:
+	if state == CharacterState.IDLE:
 		$AnimatedSprite2D.play("Idle")
-	elif State == CharacterState.WALK:
+	elif state == CharacterState.WALK:
 		$AnimatedSprite2D.play("Walk")
-	elif State == CharacterState.DAMAGE:
+	elif state == CharacterState.DAMAGE:
 		$AnimatedSprite2D.play("Damage")
 
 
 func UpdateCharacterDirection():
-	if Direction == CharacterDirection.RIGHT:
+	if direction == CharacterDirection.RIGHT:
 		$AnimatedSprite2D.flip_h = false
-	elif Direction == CharacterDirection.LEFT:
+	elif direction == CharacterDirection.LEFT:
 		$AnimatedSprite2D.flip_h = true
 	

@@ -1,8 +1,8 @@
 extends Player
 
 func _ready():
-	InitPlayer()
+	init_player()
 	
 	
 func _process(delta):
-	UpdatePlayer(delta)
+	update_player(delta)

@@ -2,70 +2,70 @@ extends Character
 
 class_name Player
 
-var Health = 100
-var EXP = 0
+var health = 100
+var exp = 0
 
 # Called when the node enters the scene tree for the first time.
-func InitPlayer():
-	InitCharacter()
+func init_player():
+	init_character()
 	$EffectAnimator.hide()
-	Appearing()
+	appearing()
 	
 	
-func Appearing():
-	State = CharacterState.APPEARING
+func appearing():
+	state = CharacterState.APPEARING
 
 
-func Disappearing():
-	State = CharacterState.DISAPPEARING
+func disappearing():
+	state = CharacterState.DISAPPEARING
 
 
 func UpdatePlayerAnimation():
 	super.UpdateCharacterAnimation()
-	if State == CharacterState.APPEARING:
+	if state == CharacterState.APPEARING:
 		$AnimatedSprite2D.hide()
 		$EffectAnimator.show()
 		$EffectAnimator.play("Appearing")
-	elif State == CharacterState.DISAPPEARING:
+	elif state == CharacterState.DISAPPEARING:
 		$AnimatedSprite2D.hide()
 		$EffectAnimator.show()
 		$EffectAnimator.play("Disappearing")
 
 
-func UpdatePlayer(delta):
-	UpdateMove(delta)
-	UpdatePlayerAnimation()
-	UpdateCharacterDirection()
+func update_player(delta):
+	update_move(delta)
+	update_player_animation()
+	update_character_direction()
 
 
-func UpdateMove(delta):
-	if State == CharacterState.APPEARING or State == CharacterState.DISAPPEARING:
+func update_move(delta):
+	if state == CharacterState.APPEARING or state == CharacterState.DISAPPEARING:
 		return
 	
-	var Velocity:Vector2 = Vector2(0, 0)
+	var velocity : Vector2 = Vector2(0, 0)
 	if Input.is_action_pressed("Up"):
-		Velocity.y = -1
+		velocity.y = -1
 	elif Input.is_action_pressed("Down"):
-		Velocity.y = 1
+		velocity.y = 1
 	if Input.is_action_pressed("Left"):
-		Velocity.x = -1
+		velocity.x = -1
 	elif Input.is_action_pressed("Right"):
-		Velocity.x = 1
+		velocity.x = 1
 	
-	position += Velocity.normalized() * Speed * delta * 150
+	position += velocity.normalized() * speed * delta * 150
 	
-	if Velocity.length() > 0:
-		State = CharacterState.WALK
+	if velocity.length() > 0:
+		state = CharacterState.WALK
 	else:
-		State = CharacterState.IDLE
+		state = CharacterState.IDLE
 	
-	if Velocity.x > 0:
-		Direction = CharacterDirection.RIGHT
-	elif Velocity.x < 0:
-		Direction = CharacterDirection.LEFT
+	if velocity.x > 0:
+		direction = CharacterDirection.RIGHT
+	elif velocity.x < 0:
+		direction = CharacterDirection.LEFT
 
 
 func _on_effect_animator_animation_finished():
-	State = CharacterState.IDLE
+	state = CharacterState.IDLE
 	$AnimatedSprite2D.show()
 	$EffectAnimator.hide()

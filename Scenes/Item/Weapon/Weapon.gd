@@ -1,47 +1,47 @@
 extends Node2D
 
-@export var PhysicalAtk = 0.0
-@export var MagicAtk = 0.0
+@export var physical_atk = 0.0
+@export var magic_atk = 0.0
 
-@export var PhysicalDef = 0.0
-@export var MagicDef = 0.0
-
-# 0.0 ~ 1.0
-@export var PhysicalCritProb = 0.0
-@export var MagicCritProb = 0.0
+@export var physical_def = 0.0
+@export var magic_def = 0.0
 
 # 0.0 ~ 1.0
-@export var PhysicalCritRate = 0.0
-@export var MagicCritRate = 0.0
+@export var physical_crit_prob = 0.0
+@export var magic_crit_prob = 0.0
+
+# 0.0 ~ 1.0
+@export var physical_crit_rate = 0.0
+@export var magic_crit_rate = 0.0
 	
 
-func CalPhysicalAtk() -> Dictionary:
-	var CriticalPhysicalAtk = 0.0
-	var IsCrit = false
+func cal_physical_atk() -> Dictionary:
+	var critical_physical_atk = 0.0
+	var crit = false
 
-	if randf_range(0.0, 1.0) < PhysicalCritProb:
-		IsCrit = true
-		CriticalPhysicalAtk = PhysicalAtk * randf_range(0.0, PhysicalCritRate)
+	if randf_range(0.0, 1.0) < physical_crit_prob:
+		crit = true
+		critical_physical_atk = physical_atk * randf_range(0.0, physical_crit_rate)
 	
-	var Result = {
-		"IsCrit": IsCrit,
-		"Value": PhysicalAtk + CriticalPhysicalAtk	
+	var result = {
+		"Crit": crit,
+		"Value": physical_atk + critical_physical_atk
 	}
 	
-	return Result
+	return result
 
 
 func CalMagicAtk() -> Dictionary:
-	var CriticalMagicAtk = 0.0
-	var IsCrit = false
+	var critical_magic_atk = 0.0
+	var crit = false
 
-	if randf_range(0.0, 1.0) < MagicCritProb:
-		IsCrit = true
-		CriticalMagicAtk = MagicAtk * randf_range(0.0, MagicCritRate)
+	if randf_range(0.0, 1.0) < magic_crit_prob:
+		crit = true
+		critical_magic_atk = magic_atk * randf_range(0.0, magic_crit_rate)
 	
-	var Result = {
-		"IsCrit": IsCrit,
-		"Value": MagicAtk + CriticalMagicAtk	
+	var result = {
+		"IsCrit": crit,
+		"Value": magic_atk + critical_magic_atk
 	}
 	
-	return Result
+	return result
