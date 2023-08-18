@@ -6,40 +6,40 @@ var health = 100
 var exp = 0
 
 # Called when the node enters the scene tree for the first time.
-func init_player():
-	init_character()
+func _init_player():
+	_init_character()
 	$EffectAnimator.hide()
 	appearing()
 	
 	
 func appearing():
-	state = CharacterState.APPEARING
+	state = ECharacterState.Appearing
 
 
 func disappearing():
-	state = CharacterState.DISAPPEARING
+	state = ECharacterState.Disappearing
 
 
-func UpdatePlayerAnimation():
-	super.UpdateCharacterAnimation()
-	if state == CharacterState.APPEARING:
+func _update_player_animation():
+	super._update_character_animation()
+	if state == ECharacterState.Appearing:
 		$AnimatedSprite2D.hide()
 		$EffectAnimator.show()
 		$EffectAnimator.play("Appearing")
-	elif state == CharacterState.DISAPPEARING:
+	elif state == ECharacterState.Disappearing:
 		$AnimatedSprite2D.hide()
 		$EffectAnimator.show()
 		$EffectAnimator.play("Disappearing")
 
 
-func update_player(delta):
-	update_move(delta)
-	update_player_animation()
-	update_character_direction()
+func _update_player(delta):
+	_update_move(delta)
+	_update_player_animation()
+	_update_character_direction()
 
 
-func update_move(delta):
-	if state == CharacterState.APPEARING or state == CharacterState.DISAPPEARING:
+func _update_move(delta):
+	if state == ECharacterState.Appearing or state == ECharacterState.Disappearing:
 		return
 	
 	var velocity : Vector2 = Vector2(0, 0)
@@ -55,17 +55,17 @@ func update_move(delta):
 	position += velocity.normalized() * speed * delta * 150
 	
 	if velocity.length() > 0:
-		state = CharacterState.WALK
+		state = ECharacterState.Walk
 	else:
-		state = CharacterState.IDLE
+		state = ECharacterState.Idle
 	
 	if velocity.x > 0:
-		direction = CharacterDirection.RIGHT
+		direction = ECharacterDirection.Right
 	elif velocity.x < 0:
-		direction = CharacterDirection.LEFT
+		direction = ECharacterDirection.Left
 
 
 func _on_effect_animator_animation_finished():
-	state = CharacterState.IDLE
+	state = ECharacterState.Idle
 	$AnimatedSprite2D.show()
 	$EffectAnimator.hide()

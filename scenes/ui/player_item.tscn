@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5pec1yggatge"]
+
+[ext_resource type="SpriteFrames" uid="uid://b3un7wvxfwqk4" path="res://tress/sf_mask_dude.tres" id="1_jfaul"]
+[ext_resource type="Script" path="res://scenes/ui/player_item.gd" id="1_xt1xx"]
+
+[node name="PlayerItem" type="Button"]
+custom_minimum_size = Vector2(64, 64)
+script = ExtResource("1_xt1xx")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(32, 32)
+scale = Vector2(2, 2)
+sprite_frames = ExtResource("1_jfaul")
+animation = &"Idle"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
