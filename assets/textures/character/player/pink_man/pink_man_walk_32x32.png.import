@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://2ncq46hm00vt"
-path="res://.godot/imported/pink_man_walk_32x32.png-bacf9971dc96feaa80d2f7529c8be354.ctex"
+path="res://.godot/imported/pink_man_walk_32x32.png-8a712c11f4f181c96ca0aced77e41a1a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/pink_man/pink_man_walk_32x32.png"
-dest_files=["res://.godot/imported/pink_man_walk_32x32.png-bacf9971dc96feaa80d2f7529c8be354.ctex"]
+source_file="res://assets/textures/character/player/pink_man/pink_man_walk_32x32.png"
+dest_files=["res://.godot/imported/pink_man_walk_32x32.png-8a712c11f4f181c96ca0aced77e41a1a.ctex"]
 
 [params]
 

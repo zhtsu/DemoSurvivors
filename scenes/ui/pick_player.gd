@@ -19,6 +19,7 @@ func _ready():
 	for character_type in CharacterType.EPlayerType.values():
 		var character_item = character_item_res.instantiate()
 		character_item.connect("item_clicked", _on_character_item_clicked)
+		character_item.connect("mouse_entered", _play_button_hover_sound)
 		if character_type == CharacterType.EPlayerType.NinjaFrog:
 			character_item.init_player_item(gd_ninja_frog.sf_ninja_frog, character_type)
 			$Background/VBoxContainer/CharacterList.add_child(character_item)
@@ -101,3 +102,26 @@ func _on_left_switch_pressed():
 
 func _on_right_switch_pressed():
 	_on_character_item_clicked(selected_character_type + 1)
+
+
+func _on_back_button_pressed():
+	_play_button_down_sound()
+	$AnimationPlayer.play("Exit")
+
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "Exit":
+		queue_free()
+
+
+func _on_back_button_mouse_entered():
+	_play_button_hover_sound()
+
+
+func _on_start_button_pressed():
+	_play_button_down_sound()
+
+
+func _on_start_button_mouse_entered():
+	_play_button_hover_sound()
+	

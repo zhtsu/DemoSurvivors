@@ -1,8 +1,8 @@
 [gd_resource type="SpriteFrames" load_steps=34 format=3 uid="uid://cymrkuak3piea"]
 
-[ext_resource type="Texture2D" uid="uid://dbqo2n6f4rvk6" path="res://assets/textures/pink_man/pink_man_damage_32x32.png" id="1_1cf1s"]
-[ext_resource type="Texture2D" uid="uid://dij2oujani33l" path="res://assets/textures/pink_man/pink_man_idle_32x32.png" id="2_52gtv"]
-[ext_resource type="Texture2D" uid="uid://2ncq46hm00vt" path="res://assets/textures/pink_man/pink_man_walk_32x32.png" id="3_rwj7w"]
+[ext_resource type="Texture2D" uid="uid://dbqo2n6f4rvk6" path="res://assets/textures/character/player/pink_man/pink_man_damage_32x32.png" id="1_1cf1s"]
+[ext_resource type="Texture2D" uid="uid://dij2oujani33l" path="res://assets/textures/character/player/pink_man/pink_man_idle_32x32.png" id="2_52gtv"]
+[ext_resource type="Texture2D" uid="uid://2ncq46hm00vt" path="res://assets/textures/character/player/pink_man/pink_man_walk_32x32.png" id="3_rwj7w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x7c3j"]
 atlas = ExtResource("1_1cf1s")

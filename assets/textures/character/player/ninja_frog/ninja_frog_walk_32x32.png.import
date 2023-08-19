@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2nrgcpp5uk6"
-path="res://.godot/imported/mask_dude_walk_32x32.png-17bda7b45e8f7288577c73d3237b3675.ctex"
+uid="uid://dvnu0yef01425"
+path="res://.godot/imported/ninja_frog_walk_32x32.png-2ff28da1ce76947c5036769446d2856c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/mask_dude/mask_dude_walk_32x32.png"
-dest_files=["res://.godot/imported/mask_dude_walk_32x32.png-17bda7b45e8f7288577c73d3237b3675.ctex"]
+source_file="res://assets/textures/character/player/ninja_frog/ninja_frog_walk_32x32.png"
+dest_files=["res://.godot/imported/ninja_frog_walk_32x32.png-2ff28da1ce76947c5036769446d2856c.ctex"]
 
 [params]
 

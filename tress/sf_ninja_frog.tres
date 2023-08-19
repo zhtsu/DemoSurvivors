@@ -1,8 +1,8 @@
 [gd_resource type="SpriteFrames" load_steps=34 format=3 uid="uid://olstouu8ajg"]
 
-[ext_resource type="Texture2D" uid="uid://o15w0120jtfw" path="res://assets/textures/ninja_frog/ninja_frog_damage_32x32.png" id="1_e4x6r"]
-[ext_resource type="Texture2D" uid="uid://bogo67r4r3i78" path="res://assets/textures/ninja_frog/ninja_frog_idle_32x32.png" id="2_y03h7"]
-[ext_resource type="Texture2D" uid="uid://dvnu0yef01425" path="res://assets/textures/ninja_frog/ninja_frog_walk_32x32.png" id="3_bn0v5"]
+[ext_resource type="Texture2D" uid="uid://o15w0120jtfw" path="res://assets/textures/character/player/ninja_frog/ninja_frog_damage_32x32.png" id="1_e4x6r"]
+[ext_resource type="Texture2D" uid="uid://bogo67r4r3i78" path="res://assets/textures/character/player/ninja_frog/ninja_frog_idle_32x32.png" id="2_y03h7"]
+[ext_resource type="Texture2D" uid="uid://dvnu0yef01425" path="res://assets/textures/character/player/ninja_frog/ninja_frog_walk_32x32.png" id="3_bn0v5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yidut"]
 atlas = ExtResource("1_e4x6r")

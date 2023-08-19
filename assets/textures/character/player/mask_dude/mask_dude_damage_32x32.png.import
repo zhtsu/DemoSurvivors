@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rb78y6dlmmef"
-path="res://.godot/imported/mask_dude_damage_32x32.png-67b3b75be100ca002fc7626f78c31e0f.ctex"
+path="res://.godot/imported/mask_dude_damage_32x32.png-31a1db3f190f20996ac354d95a43535b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/mask_dude/mask_dude_damage_32x32.png"
-dest_files=["res://.godot/imported/mask_dude_damage_32x32.png-67b3b75be100ca002fc7626f78c31e0f.ctex"]
+source_file="res://assets/textures/character/player/mask_dude/mask_dude_damage_32x32.png"
+dest_files=["res://.godot/imported/mask_dude_damage_32x32.png-31a1db3f190f20996ac354d95a43535b.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dij2oujani33l"
-path="res://.godot/imported/pink_man_idle_32x32.png-9ddfb1b1a2952c6925d2cffe87e49b76.ctex"
+uid="uid://c1u5sp3bt78gh"
+path="res://.godot/imported/virtual_guy_idle_32x32.png-9e28f689fd723d9fa11c3b111584d6fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/pink_man/pink_man_idle_32x32.png"
-dest_files=["res://.godot/imported/pink_man_idle_32x32.png-9ddfb1b1a2952c6925d2cffe87e49b76.ctex"]
+source_file="res://assets/textures/character/player/virtual_guy/virtual_guy_idle_32x32.png"
+dest_files=["res://.godot/imported/virtual_guy_idle_32x32.png-9e28f689fd723d9fa11c3b111584d6fe.ctex"]
 
 [params]
 

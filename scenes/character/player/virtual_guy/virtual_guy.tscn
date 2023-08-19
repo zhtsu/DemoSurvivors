@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://olrjehh0du76" path="res://scenes/character/player/player.tscn" id="1_hp016"]
 [ext_resource type="Script" path="res://scenes/character/player/virtual_guy/virtual_guy.gd" id="1_vjy16"]
-[ext_resource type="Texture2D" uid="uid://d3rn3a60g46o7" path="res://assets/textures/virtual_guy/virtual_guy_damage_32x32.png" id="3_w2omg"]
-[ext_resource type="Texture2D" uid="uid://c1u5sp3bt78gh" path="res://assets/textures/virtual_guy/virtual_guy_idle_32x32.png" id="4_jdr10"]
-[ext_resource type="Texture2D" uid="uid://baduujxb8erf1" path="res://assets/textures/virtual_guy/virtual_guy_walk_32x32.png" id="5_lhdjl"]
+[ext_resource type="Texture2D" uid="uid://d3rn3a60g46o7" path="res://assets/textures/character/player/virtual_guy/virtual_guy_damage_32x32.png" id="3_w2omg"]
+[ext_resource type="Texture2D" uid="uid://c1u5sp3bt78gh" path="res://assets/textures/character/player/virtual_guy/virtual_guy_idle_32x32.png" id="4_jdr10"]
+[ext_resource type="Texture2D" uid="uid://baduujxb8erf1" path="res://assets/textures/character/player/virtual_guy/virtual_guy_walk_32x32.png" id="5_lhdjl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ysujs"]
 atlas = ExtResource("3_w2omg")

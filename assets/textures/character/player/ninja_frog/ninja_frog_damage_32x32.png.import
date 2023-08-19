@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxlx8wpybk3sy"
-path="res://.godot/imported/mask_dude_Idle_32x32.png-692c7fd245a2bbbff7cdc2df560519ac.ctex"
+uid="uid://o15w0120jtfw"
+path="res://.godot/imported/ninja_frog_damage_32x32.png-828928372f3aaa2cae9414382dbfbbe6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/mask_dude/mask_dude_Idle_32x32.png"
-dest_files=["res://.godot/imported/mask_dude_Idle_32x32.png-692c7fd245a2bbbff7cdc2df560519ac.ctex"]
+source_file="res://assets/textures/character/player/ninja_frog/ninja_frog_damage_32x32.png"
+dest_files=["res://.godot/imported/ninja_frog_damage_32x32.png-828928372f3aaa2cae9414382dbfbbe6.ctex"]
 
 [params]
 

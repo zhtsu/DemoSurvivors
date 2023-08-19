@@ -1,8 +1,8 @@
 [gd_resource type="SpriteFrames" load_steps=34 format=3 uid="uid://b4l4u8hv0e76u"]
 
-[ext_resource type="Texture2D" uid="uid://d3rn3a60g46o7" path="res://assets/textures/virtual_guy/virtual_guy_damage_32x32.png" id="1_yy4cf"]
-[ext_resource type="Texture2D" uid="uid://c1u5sp3bt78gh" path="res://assets/textures/virtual_guy/virtual_guy_idle_32x32.png" id="2_hojhl"]
-[ext_resource type="Texture2D" uid="uid://baduujxb8erf1" path="res://assets/textures/virtual_guy/virtual_guy_walk_32x32.png" id="3_fvpw7"]
+[ext_resource type="Texture2D" uid="uid://d3rn3a60g46o7" path="res://assets/textures/character/player/virtual_guy/virtual_guy_damage_32x32.png" id="1_yy4cf"]
+[ext_resource type="Texture2D" uid="uid://c1u5sp3bt78gh" path="res://assets/textures/character/player/virtual_guy/virtual_guy_idle_32x32.png" id="2_hojhl"]
+[ext_resource type="Texture2D" uid="uid://baduujxb8erf1" path="res://assets/textures/character/player/virtual_guy/virtual_guy_walk_32x32.png" id="3_fvpw7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ysujs"]
 atlas = ExtResource("1_yy4cf")

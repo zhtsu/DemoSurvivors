@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvnu0yef01425"
-path="res://.godot/imported/ninja_frog_walk_32x32.png-240f9e1fbc4cd8a8c785f3709dbdea2a.ctex"
+uid="uid://baduujxb8erf1"
+path="res://.godot/imported/virtual_guy_walk_32x32.png-f7a791fef77a09357110eec0653c21bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/ninja_frog/ninja_frog_walk_32x32.png"
-dest_files=["res://.godot/imported/ninja_frog_walk_32x32.png-240f9e1fbc4cd8a8c785f3709dbdea2a.ctex"]
+source_file="res://assets/textures/character/player/virtual_guy/virtual_guy_walk_32x32.png"
+dest_files=["res://.godot/imported/virtual_guy_walk_32x32.png-f7a791fef77a09357110eec0653c21bd.ctex"]
 
 [params]
 

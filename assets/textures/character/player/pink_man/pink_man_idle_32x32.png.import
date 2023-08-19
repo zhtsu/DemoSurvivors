@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbqo2n6f4rvk6"
-path="res://.godot/imported/pink_man_damage_32x32.png-e98283fee15ce2cbf905f04be61c8549.ctex"
+uid="uid://dij2oujani33l"
+path="res://.godot/imported/pink_man_idle_32x32.png-d773aeef1b756488d1079d2805fd1c55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/pink_man/pink_man_damage_32x32.png"
-dest_files=["res://.godot/imported/pink_man_damage_32x32.png-e98283fee15ce2cbf905f04be61c8549.ctex"]
+source_file="res://assets/textures/character/player/pink_man/pink_man_idle_32x32.png"
+dest_files=["res://.godot/imported/pink_man_idle_32x32.png-d773aeef1b756488d1079d2805fd1c55.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://baduujxb8erf1"
-path="res://.godot/imported/virtual_guy_walk_32x32.png-259143f87403738fef82fe68ce04bb18.ctex"
+uid="uid://d3rn3a60g46o7"
+path="res://.godot/imported/virtual_guy_damage_32x32.png-d253c41d6a4491beb61da491353011e7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/virtual_guy/virtual_guy_walk_32x32.png"
-dest_files=["res://.godot/imported/virtual_guy_walk_32x32.png-259143f87403738fef82fe68ce04bb18.ctex"]
+source_file="res://assets/textures/character/player/virtual_guy/virtual_guy_damage_32x32.png"
+dest_files=["res://.godot/imported/virtual_guy_damage_32x32.png-d253c41d6a4491beb61da491353011e7.ctex"]
 
 [params]
 
