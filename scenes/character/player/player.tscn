@@ -126,4 +126,7 @@ animation = &"Disappearing"
 frame = 6
 frame_progress = 1.0
 
+[node name="Camera2D" type="Camera2D" parent="." index="3"]
+zoom = Vector2(3, 3)
+
 [connection signal="animation_finished" from="EffectAnimator" to="." method="_on_effect_animator_animation_finished"]
