@@ -9,7 +9,6 @@ script = ExtResource("1_21d68")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("3_f53ux")
-animation = &"Idle"
 
-[node name="CollisionShape2D" parent="CharacterBody2D" index="0"]
+[node name="CollisionShape2D" parent="." index="2"]
 visible = false

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ch6virhvhqaca" path="res://scenes/character/player/ninja_frog/ninja_frog.tscn" id="2_fgsrq"]
 
 [node name="Level" type="Node2D"]
+metadata/_edit_vertical_guides_ = []
 
 [node name="MapForest" parent="." instance=ExtResource("1_gbqtv")]
 

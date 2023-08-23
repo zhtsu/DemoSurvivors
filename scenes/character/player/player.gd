@@ -2,10 +2,13 @@ extends Character
 
 class_name Player
 
-var health = 100
-var exp = 0
+var EXP = 0
 
-# Called when the node enters the scene tree for the first time.
+
+func _physics_process(delta):
+	_update_move(delta)
+	
+
 func _init_player():
 	_init_character()
 	$EffectAnimator.hide()
@@ -32,17 +35,17 @@ func _update_player_animation():
 		$EffectAnimator.play("Disappearing")
 
 
-func _update_player(delta):
-	_update_move(delta)
+func _update_player(_delta):
 	_update_player_animation()
-	_update_character_direction()
+	_update_character_flip()
 
 
 func _update_move(delta):
 	if state == ECharacterState.Appearing or state == ECharacterState.Disappearing:
 		return
 	
-	var velocity : Vector2 = Vector2(0, 0)
+	velocity = Vector2.ZERO
+	
 	if Input.is_action_pressed("Up"):
 		velocity.y = -1
 	elif Input.is_action_pressed("Down"):
@@ -52,7 +55,7 @@ func _update_move(delta):
 	elif Input.is_action_pressed("Right"):
 		velocity.x = 1
 	
-	position += velocity.normalized() * speed * delta * 150
+	position += velocity.normalized() * speed * 50 * delta
 	
 	if velocity.length() > 0:
 		state = ECharacterState.Walk
@@ -63,9 +66,15 @@ func _update_move(delta):
 		direction = ECharacterDirection.Right
 	elif velocity.x < 0:
 		direction = ECharacterDirection.Left
+		
+	move_and_slide()
 
 
 func _on_effect_animator_animation_finished():
 	state = ECharacterState.Idle
 	$AnimatedSprite2D.show()
 	$EffectAnimator.hide()
+
+
+func _on_mouse_shape_entered(shape_idx):
+	print_debug(shape_idx)

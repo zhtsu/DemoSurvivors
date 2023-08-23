@@ -117,7 +117,11 @@ animations = [{
 }]
 
 [node name="Player" groups=["player"] instance=ExtResource("1_utw0w")]
+position = Vector2(254, 201)
 script = ExtResource("2_odtqs")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+animation = &"Idle"
 
 [node name="EffectAnimator" type="AnimatedSprite2D" parent="." index="1"]
 visible = false
@@ -128,5 +132,14 @@ frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="." index="3"]
 zoom = Vector2(3, 3)
+limit_left = 0
+limit_top = 0
+limit_right = 1152
+limit_bottom = 648
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 4.0
+editor_draw_limits = true
 
+[connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]
 [connection signal="animation_finished" from="EffectAnimator" to="." method="_on_effect_animator_animation_finished"]

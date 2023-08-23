@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 class_name Character
 
@@ -23,7 +23,7 @@ enum ECharacterDirection {
 
 var direction = ECharacterDirection.Right
 var state = ECharacterState.Idle
-var hp = 100
+var HP = 100
 
 func _set_spawn_position(in_position : Vector2):
 	spawn_position = in_position
@@ -42,7 +42,7 @@ func _update_character_animation():
 		$AnimatedSprite2D.play("Damage")
 
 
-func _update_character_direction():
+func _update_character_flip():
 	if direction == ECharacterDirection.Right:
 		$AnimatedSprite2D.flip_h = false
 	elif direction == ECharacterDirection.Left:
