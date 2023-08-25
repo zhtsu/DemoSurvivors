@@ -119,9 +119,8 @@ animations = [{
 [node name="Player" groups=["player"] instance=ExtResource("1_utw0w")]
 position = Vector2(254, 201)
 script = ExtResource("2_odtqs")
-
-[node name="AnimatedSprite2D" parent="." index="0"]
-animation = &"Idle"
+speed = null
+spawn_position = null
 
 [node name="EffectAnimator" type="AnimatedSprite2D" parent="." index="1"]
 visible = false
@@ -141,5 +140,4 @@ position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 editor_draw_limits = true
 
-[connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]
 [connection signal="animation_finished" from="EffectAnimator" to="." method="_on_effect_animator_animation_finished"]

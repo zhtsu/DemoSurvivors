@@ -2,8 +2,6 @@ extends Character
 
 class_name Player
 
-var EXP = 0
-
 
 func _physics_process(delta):
 	_update_move(delta)
@@ -11,6 +9,7 @@ func _physics_process(delta):
 
 func _init_player():
 	_init_character()
+	$AnimatedSprite2D.play("Idle")
 	$EffectAnimator.hide()
 	appearing()
 	
@@ -24,8 +23,14 @@ func disappearing():
 
 
 func _update_player_animation():
-	super._update_character_animation()
-	if state == ECharacterState.Appearing:
+	if state == ECharacterState.Idle:
+		$AnimatedSprite2D.play("Idle")
+	elif state == ECharacterState.Walk:
+		$AnimatedSprite2D.play("Walk")
+	elif state == ECharacterState.Damage:
+		$AnimatedSprite2D.play("Damage")
+	#
+	elif state == ECharacterState.Appearing:
 		$AnimatedSprite2D.hide()
 		$EffectAnimator.show()
 		$EffectAnimator.play("Appearing")
@@ -33,11 +38,15 @@ func _update_player_animation():
 		$AnimatedSprite2D.hide()
 		$EffectAnimator.show()
 		$EffectAnimator.play("Disappearing")
+	#
+	if direction == ECharacterDirection.Right:
+		$AnimatedSprite2D.flip_h = false
+	elif direction == ECharacterDirection.Left:
+		$AnimatedSprite2D.flip_h = true
 
 
 func _update_player(_delta):
 	_update_player_animation()
-	_update_character_flip()
 
 
 func _update_move(delta):
@@ -76,5 +85,3 @@ func _on_effect_animator_animation_finished():
 	$EffectAnimator.hide()
 
 
-func _on_mouse_shape_entered(shape_idx):
-	print_debug(shape_idx)

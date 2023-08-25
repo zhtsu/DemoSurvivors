@@ -243,17 +243,18 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dxgr4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46gox"]
+size = Vector2(20, 24)
 
-[node name="CharacterBase" type="CharacterBody2D" groups=["character"]]
+[node name="Character" type="CharacterBody2D" groups=["character"]]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_htsf6")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_rtnxp")
-animation = &"Disappearing"
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
-shape = SubResource("CapsuleShape2D_dxgr4")
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_46gox")

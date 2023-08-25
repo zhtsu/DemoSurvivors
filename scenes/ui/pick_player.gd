@@ -1,6 +1,6 @@
 extends Control
 
-const CharacterType = preload("res://scenes/character/character_type.gd")
+const CharacterEnum = preload("res://scenes/character/character_enum.gd")
 #
 const gd_ninja_frog = preload("res://scenes/character/player/ninja_frog/ninja_frog.gd")
 const gd_mask_dude = preload("res://scenes/character/player/mask_dude/mask_dude.gd")
@@ -9,27 +9,27 @@ const gd_virtual_guy = preload("res://scenes/character/player/virtual_guy/virtua
 #
 const character_item_res = preload("res://scenes/ui/player_item.tscn")
 
-var max_character_count = CharacterType.EPlayerType.size()
-var selected_character_type = CharacterType.EPlayerType.NinjaFrog
+var max_character_count = CharacterEnum.EPlayer.size()
+var selected_character_type = CharacterEnum.EPlayer.NinjaFrog
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.play("Enter")
 	# Init character list
-	for character_type in CharacterType.EPlayerType.values():
+	for character_type in CharacterEnum.EPlayer.values():
 		var character_item = character_item_res.instantiate()
 		character_item.connect("item_clicked", _on_character_item_clicked)
 		character_item.connect("mouse_entered", _play_button_hover_sound)
-		if character_type == CharacterType.EPlayerType.NinjaFrog:
+		if character_type == CharacterEnum.EPlayer.NinjaFrog:
 			character_item.init_player_item(gd_ninja_frog.sf_ninja_frog, character_type)
 			$Background/VBoxContainer/CharacterList.add_child(character_item)
-		elif character_type == CharacterType.EPlayerType.MaskDude:
+		elif character_type == CharacterEnum.EPlayer.MaskDude:
 			character_item.init_player_item(gd_mask_dude.sf_mask_dude, character_type)
 			$Background/VBoxContainer/CharacterList.add_child(character_item)
-		elif character_type == CharacterType.EPlayerType.PinkMan:
+		elif character_type == CharacterEnum.EPlayer.PinkMan:
 			character_item.init_player_item(gd_pink_man.sf_pink_man, character_type)
 			$Background/VBoxContainer/CharacterList.add_child(character_item)
-		elif character_type == CharacterType.EPlayerType.VirtualGuy:
+		elif character_type == CharacterEnum.EPlayer.VirtualGuy:
 			character_item.init_player_item(gd_virtual_guy.sf_virtual_guy, character_type)
 			$Background/VBoxContainer/CharacterList.add_child(character_item)
 			
@@ -66,16 +66,16 @@ func _update_character_data(character_type: int):
 		character_list[character_type].grab_focus()
 		character_list[character_type].play_anim("Idle")
 	
-	if character_type == CharacterType.EPlayerType.NinjaFrog:
+	if character_type == CharacterEnum.EPlayer.NinjaFrog:
 		$Background/VBoxContainer/HBoxContainer/CharacterBox/CharacterAnim.sprite_frames = \
 			gd_ninja_frog.sf_ninja_frog
-	elif character_type == CharacterType.EPlayerType.MaskDude:
+	elif character_type == CharacterEnum.EPlayer.MaskDude:
 		$Background/VBoxContainer/HBoxContainer/CharacterBox/CharacterAnim.sprite_frames = \
 			gd_mask_dude.sf_mask_dude
-	elif character_type == CharacterType.EPlayerType.PinkMan:
+	elif character_type == CharacterEnum.EPlayer.PinkMan:
 		$Background/VBoxContainer/HBoxContainer/CharacterBox/CharacterAnim.sprite_frames = \
 			gd_pink_man.sf_pink_man
-	elif character_type == CharacterType.EPlayerType.VirtualGuy:
+	elif character_type == CharacterEnum.EPlayer.VirtualGuy:
 		$Background/VBoxContainer/HBoxContainer/CharacterBox/CharacterAnim.sprite_frames = \
 			gd_virtual_guy.sf_virtual_guy
 	

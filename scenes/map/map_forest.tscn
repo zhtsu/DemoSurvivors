@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddtsttq2i110q"]
+[gd_scene load_steps=6 format=3 uid="uid://ddtsttq2i110q"]
 
 [ext_resource type="Texture2D" uid="uid://tlvqy8e5lhpf" path="res://assets/textures/tilesets/forest.png" id="1_kg8af"]
 [ext_resource type="PackedScene" uid="uid://b2ibypwy3lavl" path="res://scenes/character/player/mask_dude/mask_dude.tscn" id="2_out7k"]
+[ext_resource type="PackedScene" uid="uid://beqdllnurcgio" path="res://scenes/character/enemy/chicken/chicken.tscn" id="3_mwruv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3a55r"]
 texture = ExtResource("1_kg8af")
@@ -1720,5 +1721,12 @@ layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(2424833, 1048576, 39, 2424834, 1179648, 39, 2490369, 1048576, 41, 2490370, 1179648, 41, 2424901, 1048576, 39, 2490437, 1048576, 41, 2424902, 1179648, 39, 2490438, 1179648, 41, 65605, 1048576, 39, 131141, 1048576, 41, 65606, 1179648, 39, 131142, 1179648, 41, 65537, 1048576, 39, 131073, 1048576, 41, 65538, 1179648, 39, 131074, 1179648, 41)
 
 [node name="MaskDude" parent="." instance=ExtResource("2_out7k")]
-speed = 5
+speed = 1
 spawn_position = Vector2(450, 450)
+
+[node name="Chicken" parent="." instance=ExtResource("3_mwruv")]
+position = Vector2(269, 327)
+speed = 4
+spawn_position = Vector2(450, 500)
+
+[connection signal="mouse_shape_entered" from="MaskDude" to="MaskDude" method="_on_mouse_shape_entered" flags=18]

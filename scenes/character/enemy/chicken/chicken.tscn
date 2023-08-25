@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://beqdllnurcgio"]
+
+[ext_resource type="PackedScene" uid="uid://bgpgu24gsg723" path="res://scenes/character/enemy/enemy.tscn" id="1_olyhs"]
+[ext_resource type="Script" path="res://scenes/character/enemy/chicken/chicken.gd" id="2_ya0rq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpyo1"]
+size = Vector2(16, 21)
+
+[node name="Chicken" instance=ExtResource("1_olyhs")]
+script = ExtResource("2_ya0rq")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+frame = 2
+frame_progress = 0.898619
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-6, 0.5)
+shape = SubResource("RectangleShape2D_rpyo1")
