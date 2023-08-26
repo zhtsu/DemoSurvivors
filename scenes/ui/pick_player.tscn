@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://ctjk5gnnswmro"]
+[gd_scene load_steps=21 format=3 uid="uid://ctjk5gnnswmro"]
 
 [ext_resource type="Script" path="res://scenes/ui/pick_player.gd" id="1_qh2g4"]
 [ext_resource type="Texture2D" uid="uid://dtopvm2uv7k" path="res://assets/textures/icons/arrow_left.png" id="2_og7l6"]
 [ext_resource type="SpriteFrames" uid="uid://olstouu8ajg" path="res://tress/sf_ninja_frog.tres" id="3_sn5kd"]
 [ext_resource type="Texture2D" uid="uid://df6vyq1rsihq4" path="res://assets/textures/icons/arrow_right.png" id="4_sh1ib"]
+[ext_resource type="PackedScene" uid="uid://cif75kv071frb" path="res://scenes/ui/map_item.tscn" id="5_hoyq2"]
 
 [sub_resource type="Animation" id="Animation_op22g"]
 resource_name = "Enter"
@@ -268,6 +269,11 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="MapItem" parent="Background/RightBox/Maps/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_hoyq2")]
+custom_minimum_size = Vector2(180, 100)
+layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="StartButton" type="Button" parent="Background/RightBox"]
 clip_contents = true
