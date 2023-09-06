@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://btc7x34u2x2ey"]
+[gd_scene load_steps=2 format=3 uid="uid://btc7x34u2x2ey"]
 
 [ext_resource type="TileSet" uid="uid://cv1uwwjfmpv6r" path="res://tress/ts_map_cave.tres" id="1_nmhsl"]
-[ext_resource type="PackedScene" uid="uid://ch6virhvhqaca" path="res://scenes/character/player/ninja_frog/ninja_frog.tscn" id="2_7q7ut"]
 
 [node name="map_cave" type="TileMap"]
 tile_set = ExtResource("1_nmhsl")
@@ -16,6 +15,3 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(65537, 2818049, 11, 65538, 2949121, 11, 131073, 2818049, 13, 131074, 2949121, 13, 65605, 2818049, 11, 131141, 2818049, 13, 65606, 2949121, 11, 131142, 2949121, 13, 2424901, 2818049, 11, 2490437, 2818049, 13, 2424902, 2949121, 11, 2490438, 2949121, 13, 2424833, 2818049, 11, 2490369, 2818049, 13, 2424834, 2949121, 11, 2490370, 2949121, 13)
-
-[node name="NinjaFrog" parent="." instance=ExtResource("2_7q7ut")]
-spawn_position = Vector2(450, 450)

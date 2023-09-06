@@ -1,16 +1,13 @@
 extends Button
 
-signal clicked(type : EMap)
+const MapEnum = preload("res://scenes/mngr/map_enum.gd")
 
-enum EMap
-{
-	Forest
-}
+signal clicked(map_type : MapEnum.EMap)
 
-var type : EMap = EMap.Forest
+var type : MapEnum.EMap = MapEnum.EMap.Forest
 
 func init_map_item(in_text : String, in_icon : CompressedTexture2D):
-	text = in_text
+	$Title.text = in_text
 	icon = in_icon
 	
 
@@ -19,12 +16,11 @@ func hide_selected_mask():
 	$AnimationPlayer.stop()
 	
 
-func _show_seleted_mask():
+func show_seleted_mask():
 	$SelectedMask.show()
 	$AnimationPlayer.play("Blink")
 
 
 func _on_pressed():
 	clicked.emit(type)
-	_show_seleted_mask()
-	print_debug(type)
+	show_seleted_mask()

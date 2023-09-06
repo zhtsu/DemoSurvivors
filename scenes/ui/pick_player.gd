@@ -1,16 +1,34 @@
 extends Control
 
-const CharacterEnum = preload("res://scenes/character/character_enum.gd")
+const CharacterEnum = preload("res://scenes/mngr/character_enum.gd")
+const MapEnum = preload("res://scenes/mngr/map_enum.gd")
 #
 const gd_ninja_frog = preload("res://scenes/character/player/ninja_frog/ninja_frog.gd")
 const gd_mask_dude = preload("res://scenes/character/player/mask_dude/mask_dude.gd")
 const gd_pink_man = preload("res://scenes/character/player/pink_man/pink_man.gd")
 const gd_virtual_guy = preload("res://scenes/character/player/virtual_guy/virtual_guy.gd")
+# Icon for map item
+const ct_icon_map_forest = preload("res://assets/textures/icons/icon_map_forest.png")
+const ct_icon_map_cave = preload("res://assets/textures/icons/icon_map_cave.png")
+const ct_icon_map_desert = preload("res://assets/textures/icons/icon_map_desert.png")
+const ct_icon_map_tundra = preload("res://assets/textures/icons/icon_map_tundra.png")
+const ct_icon_map_challenge = preload("res://assets/textures/icons/icon_map_challenge.png")
+
+const MapItemData = {
+	MapEnum.EMap.Forest:    ct_icon_map_forest,
+	MapEnum.EMap.Cave:      ct_icon_map_cave,
+	MapEnum.EMap.Desert:    ct_icon_map_desert,
+	MapEnum.EMap.Tundra:    ct_icon_map_tundra,
+	MapEnum.EMap.Challenge: ct_icon_map_challenge
+}
 #
 const character_item_res = preload("res://scenes/ui/player_item.tscn")
+const map_item_res = preload("res://scenes/ui/map_item.tscn")
 
 var max_character_count = CharacterEnum.EPlayer.size()
 var selected_character_type = CharacterEnum.EPlayer.NinjaFrog
+var selected_map = MapEnum.EMap.Forest
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -45,6 +63,23 @@ func _ready():
 	else:
 		$Background/VBoxContainer/HBoxContainer/CharacterBox/CharacterAnim.sprite_frames = null
 	
+	# Init map items
+	for map_item_key in MapItemData:
+		var map_item = map_item_res.instantiate()
+		map_item.init_map_item(MapEnum.EMap.keys()[map_item_key], MapItemData[map_item_key])
+		map_item.type = map_item_key
+		map_item.connect("clicked", _on_map_item_clicked)
+		$Background/RightBox/Maps/VBoxContainer/ScrollContainer/MapItems.add_child(map_item)
+	
+	var map_items = $Background/RightBox/Maps/VBoxContainer/ScrollContainer/MapItems.get_children()
+	if map_items.size() > 0:
+		map_items[0].show_seleted_mask()
+	
+func _on_map_item_clicked(map_type : MapEnum.EMap):
+	selected_map = map_type
+	print_debug(selected_map)
+	for map_item in $Background/RightBox/Maps/VBoxContainer/ScrollContainer/MapItems.get_children():
+		map_item.hide_selected_mask()
 	
 
 func _put_character_data():
@@ -84,7 +119,7 @@ func _update_character_data(character_type: int):
 func _on_character_item_clicked(character_type : int):
 	_play_button_down_sound()
 	_reset_selected_character()
-	selected_character_type = character_type
+	selected_character_type = character_type as MapEnum.EMap
 	_update_character_data(character_type)
 
 

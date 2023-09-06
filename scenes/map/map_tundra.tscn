@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5xjucxmneq5m"]
+[gd_scene load_steps=2 format=3 uid="uid://b5xjucxmneq5m"]
 
 [ext_resource type="TileSet" uid="uid://v1vvxcki7lpb" path="res://tress/ts_map_tundra.tres" id="1_mqfjs"]
-[ext_resource type="PackedScene" uid="uid://ch6virhvhqaca" path="res://scenes/character/player/ninja_frog/ninja_frog.tscn" id="2_64fwh"]
 
 [node name="MapTundra" type="TileMap"]
 tile_set = ExtResource("1_mqfjs")
@@ -16,6 +15,3 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(65537, 1048576, 18, 65538, 1179648, 18, 131073, 1048576, 20, 131074, 1179648, 20, 65605, 1048576, 18, 131141, 1048576, 20, 65606, 1179648, 18, 131142, 1179648, 20, 2424901, 1048576, 18, 2490437, 1048576, 20, 2424902, 1179648, 18, 2490438, 1179648, 20, 2424833, 1048576, 18, 2490369, 1048576, 20, 2424834, 1179648, 18, 2490370, 1179648, 20)
-
-[node name="NinjaFrog" parent="." instance=ExtResource("2_64fwh")]
-spawn_position = Vector2(450, 450)
