@@ -5,8 +5,7 @@
 
 [node name="NinjaFrog" instance=ExtResource("1_6dwur")]
 script = ExtResource("1_hsci4")
-speed = null
-spawn_position = null
+character_name = "NinjaFrog"
 
 [node name="CollisionShape2D" parent="." index="2"]
 visible = false

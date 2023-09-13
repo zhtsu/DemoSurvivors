@@ -1,6 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://ctjk5gnnswmro"]
+[gd_scene load_steps=21 format=3 uid="uid://ctjk5gnnswmro"]
 
 [ext_resource type="Script" path="res://scenes/ui/pick_player.gd" id="1_qh2g4"]
+[ext_resource type="Texture2D" uid="uid://btgmqguljhv0t" path="res://assets/textures/icons/icon_map_forest.png" id="2_dpeka"]
 [ext_resource type="Texture2D" uid="uid://dtopvm2uv7k" path="res://assets/textures/icons/arrow_left.png" id="2_og7l6"]
 [ext_resource type="SpriteFrames" uid="uid://olstouu8ajg" path="res://tress/sf_ninja_frog.tres" id="3_sn5kd"]
 [ext_resource type="Texture2D" uid="uid://df6vyq1rsihq4" path="res://assets/textures/icons/arrow_right.png" id="4_sh1ib"]
@@ -60,7 +61,7 @@ _data = {
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jtfq"]
-bg_color = Color(0.223529, 0.243137, 0.27451, 1)
+bg_color = Color(0.223529, 0.243137, 0.27451, 0.501961)
 
 [sub_resource type="LabelSettings" id="LabelSettings_r5kt6"]
 font_size = 50
@@ -101,6 +102,15 @@ script = ExtResource("1_qh2g4")
 libraries = {
 "": SubResource("AnimationLibrary_8vxu8")
 }
+
+[node name="MapBg" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dpeka")
 
 [node name="Background" type="Panel" parent="."]
 layout_mode = 1

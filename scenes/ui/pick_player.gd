@@ -69,17 +69,20 @@ func _ready():
 		map_item.init_map_item(MapEnum.EMap.keys()[map_item_key], MapItemData[map_item_key])
 		map_item.type = map_item_key
 		map_item.connect("clicked", _on_map_item_clicked)
+		map_item.connect("mouse_entered", _play_button_hover_sound)
 		$Background/RightBox/Maps/VBoxContainer/ScrollContainer/MapItems.add_child(map_item)
 	
 	var map_items = $Background/RightBox/Maps/VBoxContainer/ScrollContainer/MapItems.get_children()
 	if map_items.size() > 0:
 		map_items[0].show_seleted_mask()
+		
 	
-func _on_map_item_clicked(map_type : MapEnum.EMap):
+func _on_map_item_clicked(map_icon : CompressedTexture2D, map_type : MapEnum.EMap):
+	_play_button_down_sound()
 	selected_map = map_type
-	print_debug(selected_map)
-	for map_item in $Background/RightBox/Maps/VBoxContainer/ScrollContainer/MapItems.get_children():
-		map_item.hide_selected_mask()
+	$MapBg.texture = map_icon
+	for item in $Background/RightBox/Maps/VBoxContainer/ScrollContainer/MapItems.get_children():
+		item.hide_selected_mask()
 	
 
 func _put_character_data():

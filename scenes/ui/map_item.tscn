@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cif75kv071frb"]
 
-[ext_resource type="Texture2D" uid="uid://s1buvbfvgd66" path="res://assets/textures/icons/icon_map_forest.png" id="1_2q6ai"]
+[ext_resource type="Texture2D" uid="uid://btgmqguljhv0t" path="res://assets/textures/icons/icon_map_forest.png" id="1_2q6ai"]
 [ext_resource type="Script" path="res://scenes/ui/map_item.gd" id="2_clhsg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1q03c"]
