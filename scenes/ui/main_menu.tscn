@@ -23,41 +23,38 @@ grow_vertical = 2
 script = ExtResource("1_lgfqu")
 
 [node name="VirtualGuy" type="AnimatedSprite2D" parent="."]
-position = Vector2(330, 180)
+position = Vector2(300, 200)
 rotation = -3.14159
 scale = Vector2(5, -5)
 sprite_frames = ExtResource("2_3nlxv")
 animation = &"Idle"
 
 [node name="MaskDude" type="AnimatedSprite2D" parent="."]
-position = Vector2(298, 405)
+position = Vector2(300, 420)
 scale = Vector2(-5, 5)
 sprite_frames = ExtResource("3_ohsga")
 animation = &"Idle"
 
 [node name="PinkMan" type="AnimatedSprite2D" parent="."]
-position = Vector2(856, 400)
+position = Vector2(860, 420)
 scale = Vector2(5, 5)
 sprite_frames = ExtResource("4_s575n")
 animation = &"Idle"
 
 [node name="NinjaFrog" type="AnimatedSprite2D" parent="."]
-position = Vector2(820, 176)
+position = Vector2(860, 200)
 scale = Vector2(5, 5)
 sprite_frames = ExtResource("5_wt5lp")
 animation = &"Idle"
 
 [node name="TextBox" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 13
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -156.5
-offset_top = -208.0
-offset_right = 156.5
-offset_bottom = 208.0
+anchor_bottom = 1.0
+offset_left = -180.5
+offset_right = 180.5
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true
@@ -72,7 +69,7 @@ horizontal_alignment = 1
 
 [node name="MenuItems" type="VBoxContainer" parent="TextBox"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 
@@ -90,16 +87,36 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fsbkh")
 text = "Setting"
 
-[node name="ExitButton" type="Button" parent="TextBox/MenuItems"]
+[node name="CollectionButton" type="Button" parent="TextBox/MenuItems"]
 clip_contents = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fsbkh")
-text = "Quit"
+text = "Collection"
+
+[node name="AboutButton" type="Button" parent="TextBox/MenuItems"]
+clip_contents = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fsbkh")
+text = "About
+"
+
+[node name="QuitButton" type="Button" parent="TextBox/MenuItems"]
+clip_contents = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fsbkh")
+text = "Quit
+"
 
 [connection signal="button_down" from="TextBox/MenuItems/PlayButton" to="." method="_on_start_button_button_down"]
 [connection signal="mouse_entered" from="TextBox/MenuItems/PlayButton" to="." method="_on_start_button_mouse_entered"]
 [connection signal="button_down" from="TextBox/MenuItems/SettingButton" to="." method="_on_setting_button_button_down"]
 [connection signal="mouse_entered" from="TextBox/MenuItems/SettingButton" to="." method="_on_setting_button_mouse_entered"]
-[connection signal="button_down" from="TextBox/MenuItems/ExitButton" to="." method="_on_exit_button_button_down"]
-[connection signal="mouse_entered" from="TextBox/MenuItems/ExitButton" to="." method="_on_exit_button_mouse_entered"]
+[connection signal="button_down" from="TextBox/MenuItems/CollectionButton" to="." method="_on_collection_button_button_down"]
+[connection signal="mouse_entered" from="TextBox/MenuItems/CollectionButton" to="." method="_on_exit_button_mouse_entered"]
+[connection signal="button_down" from="TextBox/MenuItems/AboutButton" to="." method="_on_about_button_button_down"]
+[connection signal="mouse_entered" from="TextBox/MenuItems/AboutButton" to="." method="_on_exit_button_mouse_entered"]
+[connection signal="button_down" from="TextBox/MenuItems/QuitButton" to="." method="_on_quit_button_button_down"]
+[connection signal="mouse_entered" from="TextBox/MenuItems/QuitButton" to="." method="_on_exit_button_mouse_entered"]

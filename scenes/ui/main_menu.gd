@@ -1,8 +1,9 @@
 extends Control
 
 const setting_menu_scene_res = preload("res://scenes/ui/setting_menu.tscn")
-const exit_popup_scene_res = preload("res://scenes/ui/popup.tscn")
+const popup_scene_res = preload("res://scenes/ui/popup.tscn")
 const pick_player_scene_res = preload("res://scenes/ui/pick_player.tscn")
+const about_scene_res = preload("res://scenes/ui/about.tscn")
 # data
 const SETTINGS_USER_DATA_PATH = "user://settings.json"
 
@@ -64,16 +65,28 @@ func _on_start_button_button_down():
 	add_child(pick_player_scene)
 
 
-func exit_game():
-	get_tree().quit()
 
 
-func _on_exit_button_button_down():
+func _on_about_button_button_down():
 	_play_button_down_sound()
-	var exit_popup_scene = exit_popup_scene_res.instantiate()
-	exit_popup_scene.call("init_popup", "Are you sure to exit?", exit_game)
-	add_child(exit_popup_scene)
+	var about_scene = about_scene_res.instantiate()
+	add_child(about_scene)
 	
+	
+func _on_collection_button_button_down():
+	_play_button_down_sound()
+	
+	
+func quit_game():
+	get_tree().quit()
+	
+	
+func _on_quit_button_button_down():
+	_play_button_down_sound()
+	var quit_popup_scene = popup_scene_res.instantiate()
+	quit_popup_scene.call("init_popup", "Are you sure to quit game?", quit_game)
+	add_child(quit_popup_scene)
+
 	
 func mute():
 	get_tree().get_first_node_in_group("audio_mngr").call("mute")

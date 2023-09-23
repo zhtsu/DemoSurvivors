@@ -51,3 +51,7 @@ func _play_button_down_sound():
 func _play_button_hover_sound():
 	get_tree().get_first_node_in_group("audio_mngr").call("play_button_hover")
 
+
+func _on_background_button_down():
+	get_tree().get_first_node_in_group("audio_mngr").call("play_button_down")
+	_cancel()
