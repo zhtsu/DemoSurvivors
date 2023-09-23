@@ -23,26 +23,26 @@ grow_vertical = 2
 script = ExtResource("1_lgfqu")
 
 [node name="VirtualGuy" type="AnimatedSprite2D" parent="."]
-position = Vector2(300, 200)
+position = Vector2(290, 260)
 rotation = -3.14159
 scale = Vector2(5, -5)
 sprite_frames = ExtResource("2_3nlxv")
 animation = &"Idle"
 
 [node name="MaskDude" type="AnimatedSprite2D" parent="."]
-position = Vector2(300, 420)
+position = Vector2(290, 480)
 scale = Vector2(-5, 5)
 sprite_frames = ExtResource("3_ohsga")
 animation = &"Idle"
 
 [node name="PinkMan" type="AnimatedSprite2D" parent="."]
-position = Vector2(860, 420)
+position = Vector2(860, 480)
 scale = Vector2(5, 5)
 sprite_frames = ExtResource("4_s575n")
 animation = &"Idle"
 
 [node name="NinjaFrog" type="AnimatedSprite2D" parent="."]
-position = Vector2(860, 200)
+position = Vector2(860, 260)
 scale = Vector2(5, 5)
 sprite_frames = ExtResource("5_wt5lp")
 animation = &"Idle"
