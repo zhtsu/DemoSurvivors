@@ -32,3 +32,17 @@ enum EPlayer
 	VirtualGuy
 }
 
+enum EMap
+{
+	Forest,
+	Cave,
+	Desert,
+	Tundra,
+	Challenge
+}
+
+enum ETransitionDirection
+{
+	Normal,
+	Reverse
+}

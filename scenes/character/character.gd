@@ -2,10 +2,10 @@ extends CharacterBody2D
 
 class_name Character
 
-const CharacterEnum = preload("res://scenes/mngr/character_enum.gd")
+const Enums = preload("res://scenes/mngr/enums.gd")
 #
-const ECharacterState = CharacterEnum.EState
-const ECharacterDirection = CharacterEnum.EDirection
+const ECharacterState = Enums.EState
+const ECharacterDirection = Enums.EDirection
 
 @export var character_name = "角色名称"
 @export var speed:int = 1

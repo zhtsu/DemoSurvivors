@@ -26,9 +26,9 @@ const sound_list = [
 
 
 func _create_item_to_container(container, list):
-	for str in list:
+	for string in list:
 		var label = Label.new()
-		label.text = str
+		label.text = string
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		container.add_child(label)
 

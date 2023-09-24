@@ -1,9 +1,9 @@
 extends Control
 
-const setting_menu_scene_res = preload("res://scenes/ui/setting_menu.tscn")
-const popup_scene_res = preload("res://scenes/ui/popup.tscn")
-const pick_player_scene_res = preload("res://scenes/ui/pick_player.tscn")
-const about_scene_res = preload("res://scenes/ui/about.tscn")
+const tscn_setting_menu = preload("res://scenes/ui/setting_menu.tscn")
+const tscn_popup = preload("res://scenes/ui/popup.tscn")
+const tscn_pick_player = preload("res://scenes/ui/pick_player.tscn")
+const tscn_about = preload("res://scenes/ui/about.tscn")
 # data
 const SETTINGS_USER_DATA_PATH = "user://settings.json"
 
@@ -42,7 +42,7 @@ func _ready():
 
 func _on_setting_button_button_down():
 	_play_button_down_sound()
-	var setting_menu_scene = setting_menu_scene_res.instantiate()
+	var setting_menu_scene = tscn_setting_menu.instantiate()
 	setting_menu_scene.call("init_settings", settings_config)
 	add_child(setting_menu_scene)
 
@@ -61,7 +61,7 @@ func _on_exit_button_mouse_entered():
 
 func _on_start_button_button_down():
 	_play_button_down_sound()
-	var pick_player_scene = pick_player_scene_res.instantiate()
+	var pick_player_scene = tscn_pick_player.instantiate()
 	add_child(pick_player_scene)
 
 
@@ -69,7 +69,7 @@ func _on_start_button_button_down():
 
 func _on_about_button_button_down():
 	_play_button_down_sound()
-	var about_scene = about_scene_res.instantiate()
+	var about_scene = tscn_about.instantiate()
 	add_child(about_scene)
 	
 	
@@ -83,7 +83,7 @@ func quit_game():
 	
 func _on_quit_button_button_down():
 	_play_button_down_sound()
-	var quit_popup_scene = popup_scene_res.instantiate()
+	var quit_popup_scene = tscn_popup.instantiate()
 	quit_popup_scene.call("init_popup", "Are you sure to quit game?", quit_game)
 	add_child(quit_popup_scene)
 

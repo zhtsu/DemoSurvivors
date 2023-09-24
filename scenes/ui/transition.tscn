@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://dn0hu0t1ava4g"]
+
+[ext_resource type="Shader" path="res://shaders/transition.gdshader" id="1_syeq3"]
+[ext_resource type="Script" path="res://scenes/ui/transition.gd" id="2_yqu1k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2k5cj"]
+shader = ExtResource("1_syeq3")
+shader_parameter/progress = 0.0
+
+[sub_resource type="Animation" id="Animation_brgte"]
+resource_name = "Enter"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_88l65"]
+resource_name = "RESET"
+
+[sub_resource type="Animation" id="Animation_13ose"]
+resource_name = "Exit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_52ye7"]
+_data = {
+"Enter": SubResource("Animation_brgte"),
+"Exit": SubResource("Animation_13ose"),
+"RESET": SubResource("Animation_88l65")
+}
+
+[node name="Transition" type="CanvasLayer"]
+script = ExtResource("2_yqu1k")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_2k5cj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.298039, 0.298039, 0.298039, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_52ye7")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
