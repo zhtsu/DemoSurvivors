@@ -1,11 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnpucq324a4kl"]
+[gd_scene load_steps=3 format=3 uid="uid://dnpucq324a4kl"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_nc1sn"]
 [ext_resource type="PackedScene" uid="uid://bukknhyre2xfa" path="res://scenes/mngr/audio_mngr.tscn" id="2_3o1xx"]
 [ext_resource type="PackedScene" uid="uid://svdqnhmua150" path="res://scenes/ui/main_menu.tscn" id="3_0lsp7"]
 
-[node name="Main" type="Node"]
-script = ExtResource("1_nc1sn")
+[node name="Main" type="Node" groups=["main"]]
 
 [node name="AudioMngr" parent="." instance=ExtResource("2_3o1xx")]
 

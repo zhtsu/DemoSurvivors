@@ -149,7 +149,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true
 
-[node name="CharacterList" type="HBoxContainer" parent="Background/VBoxContainer"]
+[node name="PlayerList" type="HBoxContainer" parent="Background/VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -178,14 +178,14 @@ custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_h2u4s")
 
-[node name="CharacterBox" type="Panel" parent="Background/VBoxContainer/HBoxContainer"]
+[node name="PlayerBox" type="Panel" parent="Background/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(240, 240)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_fyumj")
 
-[node name="CharacterAnim" type="AnimatedSprite2D" parent="Background/VBoxContainer/HBoxContainer/CharacterBox"]
+[node name="PlayerAnim" type="AnimatedSprite2D" parent="Background/VBoxContainer/HBoxContainer/PlayerBox"]
 position = Vector2(120, 120)
 scale = Vector2(5, 5)
 sprite_frames = ExtResource("3_sn5kd")
@@ -207,7 +207,7 @@ icon = ExtResource("4_sh1ib")
 flat = true
 icon_alignment = 2
 
-[node name="CharacterName" type="Label" parent="Background/VBoxContainer"]
+[node name="PlayerName" type="Label" parent="Background/VBoxContainer"]
 layout_mode = 2
 text = "Name"
 label_settings = SubResource("LabelSettings_nwgui")

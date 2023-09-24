@@ -119,8 +119,6 @@ animations = [{
 [node name="Player" groups=["player"] instance=ExtResource("1_utw0w")]
 position = Vector2(254, 201)
 script = ExtResource("2_odtqs")
-speed = null
-spawn_position = null
 
 [node name="EffectAnimator" type="AnimatedSprite2D" parent="." index="1"]
 visible = false

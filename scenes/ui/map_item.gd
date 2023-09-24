@@ -11,7 +11,6 @@ func init_map_item(in_text : String, in_icon : CompressedTexture2D):
 	$Title.text = in_text
 	icon = in_icon
 	saved_icon = in_icon
-	Material
 
 func hide_selected_mask():
 	$SelectedMask.hide()
