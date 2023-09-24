@@ -15,7 +15,7 @@ const tscn_map_challenge = preload("res://scenes/map/map_challenge.tscn")
 
 var player_type : Enums.EPlayer = Enums.EPlayer.NinjaFrog
 var map_type : Enums.EMap = Enums.EMap.Forest
-
+var player : Player
 
 func init(in_player_type : Enums.EPlayer, in_map_type : Enums.EMap):
 	player_type = in_player_type
@@ -37,7 +37,6 @@ func _ready():
 	elif map_type == Enums.EMap.Challenge:
 		add_child(tscn_map_challenge.instantiate())
 	
-	var player : Player
 	if player_type == Enums.EPlayer.NinjaFrog:
 		player = tscn_ninja_frog.instantiate()
 	elif player_type == Enums.EPlayer.MaskDude:
@@ -48,6 +47,7 @@ func _ready():
 		player = tscn_virtual_guy.instantiate()
 	
 	player.spawn_position = Vector2(576, 324)
+	player.call("set_position_smoothing", false)
 	add_child(player)
 		
 	
@@ -55,4 +55,5 @@ func _ready():
 	
 func _hide_transition():
 	$Transition.hide()
+	player.call("set_position_smoothing", true)
 

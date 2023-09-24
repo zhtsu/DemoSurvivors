@@ -2,6 +2,9 @@ extends Character
 
 class_name Player
 
+func set_position_smoothing(enabled : bool = true):
+	$Camera2D.position_smoothing_enabled = enabled
+	
 
 func _physics_process(delta):
 	_update_move(delta)
