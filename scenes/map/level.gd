@@ -45,13 +45,13 @@ func _ready():
 		player = tscn_pink_man.instantiate()
 	elif player_type == Enums.EPlayer.VirtualGuy:
 		player = tscn_virtual_guy.instantiate()
-	
-	player.spawn_position = Vector2(576, 324)
-	player.call("set_position_smoothing", false)
-	add_child(player)
-		
-	
-	
+
+	if (player == null):
+		print_debug("Player type error: ", player_type)
+	else:
+		player.spawn_position = Vector2(576, 324)
+		player.call("set_position_smoothing", false)
+		add_child(player)
 	
 func _hide_transition():
 	$Transition.hide()

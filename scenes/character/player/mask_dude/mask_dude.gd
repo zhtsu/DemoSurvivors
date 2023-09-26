@@ -1,6 +1,5 @@
 extends Player
 
-const sf_mask_dude = preload("res://tress/sf_mask_dude.tres")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

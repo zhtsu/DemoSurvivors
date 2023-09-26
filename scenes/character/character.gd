@@ -21,3 +21,7 @@ func _set_spawn_position(in_position : Vector2):
 
 func _init_character():
 	position = spawn_position
+	
+	
+func get_character_sprite_frames():
+	return $AnimatedSprite2D.sprite_frames

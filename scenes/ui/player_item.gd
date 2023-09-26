@@ -1,13 +1,18 @@
 extends Button
 
 
-signal item_clicked(player_type)
+signal item_clicked(player_type : int)
 
-var saved_player_type : int = -1
+var player_type : int = -1
+var player_name = "Character"
 
-func init_player_item(in_sprite_frames : SpriteFrames, in_player_type : int):
+func init_player_item(
+	in_sprite_frames : SpriteFrames,
+	in_player_type : int,
+	in_player_name : String):
 	$Sprite2D.sprite_frames = in_sprite_frames
-	saved_player_type = in_player_type
+	player_type = in_player_type
+	player_name = in_player_name
 
 func play_anim(anim_name : String):
 	$Sprite2D.play(anim_name)
@@ -18,7 +23,7 @@ func get_player_sprite_frames() -> SpriteFrames:
 
 
 func _on_pressed():
-	item_clicked.emit(saved_player_type)
+	item_clicked.emit(player_type)
 	
 	
 func reset():

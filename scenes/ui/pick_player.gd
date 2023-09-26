@@ -2,11 +2,7 @@ extends Control
 
 
 const Enums = preload("res://scenes/mngr/enums.gd")
-#
-const gd_ninja_frog = preload("res://scenes/character/player/ninja_frog/ninja_frog.gd")
-const gd_mask_dude = preload("res://scenes/character/player/mask_dude/mask_dude.gd")
-const gd_pink_man = preload("res://scenes/character/player/pink_man/pink_man.gd")
-const gd_virtual_guy = preload("res://scenes/character/player/virtual_guy/virtual_guy.gd")
+
 # Icon for map item
 const tex_icon_map_forest = preload("res://assets/textures/icons/icon_map_forest.png")
 const tex_icon_map_cave = preload("res://assets/textures/icons/icon_map_cave.png")
@@ -32,6 +28,10 @@ var max_player_count = Enums.EPlayer.size()
 var selected_player_type = Enums.EPlayer.NinjaFrog
 var selected_map_type = Enums.EMap.Forest
 
+@onready var ui_player_anim = $Background/VBoxContainer/HBoxContainer/PlayerBox/PlayerAnim
+@onready var ui_player_name = $Background/VBoxContainer/PlayerName
+@onready var ui_player_list = $Background/VBoxContainer/PlayerList
+@onready var ui_map_list = $Background/RightBox/Maps/VBoxContainer/ScrollContainer/MapItems
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,29 +42,34 @@ func _ready():
 		player_item.connect("item_clicked", _on_player_item_clicked)
 		player_item.connect("mouse_entered", _play_button_hover_sound)
 		if player_type == Enums.EPlayer.NinjaFrog:
-			player_item.init_player_item(gd_ninja_frog.sf_ninja_frog, player_type)
-			$Background/VBoxContainer/PlayerList.add_child(player_item)
+			player_item.init_player_item(
+				load("res://tress/sf_ninja_frog.tres"), player_type, "Ninja Frog")
+			ui_player_list.add_child(player_item)
 		elif player_type == Enums.EPlayer.MaskDude:
-			player_item.init_player_item(gd_mask_dude.sf_mask_dude, player_type)
-			$Background/VBoxContainer/PlayerList.add_child(player_item)
+			player_item.init_player_item(
+				load("res://tress/sf_mask_dude.tres"), player_type, "Mask Dude")
+			ui_player_list.add_child(player_item)
 		elif player_type == Enums.EPlayer.PinkMan:
-			player_item.init_player_item(gd_pink_man.sf_pink_man, player_type)
-			$Background/VBoxContainer/PlayerList.add_child(player_item)
+			player_item.init_player_item(
+				load("res://tress/sf_pink_man.tres"), player_type, "Pink Man")
+			ui_player_list.add_child(player_item)
 		elif player_type == Enums.EPlayer.VirtualGuy:
-			player_item.init_player_item(gd_virtual_guy.sf_virtual_guy, player_type)
-			$Background/VBoxContainer/PlayerList.add_child(player_item)
+			player_item.init_player_item(
+				load("res://tress/sf_virtual_guy.tres"), player_type, "Virtual Guy")
+			ui_player_list.add_child(player_item)
 			
 	# Init button's state in player_list
-	var player_list = $Background/VBoxContainer/PlayerList.get_children()
+	var player_list = ui_player_list.get_children()
 	if player_list.size() > 0:
 		player_list[0].grab_focus()
 		player_list[0].play_anim("Idle")
 		# Init player box
-		$Background/VBoxContainer/HBoxContainer/PlayerBox/PlayerAnim.sprite_frames = \
-			player_list[0].get_player_sprite_frames()
-		$Background/VBoxContainer/HBoxContainer/PlayerBox/PlayerAnim.play("Walk")
+		ui_player_anim.sprite_frames = player_list[0].get_player_sprite_frames()
+		ui_player_anim.play("Walk")
+		ui_player_name.text = player_list[0].player_name
 	else:
-		$Background/VBoxContainer/HBoxContainer/PlayerBox/PlayerAnim.sprite_frames = null
+		ui_player_anim.sprite_frames = null
+		ui_player_name.text = "Character"
 	
 	# Init map items
 	for map_item_key in MapItemData:
@@ -73,9 +78,9 @@ func _ready():
 		map_item.type = map_item_key
 		map_item.connect("clicked", _on_map_item_clicked)
 		map_item.connect("mouse_entered", _play_button_hover_sound)
-		$Background/RightBox/Maps/VBoxContainer/ScrollContainer/MapItems.add_child(map_item)
+		ui_map_list.add_child(map_item)
 	
-	var map_items = $Background/RightBox/Maps/VBoxContainer/ScrollContainer/MapItems.get_children()
+	var map_items = ui_map_list.get_children()
 	if map_items.size() > 0:
 		map_items[0].show_seleted_mask()
 		
@@ -84,12 +89,12 @@ func _on_map_item_clicked(map_icon : CompressedTexture2D, map_type : Enums.EMap)
 	_play_button_down_sound()
 	selected_map_type = map_type
 	$MapBg.texture = map_icon
-	for item in $Background/RightBox/Maps/VBoxContainer/ScrollContainer/MapItems.get_children():
+	for item in ui_map_list.get_children():
 		item.hide_selected_mask()
 
 
 func _reset_selected_player():
-	for player_item in $Background/VBoxContainer/PlayerList.get_children():
+	for player_item in ui_player_list.get_children():
 		player_item.reset()
 	
 
@@ -98,30 +103,30 @@ func _update_player_data(player_type: int):
 		player_type = abs(player_type)
 	player_type %= max_player_count
 	
-	var player_list = $Background/VBoxContainer/PlayerList.get_children()
+	var player_list = ui_player_list.get_children()
 	if player_type < player_list.size():
 		player_list[player_type].grab_focus()
 		player_list[player_type].play_anim("Idle")
 	
 	if player_type == Enums.EPlayer.NinjaFrog:
-		$Background/VBoxContainer/HBoxContainer/PlayerBox/PlayerAnim.sprite_frames = \
-			gd_ninja_frog.sf_ninja_frog
+		ui_player_anim.sprite_frames = load("res://tress/sf_ninja_frog.tres")
+		ui_player_name.text = "Ninja Frog"
 	elif player_type == Enums.EPlayer.MaskDude:
-		$Background/VBoxContainer/HBoxContainer/PlayerBox/PlayerAnim.sprite_frames = \
-			gd_mask_dude.sf_mask_dude
+		ui_player_anim.sprite_frames = load("res://tress/sf_mask_dude.tres")
+		ui_player_name.text = "Mask Dude"
 	elif player_type == Enums.EPlayer.PinkMan:
-		$Background/VBoxContainer/HBoxContainer/PlayerBox/PlayerAnim.sprite_frames = \
-			gd_pink_man.sf_pink_man
+		ui_player_anim.sprite_frames = load("res://tress/sf_pink_man.tres")
+		ui_player_name.text = "Pink Man"
 	elif player_type == Enums.EPlayer.VirtualGuy:
-		$Background/VBoxContainer/HBoxContainer/PlayerBox/PlayerAnim.sprite_frames = \
-			gd_virtual_guy.sf_virtual_guy
-	
-	$Background/VBoxContainer/HBoxContainer/PlayerBox/PlayerAnim.play("Walk")
+		ui_player_anim.sprite_frames = load("res://tress/sf_virtual_guy.tres")
+		ui_player_name.text = "Virtual Guy"
+
+	ui_player_anim.play("Walk")
 
 func _on_player_item_clicked(player_type : int):
 	_play_button_down_sound()
 	_reset_selected_player()
-	selected_player_type = player_type as Enums.EMap
+	selected_player_type = player_type as Enums.EPlayer
 	_update_player_data(player_type)
 
 
