@@ -13,13 +13,7 @@ shadow_color = Color(0.196078, 0.196078, 0.196078, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fsbkh"]
 
-[node name="MainMenu" type="Control" groups=["main_menu"]]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MainMenu" type="CanvasLayer" groups=["main_menu"]]
 script = ExtResource("1_lgfqu")
 
 [node name="VirtualGuy" type="AnimatedSprite2D" parent="."]
@@ -31,7 +25,8 @@ animation = &"Idle"
 
 [node name="MaskDude" type="AnimatedSprite2D" parent="."]
 position = Vector2(290, 480)
-scale = Vector2(-5, 5)
+rotation = -3.14159
+scale = Vector2(5, -5)
 sprite_frames = ExtResource("3_ohsga")
 animation = &"Idle"
 
@@ -48,7 +43,6 @@ sprite_frames = ExtResource("5_wt5lp")
 animation = &"Idle"
 
 [node name="TextBox" type="VBoxContainer" parent="."]
-layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5

@@ -1,4 +1,38 @@
-[gd_scene format=3 uid="uid://okv6njd8xjaa"]
+[gd_scene load_steps=4 format=3 uid="uid://okv6njd8xjaa"]
+
+[ext_resource type="Script" path="res://scenes/map/map.gd" id="1_hb1js"]
+
+[sub_resource type="Animation" id="Animation_qvr1h"]
+resource_name = "Visit"
+length = 40.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimCamera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 40),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(240, 488), Vector2(912, 160)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kp2pe"]
+_data = {
+"Visit": SubResource("Animation_qvr1h")
+}
 
 [node name="Map" type="TileMap"]
 format = 2
+script = ExtResource("1_hb1js")
+
+[node name="AnimCamera2D" type="Camera2D" parent="."]
+position = Vector2(240, 488)
+zoom = Vector2(3, 3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kp2pe")
+}

@@ -22,10 +22,13 @@ func init(in_player_type : Enums.EPlayer, in_map_type : Enums.EMap):
 	map_type = in_map_type
 
 
-func _ready():
+func init_transition(in_color : Color):
+	$Transition.call("init", Enums.ETransitionDirection.Reverse, in_color)
 	$Transition.connect("finished", _hide_transition)
 	$Transition.call("display")
-	
+
+
+func _ready():
 	if map_type == Enums.EMap.Forest:
 		add_child(tscn_map_forest.instantiate())
 	elif map_type == Enums.EMap.Cave:
@@ -55,5 +58,6 @@ func _ready():
 	
 func _hide_transition():
 	$Transition.hide()
-	player.call("set_position_smoothing", true)
+	if (player != null):
+		player.call("set_position_smoothing", true)
 

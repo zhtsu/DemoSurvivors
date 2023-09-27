@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1etet1gv6g34"]
+
+[ext_resource type="Script" path="res://scenes/ui/map_display.gd" id="1_rugvl"]
+[ext_resource type="PackedScene" uid="uid://ddtsttq2i110q" path="res://scenes/map/map_forest.tscn" id="2_ef31j"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ntvfb"]
+viewport_path = NodePath("SubViewport")
+
+[node name="MapDisplay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rugvl")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(1152, 648)
+
+[node name="MapForest" parent="SubViewport" instance=ExtResource("2_ef31j")]
+as_background = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_ntvfb")

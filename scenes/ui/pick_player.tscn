@@ -1,8 +1,8 @@
 [gd_scene load_steps=21 format=3 uid="uid://ctjk5gnnswmro"]
 
 [ext_resource type="Script" path="res://scenes/ui/pick_player.gd" id="1_qh2g4"]
-[ext_resource type="Texture2D" uid="uid://btgmqguljhv0t" path="res://assets/textures/icons/icon_map_forest.png" id="2_dpeka"]
 [ext_resource type="Texture2D" uid="uid://dtopvm2uv7k" path="res://assets/textures/icons/arrow_left.png" id="2_og7l6"]
+[ext_resource type="PackedScene" uid="uid://b1etet1gv6g34" path="res://scenes/ui/map_display.tscn" id="3_5fyng"]
 [ext_resource type="SpriteFrames" uid="uid://olstouu8ajg" path="res://tress/sf_ninja_frog.tres" id="3_sn5kd"]
 [ext_resource type="Texture2D" uid="uid://df6vyq1rsihq4" path="res://assets/textures/icons/arrow_right.png" id="4_sh1ib"]
 
@@ -12,7 +12,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("Control:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -28,7 +28,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("Control:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -38,26 +38,27 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, 648)]
 }
 
-[sub_resource type="Animation" id="Animation_m23ep"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_v5rbb"]
+resource_name = "RESET"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("Control:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 648)]
+"values": [Vector2(0, 648), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8vxu8"]
 _data = {
 "Enter": SubResource("Animation_op22g"),
 "Exit": SubResource("Animation_b1jxm"),
-"RESET": SubResource("Animation_m23ep")
+"RESET": SubResource("Animation_v5rbb")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jtfq"]
@@ -90,12 +91,7 @@ font_size = 40
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8q86b"]
 
-[node name="PickCharacter" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_top = 648.0
-offset_right = 1152.0
-offset_bottom = 1296.0
+[node name="PickPlayer" type="CanvasLayer"]
 script = ExtResource("1_qh2g4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -103,16 +99,25 @@ libraries = {
 "": SubResource("AnimationLibrary_8vxu8")
 }
 
-[node name="MapBg" type="TextureRect" parent="."]
-layout_mode = 1
+[node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_dpeka")
+color = Color(0, 0, 0, 0.705882)
 
-[node name="Background" type="Panel" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 648.0
+offset_right = 1152.0
+offset_bottom = 1296.0
+
+[node name="MapDisplay" parent="Control" instance=ExtResource("3_5fyng")]
+layout_mode = 1
+
+[node name="Panel" type="Panel" parent="Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -121,7 +126,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_5jtfq")
 
-[node name="PickTitle" type="Label" parent="Background"]
+[node name="PickTitle" type="Label" parent="Control/Panel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -134,7 +139,7 @@ grow_horizontal = 2
 text = "Pick A Character"
 label_settings = SubResource("LabelSettings_r5kt6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -149,21 +154,21 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true
 
-[node name="PlayerList" type="HBoxContainer" parent="Background/VBoxContainer"]
+[node name="PlayerList" type="HBoxContainer" parent="Control/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="HSeparator" type="HSeparator" parent="Background/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Control/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_8lcsw")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel/VBoxContainer"]
 layout_mode = 2
 
-[node name="LeftSwitch" type="Button" parent="Background/VBoxContainer/HBoxContainer"]
+[node name="LeftSwitch" type="Button" parent="Control/Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -173,30 +178,30 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_72687")
 icon = ExtResource("2_og7l6")
 flat = true
 
-[node name="VSeparator" type="VSeparator" parent="Background/VBoxContainer/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="Control/Panel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_h2u4s")
 
-[node name="PlayerBox" type="Panel" parent="Background/VBoxContainer/HBoxContainer"]
+[node name="PlayerBox" type="Panel" parent="Control/Panel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(240, 240)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_fyumj")
 
-[node name="PlayerAnim" type="AnimatedSprite2D" parent="Background/VBoxContainer/HBoxContainer/PlayerBox"]
+[node name="PlayerAnim" type="AnimatedSprite2D" parent="Control/Panel/VBoxContainer/HBoxContainer/PlayerBox"]
 position = Vector2(120, 120)
 scale = Vector2(5, 5)
 sprite_frames = ExtResource("3_sn5kd")
 animation = &"Walk"
 
-[node name="VSeparator2" type="VSeparator" parent="Background/VBoxContainer/HBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="Control/Panel/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_sc4ma")
 
-[node name="RightSwitch" type="Button" parent="Background/VBoxContainer/HBoxContainer"]
+[node name="RightSwitch" type="Button" parent="Control/Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -207,13 +212,13 @@ icon = ExtResource("4_sh1ib")
 flat = true
 icon_alignment = 2
 
-[node name="PlayerName" type="Label" parent="Background/VBoxContainer"]
+[node name="PlayerName" type="Label" parent="Control/Panel/VBoxContainer"]
 layout_mode = 2
 text = "Name"
 label_settings = SubResource("LabelSettings_nwgui")
 horizontal_alignment = 1
 
-[node name="LeftBox" type="VBoxContainer" parent="Background"]
+[node name="LeftBox" type="VBoxContainer" parent="Control/Panel"]
 layout_mode = 0
 offset_left = 73.0
 offset_top = 70.0
@@ -221,7 +226,7 @@ offset_right = 273.0
 offset_bottom = 570.0
 metadata/_edit_group_ = true
 
-[node name="BackButton" type="Button" parent="Background/LeftBox"]
+[node name="BackButton" type="Button" parent="Control/Panel/LeftBox"]
 clip_contents = true
 layout_mode = 2
 focus_mode = 0
@@ -229,11 +234,11 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8q86b")
 text = "Back"
 
-[node name="Abilities" type="Panel" parent="Background/LeftBox"]
+[node name="Abilities" type="Panel" parent="Control/Panel/LeftBox"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label3" type="Label" parent="Background/LeftBox/Abilities"]
+[node name="Label3" type="Label" parent="Control/Panel/LeftBox/Abilities"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 offset_top = 396.0
@@ -243,7 +248,7 @@ theme_override_font_sizes/font_size = 30
 text = "Abilities"
 horizontal_alignment = 1
 
-[node name="RightBox" type="VBoxContainer" parent="Background"]
+[node name="RightBox" type="VBoxContainer" parent="Control/Panel"]
 layout_mode = 0
 offset_left = 871.0
 offset_top = 70.0
@@ -251,11 +256,11 @@ offset_right = 1071.0
 offset_bottom = 570.0
 metadata/_edit_group_ = true
 
-[node name="Maps" type="Panel" parent="Background/RightBox"]
+[node name="Maps" type="Panel" parent="Control/Panel/RightBox"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/RightBox/Maps"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/RightBox/Maps"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -263,23 +268,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label2" type="Label" parent="Background/RightBox/Maps/VBoxContainer"]
+[node name="Label2" type="Label" parent="Control/Panel/RightBox/Maps/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Maps"
 horizontal_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Background/RightBox/Maps/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Panel/RightBox/Maps/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MapItems" type="VBoxContainer" parent="Background/RightBox/Maps/VBoxContainer/ScrollContainer"]
+[node name="MapItems" type="VBoxContainer" parent="Control/Panel/RightBox/Maps/VBoxContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="StartButton" type="Button" parent="Background/RightBox"]
+[node name="StartButton" type="Button" parent="Control/Panel/RightBox"]
 clip_contents = true
 layout_mode = 2
 focus_mode = 0
@@ -288,9 +293,9 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_8q86b")
 text = "Start"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="pressed" from="Background/VBoxContainer/HBoxContainer/LeftSwitch" to="." method="_on_left_switch_pressed"]
-[connection signal="pressed" from="Background/VBoxContainer/HBoxContainer/RightSwitch" to="." method="_on_right_switch_pressed"]
-[connection signal="mouse_entered" from="Background/LeftBox/BackButton" to="." method="_on_back_button_mouse_entered"]
-[connection signal="pressed" from="Background/LeftBox/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="mouse_entered" from="Background/RightBox/StartButton" to="." method="_on_start_button_mouse_entered"]
-[connection signal="pressed" from="Background/RightBox/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Control/Panel/VBoxContainer/HBoxContainer/LeftSwitch" to="." method="_on_left_switch_pressed"]
+[connection signal="pressed" from="Control/Panel/VBoxContainer/HBoxContainer/RightSwitch" to="." method="_on_right_switch_pressed"]
+[connection signal="mouse_entered" from="Control/Panel/LeftBox/BackButton" to="." method="_on_back_button_mouse_entered"]
+[connection signal="pressed" from="Control/Panel/LeftBox/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="mouse_entered" from="Control/Panel/RightBox/StartButton" to="." method="_on_start_button_mouse_entered"]
+[connection signal="pressed" from="Control/Panel/RightBox/StartButton" to="." method="_on_start_button_pressed"]

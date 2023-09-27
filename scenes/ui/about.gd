@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 @onready var programming_container = $Background/ColorRect/HBoxContainer/VBoxContainer/ProgrammingArea/List
 @onready var art_container = $Background/ColorRect/HBoxContainer/VBoxContainer/ArtArea/List2

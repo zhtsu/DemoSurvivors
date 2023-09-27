@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 const tscn_setting_menu = preload("res://scenes/ui/setting_menu.tscn")
 const tscn_popup = preload("res://scenes/ui/popup.tscn")

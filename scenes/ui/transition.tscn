@@ -6,6 +6,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2k5cj"]
 shader = ExtResource("1_syeq3")
 shader_parameter/progress = 1.0
+shader_parameter/color = Color(1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_brgte"]
 resource_name = "Enter"
@@ -50,6 +51,7 @@ _data = {
 }
 
 [node name="Transition" type="CanvasLayer"]
+layer = 2
 script = ExtResource("2_yqu1k")
 
 [node name="ColorRect" type="ColorRect" parent="."]

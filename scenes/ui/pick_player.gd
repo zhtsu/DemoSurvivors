@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 
 const Enums = preload("res://scenes/mngr/enums.gd")
@@ -28,10 +28,10 @@ var max_player_count = Enums.EPlayer.size()
 var selected_player_type = Enums.EPlayer.NinjaFrog
 var selected_map_type = Enums.EMap.Forest
 
-@onready var ui_player_anim = $Background/VBoxContainer/HBoxContainer/PlayerBox/PlayerAnim
-@onready var ui_player_name = $Background/VBoxContainer/PlayerName
-@onready var ui_player_list = $Background/VBoxContainer/PlayerList
-@onready var ui_map_list = $Background/RightBox/Maps/VBoxContainer/ScrollContainer/MapItems
+@onready var ui_player_anim = $Control/Panel/VBoxContainer/HBoxContainer/PlayerBox/PlayerAnim
+@onready var ui_player_name = $Control/Panel/VBoxContainer/PlayerName
+@onready var ui_player_list = $Control/Panel/VBoxContainer/PlayerList
+@onready var ui_map_list = $Control/Panel/RightBox/Maps/VBoxContainer/ScrollContainer/MapItems
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -85,10 +85,10 @@ func _ready():
 		map_items[0].show_seleted_mask()
 		
 	
-func _on_map_item_clicked(map_icon : CompressedTexture2D, map_type : Enums.EMap):
+func _on_map_item_clicked(map_type : Enums.EMap):
 	_play_button_down_sound()
 	selected_map_type = map_type
-	$MapBg.texture = map_icon
+	$Control/MapDisplay.call("set_map_type", map_type)
 	for item in ui_map_list.get_children():
 		item.hide_selected_mask()
 
@@ -99,10 +99,6 @@ func _reset_selected_player():
 	
 
 func _update_player_data(player_type: int):
-	if player_type < 0:
-		player_type = abs(player_type)
-	player_type %= max_player_count
-	
 	var player_list = ui_player_list.get_children()
 	if player_type < player_list.size():
 		player_list[player_type].grab_focus()
@@ -126,7 +122,13 @@ func _update_player_data(player_type: int):
 func _on_player_item_clicked(player_type : int):
 	_play_button_down_sound()
 	_reset_selected_player()
+	
+	if player_type < 0:
+		player_type = abs(player_type)
+	player_type %= max_player_count
+	
 	selected_player_type = player_type as Enums.EPlayer
+	
 	_update_player_data(player_type)
 
 
@@ -160,10 +162,19 @@ func _on_back_button_mouse_entered():
 	_play_button_hover_sound()
 
 
+# Uesd for pass color to level's transition from current transition
+var rg_color : Color = Color.GRAY
+
 func _on_start_button_pressed():
+	seed(randi())
 	_play_button_down_sound()
 	var transition_scene = tscn_transition.instantiate()
-	transition_scene.call("init", Enums.ETransitionDirection.Normal)
+	var rng = RandomNumberGenerator.new()
+	rg_color = Color.from_hsv(
+			rng.randf_range(0.4, 0.6),
+			rng.randf_range(0.4, 0.6),
+			rng.randf_range(0.4, 0.6))
+	transition_scene.call("init", Enums.ETransitionDirection.Normal, rg_color)
 	transition_scene.connect("finished", _create_game_level)
 	add_child(transition_scene)
 	
@@ -171,6 +182,7 @@ func _on_start_button_pressed():
 func _create_game_level():
 	var level_scene = tscn_level.instantiate()
 	level_scene.call("init", selected_player_type, selected_map_type)
+	level_scene.call("init_transition", rg_color)
 	get_tree().get_first_node_in_group("main").add_child(level_scene)
 	get_tree().get_first_node_in_group("main_menu").queue_free()
 	get_tree().get_first_node_in_group("audio_mngr").call("mute")
