@@ -15,6 +15,7 @@ shader = ExtResource("3_tqmdv")
 
 [node name="CRT" type="CanvasLayer" parent="." groups=["crt"]]
 layer = 4
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CRT"]
 material = SubResource("ShaderMaterial_r3wet")

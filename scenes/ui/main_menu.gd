@@ -3,7 +3,7 @@ extends CanvasLayer
 const tscn_setting_menu = preload("res://scenes/ui/setting_menu.tscn")
 const tscn_popup = preload("res://scenes/ui/popup.tscn")
 const tscn_pick_player = preload("res://scenes/ui/pick_player.tscn")
-const tscn_about = preload("res://scenes/ui/about.tscn")
+const tscn_credits = preload("res://scenes/ui/credits.tscn")
 # data
 const SETTINGS_USER_DATA_PATH = "user://settings.json"
 
@@ -67,10 +67,10 @@ func _on_start_button_button_down():
 
 
 
-func _on_about_button_button_down():
+func _on_credits_button_button_down():
 	_play_button_down_sound()
-	var about_scene = tscn_about.instantiate()
-	add_child(about_scene)
+	var credits_scene = tscn_credits.instantiate()
+	add_child(credits_scene)
 	
 	
 func _on_collection_button_button_down():

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ddu7huicmgo7r"]
 
-[ext_resource type="Script" path="res://scenes/ui/about.gd" id="1_8jrs0"]
+[ext_resource type="Script" path="res://scenes/ui/credits.gd" id="1_ebq7n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wcnfv"]
 bg_color = Color(0, 0, 0, 0.705882)
@@ -63,8 +63,8 @@ _data = {
 "RESET": SubResource("Animation_ndqi4")
 }
 
-[node name="About" type="CanvasLayer"]
-script = ExtResource("1_8jrs0")
+[node name="Credits" type="CanvasLayer"]
+script = ExtResource("1_ebq7n")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_group_ = true
 
@@ -88,110 +88,125 @@ offset_right = 0.000244141
 offset_bottom = 648.0
 color = Color(0.223529, 0.243137, 0.27451, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Background/ColorRect"]
+[node name="ScrollerList" type="ScrollContainer" parent="Background/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/ColorRect/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/ColorRect/ScrollerList"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
+size_flags_vertical = 3
 
-[node name="ProgrammingArea" type="VBoxContainer" parent="Background/ColorRect/HBoxContainer/VBoxContainer"]
+[node name="VSeparator4" type="HSeparator" parent="Background/ColorRect/ScrollerList/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_0lpbd")
+
+[node name="Label" type="Label" parent="Background/ColorRect/ScrollerList/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="VSeparator5" type="HSeparator" parent="Background/ColorRect/ScrollerList/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_0lpbd")
+
+[node name="ProgrammingArea" type="VBoxContainer" parent="Background/ColorRect/ScrollerList/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Background/ColorRect/HBoxContainer/VBoxContainer/ProgrammingArea"]
+[node name="Label" type="Label" parent="Background/ColorRect/ScrollerList/VBoxContainer/ProgrammingArea"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.792157, 0.929412, 1, 1)
 theme_override_font_sizes/font_size = 20
 text = "Programming"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="Background/ColorRect/HBoxContainer/VBoxContainer/ProgrammingArea"]
+[node name="HSeparator" type="HSeparator" parent="Background/ColorRect/ScrollerList/VBoxContainer/ProgrammingArea"]
 custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="List" type="VBoxContainer" parent="Background/ColorRect/HBoxContainer/VBoxContainer/ProgrammingArea"]
+[node name="List" type="VBoxContainer" parent="Background/ColorRect/ScrollerList/VBoxContainer/ProgrammingArea"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="VSeparator" type="HSeparator" parent="Background/ColorRect/HBoxContainer/VBoxContainer"]
+[node name="VSeparator" type="HSeparator" parent="Background/ColorRect/ScrollerList/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_0lpbd")
 
-[node name="ArtArea" type="VBoxContainer" parent="Background/ColorRect/HBoxContainer/VBoxContainer"]
+[node name="ArtArea" type="VBoxContainer" parent="Background/ColorRect/ScrollerList/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="Background/ColorRect/HBoxContainer/VBoxContainer/ArtArea"]
+[node name="Label2" type="Label" parent="Background/ColorRect/ScrollerList/VBoxContainer/ArtArea"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.780392, 0.917647, 1)
 theme_override_font_sizes/font_size = 20
 text = "Art"
 horizontal_alignment = 1
 
-[node name="HSeparator3" type="HSeparator" parent="Background/ColorRect/HBoxContainer/VBoxContainer/ArtArea"]
+[node name="HSeparator3" type="HSeparator" parent="Background/ColorRect/ScrollerList/VBoxContainer/ArtArea"]
 custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="List2" type="VBoxContainer" parent="Background/ColorRect/HBoxContainer/VBoxContainer/ArtArea"]
+[node name="List2" type="VBoxContainer" parent="Background/ColorRect/ScrollerList/VBoxContainer/ArtArea"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="VSeparator2" type="HSeparator" parent="Background/ColorRect/HBoxContainer/VBoxContainer"]
+[node name="VSeparator2" type="HSeparator" parent="Background/ColorRect/ScrollerList/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_0lpbd")
 
-[node name="MusicArea" type="VBoxContainer" parent="Background/ColorRect/HBoxContainer/VBoxContainer"]
+[node name="MusicArea" type="VBoxContainer" parent="Background/ColorRect/ScrollerList/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="Background/ColorRect/HBoxContainer/VBoxContainer/MusicArea"]
+[node name="Label3" type="Label" parent="Background/ColorRect/ScrollerList/VBoxContainer/MusicArea"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.984314, 0.941176, 0.698039, 1)
 theme_override_font_sizes/font_size = 20
 text = "Music"
 horizontal_alignment = 1
 
-[node name="HSeparator4" type="HSeparator" parent="Background/ColorRect/HBoxContainer/VBoxContainer/MusicArea"]
+[node name="HSeparator4" type="HSeparator" parent="Background/ColorRect/ScrollerList/VBoxContainer/MusicArea"]
 custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="List3" type="VBoxContainer" parent="Background/ColorRect/HBoxContainer/VBoxContainer/MusicArea"]
+[node name="List3" type="VBoxContainer" parent="Background/ColorRect/ScrollerList/VBoxContainer/MusicArea"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="VSeparator3" type="HSeparator" parent="Background/ColorRect/HBoxContainer/VBoxContainer"]
+[node name="VSeparator3" type="HSeparator" parent="Background/ColorRect/ScrollerList/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_styles/separator = SubResource("StyleBoxEmpty_0lpbd")
 
-[node name="SoundArea" type="VBoxContainer" parent="Background/ColorRect/HBoxContainer/VBoxContainer"]
+[node name="SoundArea" type="VBoxContainer" parent="Background/ColorRect/ScrollerList/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="Background/ColorRect/HBoxContainer/VBoxContainer/SoundArea"]
+[node name="Label3" type="Label" parent="Background/ColorRect/ScrollerList/VBoxContainer/SoundArea"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.690196, 0.85098, 0.694118, 1)
 theme_override_font_sizes/font_size = 20
 text = "Sound"
 horizontal_alignment = 1
 
-[node name="HSeparator4" type="HSeparator" parent="Background/ColorRect/HBoxContainer/VBoxContainer/SoundArea"]
+[node name="HSeparator4" type="HSeparator" parent="Background/ColorRect/ScrollerList/VBoxContainer/SoundArea"]
 custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="List3" type="VBoxContainer" parent="Background/ColorRect/HBoxContainer/VBoxContainer/SoundArea"]
+[node name="List3" type="VBoxContainer" parent="Background/ColorRect/ScrollerList/VBoxContainer/SoundArea"]
 layout_mode = 2
 size_flags_horizontal = 4
 

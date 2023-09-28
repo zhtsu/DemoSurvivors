@@ -1,9 +1,9 @@
 extends CanvasLayer
 
-@onready var programming_container = $Background/ColorRect/HBoxContainer/VBoxContainer/ProgrammingArea/List
-@onready var art_container = $Background/ColorRect/HBoxContainer/VBoxContainer/ArtArea/List2
-@onready var music_container = $Background/ColorRect/HBoxContainer/VBoxContainer/MusicArea/List3
-@onready var sound_container = $Background/ColorRect/HBoxContainer/VBoxContainer/SoundArea/List3
+@onready var programming_container = $Background/ColorRect/ScrollerList/VBoxContainer/ProgrammingArea
+@onready var art_container = $Background/ColorRect/ScrollerList/VBoxContainer/ArtArea
+@onready var music_container = $Background/ColorRect/ScrollerList/VBoxContainer/MusicArea
+@onready var sound_container = $Background/ColorRect/ScrollerList/VBoxContainer/SoundArea
 
 const programming_list = [
 	"zhtsu"

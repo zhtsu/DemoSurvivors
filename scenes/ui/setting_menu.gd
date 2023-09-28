@@ -11,6 +11,9 @@ var tex_mute = preload("res://Assets/Textures/Icons/speaker_crossed.png")
 var tex_full_screen = preload("res://Assets/Textures/Icons/full_screen.png")
 var tex_normal_screen = preload("res://Assets/Textures/Icons/normal_screen.png")
 
+@onready var full_screen_button = $Background/ColorRect/VBoxContainer/UpBox/FullScreenButton
+@onready var sounds_button = $Background/ColorRect/VBoxContainer/UpBox/SoundsButton
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.show()
@@ -29,9 +32,9 @@ func _update_settings_icon():
 
 func _update_sounds_button_icon():
 	if settings_config["OpenSounds"]:
-		$Background/ColorRect/VBoxContainer/SoundsButton.icon = tex_loud
+		sounds_button.icon = tex_loud
 	else:
-		$Background/ColorRect/VBoxContainer/SoundsButton.icon = tex_mute
+		sounds_button.icon = tex_mute
 	
 
 func _is_full_screen() -> bool:
@@ -40,9 +43,9 @@ func _is_full_screen() -> bool:
 
 func _update_full_screen_button_icon():
 	if _is_full_screen():
-		$Background/ColorRect/VBoxContainer/FullScreenButton.icon = tex_normal_screen
+		full_screen_button.icon = tex_normal_screen
 	else:
-		$Background/ColorRect/VBoxContainer/FullScreenButton.icon = tex_full_screen
+		full_screen_button.icon = tex_full_screen
 
 
 func _update_sounds_state():
