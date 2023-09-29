@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnpucq324a4kl"]
+[gd_scene load_steps=4 format=3 uid="uid://dnpucq324a4kl"]
 
 [ext_resource type="PackedScene" uid="uid://bukknhyre2xfa" path="res://scenes/mngr/audio_mngr.tscn" id="2_3o1xx"]
 [ext_resource type="PackedScene" uid="uid://svdqnhmua150" path="res://scenes/ui/main_menu.tscn" id="3_0lsp7"]
-[ext_resource type="Shader" path="res://shaders/crt.gdshader" id="3_tqmdv"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r3wet"]
-shader = ExtResource("3_tqmdv")
+[ext_resource type="PackedScene" uid="uid://l13fitcsct4h" path="res://scenes/ui/viewport_effect.tscn" id="3_0syhx"]
 
 [node name="Main" type="Node" groups=["main"]]
 
@@ -13,15 +10,4 @@ shader = ExtResource("3_tqmdv")
 
 [node name="MainMenu" parent="." instance=ExtResource("3_0lsp7")]
 
-[node name="CRT" type="CanvasLayer" parent="." groups=["crt"]]
-layer = 4
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="CRT"]
-material = SubResource("ShaderMaterial_r3wet")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
+[node name="Effect" parent="." instance=ExtResource("3_0syhx")]

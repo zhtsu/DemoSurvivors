@@ -1,10 +1,7 @@
 extends CanvasLayer
 
 
-# Option settings
-var settings_config = {
-	"OpenSounds": true
-}
+var setting_dict : Dictionary
 
 var tex_loud = preload("res://Assets/Textures/Icons/speaker.png")
 var tex_mute = preload("res://Assets/Textures/Icons/speaker_crossed.png")
@@ -13,25 +10,38 @@ var tex_normal_screen = preload("res://Assets/Textures/Icons/normal_screen.png")
 
 @onready var full_screen_button = $Background/ColorRect/VBoxContainer/UpBox/FullScreenButton
 @onready var sounds_button = $Background/ColorRect/VBoxContainer/UpBox/SoundsButton
+@onready var language_combo_box = $Background/ColorRect/VBoxContainer/DownBox/LangBox/LangSelector
+@onready var effect_combo_box = $Background/ColorRect/VBoxContainer/DownBox/EffectBox/EffectSelector
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.show()
 	$AnimationPlayer.play("Enter")
-	_update_settings_icon()
+	_update_settings_ui()
 
 
-func init_settings(in_settings:Dictionary):
-	settings_config = in_settings
+func init_settings(in_settings : Dictionary):
+	setting_dict = in_settings
 
 
-func _update_settings_icon():
+func _update_settings_ui():
 	_update_sounds_button_icon()
 	_update_full_screen_button_icon()
+	_update_language_combo_box()
+	_update_effect_combo_box()
+
+func _update_language_combo_box():
+	var index : int = setting_dict["Language"]
+	language_combo_box.select(index)
+	
+
+func _update_effect_combo_box():
+	var index : int = setting_dict["Effect"]
+	effect_combo_box.select(index)
 
 
 func _update_sounds_button_icon():
-	if settings_config["OpenSounds"]:
+	if setting_dict["OpenSounds"]:
 		sounds_button.icon = tex_loud
 	else:
 		sounds_button.icon = tex_mute
@@ -49,7 +59,7 @@ func _update_full_screen_button_icon():
 
 
 func _update_sounds_state():
-	if settings_config["OpenSounds"]:
+	if setting_dict["OpenSounds"]:
 		get_tree().get_first_node_in_group("audio_mngr").call("loud")
 	else:
 		get_tree().get_first_node_in_group("audio_mngr").call("mute")
@@ -57,7 +67,7 @@ func _update_sounds_state():
 
 func _on_sounds_button_button_down():
 	_play_button_down_sound()
-	settings_config["OpenSounds"] = not settings_config["OpenSounds"]
+	setting_dict["OpenSounds"] = not setting_dict["OpenSounds"]
 	_update_sounds_button_icon()
 	_update_sounds_state()
 	
@@ -69,11 +79,15 @@ func _on_background_button_down():
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == "Exit":
-		var settings_json_file = FileAccess.open("user://settings.json", FileAccess.WRITE)
-		settings_json_file.store_line(JSON.stringify(settings_config, "\t"))
-		settings_json_file.close()
+		_save_updated_settings()
 		queue_free()
 		
+		
+func _save_updated_settings():
+	var settings_json_file = FileAccess.open("user://settings.json", FileAccess.WRITE)
+	settings_json_file.store_line(JSON.stringify(setting_dict, "\t"))
+	settings_json_file.close()
+	
 
 func _update_full_screen():
 	if _is_full_screen():
@@ -90,3 +104,16 @@ func _on_full_screen_button_button_down():
 	
 func _play_button_down_sound():
 	get_tree().get_first_node_in_group("audio_mngr").call("play_button_down")
+
+
+func _on_effect_selector_item_selected(index):
+	# 0 Normal
+	# 1 CRT
+	# 2 Gray
+	setting_dict["Effect"] = index
+	var viewport_effect = get_tree().get_first_node_in_group("viewport_effect")
+	viewport_effect.call("active_viewport_effect", index)
+
+
+func _on_lang_selector_item_selected(index):
+	setting_dict["Language"] = index

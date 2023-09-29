@@ -5,9 +5,10 @@ const tscn_popup = preload("res://scenes/ui/popup.tscn")
 const tscn_pick_player = preload("res://scenes/ui/pick_player.tscn")
 const tscn_credits = preload("res://scenes/ui/credits.tscn")
 # data
+const DEFAULT_SETTINGS_FILE_PATH = "res://assets/data/default_settings.json"
 const SETTINGS_USER_DATA_PATH = "user://settings.json"
 
-var settings_config:Dictionary
+var setting_dict : Dictionary
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,34 +17,34 @@ func _ready():
 	$PinkMan.play("Idle")
 	$NinjaFrog.play("Idle")
 	
+	var default_settings_file = FileAccess.open(DEFAULT_SETTINGS_FILE_PATH, FileAccess.READ)
+	var default_settings = JSON.parse_string(default_settings_file.get_as_text())
+	default_settings_file.close()
+	
 	# Create local user data file if not exist
 	if not FileAccess.file_exists(SETTINGS_USER_DATA_PATH):
-		# Read config settings data
-		var settings_json_file = FileAccess.open("res://assets/data/settings.json", FileAccess.READ)
-		settings_config = JSON.parse_string(settings_json_file.get_as_text())
-		print_debug("Settings:" + JSON.stringify(settings_config))
-		settings_json_file.close()
-		# Create user data for settings
 		var settings_user_data_file = FileAccess.open(SETTINGS_USER_DATA_PATH, FileAccess.WRITE)
-		settings_user_data_file.store_line(JSON.stringify(settings_config, "\t"))
+		settings_user_data_file.store_line(JSON.stringify(default_settings, "\t"))
 		settings_user_data_file.close()
-		print_debug("Success to create settings data file")
+		print_debug("Success to create local settings data file")
 	
-	var settings_user_data_file = FileAccess.open(SETTINGS_USER_DATA_PATH, FileAccess.READ)
-	if settings_user_data_file == null:
-		print_debug("Fail to load data file")
-		return
-	settings_config = JSON.parse_string(settings_user_data_file.get_as_text())
-	settings_user_data_file.close()
+	var local_settings_file = FileAccess.open(SETTINGS_USER_DATA_PATH, FileAccess.READ)
+	print_debug(local_settings_file.get_as_text())
+	setting_dict = JSON.parse_string(local_settings_file.get_as_text())
+	local_settings_file.close()
 	
-	if settings_config["OpenSounds"]:
-		loud()
+	_apply_settings()
 
+func _apply_settings():
+	if setting_dict.has("OpenSounds"):
+		loud()
+	var viewport_effect = get_tree().get_first_node_in_group("viewport_effect")
+	viewport_effect.call("active_viewport_effect", setting_dict["Effect"])
 
 func _on_setting_button_button_down():
 	_play_button_down_sound()
 	var setting_menu_scene = tscn_setting_menu.instantiate()
-	setting_menu_scene.call("init_settings", settings_config)
+	setting_menu_scene.call("init_settings", setting_dict)
 	add_child(setting_menu_scene)
 
 

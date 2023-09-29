@@ -46,3 +46,10 @@ enum ETransitionDirection
 	Normal,
 	Reverse
 }
+
+enum EViewportEffect
+{
+	Normal,
+	CRT,
+	Gray
+}
