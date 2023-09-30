@@ -1,17 +1,15 @@
 extends CanvasLayer
 
+const Assets = preload("res://scenes/common/assets.gd")
 
 var setting_dict : Dictionary
-
-var tex_loud = preload("res://Assets/Textures/Icons/speaker.png")
-var tex_mute = preload("res://Assets/Textures/Icons/speaker_crossed.png")
-var tex_full_screen = preload("res://Assets/Textures/Icons/full_screen.png")
-var tex_normal_screen = preload("res://Assets/Textures/Icons/normal_screen.png")
 
 @onready var full_screen_button = $Background/ColorRect/VBoxContainer/UpBox/FullScreenButton
 @onready var sounds_button = $Background/ColorRect/VBoxContainer/UpBox/SoundsButton
 @onready var language_combo_box = $Background/ColorRect/VBoxContainer/DownBox/LangBox/LangSelector
 @onready var effect_combo_box = $Background/ColorRect/VBoxContainer/DownBox/EffectBox/EffectSelector
+@onready var sound_player = $SoundPlayer2D
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,9 +40,9 @@ func _update_effect_combo_box():
 
 func _update_sounds_button_icon():
 	if setting_dict["OpenSounds"]:
-		sounds_button.icon = tex_loud
+		sounds_button.icon = Assets.tex_loud
 	else:
-		sounds_button.icon = tex_mute
+		sounds_button.icon = Assets.tex_mute
 	
 
 func _is_full_screen() -> bool:
@@ -53,16 +51,16 @@ func _is_full_screen() -> bool:
 
 func _update_full_screen_button_icon():
 	if _is_full_screen():
-		full_screen_button.icon = tex_normal_screen
+		full_screen_button.icon = Assets.tex_normal_screen
 	else:
-		full_screen_button.icon = tex_full_screen
+		full_screen_button.icon = Assets.tex_full_screen
 
 
 func _update_sounds_state():
 	if setting_dict["OpenSounds"]:
-		get_tree().get_first_node_in_group("audio_mngr").call("loud")
+		get_tree().get_first_node_in_group("music").play()
 	else:
-		get_tree().get_first_node_in_group("audio_mngr").call("mute")
+		get_tree().get_first_node_in_group("music").stop()
 
 
 func _on_sounds_button_button_down():
@@ -100,10 +98,12 @@ func _on_full_screen_button_button_down():
 	
 	
 func _play_button_down_sound():
-	get_tree().get_first_node_in_group("audio_mngr").call("play_button_down")
+	sound_player.stream = Assets.a_button_down
+	sound_player.play()
 
 
 func _on_effect_selector_item_selected(index):
+	_play_button_down_sound()
 	# 0 Normal
 	# 1 CRT
 	# 2 Gray
@@ -113,5 +113,6 @@ func _on_effect_selector_item_selected(index):
 
 
 func _on_lang_selector_item_selected(index):
+	_play_button_down_sound()
 	setting_dict["Language"] = index
 	

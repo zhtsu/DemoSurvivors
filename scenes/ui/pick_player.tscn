@@ -116,6 +116,7 @@ offset_bottom = 1296.0
 
 [node name="MapDisplay" parent="Control" instance=ExtResource("3_5fyng")]
 layout_mode = 1
+map_type = null
 
 [node name="Panel" type="Panel" parent="Control"]
 layout_mode = 1
@@ -292,9 +293,11 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8q86b")
 text = "Start"
 
+[node name="SoundPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="pressed" from="Control/Panel/VBoxContainer/HBoxContainer/LeftSwitch" to="." method="_on_left_switch_pressed"]
 [connection signal="pressed" from="Control/Panel/VBoxContainer/HBoxContainer/RightSwitch" to="." method="_on_right_switch_pressed"]
-[connection signal="mouse_entered" from="Control/Panel/LeftBox/BackButton" to="." method="_on_back_button_mouse_entered"]
+[connection signal="mouse_entered" from="Control/Panel/LeftBox/BackButton" to="." method="_play_button_hover_sound"]
 [connection signal="pressed" from="Control/Panel/LeftBox/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="mouse_entered" from="Control/Panel/RightBox/StartButton" to="." method="_on_start_button_mouse_entered"]
+[connection signal="mouse_entered" from="Control/Panel/RightBox/StartButton" to="." method="_play_button_hover_sound"]
 [connection signal="pressed" from="Control/Panel/RightBox/StartButton" to="." method="_on_start_button_pressed"]

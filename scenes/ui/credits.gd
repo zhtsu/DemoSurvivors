@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+
 @onready var programming_container = $Background/ColorRect/ScrollerList/VBoxContainer/ProgrammingArea
 @onready var art_container = $Background/ColorRect/ScrollerList/VBoxContainer/ArtArea
 @onready var music_container = $Background/ColorRect/ScrollerList/VBoxContainer/MusicArea
@@ -32,6 +33,7 @@ func _create_item_to_container(container, list):
 		label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		container.add_child(label)
 
+
 func _ready():
 	_create_item_to_container(programming_container, programming_list)
 	_create_item_to_container(art_container, art_list)
@@ -43,12 +45,7 @@ func _ready():
 	
 
 func _on_background_button_down():
-	_play_button_down_sound()
+	$SoundPlayer2D.play()
 	$AnimationPlayer.play("Exit")
 	await $AnimationPlayer.animation_finished
 	queue_free()
-	
-	
-func _play_button_down_sound():
-	get_tree().get_first_node_in_group("audio_mngr").call("play_button_down")
-

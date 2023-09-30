@@ -1,11 +1,9 @@
 extends CanvasLayer
 
 
-const Enums = preload("res://scenes/mngr/enums.gd")
+const Enums = preload("res://scenes/common/enums.gd")
 const ViewportEffectType = Enums.EViewportEffect
-#
-const tres_sm_effect_crt = preload("res://tress/sm_effect_crt.tres")
-const tres_sm_effect_gray = preload("res://tress/sm_effect_gray.tres")
+const Assets = preload("res://scenes/common/assets.gd")
 
 
 func active_viewport_effect(viewport_effect_type : int):
@@ -14,7 +12,7 @@ func active_viewport_effect(viewport_effect_type : int):
 	if viewport_effect_type == ViewportEffectType.Normal:
 		self.hide()
 	elif viewport_effect_type == ViewportEffectType.CRT:
-		$Texture.material = tres_sm_effect_crt
+		$Texture.material = Assets.tres_sm_effect_crt
 	elif viewport_effect_type == ViewportEffectType.Gray:
-		$Texture.material = tres_sm_effect_gray
+		$Texture.material = Assets.tres_sm_effect_gray
 	

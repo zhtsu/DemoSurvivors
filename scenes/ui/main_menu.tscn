@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://svdqnhmua150"]
+[gd_scene load_steps=12 format=3 uid="uid://svdqnhmua150"]
 
 [ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_lgfqu"]
 [ext_resource type="SpriteFrames" uid="uid://b4l4u8hv0e76u" path="res://tress/sf_virtual_guy.tres" id="2_3nlxv"]
@@ -7,6 +7,7 @@
 [ext_resource type="SpriteFrames" uid="uid://olstouu8ajg" path="res://tress/sf_ninja_frog.tres" id="5_wt5lp"]
 [ext_resource type="Texture2D" uid="uid://t0spyes74828" path="res://assets/textures/icons/github_corner.svg" id="6_rvwkx"]
 [ext_resource type="Texture2D" uid="uid://bvevpwfw2opvv" path="res://assets/textures/icons/github_corner_white.svg" id="7_e6l70"]
+[ext_resource type="AudioStream" uid="uid://btafleilp2jc5" path="res://assets/musics/dongcidaci.wav" id="8_mo8hj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_25jgu"]
 font_size = 80
@@ -71,7 +72,7 @@ size_flags_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="PlayButton" type="Button" parent="TextBox/MenuItems"]
+[node name="StartButton" type="Button" parent="TextBox/MenuItems"]
 clip_contents = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -121,14 +122,20 @@ texture_pressed = ExtResource("6_rvwkx")
 texture_hover = ExtResource("7_e6l70")
 texture_click_mask = SubResource("BitMap_od42s")
 
-[connection signal="button_down" from="TextBox/MenuItems/PlayButton" to="." method="_on_start_button_button_down"]
-[connection signal="mouse_entered" from="TextBox/MenuItems/PlayButton" to="." method="_on_start_button_mouse_entered"]
+[node name="MusicPlayer2D" type="AudioStreamPlayer2D" parent="." groups=["music"]]
+stream = ExtResource("8_mo8hj")
+
+[node name="SoundPlayer2D" type="AudioStreamPlayer2D" parent="." groups=["sound"]]
+
+[connection signal="button_down" from="TextBox/MenuItems/StartButton" to="." method="_on_start_button_button_down"]
+[connection signal="mouse_entered" from="TextBox/MenuItems/StartButton" to="." method="_play_button_hover_sound"]
 [connection signal="button_down" from="TextBox/MenuItems/SettingButton" to="." method="_on_setting_button_button_down"]
-[connection signal="mouse_entered" from="TextBox/MenuItems/SettingButton" to="." method="_on_setting_button_mouse_entered"]
+[connection signal="mouse_entered" from="TextBox/MenuItems/SettingButton" to="." method="_play_button_hover_sound"]
 [connection signal="button_down" from="TextBox/MenuItems/CollectionButton" to="." method="_on_collection_button_button_down"]
-[connection signal="mouse_entered" from="TextBox/MenuItems/CollectionButton" to="." method="_on_exit_button_mouse_entered"]
+[connection signal="mouse_entered" from="TextBox/MenuItems/CollectionButton" to="." method="_play_button_hover_sound"]
 [connection signal="button_down" from="TextBox/MenuItems/CreditsButton" to="." method="_on_credits_button_button_down"]
-[connection signal="mouse_entered" from="TextBox/MenuItems/CreditsButton" to="." method="_on_exit_button_mouse_entered"]
+[connection signal="mouse_entered" from="TextBox/MenuItems/CreditsButton" to="." method="_play_button_hover_sound"]
 [connection signal="button_down" from="TextBox/MenuItems/QuitButton" to="." method="_on_quit_button_button_down"]
-[connection signal="mouse_entered" from="TextBox/MenuItems/QuitButton" to="." method="_on_exit_button_mouse_entered"]
+[connection signal="mouse_entered" from="TextBox/MenuItems/QuitButton" to="." method="_play_button_hover_sound"]
 [connection signal="button_down" from="GithubButton" to="." method="_on_github_button_button_down"]
+[connection signal="mouse_entered" from="GithubButton" to="." method="_play_button_hover_sound"]

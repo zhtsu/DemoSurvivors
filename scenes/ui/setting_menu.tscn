@@ -194,6 +194,8 @@ libraries = {
 "": SubResource("AnimationLibrary_bahpr")
 }
 
+[node name="SoundPlayer2D" type="AudioStreamPlayer2D" parent="." groups=["sound"]]
+
 [connection signal="button_down" from="Background" to="." method="_on_background_button_down"]
 [connection signal="button_down" from="Background/ColorRect/VBoxContainer/UpBox/FullScreenButton" to="." method="_on_full_screen_button_button_down"]
 [connection signal="button_down" from="Background/ColorRect/VBoxContainer/UpBox/SoundsButton" to="." method="_on_sounds_button_button_down"]

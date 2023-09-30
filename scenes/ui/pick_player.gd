@@ -1,33 +1,23 @@
 extends CanvasLayer
 
 
-const Enums = preload("res://scenes/mngr/enums.gd")
+const Enums = preload("res://scenes/common/enums.gd")
+const Assets = preload("res://scenes/common/assets.gd")
 
-# Icon for map item
-const tex_icon_map_forest = preload("res://assets/textures/icons/icon_map_forest.png")
-const tex_icon_map_cave = preload("res://assets/textures/icons/icon_map_cave.png")
-const tex_icon_map_desert = preload("res://assets/textures/icons/icon_map_desert.png")
-const tex_icon_map_tundra = preload("res://assets/textures/icons/icon_map_tundra.png")
-const tex_icon_map_challenge = preload("res://assets/textures/icons/icon_map_challenge.png")
-#
-const tscn_level = preload("res://scenes/map/level.tscn")
-const tscn_transition = preload("res://scenes/ui/transition.tscn")
 
 const MapItemData = {
-	Enums.EMap.Forest:    tex_icon_map_forest,
-	Enums.EMap.Cave:      tex_icon_map_cave,
-	Enums.EMap.Desert:    tex_icon_map_desert,
-	Enums.EMap.Tundra:    tex_icon_map_tundra,
-	Enums.EMap.Challenge: tex_icon_map_challenge
+	Enums.EMap.Forest:    Assets.tex_icon_map_forest,
+	Enums.EMap.Cave:      Assets.tex_icon_map_cave,
+	Enums.EMap.Desert:    Assets.tex_icon_map_desert,
+	Enums.EMap.Tundra:    Assets.tex_icon_map_tundra,
+	Enums.EMap.Challenge: Assets.tex_icon_map_challenge
 }
-#
-const tscn_player_item = preload("res://scenes/ui/player_item.tscn")
-const tscn_map_item = preload("res://scenes/ui/map_item.tscn")
 
 var max_player_count = Enums.EPlayer.size()
 var selected_player_type = Enums.EPlayer.NinjaFrog
 var selected_map_type = Enums.EMap.Forest
 
+@onready var sound_player = $SoundPlayer2D
 @onready var ui_player_anim = $Control/Panel/VBoxContainer/HBoxContainer/PlayerBox/PlayerAnim
 @onready var ui_player_name = $Control/Panel/VBoxContainer/PlayerName
 @onready var ui_player_list = $Control/Panel/VBoxContainer/PlayerList
@@ -38,24 +28,24 @@ func _ready():
 	$AnimationPlayer.play("Enter")
 	# Init player list
 	for player_type in Enums.EPlayer.values():
-		var player_item = tscn_player_item.instantiate()
+		var player_item = Assets.tscn_player_item.instantiate()
 		player_item.connect("item_clicked", _on_player_item_clicked)
 		player_item.connect("mouse_entered", _play_button_hover_sound)
 		if player_type == Enums.EPlayer.NinjaFrog:
 			player_item.init_player_item(
-				load("res://tress/sf_ninja_frog.tres"), player_type, "Ninja Frog")
+				Assets.tres_sf_ninja_frog, player_type, "Ninja Frog")
 			ui_player_list.add_child(player_item)
 		elif player_type == Enums.EPlayer.MaskDude:
 			player_item.init_player_item(
-				load("res://tress/sf_mask_dude.tres"), player_type, "Mask Dude")
+				Assets.tres_sf_mask_dude, player_type, "Mask Dude")
 			ui_player_list.add_child(player_item)
 		elif player_type == Enums.EPlayer.PinkMan:
 			player_item.init_player_item(
-				load("res://tress/sf_pink_man.tres"), player_type, "Pink Man")
+				Assets.tres_sf_pink_man, player_type, "Pink Man")
 			ui_player_list.add_child(player_item)
 		elif player_type == Enums.EPlayer.VirtualGuy:
 			player_item.init_player_item(
-				load("res://tress/sf_virtual_guy.tres"), player_type, "Virtual Guy")
+				Assets.tres_virtual_guy, player_type, "Virtual Guy")
 			ui_player_list.add_child(player_item)
 			
 	# Init button's state in player_list
@@ -73,7 +63,7 @@ func _ready():
 	
 	# Init map items
 	for map_item_key in MapItemData:
-		var map_item = tscn_map_item.instantiate()
+		var map_item = Assets.tscn_map_item.instantiate()
 		map_item.init_map_item(Enums.EMap.keys()[map_item_key], MapItemData[map_item_key])
 		map_item.type = map_item_key
 		map_item.connect("clicked", _on_map_item_clicked)
@@ -105,16 +95,16 @@ func _update_player_data(player_type: int):
 		player_list[player_type].play_anim("Idle")
 	
 	if player_type == Enums.EPlayer.NinjaFrog:
-		ui_player_anim.sprite_frames = load("res://tress/sf_ninja_frog.tres")
+		ui_player_anim.sprite_frames = Assets.tres_sf_ninja_frog
 		ui_player_name.text = "Ninja Frog"
 	elif player_type == Enums.EPlayer.MaskDude:
-		ui_player_anim.sprite_frames = load("res://tress/sf_mask_dude.tres")
+		ui_player_anim.sprite_frames = Assets.tres_sf_mask_dude
 		ui_player_name.text = "Mask Dude"
 	elif player_type == Enums.EPlayer.PinkMan:
-		ui_player_anim.sprite_frames = load("res://tress/sf_pink_man.tres")
+		ui_player_anim.sprite_frames = Assets.tres_sf_pink_man
 		ui_player_name.text = "Pink Man"
 	elif player_type == Enums.EPlayer.VirtualGuy:
-		ui_player_anim.sprite_frames = load("res://tress/sf_virtual_guy.tres")
+		ui_player_anim.sprite_frames = Assets.tres_virtual_guy
 		ui_player_name.text = "Virtual Guy"
 
 	ui_player_anim.play("Walk")
@@ -133,11 +123,13 @@ func _on_player_item_clicked(player_type : int):
 
 
 func _play_button_down_sound():
-	get_tree().get_first_node_in_group("audio_mngr").call("play_button_down")
+	sound_player.stream = Assets.a_button_down
+	sound_player.play()
 	
 	
 func _play_button_hover_sound():
-	get_tree().get_first_node_in_group("audio_mngr").call("play_button_hover")
+	sound_player.stream = Assets.a_button_hover
+	sound_player.play()
 
 
 func _on_left_switch_pressed():
@@ -155,17 +147,13 @@ func _on_back_button_pressed():
 	queue_free()
 
 
-func _on_back_button_mouse_entered():
-	_play_button_hover_sound()
-
-
 # Uesd for pass color to level's transition from current transition
 var rg_color : Color = Color.GRAY
 
 func _on_start_button_pressed():
 	seed(randi())
 	_play_button_down_sound()
-	var transition_scene = tscn_transition.instantiate()
+	var transition_scene = Assets.tscn_transition.instantiate()
 	var rng = RandomNumberGenerator.new()
 	rg_color = Color.from_hsv(
 			rng.randf_range(0.4, 0.6),
@@ -177,14 +165,9 @@ func _on_start_button_pressed():
 	
 	
 func _create_game_level():
-	var level_scene = tscn_level.instantiate()
+	var level_scene = Assets.tscn_level.instantiate()
 	level_scene.call("init", selected_player_type, selected_map_type)
 	level_scene.call("init_transition", rg_color)
 	get_tree().get_first_node_in_group("main").add_child(level_scene)
 	get_tree().get_first_node_in_group("main_menu").queue_free()
-	get_tree().get_first_node_in_group("audio_mngr").call("mute")
-
-
-func _on_start_button_mouse_entered():
-	_play_button_hover_sound()
 	

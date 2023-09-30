@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddu7huicmgo7r"]
+[gd_scene load_steps=10 format=3 uid="uid://ddu7huicmgo7r"]
 
 [ext_resource type="Script" path="res://scenes/ui/credits.gd" id="1_ebq7n"]
+[ext_resource type="AudioStream" uid="uid://bxodhr4xud0hs" path="res://assets/sounds/button_down.mp3" id="2_sjy07"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wcnfv"]
 bg_color = Color(0, 0, 0, 0.705882)
@@ -214,5 +215,8 @@ size_flags_horizontal = 4
 libraries = {
 "": SubResource("AnimationLibrary_bahpr")
 }
+
+[node name="SoundPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_sjy07")
 
 [connection signal="button_down" from="Background" to="." method="_on_background_button_down"]

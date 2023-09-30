@@ -1,17 +1,7 @@
 extends Node2D
 
-const Enums = preload("res://scenes/mngr/enums.gd")
-#
-const tscn_ninja_frog = preload("res://scenes/character/player/ninja_frog/ninja_frog.tscn")
-const tscn_mask_dude = preload("res://scenes/character/player/mask_dude/mask_dude.tscn")
-const tscn_pink_man = preload("res://scenes/character/player/pink_man/pink_man.tscn")
-const tscn_virtual_guy = preload("res://scenes/character/player/virtual_guy/virtual_guy.tscn")
-#
-const tscn_map_forest = preload("res://scenes/map/map_forest.tscn")
-const tscn_map_cave = preload("res://scenes/map/map_cave.tscn")
-const tscn_map_desert = preload("res://scenes/map/map_desert.tscn")
-const tscn_map_tundra = preload("res://scenes/map/map_tundra.tscn")
-const tscn_map_challenge = preload("res://scenes/map/map_challenge.tscn")
+const Enums = preload("res://scenes/common/enums.gd")
+const Assets = preload("res://scenes/common/assets.gd")
 
 var player_type : Enums.EPlayer = Enums.EPlayer.NinjaFrog
 var map_type : Enums.EMap = Enums.EMap.Forest
@@ -30,24 +20,24 @@ func init_transition(in_color : Color):
 
 func _ready():
 	if map_type == Enums.EMap.Forest:
-		add_child(tscn_map_forest.instantiate())
+		add_child(Assets.tscn_map_forest.instantiate())
 	elif map_type == Enums.EMap.Cave:
-		add_child(tscn_map_cave.instantiate())
+		add_child(Assets.tscn_map_cave.instantiate())
 	elif map_type == Enums.EMap.Tundra:
-		add_child(tscn_map_tundra.instantiate())
+		add_child(Assets.tscn_map_tundra.instantiate())
 	elif map_type == Enums.EMap.Desert:
-		add_child(tscn_map_desert.instantiate())
+		add_child(Assets.tscn_map_desert.instantiate())
 	elif map_type == Enums.EMap.Challenge:
-		add_child(tscn_map_challenge.instantiate())
+		add_child(Assets.tscn_map_challenge.instantiate())
 	
 	if player_type == Enums.EPlayer.NinjaFrog:
-		player = tscn_ninja_frog.instantiate()
+		player = Assets.tscn_ninja_frog.instantiate()
 	elif player_type == Enums.EPlayer.MaskDude:
-		player = tscn_mask_dude.instantiate()
+		player = Assets.tscn_mask_dude.instantiate()
 	elif player_type == Enums.EPlayer.PinkMan:
-		player = tscn_pink_man.instantiate()
+		player = Assets.tscn_pink_man.instantiate()
 	elif player_type == Enums.EPlayer.VirtualGuy:
-		player = tscn_virtual_guy.instantiate()
+		player = Assets.tscn_virtual_guy.instantiate()
 
 	if (player == null):
 		print_debug("Player type error: ", player_type)

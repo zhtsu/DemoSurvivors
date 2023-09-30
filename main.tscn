@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://dnpucq324a4kl"]
 
-[ext_resource type="PackedScene" uid="uid://bukknhyre2xfa" path="res://scenes/mngr/audio_mngr.tscn" id="2_3o1xx"]
+[ext_resource type="Script" path="res://main.gd" id="1_y1odt"]
 [ext_resource type="PackedScene" uid="uid://svdqnhmua150" path="res://scenes/ui/main_menu.tscn" id="3_0lsp7"]
 [ext_resource type="PackedScene" uid="uid://l13fitcsct4h" path="res://scenes/ui/viewport_effect.tscn" id="3_0syhx"]
 
 [node name="Main" type="Node" groups=["main"]]
-
-[node name="AudioMngr" parent="." instance=ExtResource("2_3o1xx")]
+script = ExtResource("1_y1odt")
 
 [node name="MainMenu" parent="." instance=ExtResource("3_0lsp7")]
 
-[node name="Effect" parent="." instance=ExtResource("3_0syhx")]
+[node name="ViewportEffect" parent="." instance=ExtResource("3_0syhx")]
+visible = false

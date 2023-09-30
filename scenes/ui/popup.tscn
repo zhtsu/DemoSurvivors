@@ -68,18 +68,11 @@ _data = {
 "RESET": SubResource("Animation_hcojl")
 }
 
-[node name="Popup" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Popup" type="CanvasLayer"]
 script = ExtResource("1_br5ca")
 metadata/_edit_group_ = true
 
 [node name="Background" type="Button" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -139,9 +132,11 @@ libraries = {
 "": SubResource("AnimationLibrary_m452b")
 }
 
+[node name="SoundPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="button_down" from="Background" to="." method="_on_background_button_down"]
 [connection signal="button_down" from="Background/ColorRect/VBoxContainer/HBoxContainer/ConfirmButton" to="." method="_on_confirm_button_button_down"]
-[connection signal="mouse_entered" from="Background/ColorRect/VBoxContainer/HBoxContainer/ConfirmButton" to="." method="_on_confirm_button_mouse_entered"]
+[connection signal="mouse_entered" from="Background/ColorRect/VBoxContainer/HBoxContainer/ConfirmButton" to="." method="_play_button_hover_sound"]
 [connection signal="button_down" from="Background/ColorRect/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_button_down"]
-[connection signal="mouse_entered" from="Background/ColorRect/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_mouse_entered"]
+[connection signal="mouse_entered" from="Background/ColorRect/VBoxContainer/HBoxContainer/CancelButton" to="." method="_play_button_hover_sound"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

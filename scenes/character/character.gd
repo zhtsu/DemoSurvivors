@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Character
 
-const Enums = preload("res://scenes/mngr/enums.gd")
+const Enums = preload("res://scenes/common/enums.gd")
 #
 const ECharacterState = Enums.EState
 const ECharacterDirection = Enums.EDirection

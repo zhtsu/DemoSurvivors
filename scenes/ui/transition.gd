@@ -3,7 +3,7 @@ extends CanvasLayer
 
 signal finished
 
-const Enums = preload("res://scenes/mngr/enums.gd")
+const Enums = preload("res://scenes/common/enums.gd")
 
 @export var type : Enums.ETransitionDirection = Enums.ETransitionDirection.Normal
 @export var color : Color = Color.DARK_GRAY
