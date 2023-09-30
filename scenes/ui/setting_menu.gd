@@ -75,12 +75,9 @@ func _on_sounds_button_button_down():
 func _on_background_button_down():
 	_play_button_down_sound()
 	$AnimationPlayer.play("Exit")
-
-
-func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "Exit":
-		_save_updated_settings()
-		queue_free()
+	await $AnimationPlayer.animation_finished
+	_save_updated_settings()
+	queue_free()
 		
 		
 func _save_updated_settings():
@@ -117,3 +114,4 @@ func _on_effect_selector_item_selected(index):
 
 func _on_lang_selector_item_selected(index):
 	setting_dict["Language"] = index
+	

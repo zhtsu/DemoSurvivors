@@ -151,11 +151,8 @@ func _on_right_switch_pressed():
 func _on_back_button_pressed():
 	_play_button_down_sound()
 	$AnimationPlayer.play("Exit")
-
-
-func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "Exit":
-		queue_free()
+	await $AnimationPlayer.animation_finished
+	queue_free()
 
 
 func _on_back_button_mouse_entered():

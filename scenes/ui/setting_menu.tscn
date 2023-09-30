@@ -199,4 +199,3 @@ libraries = {
 [connection signal="button_down" from="Background/ColorRect/VBoxContainer/UpBox/SoundsButton" to="." method="_on_sounds_button_button_down"]
 [connection signal="item_selected" from="Background/ColorRect/VBoxContainer/DownBox/LangBox/LangSelector" to="." method="_on_lang_selector_item_selected"]
 [connection signal="item_selected" from="Background/ColorRect/VBoxContainer/DownBox/EffectBox/EffectSelector" to="." method="_on_effect_selector_item_selected"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

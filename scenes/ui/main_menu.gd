@@ -4,14 +4,21 @@ const tscn_setting_menu = preload("res://scenes/ui/setting_menu.tscn")
 const tscn_popup = preload("res://scenes/ui/popup.tscn")
 const tscn_pick_player = preload("res://scenes/ui/pick_player.tscn")
 const tscn_credits = preload("res://scenes/ui/credits.tscn")
+const tscn_collection = preload("res://scenes/ui/collection.tscn")
 # data
 const DEFAULT_SETTINGS_FILE_PATH = "res://assets/data/default_settings.json"
 const SETTINGS_USER_DATA_PATH = "user://settings.json"
 
+
 var setting_dict : Dictionary
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
+	# Create and add click mask to $GithubButton
+	$GithubButton.texture_click_mask.create_from_image_alpha(
+		$GithubButton.texture_normal.get_image()
+	)
+	
 	$VirtualGuy.play("Idle")
 	$MaskDude.play("Idle")
 	$PinkMan.play("Idle")
@@ -29,7 +36,6 @@ func _ready():
 		print_debug("Success to create local settings data file")
 	
 	var local_settings_file = FileAccess.open(SETTINGS_USER_DATA_PATH, FileAccess.READ)
-	print_debug(local_settings_file.get_as_text())
 	setting_dict = JSON.parse_string(local_settings_file.get_as_text())
 	local_settings_file.close()
 	
@@ -76,6 +82,8 @@ func _on_credits_button_button_down():
 	
 func _on_collection_button_button_down():
 	_play_button_down_sound()
+	var collection_scene = tscn_collection.instantiate()
+	add_child(collection_scene)
 	
 	
 func quit_game():
@@ -103,3 +111,8 @@ func _play_button_down_sound():
 	
 func _play_button_hover_sound():
 	get_tree().get_first_node_in_group("audio_mngr").call("play_button_hover")
+
+
+func _on_github_button_button_down():
+	_play_button_down_sound()
+	OS.shell_open("https://github.com/zhtsu/DemoSurvivors")

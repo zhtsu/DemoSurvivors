@@ -45,17 +45,10 @@ func _ready():
 func _on_background_button_down():
 	_play_button_down_sound()
 	$AnimationPlayer.play("Exit")
-
-
-func _on_animation_player_animation_finished(anim_name):
-	if anim_name == "Exit":
-		queue_free()
+	await $AnimationPlayer.animation_finished
+	queue_free()
 	
 	
 func _play_button_down_sound():
 	get_tree().get_first_node_in_group("audio_mngr").call("play_button_down")
 
-
-func _on_back():
-	_play_button_down_sound()
-	$AnimationPlayer.play("Exit")

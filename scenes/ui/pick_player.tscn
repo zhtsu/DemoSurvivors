@@ -292,7 +292,6 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8q86b")
 text = "Start"
 
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="pressed" from="Control/Panel/VBoxContainer/HBoxContainer/LeftSwitch" to="." method="_on_left_switch_pressed"]
 [connection signal="pressed" from="Control/Panel/VBoxContainer/HBoxContainer/RightSwitch" to="." method="_on_right_switch_pressed"]
 [connection signal="mouse_entered" from="Control/Panel/LeftBox/BackButton" to="." method="_on_back_button_mouse_entered"]

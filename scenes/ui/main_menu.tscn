@@ -7,7 +7,6 @@
 [ext_resource type="SpriteFrames" uid="uid://olstouu8ajg" path="res://tress/sf_ninja_frog.tres" id="5_wt5lp"]
 [ext_resource type="Texture2D" uid="uid://t0spyes74828" path="res://assets/textures/icons/github_corner.svg" id="6_rvwkx"]
 [ext_resource type="Texture2D" uid="uid://bvevpwfw2opvv" path="res://assets/textures/icons/github_corner_white.svg" id="7_e6l70"]
-[ext_resource type="Script" path="res://scenes/ui/github_button.gd" id="8_2800d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_25jgu"]
 font_size = 80
@@ -15,6 +14,8 @@ shadow_size = 20
 shadow_color = Color(0.196078, 0.196078, 0.196078, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fsbkh"]
+
+[sub_resource type="BitMap" id="BitMap_od42s"]
 
 [node name="MainMenu" type="CanvasLayer" groups=["main_menu"]]
 script = ExtResource("1_lgfqu")
@@ -118,7 +119,7 @@ scale = Vector2(2, 2)
 texture_normal = ExtResource("6_rvwkx")
 texture_pressed = ExtResource("6_rvwkx")
 texture_hover = ExtResource("7_e6l70")
-script = ExtResource("8_2800d")
+texture_click_mask = SubResource("BitMap_od42s")
 
 [connection signal="button_down" from="TextBox/MenuItems/PlayButton" to="." method="_on_start_button_button_down"]
 [connection signal="mouse_entered" from="TextBox/MenuItems/PlayButton" to="." method="_on_start_button_mouse_entered"]
@@ -130,4 +131,4 @@ script = ExtResource("8_2800d")
 [connection signal="mouse_entered" from="TextBox/MenuItems/CreditsButton" to="." method="_on_exit_button_mouse_entered"]
 [connection signal="button_down" from="TextBox/MenuItems/QuitButton" to="." method="_on_quit_button_button_down"]
 [connection signal="mouse_entered" from="TextBox/MenuItems/QuitButton" to="." method="_on_exit_button_mouse_entered"]
-[connection signal="button_down" from="GithubButton" to="GithubButton" method="_on_button_down"]
+[connection signal="button_down" from="GithubButton" to="." method="_on_github_button_button_down"]
