@@ -155,11 +155,17 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true
 
-[node name="PlayerList" type="HBoxContainer" parent="Control/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 64)
+[node name="Scroller" type="ScrollContainer" parent="Control/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 3
+
+[node name="PlayerList" type="HBoxContainer" parent="Control/Panel/VBoxContainer/Scroller"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
 
 [node name="HSeparator" type="HSeparator" parent="Control/Panel/VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)

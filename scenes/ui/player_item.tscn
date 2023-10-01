@@ -13,4 +13,4 @@ scale = Vector2(2, 2)
 sprite_frames = ExtResource("1_jfaul")
 animation = &"Idle"
 
-[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="button_down" from="." to="." method="_on_button_down"]

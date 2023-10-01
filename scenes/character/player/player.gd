@@ -2,19 +2,42 @@ extends Character
 
 class_name Player
 
+
+const Assets = preload("res://scenes/common/assets.gd")
+
+
+func _ready():
+	_init_character()
+	$AnimatedSprite2D.play("Idle")
+	$EffectAnimator.hide()
+	appearing()
+	
+
+func _process(_delta):
+	_update_player_animation()
+
+
+func init(player_data : Dictionary):
+	var sprite_frames_path = Assets.dir_tres + player_data["sprite_frames_tres"] + ".tres"
+	var sprite_frames = load(sprite_frames_path)
+	$AnimatedSprite2D.sprite_frames = sprite_frames
+	character_name = player_data["name"]
+	physical_atk = player_data["physical_ATK"]
+	physical_def = player_data["physical_DEF"]
+	magical_atk = player_data["magical_DEF"]
+	magical_def = player_data["magical_DEF"]
+	physical_crit_bonus = player_data["physical_crit_bonus"]
+	physical_crit_prob = player_data["physical_crit_prob"]
+	magical_crit_bonus = player_data["magical_crit_bonus"]
+	magical_crit_prob = player_data["magical_crit_prob"]
+	
+
 func set_position_smoothing(enabled : bool = true):
 	$Camera2D.position_smoothing_enabled = enabled
 	
 
 func _physics_process(delta):
 	_update_move(delta)
-	
-
-func _init_player():
-	_init_character()
-	$AnimatedSprite2D.play("Idle")
-	$EffectAnimator.hide()
-	appearing()
 	
 	
 func appearing():
@@ -46,10 +69,6 @@ func _update_player_animation():
 		$AnimatedSprite2D.flip_h = false
 	elif direction == ECharacterDirection.Left:
 		$AnimatedSprite2D.flip_h = true
-
-
-func _update_player(_delta):
-	_update_player_animation()
 
 
 func _update_move(delta):

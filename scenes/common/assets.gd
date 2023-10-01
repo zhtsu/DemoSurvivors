@@ -1,6 +1,12 @@
 extends Node
 
 
+# File path
+const path_default_settings = "res://assets/data/default_settings.json"
+const path_player_table = "res://assets/data/player_table.csv"
+# Folder path
+const dir_tres = "res://tress/"
+const dir_player_actions = "res://scenes/character/player/actions/"
 # Scene
 const tscn_setting_menu = preload("res://scenes/ui/setting_menu.tscn")
 const tscn_popup = preload("res://scenes/ui/popup.tscn")
@@ -10,11 +16,8 @@ const tscn_collection = preload("res://scenes/ui/collection.tscn")
 const tscn_level = preload("res://scenes/map/level.tscn")
 const tscn_transition = preload("res://scenes/ui/transition.tscn")
 const tscn_player_item = preload("res://scenes/ui/player_item.tscn")
+const tscn_player = preload("res://scenes/character/player/player.tscn")
 const tscn_map_item = preload("res://scenes/ui/map_item.tscn")
-const tscn_ninja_frog = preload("res://scenes/character/player/ninja_frog/ninja_frog.tscn")
-const tscn_mask_dude = preload("res://scenes/character/player/mask_dude/mask_dude.tscn")
-const tscn_pink_man = preload("res://scenes/character/player/pink_man/pink_man.tscn")
-const tscn_virtual_guy = preload("res://scenes/character/player/virtual_guy/virtual_guy.tscn")
 const tscn_map_forest = preload("res://scenes/map/map_forest.tscn")
 const tscn_map_cave = preload("res://scenes/map/map_cave.tscn")
 const tscn_map_desert = preload("res://scenes/map/map_desert.tscn")

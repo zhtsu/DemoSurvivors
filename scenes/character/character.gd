@@ -9,6 +9,19 @@ const ECharacterDirection = Enums.EDirection
 
 @export var character_name = "角色名称"
 @export var speed:int = 1
+
+@export var physical_atk = 0.0
+@export var magical_atk = 0.0
+
+@export var physical_def = 0.0
+@export var magical_def = 0.0
+# 0.0 ~ 1.0
+@export var physical_crit_bonus = 0.0
+@export var magical_crit_bonus = 0.0
+# 0.0 ~ 1.0
+@export var physical_crit_prob = 0.0
+@export var magical_crit_prob = 0.0
+
 @export var spawn_position = Vector2(0, 0):
 	set = _set_spawn_position
 

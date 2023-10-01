@@ -17,20 +17,6 @@ enum EDirection
 	Right
 }
 
-enum EEnemySize
-{
-	Normal,
-	Large,
-	Huge
-}
-
-enum EPlayer
-{
-	NinjaFrog,
-	MaskDude,
-	PinkMan,
-	VirtualGuy
-}
 
 enum EMap
 {

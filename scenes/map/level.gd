@@ -3,13 +3,14 @@ extends Node2D
 const Enums = preload("res://scenes/common/enums.gd")
 const Assets = preload("res://scenes/common/assets.gd")
 
-var player_type : Enums.EPlayer = Enums.EPlayer.NinjaFrog
-var map_type : Enums.EMap = Enums.EMap.Forest
-var player : Player
+var player_data : Dictionary
+var active_player_idx = 0
+var active_map_type : Enums.EMap = Enums.EMap.Forest
+var active_player : Player
 
-func init(in_player_type : Enums.EPlayer, in_map_type : Enums.EMap):
-	player_type = in_player_type
-	map_type = in_map_type
+func init(in_player_idx : int, in_map_type : Enums.EMap):
+	active_player_idx = in_player_idx
+	active_map_type = in_map_type
 
 
 func init_transition(in_color : Color):
@@ -19,35 +20,29 @@ func init_transition(in_color : Color):
 
 
 func _ready():
-	if map_type == Enums.EMap.Forest:
+	if active_map_type == Enums.EMap.Forest:
 		add_child(Assets.tscn_map_forest.instantiate())
-	elif map_type == Enums.EMap.Cave:
+	elif active_map_type == Enums.EMap.Cave:
 		add_child(Assets.tscn_map_cave.instantiate())
-	elif map_type == Enums.EMap.Tundra:
+	elif active_map_type == Enums.EMap.Tundra:
 		add_child(Assets.tscn_map_tundra.instantiate())
-	elif map_type == Enums.EMap.Desert:
+	elif active_map_type == Enums.EMap.Desert:
 		add_child(Assets.tscn_map_desert.instantiate())
-	elif map_type == Enums.EMap.Challenge:
+	elif active_map_type == Enums.EMap.Challenge:
 		add_child(Assets.tscn_map_challenge.instantiate())
 	
-	if player_type == Enums.EPlayer.NinjaFrog:
-		player = Assets.tscn_ninja_frog.instantiate()
-	elif player_type == Enums.EPlayer.MaskDude:
-		player = Assets.tscn_mask_dude.instantiate()
-	elif player_type == Enums.EPlayer.PinkMan:
-		player = Assets.tscn_pink_man.instantiate()
-	elif player_type == Enums.EPlayer.VirtualGuy:
-		player = Assets.tscn_virtual_guy.instantiate()
+	active_player = Assets.tscn_player.instantiate()
+	active_player.init(player_data)
 
-	if (player == null):
-		print_debug("Player type error: ", player_type)
+	if (active_player == null):
+		print_debug("Player type error: ", active_player_idx)
 	else:
-		player.spawn_position = Vector2(576, 324)
-		player.call("set_position_smoothing", false)
-		add_child(player)
+		active_player.spawn_position = Vector2(576, 324)
+		active_player.call("set_position_smoothing", false)
+		add_child(active_player)
 	
 func _hide_transition():
 	$Transition.hide()
-	if (player != null):
-		player.call("set_position_smoothing", true)
+	if (active_player != null):
+		active_player.call("set_position_smoothing", true)
 
