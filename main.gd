@@ -1,7 +1,7 @@
 extends Node
 
-const Assets = preload("res://scenes/common/assets.gd")
-const Methods = preload("res://scenes/common/methods.gd")
+const Assets = preload("res://scenes/global/assets.gd")
+const Methods = preload("res://scenes/global/methods.gd")
 
 var setting_dict : Dictionary
 var player_data_list : Array

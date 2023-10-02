@@ -3,7 +3,7 @@ extends Character
 class_name Enemy
 
 
-const Assets = preload("res://scenes/common/assets.gd")
+const Assets = preload("res://scenes/global/assets.gd")
 
 var living_map = Enums.EMap.Forest
 var enemy_size = Enums.EnemySize.Normal
@@ -60,3 +60,7 @@ func _update_enemy_flip():
 	
 	if direction != previous_direction:
 		scale.x *= -1
+
+
+func _on_hitbox_body_entered(body):
+	pass # Replace with function body.

@@ -1,8 +1,8 @@
 extends Node2D
 
-const Enums = preload("res://scenes/common/enums.gd")
-const Assets = preload("res://scenes/common/assets.gd")
-const Methods = preload("res://scenes/common/methods.gd")
+const Enums = preload("res://scenes/global/enums.gd")
+const Assets = preload("res://scenes/global/assets.gd")
+const Methods = preload("res://scenes/global/methods.gd")
 
 var player_data : Dictionary
 var active_player_idx = 0

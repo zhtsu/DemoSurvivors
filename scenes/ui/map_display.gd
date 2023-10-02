@@ -1,7 +1,7 @@
 extends Control
 
-const Enums = preload("res://scenes/common/enums.gd")
-const Assets = preload("res://scenes/common/assets.gd")
+const Enums = preload("res://scenes/global/enums.gd")
+const Assets = preload("res://scenes/global/assets.gd")
 
 @export var map_type : Enums.EMap = Enums.EMap.Forest
 

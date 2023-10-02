@@ -5,9 +5,14 @@
 [ext_resource type="SpriteFrames" uid="uid://cyf75cipcs1wy" path="res://tress/sf_chicken.tres" id="3_tus4h"]
 
 [node name="Enemy" groups=["enemy"] instance=ExtResource("1_vsqam")]
+collision_layer = 4
+collision_mask = 7
 script = ExtResource("2_21x2x")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("3_tus4h")
 animation = &"Walk"
 frame_progress = 0.509783
+
+[node name="HurtBox" parent="." index="2"]
+collision_layer = 128

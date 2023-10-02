@@ -1,8 +1,8 @@
 extends CanvasLayer
 
 
-const Enums = preload("res://scenes/common/enums.gd")
-const Assets = preload("res://scenes/common/assets.gd")
+const Enums = preload("res://scenes/global/enums.gd")
+const Assets = preload("res://scenes/global/assets.gd")
 
 const MapItemData = {
 	Enums.EMap.Forest:    Assets.tex_icon_map_forest,

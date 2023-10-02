@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 
-const Assets = preload("res://scenes/common/assets.gd")
+const Assets = preload("res://scenes/global/assets.gd")
 
 @onready var music_player = $MusicPlayer2D
 @onready var sound_player = $SoundPlayer2D

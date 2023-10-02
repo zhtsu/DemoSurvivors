@@ -1,9 +1,11 @@
-[gd_scene load_steps=37 format=3 uid="uid://dxx2elvn8s6am"]
+[gd_scene load_steps=38 format=3 uid="uid://dxx2elvn8s6am"]
 
 [ext_resource type="Script" path="res://scenes/character/character.gd" id="1_htsf6"]
 [ext_resource type="Texture2D" uid="uid://o15w0120jtfw" path="res://assets/textures/character/player/ninja_frog/ninja_frog_damage_32x32.png" id="2_tnsv4"]
 [ext_resource type="Texture2D" uid="uid://bogo67r4r3i78" path="res://assets/textures/character/player/ninja_frog/ninja_frog_idle_32x32.png" id="3_mum6d"]
 [ext_resource type="Texture2D" uid="uid://dvnu0yef01425" path="res://assets/textures/character/player/ninja_frog/ninja_frog_walk_32x32.png" id="4_r4q1k"]
+[ext_resource type="Shape2D" uid="uid://nbnjlrf0xk3t" path="res://tress/rcs_character.tres" id="5_ch6dq"]
+[ext_resource type="PackedScene" uid="uid://dc682hpft1so" path="res://scenes/utility/hurt_box.tscn" id="7_d70sc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yidut"]
 atlas = ExtResource("2_tnsv4")
@@ -243,11 +245,11 @@ animations = [{
 "speed": 20.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_46gox"]
-size = Vector2(20, 24)
-
 [node name="Character" type="CharacterBody2D" groups=["character"]]
 scale = Vector2(0.5, 0.5)
+collision_layer = 0
+collision_mask = 0
+motion_mode = 1
 script = ExtResource("1_htsf6")
 metadata/_edit_group_ = true
 
@@ -257,4 +259,8 @@ animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
-shape = SubResource("RectangleShape2D_46gox")
+shape = ExtResource("5_ch6dq")
+
+[node name="HurtBox" parent="." instance=ExtResource("7_d70sc")]
+visible = false
+position = Vector2(0, 4)

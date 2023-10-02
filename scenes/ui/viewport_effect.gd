@@ -1,9 +1,9 @@
 extends CanvasLayer
 
 
-const Enums = preload("res://scenes/common/enums.gd")
+const Enums = preload("res://scenes/global/enums.gd")
 const ViewportEffectType = Enums.EViewportEffect
-const Assets = preload("res://scenes/common/assets.gd")
+const Assets = preload("res://scenes/global/assets.gd")
 
 
 func active_viewport_effect(viewport_effect_type : int):

@@ -1646,4 +1646,5 @@ texture = ExtResource("3_6mbwi")
 
 [resource]
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 6
 sources/3 = SubResource("TileSetAtlasSource_otvkv")

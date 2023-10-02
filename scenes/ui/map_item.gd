@@ -1,6 +1,6 @@
 extends Button
 
-const Enums = preload("res://scenes/common/enums.gd")
+const Enums = preload("res://scenes/global/enums.gd")
 
 signal clicked(map_type : Enums.EMap)
 

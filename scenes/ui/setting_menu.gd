@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const Assets = preload("res://scenes/common/assets.gd")
+const Assets = preload("res://scenes/global/assets.gd")
 
 var setting_dict : Dictionary
 
