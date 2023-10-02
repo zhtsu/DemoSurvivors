@@ -1,7 +1,7 @@
 extends Node
 
 
-static func csv_to_array(csv_file_path : String, out_list : Array):
+static func csv_to_array(csv_file_path : String, out_list : Array) -> void:
 	out_list.clear()
 	var csv_file = FileAccess.open(csv_file_path, FileAccess.READ)
 	# Generate dictionary from table data

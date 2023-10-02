@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1etet1gv6g34"]
 
 [ext_resource type="Script" path="res://scenes/ui/map_display.gd" id="1_rugvl"]
-[ext_resource type="PackedScene" uid="uid://ddtsttq2i110q" path="res://scenes/map/map_forest.tscn" id="2_ef31j"]
+[ext_resource type="PackedScene" uid="uid://ddtsttq2i110q" path="res://scenes/level/map_forest.tscn" id="2_ef31j"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ntvfb"]
 viewport_path = NodePath("SubViewport")

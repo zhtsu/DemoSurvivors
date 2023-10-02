@@ -6,7 +6,6 @@
 
 [node name="Enemy" groups=["enemy"] instance=ExtResource("1_vsqam")]
 script = ExtResource("2_21x2x")
-size = 0
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("3_tus4h")

@@ -17,6 +17,19 @@ enum EDirection
 	Right
 }
 
+enum EnemySize
+{
+	Normal,
+	Large,
+	Huge
+}
+
+enum EnemyType
+{
+	Common,
+	Rare,
+	Boss
+}
 
 enum EMap
 {

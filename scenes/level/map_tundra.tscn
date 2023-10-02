@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b5xjucxmneq5m"]
 
-[ext_resource type="PackedScene" uid="uid://okv6njd8xjaa" path="res://scenes/map/map.tscn" id="1_8siir"]
+[ext_resource type="PackedScene" uid="uid://okv6njd8xjaa" path="res://scenes/level/map.tscn" id="1_8siir"]
 [ext_resource type="TileSet" uid="uid://v1vvxcki7lpb" path="res://tress/ts_map_tundra.tres" id="1_mqfjs"]
 
 [node name="MapTundra" instance=ExtResource("1_8siir")]

@@ -3,6 +3,8 @@ extends Character
 class_name Player
 
 
+signal damage(causer : Enemy, ability : Ability)
+
 const Assets = preload("res://scenes/common/assets.gd")
 
 
@@ -22,14 +24,15 @@ func init(player_data : Dictionary):
 	var sprite_frames = load(sprite_frames_path)
 	$AnimatedSprite2D.sprite_frames = sprite_frames
 	character_name = player_data["name"]
-	physical_atk = player_data["physical_ATK"]
-	physical_def = player_data["physical_DEF"]
-	magical_atk = player_data["magical_DEF"]
-	magical_def = player_data["magical_DEF"]
-	physical_crit_bonus = player_data["physical_crit_bonus"]
-	physical_crit_prob = player_data["physical_crit_prob"]
-	magical_crit_bonus = player_data["magical_crit_bonus"]
-	magical_crit_prob = player_data["magical_crit_prob"]
+	speed = int(player_data["speed"])
+	physical_atk = float(player_data["physical_ATK"])
+	physical_def = float(player_data["physical_DEF"])
+	magical_atk = float(player_data["magical_DEF"])
+	magical_def = float(player_data["magical_DEF"])
+	physical_crit_bonus = float(player_data["physical_crit_bonus"])
+	physical_crit_prob = float(player_data["physical_crit_prob"])
+	magical_crit_bonus = float(player_data["magical_crit_bonus"])
+	magical_crit_prob = float(player_data["magical_crit_prob"])
 	
 
 func set_position_smoothing(enabled : bool = true):
@@ -99,7 +102,7 @@ func _update_move(delta):
 		direction = ECharacterDirection.Left
 		
 	move_and_slide()
-
+	CharacterBody2D
 
 func _on_effect_animator_animation_finished():
 	state = ECharacterState.Idle

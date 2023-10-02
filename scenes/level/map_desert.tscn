@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cnuykgphlsujm"]
 
 [ext_resource type="TileSet" uid="uid://dflo26yrb6iec" path="res://tress/ts_map_desert.tres" id="1_2ugaa"]
-[ext_resource type="PackedScene" uid="uid://okv6njd8xjaa" path="res://scenes/map/map.tscn" id="1_4bvxc"]
+[ext_resource type="PackedScene" uid="uid://okv6njd8xjaa" path="res://scenes/level/map.tscn" id="1_4bvxc"]
 
 [node name="MapDesert" instance=ExtResource("1_4bvxc")]
 tile_set = ExtResource("1_2ugaa")
