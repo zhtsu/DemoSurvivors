@@ -4,15 +4,9 @@ extends CanvasLayer
 const Enums = preload("res://scenes/global/enums.gd")
 const Assets = preload("res://scenes/global/assets.gd")
 
-const MapItemData = {
-	Enums.EMap.Forest:    Assets.tex_icon_map_forest,
-	Enums.EMap.Cave:      Assets.tex_icon_map_cave,
-	Enums.EMap.Desert:    Assets.tex_icon_map_desert,
-	Enums.EMap.Tundra:    Assets.tex_icon_map_tundra,
-	Enums.EMap.Challenge: Assets.tex_icon_map_challenge
-}
-
 var player_data_list : Array
+var enemy_data_list : Array
+var map_data_list : Array
 var max_player_count = 0
 var selected_player_idx = 0
 var selected_map_type = Enums.EMap.Forest
@@ -55,10 +49,12 @@ func _ready():
 		ui_player_name.text = "Character"
 	
 	# Init map items
-	for map_item_key in MapItemData:
+	for map_data in map_data_list:
 		var map_item = Assets.tscn_map_item.instantiate()
-		map_item.init_map_item(Enums.EMap.keys()[map_item_key], MapItemData[map_item_key])
-		map_item.type = map_item_key
+		map_item.init_map_item(
+			map_data["name"],
+			Color.from_string(map_data["theme_color"], Color.DARK_GRAY))
+		map_item.type = Enums.EMap.get(map_data["name"])
 		map_item.connect("clicked", _on_map_item_clicked)
 		map_item.connect("mouse_entered", _play_button_hover_sound)
 		ui_map_list.add_child(map_item)

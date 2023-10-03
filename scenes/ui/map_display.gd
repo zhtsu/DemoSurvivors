@@ -17,16 +17,16 @@ func set_map_type(in_map_type : Enums.EMap):
 	
 	var map : Map
 	
-	if map_type == Enums.EMap.Forest:
-		map = Assets.tscn_map_forest.instantiate()
-	elif map_type == Enums.EMap.Desert:
-		map = Assets.tscn_map_desert.instantiate()
-	elif map_type == Enums.EMap.Tundra:
-		map = Assets.tscn_map_tundra.instantiate()
-	elif map_type == Enums.EMap.Challenge:
-		map = Assets.tscn_map_challenge.instantiate()
-	elif map_type == Enums.EMap.Cave:
-		map = Assets.tscn_map_cave.instantiate()
+	#if map_type == Enums.EMap.Forest:
+	#	map = Assets.tscn_map_forest.instantiate()
+	#elif map_type == Enums.EMap.Desert:
+	#	map = Assets.tscn_map_desert.instantiate()
+	#elif map_type == Enums.EMap.Tundra:
+	#	map = Assets.tscn_map_tundra.instantiate()
+	#elif map_type == Enums.EMap.Challenge:
+	#	map = Assets.tscn_map_challenge.instantiate()
+	#elif map_type == Enums.EMap.Cave:
+	#	map = Assets.tscn_map_cave.instantiate()
 		
-	map.as_background = true
-	$SubViewport.add_child(map)
+	#map.as_background = true
+	#$SubViewport.add_child(map)

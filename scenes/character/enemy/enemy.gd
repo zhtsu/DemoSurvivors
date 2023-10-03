@@ -5,7 +5,6 @@ class_name Enemy
 
 const Assets = preload("res://scenes/global/assets.gd")
 
-var living_map = Enums.EMap.Forest
 var enemy_size = Enums.EnemySize.Normal
 var enemy_type = Enums.EnemyType.Common
 # Used to save enemy ai logic callback function
@@ -23,8 +22,7 @@ func init(enemy_data : Dictionary):
 	$AnimatedSprite2D.sprite_frames = sprite_frames
 	if not enemy_data["gdscript"] == "null":
 		var gdscript_path = Assets.dir_enemy_actions + enemy_data["gdscript"] + ".gd"
-		action_script = load(gdscript_path) 
-	living_map = enemy_data["living_map"]
+		action_script = load(gdscript_path)
 	enemy_size = Enums.EnemySize.get(enemy_data["size"])
 	enemy_type = Enums.EnemyType.get(enemy_data["type"])
 	character_name = enemy_data["name"]
@@ -62,5 +60,5 @@ func _update_enemy_flip():
 		scale.x *= -1
 
 
-func _on_hitbox_body_entered(body):
+func _on_hitbox_body_entered(_sbody):
 	pass # Replace with function body.

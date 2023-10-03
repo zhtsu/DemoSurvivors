@@ -6,9 +6,9 @@ signal clicked(map_type : Enums.EMap)
 
 var type : Enums.EMap = Enums.EMap.Forest
 
-func init_map_item(in_text : String, in_icon : CompressedTexture2D):
+func init_map_item(in_text : String, in_color : Color):
 	$Title.text = in_text
-	icon = in_icon
+	$ColorRect.color = in_color
 
 func hide_selected_mask():
 	$SelectedMask.hide()

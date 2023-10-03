@@ -9,6 +9,9 @@ const Assets = preload("res://scenes/global/assets.gd")
 # Used for receive settings data form main.gd
 var setting_dict : Dictionary
 var player_data_list : Array
+var enemy_data_list : Array
+var map_data_list : Array
+
 
 func _ready():
 	# Create and add click mask to $GithubButton
@@ -39,6 +42,8 @@ func _on_start_button_button_down():
 	_play_button_down_sound()
 	var pick_player_scene = Assets.tscn_pick_player.instantiate()
 	pick_player_scene.player_data_list = player_data_list
+	pick_player_scene.enemy_data_list = enemy_data_list
+	pick_player_scene.map_data_list = map_data_list
 	add_child(pick_player_scene)
 
 

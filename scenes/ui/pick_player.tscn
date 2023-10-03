@@ -116,7 +116,6 @@ offset_bottom = 1296.0
 
 [node name="MapDisplay" parent="Control" instance=ExtResource("3_5fyng")]
 layout_mode = 1
-map_type = null
 
 [node name="Panel" type="Panel" parent="Control"]
 layout_mode = 1

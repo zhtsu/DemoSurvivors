@@ -21,17 +21,6 @@ func init_transition(in_color : Color):
 
 
 func _ready():
-	if active_map_type == Enums.EMap.Forest:
-		add_child(Assets.tscn_map_forest.instantiate())
-	elif active_map_type == Enums.EMap.Cave:
-		add_child(Assets.tscn_map_cave.instantiate())
-	elif active_map_type == Enums.EMap.Tundra:
-		add_child(Assets.tscn_map_tundra.instantiate())
-	elif active_map_type == Enums.EMap.Desert:
-		add_child(Assets.tscn_map_desert.instantiate())
-	elif active_map_type == Enums.EMap.Challenge:
-		add_child(Assets.tscn_map_challenge.instantiate())
-	
 	active_player = Assets.tscn_player.instantiate()
 	active_player.init(player_data)
 

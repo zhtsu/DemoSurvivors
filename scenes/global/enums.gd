@@ -14,7 +14,9 @@ enum EState
 enum EDirection
 {
 	Left,
-	Right
+	Right,
+	Up,
+	Down
 }
 
 enum EnemySize
@@ -37,7 +39,7 @@ enum EMap
 	Cave,
 	Desert,
 	Tundra,
-	Challenge
+	Tower
 }
 
 enum ETransitionDirection
@@ -51,4 +53,10 @@ enum EViewportEffect
 	Normal,
 	CRT,
 	Gray
+}
+
+enum ECameraEffect
+{
+	Expand,
+	Shock
 }

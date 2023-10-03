@@ -37,7 +37,7 @@ func init(player_data : Dictionary):
 	
 
 func set_position_smoothing(enabled : bool = true):
-	$Camera2D.position_smoothing_enabled = enabled
+	$EffectCamera.position_smoothing_enabled = enabled
 	
 
 func _physics_process(delta):

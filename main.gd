@@ -5,6 +5,8 @@ const Methods = preload("res://scenes/global/methods.gd")
 
 var setting_dict : Dictionary
 var player_data_list : Array
+var enemy_data_list : Array
+var map_data_list : Array
 
 func _ready():
 	var default_settings_file = FileAccess.open(Assets.path_default_settings, FileAccess.READ)
@@ -25,12 +27,16 @@ func _ready():
 	
 	# Read data from csv
 	Methods.csv_to_array(Assets.path_player_table, player_data_list)
+	Methods.csv_to_array(Assets.path_enemy_table, enemy_data_list)
+	Methods.csv_to_array(Assets.path_map_table, map_data_list)
 	
 	# Sync data to $MainMenu
-	$MainMenu.setting_dict = setting_dict
 	$MainMenu.player_data_list = player_data_list
+	$MainMenu.enemy_data_list = enemy_data_list
+	$MainMenu.map_data_list = map_data_list
+	$MainMenu.setting_dict = setting_dict
 	$MainMenu.call("_apply_settings")
-	
+	# Make sure the function below called after modifying setting_dict 
 	_apply_viewport_effect()
 
 

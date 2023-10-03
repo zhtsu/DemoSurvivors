@@ -22,7 +22,7 @@ var magical_crit_bonus : float = 0.0
 var physical_crit_prob : float = 0.0
 var magical_crit_prob : float = 0.0
 
-var spawn_position = Vector2(0, 0)
+@export var spawn_position = Vector2(0, 0)
 
 var direction = ECharacterDirection.Right
 var state = ECharacterState.Idle

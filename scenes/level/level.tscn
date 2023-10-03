@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://bid2d52bgbqyd"]
 
-[ext_resource type="Script" path="res://scenes/level/level.gd" id="1_yngdh"]
+[ext_resource type="Script" path="res://scenes/level/level.gd" id="1_gxo63"]
 [ext_resource type="PackedScene" uid="uid://dn0hu0t1ava4g" path="res://scenes/ui/transition.tscn" id="2_hfusr"]
 
 [node name="Level" type="Node2D"]
-script = ExtResource("1_yngdh")
+script = ExtResource("1_gxo63")
 metadata/_edit_vertical_guides_ = []
 
 [node name="Transition" parent="." instance=ExtResource("2_hfusr")]

@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://cif75kv071frb"]
+[gd_scene load_steps=5 format=3 uid="uid://cif75kv071frb"]
 
-[ext_resource type="Texture2D" uid="uid://btgmqguljhv0t" path="res://assets/textures/icons/icon_map_forest.png" id="1_2q6ai"]
 [ext_resource type="Script" path="res://scenes/ui/map_item.gd" id="2_clhsg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1q03c"]
@@ -39,10 +38,19 @@ custom_minimum_size = Vector2(0, 100)
 offset_right = 180.0
 offset_bottom = 100.0
 focus_mode = 0
-icon = ExtResource("1_2q6ai")
 icon_alignment = 1
 expand_icon = true
 script = ExtResource("2_clhsg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.14902, 0.160784, 0.176471, 1)
 
 [node name="SelectedMask" type="Panel" parent="."]
 visible = false

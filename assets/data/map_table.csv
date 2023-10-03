@@ -1,0 +1,6 @@
+name,uid,tile_set_tres,theme_color,enemies
+Forest,map-froest,ts_map_forest,#618264,enemy-chicken
+Cave,map-cave,ts_map_cave,#BCA37F,null
+Desert,map-desert,ts_map_desert,#FFCC70,null
+Tundra,map-tundra,ts_map_tundra,#AED2FF,null
+Tower,map-tower,ts_map_tower,#7D7C7C,null

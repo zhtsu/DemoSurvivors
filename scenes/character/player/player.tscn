@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://olrjehh0du76"]
+[gd_scene load_steps=21 format=3 uid="uid://olrjehh0du76"]
 
 [ext_resource type="PackedScene" uid="uid://dxx2elvn8s6am" path="res://scenes/character/character.tscn" id="1_utw0w"]
-[ext_resource type="Script" path="res://scenes/character/player/player.gd" id="2_odtqs"]
+[ext_resource type="Script" path="res://scenes/character/player/player.gd" id="2_kq2ef"]
 [ext_resource type="Texture2D" uid="uid://brl7r5vmfh3do" path="res://assets/textures/effects/player_appearing_96x96.png" id="3_jxbrf"]
 [ext_resource type="Texture2D" uid="uid://gkvjj2m055f4" path="res://assets/textures/effects/player_disappearing_96x96.png" id="4_jfddu"]
+[ext_resource type="PackedScene" uid="uid://qmmepafb2pjf" path="res://scenes/utility/effect_camera.tscn" id="5_wg3ay"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aib1i"]
 atlas = ExtResource("3_jxbrf")
@@ -120,27 +121,21 @@ animations = [{
 position = Vector2(254, 201)
 collision_layer = 2
 collision_mask = 5
-script = ExtResource("2_odtqs")
+script = ExtResource("2_kq2ef")
 
-[node name="EffectAnimator" type="AnimatedSprite2D" parent="." index="1"]
+[node name="HurtBox" parent="." index="2"]
+collision_layer = 32
+
+[node name="EffectAnimator" type="AnimatedSprite2D" parent="." index="3"]
 visible = false
 sprite_frames = SubResource("SpriteFrames_nilxs")
 animation = &"Disappearing"
 frame = 6
 frame_progress = 1.0
 
-[node name="Camera2D" type="Camera2D" parent="." index="3"]
-zoom = Vector2(3, 3)
-limit_left = 0
-limit_top = 0
-limit_right = 1152
-limit_bottom = 648
-limit_smoothed = true
+[node name="EffectCamera" parent="." index="4" instance=ExtResource("5_wg3ay")]
+zoom = Vector2(0.4, 0.4)
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
-editor_draw_limits = true
-
-[node name="HurtBox" parent="." index="4"]
-collision_layer = 32
 
 [connection signal="animation_finished" from="EffectAnimator" to="." method="_on_effect_animator_animation_finished"]
