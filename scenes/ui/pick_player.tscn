@@ -1,10 +1,12 @@
-[gd_scene load_steps=21 format=3 uid="uid://ctjk5gnnswmro"]
+[gd_scene load_steps=23 format=3 uid="uid://ctjk5gnnswmro"]
 
 [ext_resource type="Script" path="res://scenes/ui/pick_player.gd" id="1_qh2g4"]
 [ext_resource type="Texture2D" uid="uid://dtopvm2uv7k" path="res://assets/textures/icons/arrow_left.png" id="2_og7l6"]
 [ext_resource type="PackedScene" uid="uid://b1etet1gv6g34" path="res://scenes/ui/map_display.tscn" id="3_5fyng"]
 [ext_resource type="SpriteFrames" uid="uid://olstouu8ajg" path="res://tress/sf_ninja_frog.tres" id="3_sn5kd"]
 [ext_resource type="Texture2D" uid="uid://df6vyq1rsihq4" path="res://assets/textures/icons/arrow_right.png" id="4_sh1ib"]
+[ext_resource type="Texture2D" uid="uid://d2inox72gtl88" path="res://assets/textures/icons/start.png" id="6_dnbxj"]
+[ext_resource type="Texture2D" uid="uid://rkkh0qqadmoq" path="res://assets/textures/icons/back.png" id="6_owagj"]
 
 [sub_resource type="Animation" id="Animation_op22g"]
 resource_name = "Enter"
@@ -239,6 +241,8 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8q86b")
 text = "Back"
+icon = ExtResource("6_owagj")
+expand_icon = true
 
 [node name="Abilities" type="Panel" parent="Control/Panel/LeftBox"]
 layout_mode = 2
@@ -297,6 +301,9 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8q86b")
 text = "Start"
+icon = ExtResource("6_dnbxj")
+icon_alignment = 2
+expand_icon = true
 
 [node name="SoundPlayer2D" type="AudioStreamPlayer2D" parent="."]
 

@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://okv6njd8xjaa"]
+[gd_scene load_steps=5 format=3 uid="uid://okv6njd8xjaa"]
 
 [ext_resource type="Script" path="res://scenes/level/map.gd" id="1_f0ikg"]
+[ext_resource type="TileSet" uid="uid://dsovbbpvym37c" path="res://tress/ts_map_forest.tres" id="1_lmdkt"]
 [ext_resource type="PackedScene" uid="uid://qmmepafb2pjf" path="res://scenes/utility/effect_camera.tscn" id="2_uvsug"]
+[ext_resource type="PackedScene" uid="uid://olrjehh0du76" path="res://scenes/character/player/player.tscn" id="4_4yeo6"]
 
 [node name="Map" type="TileMap"]
+tile_set = ExtResource("1_lmdkt")
 format = 2
 script = ExtResource("1_f0ikg")
 
 [node name="AnimCamera" parent="." instance=ExtResource("2_uvsug")]
+
+[node name="Player" parent="." instance=ExtResource("4_4yeo6")]
