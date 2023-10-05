@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cif75kv071frb"]
+[gd_scene load_steps=6 format=3 uid="uid://cif75kv071frb"]
 
 [ext_resource type="Script" path="res://scenes/ui/map_item.gd" id="2_clhsg"]
 
@@ -17,7 +17,24 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SelectedMask/Border:modulate")
+tracks/0/path = NodePath("Border:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2whxv"]
+resource_name = "RESET"
+length = 1.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Border:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -29,14 +46,15 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b37ld"]
 _data = {
-"Blink": SubResource("Animation_1pkeh")
+"Blink": SubResource("Animation_1pkeh"),
+"RESET": SubResource("Animation_2whxv")
 }
 
 [node name="MapItem" type="Button"]
 clip_contents = true
-custom_minimum_size = Vector2(0, 100)
-offset_right = 180.0
-offset_bottom = 100.0
+custom_minimum_size = Vector2(180, 100)
+offset_right = 160.0
+offset_bottom = 80.0
 focus_mode = 0
 icon_alignment = 1
 expand_icon = true
@@ -53,21 +71,22 @@ mouse_filter = 2
 color = Color(0.14902, 0.160784, 0.176471, 1)
 
 [node name="SelectedMask" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="Border" type="Panel" parent="SelectedMask"]
+[node name="Border" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1q03c")
 
 [node name="Title" type="Label" parent="."]
@@ -87,4 +106,6 @@ libraries = {
 "": SubResource("AnimationLibrary_b37ld")
 }
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

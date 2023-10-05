@@ -1,7 +1,6 @@
 extends CanvasLayer
 
 
-const Enums = preload("res://scenes/global/enums.gd")
 const Assets = preload("res://scenes/global/assets.gd")
 
 var player_data_list : Array
@@ -9,16 +8,20 @@ var enemy_data_list : Array
 var map_data_list : Array
 var max_player_count = 0
 var selected_player_idx = 0
-var selected_map_type = Enums.EMap.Forest
+var selected_map_name = "Grass"
 
 @onready var sound_player = $SoundPlayer2D
 @onready var ui_player_anim = $Control/Panel/VBoxContainer/HBoxContainer/PlayerBox/PlayerAnim
 @onready var ui_player_name = $Control/Panel/VBoxContainer/PlayerName
 @onready var ui_player_list = $Control/Panel/VBoxContainer/Scroller/PlayerList
 @onready var ui_map_list = $Control/Panel/RightBox/Maps/VBoxContainer/ScrollContainer/MapItems
+@onready var ui_back_btn = $Control/Panel/LeftBox/BackButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var back_icon = Image.load_from_file(Assets.path_tex_start)
+	back_icon.flip_x()
+	ui_back_btn.icon = ImageTexture.create_from_image(back_icon)
 	$AnimationPlayer.play("Enter")
 	# Update player count
 	max_player_count = player_data_list.size()
@@ -54,9 +57,9 @@ func _ready():
 		map_item.init_map_item(
 			map_data["name"],
 			Color.from_string(map_data["theme_color"], Color.DARK_GRAY))
-		map_item.type = Enums.EMap.get(map_data["name"])
+		map_item.map_name = map_data["name"]
 		map_item.connect("clicked", _on_map_item_clicked)
-		map_item.connect("mouse_entered", _play_button_hover_sound)
+		map_item.connect("hovered", _on_map_item_hovered)
 		ui_map_list.add_child(map_item)
 	
 	var map_items = ui_map_list.get_children()
@@ -64,12 +67,23 @@ func _ready():
 		map_items[0].show_seleted_mask()
 		
 	
-func _on_map_item_clicked(map_type : Enums.EMap):
+func _on_map_item_clicked(map_name : String):
+	if selected_map_name == map_name:
+		return
+	
 	_play_button_down_sound()
-	selected_map_type = map_type
-	$Control/MapDisplay.call("set_map_type", map_type)
+	selected_map_name = map_name
+	$Control/MapDisplay.call("set_map_name", map_name)
+	
 	for item in ui_map_list.get_children():
-		item.hide_selected_mask()
+		item.call("hide_selected_mask")
+	
+	
+func _on_map_item_hovered(map_name : String):
+	if selected_map_name == map_name:
+		return
+		
+	_play_button_hover_sound()
 
 
 func _reset_selected_player():
@@ -146,14 +160,14 @@ func _on_start_button_pressed():
 			rng.randf_range(0.4, 0.6),
 			rng.randf_range(0.4, 0.6),
 			rng.randf_range(0.4, 0.6))
-	transition_scene.call("init", Enums.ETransitionDirection.Normal, rg_color)
+	transition_scene.call("init", false, rg_color)
 	transition_scene.connect("finished", _create_game_level)
 	add_child(transition_scene)
 	
 	
 func _create_game_level():
 	var level_scene = Assets.tscn_level.instantiate()
-	level_scene.call("init", selected_player_idx, selected_map_type)
+	level_scene.call("init", selected_player_idx, selected_map_name)
 	level_scene.call("init_transition", rg_color)
 	# Create player data dictionary what easy to use
 	level_scene.player_data = player_data_list[selected_player_idx]

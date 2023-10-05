@@ -6,11 +6,26 @@ const Assets = preload("res://scenes/global/assets.gd")
 @onready var music_player = $MusicPlayer2D
 @onready var sound_player = $SoundPlayer2D
 
+
 # Used for receive settings data form main.gd
 var setting_dict : Dictionary
 var player_data_list : Array
 var enemy_data_list : Array
 var map_data_list : Array
+
+
+func _pause_anim():
+	$VirtualGuy.pause()
+	$MaskDude.pause()
+	$PinkMan.pause()
+	$NinjaFrog.pause()
+	
+
+func _play_anim():
+	$VirtualGuy.play()
+	$MaskDude.play()
+	$PinkMan.play()
+	$NinjaFrog.play()
 
 
 func _ready():

@@ -36,3 +36,4 @@ func cal_crit_atk(base_atk, crit_prob, crit_bonus) -> Dictionary:
 	}
 	
 	return result
+	

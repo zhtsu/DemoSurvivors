@@ -6,39 +6,6 @@
 [ext_resource type="SpriteFrames" uid="uid://olstouu8ajg" path="res://tress/sf_ninja_frog.tres" id="3_sn5kd"]
 [ext_resource type="Texture2D" uid="uid://df6vyq1rsihq4" path="res://assets/textures/icons/arrow_right.png" id="4_sh1ib"]
 [ext_resource type="Texture2D" uid="uid://d2inox72gtl88" path="res://assets/textures/icons/start.png" id="6_dnbxj"]
-[ext_resource type="Texture2D" uid="uid://rkkh0qqadmoq" path="res://assets/textures/icons/back.png" id="6_owagj"]
-
-[sub_resource type="Animation" id="Animation_op22g"]
-resource_name = "Enter"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 648), Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_b1jxm"]
-resource_name = "Exit"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, 648)]
-}
 
 [sub_resource type="Animation" id="Animation_v5rbb"]
 resource_name = "RESET"
@@ -53,13 +20,45 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 648), Vector2(0, 0)]
+"values": [Vector2(0, -648), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b1jxm"]
+resource_name = "Enter"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -648), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_op22g"]
+resource_name = "Exit"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -648)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8vxu8"]
 _data = {
-"Enter": SubResource("Animation_op22g"),
-"Exit": SubResource("Animation_b1jxm"),
+"Enter": SubResource("Animation_b1jxm"),
+"Exit": SubResource("Animation_op22g"),
 "RESET": SubResource("Animation_v5rbb")
 }
 
@@ -93,6 +92,8 @@ font_size = 40
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8q86b"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h3c7j"]
+
 [node name="PickPlayer" type="CanvasLayer"]
 script = ExtResource("1_qh2g4")
 
@@ -112,9 +113,9 @@ color = Color(0, 0, 0, 0.705882)
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_top = 648.0
+offset_top = -648.0
 offset_right = 1152.0
-offset_bottom = 1296.0
+offset_bottom = 0.000366211
 
 [node name="MapDisplay" parent="Control" instance=ExtResource("3_5fyng")]
 layout_mode = 1
@@ -241,12 +242,21 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_8q86b")
 text = "Back"
-icon = ExtResource("6_owagj")
+icon = ExtResource("6_dnbxj")
 expand_icon = true
 
 [node name="Abilities" type="Panel" parent="Control/Panel/LeftBox"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="HSeparator" type="HSeparator" parent="Control/Panel/LeftBox/Abilities"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 4.0
+grow_horizontal = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_h3c7j")
 
 [node name="Label3" type="Label" parent="Control/Panel/LeftBox/Abilities"]
 custom_minimum_size = Vector2(0, 50)
@@ -291,8 +301,12 @@ size_flags_vertical = 3
 
 [node name="MapItems" type="VBoxContainer" parent="Control/Panel/RightBox/Maps/VBoxContainer/ScrollContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 6
+
+[node name="HSeparator" type="HSeparator" parent="Control/Panel/RightBox/Maps/VBoxContainer"]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_h3c7j")
 
 [node name="StartButton" type="Button" parent="Control/Panel/RightBox"]
 clip_contents = true

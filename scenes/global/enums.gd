@@ -33,21 +33,6 @@ enum EnemyType
 	Boss
 }
 
-enum EMap
-{
-	Forest,
-	Cave,
-	Desert,
-	Tundra,
-	Tower
-}
-
-enum ETransitionDirection
-{
-	Normal,
-	Reverse
-}
-
 enum EViewportEffect
 {
 	Normal,

@@ -6,16 +6,16 @@ const Methods = preload("res://scenes/global/methods.gd")
 
 var player_data : Dictionary
 var active_player_idx = 0
-var active_map_type : Enums.EMap = Enums.EMap.Forest
+var active_map_name := "Grass"
 var active_player : Player
 
-func init(in_player_idx : int, in_map_type : Enums.EMap):
+func init(in_player_idx : int, in_map_name : String):
 	active_player_idx = in_player_idx
-	active_map_type = in_map_type
+	active_map_name = in_map_name
 
 
 func init_transition(in_color : Color):
-	$Transition.call("init", Enums.ETransitionDirection.Reverse, in_color)
+	$Transition.call("init", true, in_color)
 	$Transition.connect("finished", _hide_transition)
 	$Transition.call("display")
 

@@ -8,6 +8,7 @@ const Assets = preload("res://scenes/global/assets.gd")
 
 @onready var sound_player = $SoundPlayer2D
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.play("Enter")

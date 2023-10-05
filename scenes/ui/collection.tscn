@@ -82,14 +82,14 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_dvslh")
 shortcut_feedback = false
 
 [node name="Control" type="Control" parent="."]
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2(500, 648)
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 326.0
-offset_top = -648.0
-offset_right = 826.0
+offset_left = -250.0
+offset_right = 250.0
+offset_bottom = 648.001
 grow_horizontal = 2
 metadata/_edit_group_ = true
 

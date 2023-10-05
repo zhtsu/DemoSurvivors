@@ -1,21 +1,21 @@
 extends Control
 
-const Enums = preload("res://scenes/global/enums.gd")
+
 const Assets = preload("res://scenes/global/assets.gd")
 
-@export var map_type : Enums.EMap = Enums.EMap.Forest
+@export var map_name : String = "Grass"
 
 
-func set_map_type(in_map_type : Enums.EMap):
-	if in_map_type == map_type:
+func set_map_name(in_map_name : String):
+	if in_map_name == map_name:
 		return
 	
-	map_type = in_map_type
+	map_name = in_map_name
 	
 	for child in $SubViewport.get_children():
 		$SubViewport.remove_child(child)
 	
-	var map : Map
+	#var map : Map
 	
 	#if map_type == Enums.EMap.Forest:
 	#	map = Assets.tscn_map_forest.instantiate()

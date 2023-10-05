@@ -8,4 +8,3 @@ script = ExtResource("1_gxo63")
 metadata/_edit_vertical_guides_ = []
 
 [node name="Transition" parent="." instance=ExtResource("2_hfusr")]
-type = 1

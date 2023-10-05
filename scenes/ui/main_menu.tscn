@@ -47,7 +47,7 @@ scale = Vector2(5, 5)
 sprite_frames = ExtResource("5_wt5lp")
 animation = &"Idle"
 
-[node name="TextBox" type="VBoxContainer" parent="."]
+[node name="CenterBox" type="VBoxContainer" parent="."]
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
@@ -58,7 +58,7 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_group_ = true
 
-[node name="Title" type="Label" parent="TextBox"]
+[node name="Title" type="Label" parent="CenterBox"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Demo
@@ -66,45 +66,46 @@ Survivors"
 label_settings = SubResource("LabelSettings_25jgu")
 horizontal_alignment = 1
 
-[node name="MenuItems" type="VBoxContainer" parent="TextBox"]
+[node name="MenuItems" type="VBoxContainer" parent="CenterBox"]
 layout_mode = 2
 size_flags_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="StartButton" type="Button" parent="TextBox/MenuItems"]
+[node name="StartButton" type="Button" parent="CenterBox/MenuItems"]
 clip_contents = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fsbkh")
 text = "NewGame"
 
-[node name="SettingButton" type="Button" parent="TextBox/MenuItems"]
+[node name="SettingButton" type="Button" parent="CenterBox/MenuItems"]
 clip_contents = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fsbkh")
 text = "Setting"
 
-[node name="CollectionButton" type="Button" parent="TextBox/MenuItems"]
+[node name="CollectionButton" type="Button" parent="CenterBox/MenuItems"]
 clip_contents = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fsbkh")
 text = "Collection"
 
-[node name="CreditsButton" type="Button" parent="TextBox/MenuItems"]
+[node name="CreditsButton" type="Button" parent="CenterBox/MenuItems"]
 clip_contents = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fsbkh")
 text = "Credits"
 
-[node name="QuitButton" type="Button" parent="TextBox/MenuItems"]
+[node name="QuitButton" type="Button" parent="CenterBox/MenuItems"]
 clip_contents = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fsbkh")
+shortcut_in_tooltip = false
 text = "Quit
 "
 
@@ -127,15 +128,15 @@ stream = ExtResource("8_mo8hj")
 
 [node name="SoundPlayer2D" type="AudioStreamPlayer2D" parent="." groups=["sound"]]
 
-[connection signal="button_down" from="TextBox/MenuItems/StartButton" to="." method="_on_start_button_button_down"]
-[connection signal="mouse_entered" from="TextBox/MenuItems/StartButton" to="." method="_play_button_hover_sound"]
-[connection signal="button_down" from="TextBox/MenuItems/SettingButton" to="." method="_on_setting_button_button_down"]
-[connection signal="mouse_entered" from="TextBox/MenuItems/SettingButton" to="." method="_play_button_hover_sound"]
-[connection signal="button_down" from="TextBox/MenuItems/CollectionButton" to="." method="_on_collection_button_button_down"]
-[connection signal="mouse_entered" from="TextBox/MenuItems/CollectionButton" to="." method="_play_button_hover_sound"]
-[connection signal="button_down" from="TextBox/MenuItems/CreditsButton" to="." method="_on_credits_button_button_down"]
-[connection signal="mouse_entered" from="TextBox/MenuItems/CreditsButton" to="." method="_play_button_hover_sound"]
-[connection signal="button_down" from="TextBox/MenuItems/QuitButton" to="." method="_on_quit_button_button_down"]
-[connection signal="mouse_entered" from="TextBox/MenuItems/QuitButton" to="." method="_play_button_hover_sound"]
+[connection signal="button_down" from="CenterBox/MenuItems/StartButton" to="." method="_on_start_button_button_down"]
+[connection signal="mouse_entered" from="CenterBox/MenuItems/StartButton" to="." method="_play_button_hover_sound"]
+[connection signal="button_down" from="CenterBox/MenuItems/SettingButton" to="." method="_on_setting_button_button_down"]
+[connection signal="mouse_entered" from="CenterBox/MenuItems/SettingButton" to="." method="_play_button_hover_sound"]
+[connection signal="button_down" from="CenterBox/MenuItems/CollectionButton" to="." method="_on_collection_button_button_down"]
+[connection signal="mouse_entered" from="CenterBox/MenuItems/CollectionButton" to="." method="_play_button_hover_sound"]
+[connection signal="button_down" from="CenterBox/MenuItems/CreditsButton" to="." method="_on_credits_button_button_down"]
+[connection signal="mouse_entered" from="CenterBox/MenuItems/CreditsButton" to="." method="_play_button_hover_sound"]
+[connection signal="button_down" from="CenterBox/MenuItems/QuitButton" to="." method="_on_quit_button_button_down"]
+[connection signal="mouse_entered" from="CenterBox/MenuItems/QuitButton" to="." method="_play_button_hover_sound"]
 [connection signal="button_down" from="GithubButton" to="." method="_on_github_button_button_down"]
 [connection signal="mouse_entered" from="GithubButton" to="." method="_play_button_hover_sound"]

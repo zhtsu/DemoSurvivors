@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://bgpgu24gsg723"]
 
 [ext_resource type="PackedScene" uid="uid://dxx2elvn8s6am" path="res://scenes/character/character.tscn" id="1_vsqam"]
-[ext_resource type="Script" path="res://scenes/character/enemy/enemy.gd" id="2_v15ei"]
+[ext_resource type="Script" path="res://scenes/character/enemy/enemy.gd" id="2_rdxqq"]
 [ext_resource type="SpriteFrames" uid="uid://cyf75cipcs1wy" path="res://tress/sf_chicken.tres" id="3_tus4h"]
 
 [node name="Enemy" groups=["enemy"] instance=ExtResource("1_vsqam")]
 collision_layer = 4
-collision_mask = 7
-script = ExtResource("2_v15ei")
+collision_mask = 6
+script = ExtResource("2_rdxqq")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("3_tus4h")

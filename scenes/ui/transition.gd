@@ -3,22 +3,22 @@ extends CanvasLayer
 
 signal finished
 
-const Enums = preload("res://scenes/global/enums.gd")
 
-@export var type : Enums.ETransitionDirection = Enums.ETransitionDirection.Normal
+@export var reverse := false
 @export var color : Color = Color.DARK_GRAY
 
 
-func init(in_type : Enums.ETransitionDirection, in_color : Color):
-	type = in_type
+func init(in_reverse : bool, in_color : Color):
+	reverse = in_reverse
 	color = in_color
 	
 func display():
 	$ColorRect.material.set_shader_parameter("color", color)
-	if type == Enums.ETransitionDirection.Normal:
-		$AnimationPlayer.play("Enter")
-	elif type == Enums.ETransitionDirection.Reverse:
+	if reverse:
 		$AnimationPlayer.play("Exit")
+	else:
+		$AnimationPlayer.play("Enter")
+		
 	
 func _ready():
 	display()

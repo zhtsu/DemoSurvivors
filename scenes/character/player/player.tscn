@@ -120,7 +120,7 @@ animations = [{
 [node name="Player" groups=["player"] instance=ExtResource("1_utw0w")]
 position = Vector2(254, 201)
 collision_layer = 2
-collision_mask = 5
+collision_mask = 4
 script = ExtResource("2_kq2ef")
 
 [node name="HurtBox" parent="." index="2"]
@@ -134,7 +134,7 @@ frame = 6
 frame_progress = 1.0
 
 [node name="EffectCamera" parent="." index="4" instance=ExtResource("5_wg3ay")]
-zoom = Vector2(0.4, 0.4)
+zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 

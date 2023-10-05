@@ -6,6 +6,7 @@ const path_default_settings = "res://assets/data/default_settings.json"
 const path_player_table = "res://assets/data/player_table.csv"
 const path_enemy_table = "res://assets/data/enemy_table.csv"
 const path_map_table = "res://assets/data/map_table.csv"
+const path_tex_start = "res://assets/textures/icons/start.png"
 # Folder path
 const dir_tres = "res://tress/"
 const dir_player_actions = "res://scenes/character/player/actions/"
