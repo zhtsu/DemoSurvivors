@@ -6,7 +6,7 @@
 
 [node name="Enemy" groups=["enemy"] instance=ExtResource("1_vsqam")]
 collision_layer = 4
-collision_mask = 6
+collision_mask = 3
 script = ExtResource("2_rdxqq")
 
 [node name="AnimatedSprite2D" parent="." index="0"]

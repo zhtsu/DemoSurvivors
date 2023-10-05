@@ -8,6 +8,7 @@ var player_data : Dictionary
 var map_name := "Grass"
 var active_player : Player
 var active_map : Map
+var resource_density := 0.1
 
 func init(in_map_name : String):
 	map_name = in_map_name

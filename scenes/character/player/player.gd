@@ -7,7 +7,6 @@ signal damage(causer : Enemy, ability : Ability)
 
 const Assets = preload("res://scenes/global/assets.gd")
 
-var motion : Vector2 = Vector2()
 
 func _ready():
 	_init_character()
@@ -102,7 +101,7 @@ func _update_move(delta):
 	elif velocity.x < 0:
 		direction = ECharacterDirection.Left
 		
-	move_and_collide(motion)
+	move_and_collide(Vector2.ZERO)
 
 func _on_effect_animator_animation_finished():
 	state = ECharacterState.Idle

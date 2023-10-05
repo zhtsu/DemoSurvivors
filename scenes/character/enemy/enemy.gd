@@ -37,11 +37,13 @@ func init(enemy_data : Dictionary):
 	magical_crit_prob = float(enemy_data["magical_crit_prob"])
 
 
-func _process(_delta):
+func _physics_process(_delta):
 	_update_enemy_flip()
 	
 	if not action_script == null:
 		action_script.call("action", self)
+	
+	move_and_collide(Vector2.ZERO)
 	
 func _update_enemy_flip():
 	var player = get_tree().get_first_node_in_group("player")
