@@ -79,7 +79,7 @@ func _on_background_button_down():
 		
 		
 func _save_updated_settings():
-	var settings_json_file = FileAccess.open("user://settings.json", FileAccess.WRITE)
+	var settings_json_file = FileAccess.open(Assets.path_local_settings, FileAccess.WRITE)
 	settings_json_file.store_line(JSON.stringify(setting_dict, "\t"))
 	settings_json_file.close()
 	

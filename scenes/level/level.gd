@@ -5,13 +5,12 @@ const Assets = preload("res://scenes/global/assets.gd")
 const Methods = preload("res://scenes/global/methods.gd")
 
 var player_data : Dictionary
-var active_player_idx = 0
-var active_map_name := "Grass"
+var map_name := "Grass"
 var active_player : Player
+var active_map : Map
 
-func init(in_player_idx : int, in_map_name : String):
-	active_player_idx = in_player_idx
-	active_map_name = in_map_name
+func init(in_map_name : String):
+	map_name = in_map_name
 
 
 func init_transition(in_color : Color):
@@ -21,19 +20,20 @@ func init_transition(in_color : Color):
 
 
 func _ready():
+	# Create player
 	active_player = Assets.tscn_player.instantiate()
 	active_player.init(player_data)
-
-	if (active_player == null):
-		print_debug("Player type error: ", active_player_idx)
-	else:
-		active_player.spawn_position = Vector2(576, 324)
-		active_player.call("set_position_smoothing", false)
-		add_child(active_player)
-		
+	active_player.spawn_position = Vector2(576, 324)
+	active_player.call("set_position_smoothing", false)
+	add_child(active_player)
+	# Create map
+	active_map = Assets.tscn_map.instantiate()
+	active_map.init(active_player, map_name)
+	add_child(active_map)
+	
 	# Test
 	var enemy_list : Array = []
-	Methods.csv_to_array(Assets.path_enemy_table, enemy_list)
+	Methods.load_csv_to_array(Assets.path_enemy_table, enemy_list)
 	for enemy_data in enemy_list:
 		var enemy = Assets.tscn_enemy.instantiate()
 		enemy.init(enemy_data)

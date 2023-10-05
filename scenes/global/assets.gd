@@ -2,6 +2,8 @@ extends Node
 
 
 # File path
+const path_local_settings = "user://settings.json"
+const path_tile_coords = "res://assets/data/used_tile_coords.json"
 const path_default_settings = "res://assets/data/default_settings.json"
 const path_player_table = "res://assets/data/player_table.csv"
 const path_enemy_table = "res://assets/data/enemy_table.csv"
@@ -21,6 +23,7 @@ const tscn_level = preload("res://scenes/level/level.tscn")
 const tscn_transition = preload("res://scenes/ui/transition.tscn")
 const tscn_player_item = preload("res://scenes/ui/player_item.tscn")
 const tscn_player = preload("res://scenes/character/player/player.tscn")
+const tscn_map = preload("res://scenes/level/map.tscn")
 const tscn_enemy = preload("res://scenes/character/enemy/enemy.tscn")
 const tscn_map_item = preload("res://scenes/ui/map_item.tscn")
 # Audio

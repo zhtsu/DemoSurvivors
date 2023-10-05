@@ -39,10 +39,9 @@ func _ready():
 	$PinkMan.play("Idle")
 	$NinjaFrog.play("Idle")
 	
-	_apply_settings()
 
 func _apply_settings():
-	if setting_dict.has("OpenSounds"):
+	if setting_dict["OpenSounds"]:
 		loud()
 
 

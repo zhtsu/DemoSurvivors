@@ -1,7 +1,7 @@
 extends Node
 
 
-static func csv_to_array(csv_file_path : String, out_list : Array) -> void:
+static func load_csv_to_array(csv_file_path : String, out_list : Array) -> void:
 	out_list.clear()
 	var csv_file = FileAccess.open(csv_file_path, FileAccess.READ)
 	# Generate dictionary from table data
@@ -22,7 +22,7 @@ static func csv_to_array(csv_file_path : String, out_list : Array) -> void:
 	csv_file.close()
 	
 	
-func cal_crit_atk(base_atk, crit_prob, crit_bonus) -> Dictionary:
+static func cal_crit_atk(base_atk : float, crit_prob : float, crit_bonus : float) -> Dictionary:
 	var additional_atk = 0.0
 	var crit = false
 

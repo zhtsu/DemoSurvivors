@@ -16,10 +16,12 @@ var selected_map_name = "Grass"
 @onready var ui_player_list = $Control/Panel/VBoxContainer/Scroller/PlayerList
 @onready var ui_map_list = $Control/Panel/RightBox/Maps/VBoxContainer/ScrollContainer/MapItems
 @onready var ui_back_btn = $Control/Panel/LeftBox/BackButton
+@onready var ui_start_btn = $Control/Panel/RightBox/StartButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var back_icon = Image.load_from_file(Assets.path_tex_start)
+	# Init back button's icon using reversed start button's icon
+	var back_icon = ui_start_btn.icon.get_image()
 	back_icon.flip_x()
 	ui_back_btn.icon = ImageTexture.create_from_image(back_icon)
 	$AnimationPlayer.play("Enter")
@@ -167,7 +169,7 @@ func _on_start_button_pressed():
 	
 func _create_game_level():
 	var level_scene = Assets.tscn_level.instantiate()
-	level_scene.call("init", selected_player_idx, selected_map_name)
+	level_scene.call("init", selected_map_name)
 	level_scene.call("init_transition", rg_color)
 	# Create player data dictionary what easy to use
 	level_scene.player_data = player_data_list[selected_player_idx]

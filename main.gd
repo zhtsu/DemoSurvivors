@@ -8,27 +8,29 @@ var player_data_list : Array
 var enemy_data_list : Array
 var map_data_list : Array
 
+
 func _ready():
-	var default_settings_file = FileAccess.open(Assets.path_default_settings, FileAccess.READ)
-	var default_settings = JSON.parse_string(default_settings_file.get_as_text())
-	default_settings_file.close()
+	var default_settings : Dictionary
+	var json_file = FileAccess.open(Assets.path_default_settings, FileAccess.READ)
+	default_settings = JSON.parse_string(json_file.get_as_text())
+	json_file.close()
 	
 	# Create local user data file if not exist
-	if not FileAccess.file_exists(Assets.path_default_settings):
+	if not FileAccess.file_exists(Assets.path_local_settings):
 		var settings_user_data_file = FileAccess.open(
-			Assets.path_default_settings, FileAccess.WRITE)
+			Assets.path_local_settings, FileAccess.WRITE)
 		settings_user_data_file.store_line(JSON.stringify(default_settings, "\t"))
 		settings_user_data_file.close()
 		print_debug("Success to create local settings data file")
 	
-	var local_settings_file = FileAccess.open(Assets.path_default_settings, FileAccess.READ)
-	setting_dict = JSON.parse_string(local_settings_file.get_as_text())
-	local_settings_file.close()
+	json_file = FileAccess.open(Assets.path_local_settings, FileAccess.READ)
+	setting_dict = JSON.parse_string(json_file.get_as_text())
+	json_file.close()
 	
 	# Read data from csv
-	Methods.csv_to_array(Assets.path_player_table, player_data_list)
-	Methods.csv_to_array(Assets.path_enemy_table, enemy_data_list)
-	Methods.csv_to_array(Assets.path_map_table, map_data_list)
+	Methods.load_csv_to_array(Assets.path_player_table, player_data_list)
+	Methods.load_csv_to_array(Assets.path_enemy_table, enemy_data_list)
+	Methods.load_csv_to_array(Assets.path_map_table, map_data_list)
 	
 	# Sync data to $MainMenu
 	$MainMenu.player_data_list = player_data_list

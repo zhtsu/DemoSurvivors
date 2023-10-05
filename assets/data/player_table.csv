@@ -1,5 +1,5 @@
-name,uid,sprite_frames_tres,gdscript,speed,physical_ATK,physical_DEF,magical_ATK,magical_DEF,physical_crit_bonus,physical_crit_prob,magical_crit_bonus,magical_crit_prob,use_default_collision,collision_shape_tres
-Ninja Frog,player-ninja-frog,sf_ninja_frog,null,1,1,1,1,1,0.05,0.05,0.05,0.05,TRUE,null
-Mask Dude,player-mask-dude,sf_mask_dude,null,1,1,1,1,1,0.05,0.05,0.05,0.05,TRUE,null
-Pink Man,player-pink-man,sf_pink_man,null,1,1,1,1,1,0.05,0.05,0.05,0.05,TRUE,null
-Virtual Guy,player-virtual-guy,sf_virtual_guy,null,1,1,1,1,1,0.05,0.05,0.05,0.05,TRUE,null
+name,sprite_frames_tres,gdscript,speed,physical_ATK,physical_DEF,magical_ATK,magical_DEF,physical_crit_bonus,physical_crit_prob,magical_crit_bonus,magical_crit_prob,use_default_collision,collision_shape_tres
+Ninja Frog,sf_ninja_frog,null,1,1,1,1,1,0.05,0.05,0.05,0.05,TRUE,null
+Mask Dude,sf_mask_dude,null,1,1,1,1,1,0.05,0.05,0.05,0.05,TRUE,null
+Pink Man,sf_pink_man,null,1,1,1,1,1,0.05,0.05,0.05,0.05,TRUE,null
+Virtual Guy,sf_virtual_guy,null,1,1,1,1,1,0.05,0.05,0.05,0.05,TRUE,null
