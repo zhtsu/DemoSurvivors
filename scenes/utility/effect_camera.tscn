@@ -57,7 +57,7 @@ _data = {
 }
 
 [node name="EffectCamera" type="Camera2D"]
-zoom = Vector2(3, 3)
+zoom = Vector2(2.4, 2.4)
 script = ExtResource("1_0m1q6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

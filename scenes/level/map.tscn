@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://okv6njd8xjaa"]
 
-[ext_resource type="Script" path="res://scenes/level/map.gd" id="1_f0ikg"]
 [ext_resource type="TileSet" uid="uid://dsovbbpvym37c" path="res://tress/ts_map_grass.tres" id="1_yrefh"]
+[ext_resource type="Script" path="res://scenes/level/map.gd" id="2_7ro5y"]
 [ext_resource type="PackedScene" uid="uid://qmmepafb2pjf" path="res://scenes/utility/effect_camera.tscn" id="2_uvsug"]
 
 [node name="Map" type="TileMap"]
@@ -16,6 +16,6 @@ layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
-script = ExtResource("1_f0ikg")
+script = ExtResource("2_7ro5y")
 
 [node name="AnimCamera" parent="." instance=ExtResource("2_uvsug")]

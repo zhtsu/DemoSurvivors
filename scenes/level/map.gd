@@ -8,19 +8,20 @@ const Assets = preload("res://scenes/global/assets.gd")
 # 16 x 16
 const tile_size := 16
 # 648 / 16
-const tile_max_row := 18
+const tile_max_row := 20
 # 1152 / 16
-const tile_max_col := 28
+const tile_max_col := 34
 
 # Initialization is required before use
 var player : Player
-var active_map_name := "Desert"
+var active_map_name := "Grass"
 
 var used_tile_source: int
 var resource_density := 0.1
 var used_ground_tile_coords : Array
 var used_resource_tile_coords : Array
 var previous_player_position := Vector2(0.0, 0.0)
+var first_generate := true
 
 @export var as_background : bool = false
 @onready var anim_camera := $AnimCamera
@@ -31,9 +32,6 @@ func init(in_player : Player, in_map_name : String):
 	
 
 func _ready():
-	if as_background == false:
-		anim_camera.enabled = false
-	
 	var tile_coord_dict : Dictionary
 	var json_file = FileAccess.open(Assets.path_tile_coords, FileAccess.READ)
 	tile_coord_dict = JSON.parse_string(json_file.get_as_text())
@@ -43,18 +41,30 @@ func _ready():
 	used_ground_tile_coords = tile_coord_dict[active_map_name]["Ground"] as Array
 	used_resource_tile_coords = tile_coord_dict[active_map_name]["Resource"] as Array
 	var used_tile_set = load(tile_coord_dict[active_map_name]["ResPath"]) as TileSet
-	print_debug(tile_coord_dict[active_map_name]["ResPath"])
 	self.tile_set = used_tile_set
 	
 	randomize()
 	
-	if not player == null:
-		previous_player_position = player.position
-		_update_map(player.position)
-		_generate_resource(_cal_boundary(player.position))
+	if as_background == false:
+		anim_camera.enabled = false
+	
+		if not player == null:
+			previous_player_position = player.position
+			_update_map(player.position)
+			_generate_resource(_cal_boundary(player.position))
+			first_generate = false
+	else:
+		resource_density = 1.0
+		_update_map($AnimCamera.position)
+		_generate_resource(_cal_boundary($AnimCamera.position))
+		first_generate = false
 
 
 func _process(_delta):
+	if as_background:
+		$AnimCamera.position += Vector2(0.6, -0.6)
+		_update_map($AnimCamera.position)
+	
 	if not player == null and \
 	   (abs(player.position.x - previous_player_position.x) > tile_size or \
 	   abs(player.position.y - previous_player_position.y) > tile_size):
@@ -85,8 +95,7 @@ func _generate_ground(boundary : Rect2):
 				tile_coord = Vector2(tile_coord[0], tile_coord[1])
 				set_cell(0, Vector2(i, j), used_tile_source, tile_coord)
 				# TODO: This is a dirty design that generate resource here
-				if player.position != previous_player_position and \
-				   randf_range(0.0, 100.0) < resource_density:
+				if not first_generate and randf_range(0.0, 100.0) < resource_density:
 					tile_coord = used_resource_tile_coords.pick_random() as Array
 					tile_coord = Vector2(tile_coord[0], tile_coord[1])
 					set_cell(1, Vector2(i, j), used_tile_source, tile_coord)

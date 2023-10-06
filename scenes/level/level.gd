@@ -28,7 +28,9 @@ func _ready():
 	active_player.call("set_position_smoothing", false)
 	add_child(active_player)
 	# Create map
-	active_map = Assets.tscn_map.instantiate()
+	# Use load() instead of the preload() what in Assets to avoid cyclic reference
+	var tscn_map_res = load(Assets.path_tscn_map)
+	active_map = tscn_map_res.instantiate()
 	active_map.init(active_player, map_name)
 	add_child(active_map)
 	
