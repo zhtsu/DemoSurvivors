@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://olrjehh0du76"]
+[gd_scene load_steps=23 format=3 uid="uid://olrjehh0du76"]
 
 [ext_resource type="PackedScene" uid="uid://dxx2elvn8s6am" path="res://scenes/character/character.tscn" id="1_utw0w"]
 [ext_resource type="Script" path="res://scenes/character/player/player.gd" id="2_kq2ef"]
@@ -117,8 +117,13 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rliy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pgvnm"]
+bg_color = Color(0.627451, 0, 0, 1)
+
 [node name="Player" groups=["player"] instance=ExtResource("1_utw0w")]
-position = Vector2(254, 201)
+position = Vector2(269, 204)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("2_kq2ef")
@@ -136,5 +141,21 @@ frame_progress = 1.0
 [node name="EffectCamera" parent="." index="4" instance=ExtResource("5_wg3ay")]
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
+
+[node name="HpBar" type="ProgressBar" parent="." index="5"]
+z_index = 2
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -12.0
+offset_top = -20.0
+offset_right = 12.0
+offset_bottom = -16.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_3rliy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_pgvnm")
+step = 1.0
+value = 50.0
+show_percentage = false
 
 [connection signal="animation_finished" from="EffectAnimator" to="." method="_on_effect_animator_animation_finished"]

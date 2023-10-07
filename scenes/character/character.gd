@@ -9,6 +9,7 @@ const ECharacterDirection = Enums.EDirection
 
 var character_name = "角色名称"
 var speed : int = 1
+var hp : float = 100.0
 
 var physical_atk : float = 0.0
 var magical_atk : float = 0.0

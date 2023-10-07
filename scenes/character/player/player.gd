@@ -7,17 +7,26 @@ signal damage(causer : Enemy, ability : Ability)
 
 const Assets = preload("res://scenes/global/assets.gd")
 
+var previous_hp := 100.0
+var exp := 0.0
+var previous_exp := 0.0
 
 func _ready():
 	_init_character()
-	$AnimatedSprite2D.play("Idle")
+	$HpBar.hide()
 	$EffectAnimator.hide()
 	appearing()
+	await $EffectAnimator.animation_finished
+	$HpBar.show()
+	
 	
 
 func _process(_delta):
 	_update_player_animation()
-
+	
+	if not previous_hp == hp:
+		$HpBar.value = hp
+	previous_hp = hp
 
 func init(player_data : Dictionary):
 	var sprite_frames_path = Assets.dir_tres + player_data["sprite_frames_tres"] + ".tres"

@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhby4m417g4uk"]
+
+[ext_resource type="Script" path="res://scenes/ui/gift_state.gd" id="1_sq68u"]
+[ext_resource type="Texture2D" uid="uid://cnpbfcheo2oub" path="res://tress/at_item_dagger_ninja.tres" id="2_fg4ni"]
+
+[node name="GiftState" type="Panel"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 20.0
+offset_bottom = 20.0
+tooltip_text = "Gift"
+script = ExtResource("1_sq68u")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_fg4ni")
+expand_mode = 1
+
+[node name="Level" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+text = "1"
+horizontal_alignment = 2
+vertical_alignment = 2
