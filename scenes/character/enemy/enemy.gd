@@ -17,11 +17,11 @@ func _ready():
 
 
 func init(enemy_data : Dictionary):
-	var sprite_frames_path = Assets.dir_tres + enemy_data["sprite_frames_tres"] + ".tres"
+	var sprite_frames_path = Assets.dir_tres + enemy_data["sprite_frames_tres"]
 	var sprite_frames = load(sprite_frames_path)
 	$AnimatedSprite2D.sprite_frames = sprite_frames
 	if not enemy_data["gdscript"] == "null":
-		var gdscript_path = Assets.dir_enemy_actions + enemy_data["gdscript"] + ".gd"
+		var gdscript_path = Assets.dir_enemy_actions + enemy_data["gdscript"]
 		action_script = load(gdscript_path)
 	enemy_size = Enums.EnemySize.get(enemy_data["size"])
 	enemy_type = Enums.EnemyType.get(enemy_data["type"])

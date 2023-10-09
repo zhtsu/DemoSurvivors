@@ -29,7 +29,7 @@ func _process(_delta):
 	previous_hp = hp
 
 func init(player_data : Dictionary):
-	var sprite_frames_path = Assets.dir_tres + player_data["sprite_frames_tres"] + ".tres"
+	var sprite_frames_path = Assets.dir_tres + player_data["sprite_frames_tres"]
 	var sprite_frames = load(sprite_frames_path)
 	$AnimatedSprite2D.sprite_frames = sprite_frames
 	character_name = player_data["name"]
