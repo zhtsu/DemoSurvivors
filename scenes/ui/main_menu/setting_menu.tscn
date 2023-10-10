@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://d1cbkidjpwlj2"]
 
-[ext_resource type="Script" path="res://scenes/ui/setting_menu.gd" id="1_8vr4a"]
+[ext_resource type="Script" path="res://scenes/ui/main_menu/setting_menu.gd" id="1_8vr4a"]
 [ext_resource type="Texture2D" uid="uid://dn3kvp5esi4rr" path="res://assets/textures/icons/speaker.png" id="2_2q1hs"]
 [ext_resource type="Texture2D" uid="uid://whrrinl8cnuj" path="res://assets/textures/icons/full_screen.png" id="2_rxhah"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://ddu7huicmgo7r"]
 
-[ext_resource type="Script" path="res://scenes/ui/credits.gd" id="1_ebq7n"]
+[ext_resource type="Script" path="res://scenes/ui/main_menu/credits.gd" id="1_ebq7n"]
 [ext_resource type="AudioStream" uid="uid://bxodhr4xud0hs" path="res://assets/sounds/button_down.mp3" id="2_sjy07"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wcnfv"]

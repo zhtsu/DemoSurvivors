@@ -16,18 +16,18 @@ const dir_data = "res://assets/data/"
 const dir_player_actions = "res://scenes/character/player/actions/"
 const dir_enemy_actions = "res://scenes/character/enemy/actions/"
 # Scene
-const tscn_setting_menu = preload("res://scenes/ui/setting_menu.tscn")
-const tscn_popup = preload("res://scenes/ui/popup.tscn")
-const tscn_pick_player = preload("res://scenes/ui/pick_player.tscn")
-const tscn_credits = preload("res://scenes/ui/credits.tscn")
-const tscn_collection = preload("res://scenes/ui/collection.tscn")
+const tscn_setting_menu = preload("res://scenes/ui/main_menu/setting_menu.tscn")
+const tscn_popup = preload("res://scenes/ui/main_menu/popup.tscn")
+const tscn_pick_player = preload("res://scenes/ui/pick_player/pick_player.tscn")
+const tscn_credits = preload("res://scenes/ui/main_menu/credits.tscn")
+const tscn_collection = preload("res://scenes/ui/main_menu/collection.tscn")
 const tscn_level = preload("res://scenes/level/level.tscn")
 const tscn_transition = preload("res://scenes/ui/transition.tscn")
-const tscn_player_item = preload("res://scenes/ui/player_item.tscn")
+const tscn_player_item = preload("res://scenes/ui/pick_player/player_item.tscn")
 const tscn_player = preload("res://scenes/character/player/player.tscn")
 const tscn_map = preload("res://scenes/level/map.tscn")
 const tscn_enemy = preload("res://scenes/character/enemy/enemy.tscn")
-const tscn_map_item = preload("res://scenes/ui/map_item.tscn")
+const tscn_map_item = preload("res://scenes/ui/pick_player/map_item.tscn")
 # Audio
 const a_button_down = preload("res://assets/sounds/button_down.mp3")
 const a_button_hover = preload("res://assets/sounds/button_hover.mp3")

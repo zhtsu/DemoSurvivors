@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=3 uid="uid://svdqnhmua150"]
 
-[ext_resource type="Script" path="res://scenes/ui/main_menu.gd" id="1_lgfqu"]
-[ext_resource type="SpriteFrames" uid="uid://b4l4u8hv0e76u" path="res://tress/sf_virtual_guy.tres" id="2_3nlxv"]
-[ext_resource type="SpriteFrames" uid="uid://b3un7wvxfwqk4" path="res://tress/sf_mask_dude.tres" id="3_ohsga"]
-[ext_resource type="SpriteFrames" uid="uid://cymrkuak3piea" path="res://tress/sf_pink_man.tres" id="4_s575n"]
-[ext_resource type="SpriteFrames" uid="uid://olstouu8ajg" path="res://tress/sf_ninja_frog.tres" id="5_wt5lp"]
-[ext_resource type="Texture2D" uid="uid://t0spyes74828" path="res://assets/textures/icons/github_corner.svg" id="6_rvwkx"]
-[ext_resource type="Texture2D" uid="uid://bvevpwfw2opvv" path="res://assets/textures/icons/github_corner_white.svg" id="7_e6l70"]
-[ext_resource type="AudioStream" uid="uid://btafleilp2jc5" path="res://assets/musics/dongcidaci.wav" id="8_mo8hj"]
+[ext_resource type="Script" path="res://scenes/ui/main_menu/main_menu.gd" id="1_qrbyj"]
+[ext_resource type="SpriteFrames" uid="uid://b4l4u8hv0e76u" path="res://tress/sf_virtual_guy.tres" id="2_8enfk"]
+[ext_resource type="SpriteFrames" uid="uid://b3un7wvxfwqk4" path="res://tress/sf_mask_dude.tres" id="3_aro7d"]
+[ext_resource type="SpriteFrames" uid="uid://cymrkuak3piea" path="res://tress/sf_pink_man.tres" id="4_4pvcs"]
+[ext_resource type="SpriteFrames" uid="uid://olstouu8ajg" path="res://tress/sf_ninja_frog.tres" id="5_umd4a"]
+[ext_resource type="Texture2D" uid="uid://t0spyes74828" path="res://assets/textures/icons/github_corner.svg" id="6_4b3ub"]
+[ext_resource type="Texture2D" uid="uid://bvevpwfw2opvv" path="res://assets/textures/icons/github_corner_white.svg" id="7_ijk6a"]
+[ext_resource type="AudioStream" uid="uid://btafleilp2jc5" path="res://assets/musics/dongcidaci.wav" id="8_t06gd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_25jgu"]
 font_size = 80
@@ -19,32 +19,32 @@ shadow_color = Color(0.196078, 0.196078, 0.196078, 1)
 [sub_resource type="BitMap" id="BitMap_od42s"]
 
 [node name="MainMenu" type="CanvasLayer" groups=["main_menu"]]
-script = ExtResource("1_lgfqu")
+script = ExtResource("1_qrbyj")
 
 [node name="VirtualGuy" type="AnimatedSprite2D" parent="."]
 position = Vector2(290, 260)
 rotation = -3.14159
 scale = Vector2(5, -5)
-sprite_frames = ExtResource("2_3nlxv")
+sprite_frames = ExtResource("2_8enfk")
 animation = &"Idle"
 
 [node name="MaskDude" type="AnimatedSprite2D" parent="."]
 position = Vector2(290, 480)
 rotation = -3.14159
 scale = Vector2(5, -5)
-sprite_frames = ExtResource("3_ohsga")
+sprite_frames = ExtResource("3_aro7d")
 animation = &"Idle"
 
 [node name="PinkMan" type="AnimatedSprite2D" parent="."]
 position = Vector2(860, 480)
 scale = Vector2(5, 5)
-sprite_frames = ExtResource("4_s575n")
+sprite_frames = ExtResource("4_4pvcs")
 animation = &"Idle"
 
 [node name="NinjaFrog" type="AnimatedSprite2D" parent="."]
 position = Vector2(860, 260)
 scale = Vector2(5, 5)
-sprite_frames = ExtResource("5_wt5lp")
+sprite_frames = ExtResource("5_umd4a")
 animation = &"Idle"
 
 [node name="CenterBox" type="VBoxContainer" parent="."]
@@ -118,13 +118,13 @@ offset_right = -80.0
 offset_bottom = 80.0
 grow_horizontal = 0
 scale = Vector2(2, 2)
-texture_normal = ExtResource("6_rvwkx")
-texture_pressed = ExtResource("6_rvwkx")
-texture_hover = ExtResource("7_e6l70")
+texture_normal = ExtResource("6_4b3ub")
+texture_pressed = ExtResource("6_4b3ub")
+texture_hover = ExtResource("7_ijk6a")
 texture_click_mask = SubResource("BitMap_od42s")
 
 [node name="MusicPlayer2D" type="AudioStreamPlayer2D" parent="." groups=["music"]]
-stream = ExtResource("8_mo8hj")
+stream = ExtResource("8_t06gd")
 
 [node name="SoundPlayer2D" type="AudioStreamPlayer2D" parent="." groups=["sound"]]
 

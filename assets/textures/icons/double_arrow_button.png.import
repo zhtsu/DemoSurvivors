@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2inox72gtl88"
-path="res://.godot/imported/start.png-76c13e63a333383dcb8934b6c1d90212.ctex"
+uid="uid://bnrc8r4wfq47j"
+path="res://.godot/imported/double_arrow_button.png-339380a459a4ad731726d36225684976.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/icons/start.png"
-dest_files=["res://.godot/imported/start.png-76c13e63a333383dcb8934b6c1d90212.ctex"]
+source_file="res://assets/textures/icons/double_arrow_button.png"
+dest_files=["res://.godot/imported/double_arrow_button.png-339380a459a4ad731726d36225684976.ctex"]
 
 [params]
 

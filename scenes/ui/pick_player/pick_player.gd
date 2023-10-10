@@ -21,9 +21,9 @@ var selected_map_name = "Grass"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Init back button's icon using reversed start button's icon
-	var back_icon = ui_start_btn.icon.get_image()
-	back_icon.flip_x()
-	ui_back_btn.icon = ImageTexture.create_from_image(back_icon)
+	var start_icon = ui_start_btn.icon.get_image()
+	start_icon.flip_x()
+	ui_back_btn.icon = ImageTexture.create_from_image(start_icon)
 	$AnimationPlayer.play("Enter")
 	# Update player count
 	max_player_count = player_data_list.size()

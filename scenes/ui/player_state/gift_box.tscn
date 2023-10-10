@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://blggg6gw6laco"]
+
+[ext_resource type="Script" path="res://scenes/ui/player_state/gift_box.gd" id="1_8l6yb"]
+[ext_resource type="PackedScene" uid="uid://udtbrww8posx" path="res://scenes/ui/player_state/gift_item.tscn" id="1_njhmv"]
+[ext_resource type="Texture2D" uid="uid://bbtpkw6qhg473" path="res://assets/textures/icons/open_box_button.png" id="2_44b50"]
+
+[node name="GiftBox" type="Control"]
+custom_minimum_size = Vector2(68, 300)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_8l6yb")
+
+[node name="Button" type="Button" parent="."]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 30.0
+focus_mode = 0
+icon = ExtResource("2_44b50")
+
+[node name="AbilityGrid" type="GridContainer" parent="."]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 0
+offset_top = 36.0
+offset_right = 68.0
+offset_bottom = 336.0
+columns = 2
+
+[node name="GiftState" parent="AbilityGrid" instance=ExtResource("1_njhmv")]
+layout_direction = 2
+layout_mode = 2
+
+[node name="GiftState2" parent="AbilityGrid" instance=ExtResource("1_njhmv")]
+layout_direction = 2
+layout_mode = 2
+
+[node name="GiftState3" parent="AbilityGrid" instance=ExtResource("1_njhmv")]
+layout_direction = 2
+layout_mode = 2
+
+[node name="GiftState4" parent="AbilityGrid" instance=ExtResource("1_njhmv")]
+layout_direction = 2
+layout_mode = 2
+
+[node name="GiftState5" parent="AbilityGrid" instance=ExtResource("1_njhmv")]
+layout_direction = 2
+layout_mode = 2
+
+[node name="GiftState6" parent="AbilityGrid" instance=ExtResource("1_njhmv")]
+layout_direction = 2
+layout_mode = 2
+
+[node name="GiftState7" parent="AbilityGrid" instance=ExtResource("1_njhmv")]
+layout_direction = 2
+layout_mode = 2
+
+[node name="GiftState8" parent="AbilityGrid" instance=ExtResource("1_njhmv")]
+layout_direction = 2
+layout_mode = 2
+
+[node name="GiftState9" parent="AbilityGrid" instance=ExtResource("1_njhmv")]
+layout_direction = 2
+layout_mode = 2

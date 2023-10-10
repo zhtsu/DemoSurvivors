@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b1etet1gv6g34"]
 
-[ext_resource type="Script" path="res://scenes/ui/map_display.gd" id="1_rugvl"]
+[ext_resource type="Script" path="res://scenes/ui/pick_player/map_display.gd" id="1_rugvl"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ntvfb"]
 viewport_path = NodePath("SubViewport")
