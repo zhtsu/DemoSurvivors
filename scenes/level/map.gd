@@ -18,6 +18,7 @@ var active_map_name := "Grass"
 
 var used_tile_source: int
 var resource_density := 0.1
+# Coords data looks like this: [[x1, y1], [x2, y2], [x3, y3], [x4, y4]]
 var used_ground_tile_coords : Array
 var used_resource_tile_coords : Array
 var previous_player_position := Vector2(0.0, 0.0)
@@ -42,8 +43,6 @@ func _ready():
 	used_resource_tile_coords = tile_coord_dict[active_map_name]["Resource"] as Array
 	var used_tile_set = load(tile_coord_dict[active_map_name]["ResPath"]) as TileSet
 	self.tile_set = used_tile_set
-	
-	randomize()
 	
 	if as_background == false:
 		anim_camera.enabled = false
@@ -91,12 +90,12 @@ func _generate_ground(boundary : Rect2):
 	for i in range(boundary.position.x, boundary.end.x):
 		for j in range(boundary.position.y, boundary.end.y):
 			if get_cell_source_id(0, Vector2(i, j)) == -1:
-				var tile_coord = used_ground_tile_coords.pick_random() as Array
+				var tile_coord = used_ground_tile_coords.pick_random() as Array[int]
 				tile_coord = Vector2(tile_coord[0], tile_coord[1])
 				set_cell(0, Vector2(i, j), used_tile_source, tile_coord)
 				# TODO: This is a dirty design that generate resource here
 				if not first_generate and randf_range(0.0, 100.0) < resource_density:
-					tile_coord = used_resource_tile_coords.pick_random() as Array
+					tile_coord = used_resource_tile_coords.pick_random() as Array[int]
 					tile_coord = Vector2(tile_coord[0], tile_coord[1])
 					set_cell(1, Vector2(i, j), used_tile_source, tile_coord)
 	

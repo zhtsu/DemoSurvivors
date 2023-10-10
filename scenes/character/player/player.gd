@@ -4,12 +4,18 @@ class_name Player
 
 
 signal damage(causer : Enemy, ability : Ability)
+signal talk(witticism : String)
+signal add_exp(amount : int)
+signal level_up
 
 const Assets = preload("res://scenes/global/assets.gd")
 
 var previous_hp := 100.0
 var exp := 0.0
 var previous_exp := 0.0
+var witticism_dict : Dictionary
+var current_witticism_pool : Array
+var talk_speed : float = 1.0
 
 func _ready():
 	_init_character()
@@ -18,7 +24,9 @@ func _ready():
 	appearing()
 	await $EffectAnimator.animation_finished
 	$HpBar.show()
-	
+	current_witticism_pool = witticism_dict["Common"]
+	talk.emit(current_witticism_pool.pick_random())
+	$Timer.start(randf_range(talk_speed, 30.0))
 	
 
 func _process(_delta):
@@ -27,6 +35,7 @@ func _process(_delta):
 	if not previous_hp == hp:
 		$HpBar.value = hp
 	previous_hp = hp
+	
 
 func init(player_data : Dictionary):
 	var sprite_frames_path = Assets.dir_tres + player_data["sprite_frames_tres"]
@@ -42,6 +51,11 @@ func init(player_data : Dictionary):
 	physical_crit_prob = float(player_data["physical_crit_prob"])
 	magical_crit_bonus = float(player_data["magical_crit_bonus"])
 	magical_crit_prob = float(player_data["magical_crit_prob"])
+	# Load witticisms data
+	var witticism_json_path = Assets.dir_data + player_data["witticisms_json"]
+	var json_file = FileAccess.open(witticism_json_path, FileAccess.READ)
+	witticism_dict = JSON.parse_string(json_file.get_as_text())
+	json_file.close()
 	
 
 func set_position_smoothing(enabled : bool = true):
@@ -118,3 +132,7 @@ func _on_effect_animator_animation_finished():
 	$EffectAnimator.hide()
 
 
+func _on_timer_timeout():
+	# Emit talk signal to update witticism in PlayerState
+	talk.emit(current_witticism_pool.pick_random())
+	$Timer.start(randf_range(talk_speed, 30.0))

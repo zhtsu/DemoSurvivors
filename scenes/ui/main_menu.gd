@@ -9,9 +9,9 @@ const Assets = preload("res://scenes/global/assets.gd")
 
 # Used for receive settings data form main.gd
 var setting_dict : Dictionary
-var player_data_list : Array
-var enemy_data_list : Array
-var map_data_list : Array
+var player_data_list : Array[Dictionary]
+var enemy_data_list : Array[Dictionary]
+var map_data_list : Array[Dictionary]
 
 
 func _pause_anim():

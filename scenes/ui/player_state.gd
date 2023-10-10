@@ -1,11 +1,13 @@
 extends CanvasLayer
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var player : Player
+
+func init(in_player : Player):
+	player = in_player
+	player.connect("talk", _update_witticism)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+
+func _update_witticism(talk_content : String):
+	$Main/Body/Witticism.text = talk_content

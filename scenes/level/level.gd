@@ -27,6 +27,8 @@ func _ready():
 	active_player.spawn_position = Vector2(576, 324)
 	active_player.call("set_position_smoothing", false)
 	add_child(active_player)
+	# Init player state using created player
+	$PlayerState.call("init", active_player)
 	# Create map
 	# Use load() instead of the preload() what in Assets to avoid cyclic reference
 	var tscn_map_res = load(Assets.path_tscn_map)

@@ -12,6 +12,7 @@ const path_tex_start = "res://assets/textures/icons/start.png"
 const path_tscn_map = "res://scenes/level/map.tscn"
 # Folder path
 const dir_tres = "res://tress/"
+const dir_data = "res://assets/data/"
 const dir_player_actions = "res://scenes/character/player/actions/"
 const dir_enemy_actions = "res://scenes/character/enemy/actions/"
 # Scene

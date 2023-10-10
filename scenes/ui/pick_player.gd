@@ -3,9 +3,9 @@ extends CanvasLayer
 
 const Assets = preload("res://scenes/global/assets.gd")
 
-var player_data_list : Array
-var enemy_data_list : Array
-var map_data_list : Array
+var player_data_list : Array[Dictionary]
+var enemy_data_list : Array[Dictionary]
+var map_data_list : Array[Dictionary]
 var max_player_count = 0
 var selected_player_idx = 0
 var selected_map_name = "Grass"
