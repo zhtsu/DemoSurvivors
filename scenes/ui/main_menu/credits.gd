@@ -1,10 +1,10 @@
 extends CanvasLayer
 
 
-@onready var programming_container = $Background/ColorRect/ScrollerList/VBoxContainer/ProgrammingArea
-@onready var art_container = $Background/ColorRect/ScrollerList/VBoxContainer/ArtArea
-@onready var music_container = $Background/ColorRect/ScrollerList/VBoxContainer/MusicArea
-@onready var sound_container = $Background/ColorRect/ScrollerList/VBoxContainer/SoundArea
+@onready var programming_container = $RootPanel/ScrollerList/VBoxContainer/ProgrammingArea
+@onready var art_container = $RootPanel/ScrollerList/VBoxContainer/ArtArea
+@onready var music_container = $RootPanel/ScrollerList/VBoxContainer/MusicArea
+@onready var sound_container = $RootPanel/ScrollerList/VBoxContainer/SoundArea
 
 const programming_list = [
 	"zhtsu"

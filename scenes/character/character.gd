@@ -33,6 +33,3 @@ func _init_character():
 	position = spawn_position
 	size = $CollisionShape2D.shape.get_rect().size
 	
-	
-func get_character_sprite_frames():
-	return $AnimatedSprite2D.sprite_frames

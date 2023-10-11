@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://svdqnhmua150"]
+[gd_scene load_steps=11 format=3 uid="uid://svdqnhmua150"]
 
 [ext_resource type="Script" path="res://scenes/ui/main_menu/main_menu.gd" id="1_qrbyj"]
 [ext_resource type="SpriteFrames" uid="uid://b4l4u8hv0e76u" path="res://tress/sf_virtual_guy.tres" id="2_8enfk"]
@@ -7,7 +7,6 @@
 [ext_resource type="SpriteFrames" uid="uid://olstouu8ajg" path="res://tress/sf_ninja_frog.tres" id="5_umd4a"]
 [ext_resource type="Texture2D" uid="uid://t0spyes74828" path="res://assets/textures/icons/github_corner.svg" id="6_4b3ub"]
 [ext_resource type="Texture2D" uid="uid://bvevpwfw2opvv" path="res://assets/textures/icons/github_corner_white.svg" id="7_ijk6a"]
-[ext_resource type="AudioStream" uid="uid://btafleilp2jc5" path="res://assets/musics/dongcidaci.wav" id="8_t06gd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_25jgu"]
 font_size = 80
@@ -79,12 +78,12 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fsbkh")
 text = "NewGame"
 
-[node name="SettingButton" type="Button" parent="CenterBox/MenuItems"]
+[node name="OptionsButton" type="Button" parent="CenterBox/MenuItems"]
 clip_contents = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fsbkh")
-text = "Setting"
+text = "Options"
 
 [node name="CollectionButton" type="Button" parent="CenterBox/MenuItems"]
 clip_contents = true
@@ -100,13 +99,13 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fsbkh")
 text = "Credits"
 
-[node name="QuitButton" type="Button" parent="CenterBox/MenuItems"]
+[node name="ExitButton" type="Button" parent="CenterBox/MenuItems"]
 clip_contents = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fsbkh")
 shortcut_in_tooltip = false
-text = "Quit
+text = "Exit
 "
 
 [node name="GithubButton" type="TextureButton" parent="."]
@@ -123,20 +122,17 @@ texture_pressed = ExtResource("6_4b3ub")
 texture_hover = ExtResource("7_ijk6a")
 texture_click_mask = SubResource("BitMap_od42s")
 
-[node name="MusicPlayer2D" type="AudioStreamPlayer2D" parent="." groups=["music"]]
-stream = ExtResource("8_t06gd")
-
 [node name="SoundPlayer2D" type="AudioStreamPlayer2D" parent="." groups=["sound"]]
 
 [connection signal="button_down" from="CenterBox/MenuItems/StartButton" to="." method="_on_start_button_button_down"]
 [connection signal="mouse_entered" from="CenterBox/MenuItems/StartButton" to="." method="_play_button_hover_sound"]
-[connection signal="button_down" from="CenterBox/MenuItems/SettingButton" to="." method="_on_setting_button_button_down"]
-[connection signal="mouse_entered" from="CenterBox/MenuItems/SettingButton" to="." method="_play_button_hover_sound"]
+[connection signal="button_down" from="CenterBox/MenuItems/OptionsButton" to="." method="_on_options_button_button_down"]
+[connection signal="mouse_entered" from="CenterBox/MenuItems/OptionsButton" to="." method="_play_button_hover_sound"]
 [connection signal="button_down" from="CenterBox/MenuItems/CollectionButton" to="." method="_on_collection_button_button_down"]
 [connection signal="mouse_entered" from="CenterBox/MenuItems/CollectionButton" to="." method="_play_button_hover_sound"]
 [connection signal="button_down" from="CenterBox/MenuItems/CreditsButton" to="." method="_on_credits_button_button_down"]
 [connection signal="mouse_entered" from="CenterBox/MenuItems/CreditsButton" to="." method="_play_button_hover_sound"]
-[connection signal="button_down" from="CenterBox/MenuItems/QuitButton" to="." method="_on_quit_button_button_down"]
-[connection signal="mouse_entered" from="CenterBox/MenuItems/QuitButton" to="." method="_play_button_hover_sound"]
+[connection signal="button_down" from="CenterBox/MenuItems/ExitButton" to="." method="_on_exit_button_button_down"]
+[connection signal="mouse_entered" from="CenterBox/MenuItems/ExitButton" to="." method="_play_button_hover_sound"]
 [connection signal="button_down" from="GithubButton" to="." method="_on_github_button_button_down"]
 [connection signal="mouse_entered" from="GithubButton" to="." method="_play_button_hover_sound"]

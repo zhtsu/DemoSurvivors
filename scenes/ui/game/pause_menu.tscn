@@ -1,3 +1,151 @@
-[gd_scene format=3 uid="uid://djf7l7gkecg7b"]
+[gd_scene load_steps=9 format=3 uid="uid://djf7l7gkecg7b"]
+
+[ext_resource type="Script" path="res://scenes/ui/game/pause_menu.gd" id="1_ohnr2"]
+[ext_resource type="StyleBox" uid="uid://1spqcg31jdx2" path="res://tress/sbf_ui_dark_mask.tres" id="1_px7gx"]
+[ext_resource type="StyleBox" uid="uid://dibwpul5ku25j" path="res://tress/sbe_default.tres" id="2_yrlbi"]
+[ext_resource type="AudioStream" uid="uid://bxodhr4xud0hs" path="res://assets/sounds/button_down.mp3" id="4_leotu"]
+
+[sub_resource type="Animation" id="Animation_35cfj"]
+resource_name = "Enter"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootPanel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gw3y0"]
+resource_name = "Exit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootPanel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3765g"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RootPanel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wh415"]
+_data = {
+"Enter": SubResource("Animation_35cfj"),
+"Exit": SubResource("Animation_gw3y0"),
+"RESET": SubResource("Animation_3765g")
+}
 
 [node name="PauseMenu" type="CanvasLayer"]
+script = ExtResource("1_ohnr2")
+
+[node name="Background" type="Button" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = ExtResource("1_px7gx")
+theme_override_styles/hover = ExtResource("1_px7gx")
+theme_override_styles/pressed = ExtResource("1_px7gx")
+theme_override_styles/disabled = ExtResource("1_px7gx")
+theme_override_styles/focus = ExtResource("2_yrlbi")
+
+[node name="RootPanel" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(300, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(150, 150)
+color = Color(0.223529, 0.243137, 0.27451, 1)
+
+[node name="VBox" type="VBoxContainer" parent="RootPanel"]
+custom_minimum_size = Vector2(240, 240)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -120.0
+offset_right = 120.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="RestartButton" type="Button" parent="RootPanel/VBox"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Restart"
+
+[node name="MainMenuButton" type="Button" parent="RootPanel/VBox"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "MainMenu"
+
+[node name="OptionsButton" type="Button" parent="RootPanel/VBox"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="RootPanel/VBox"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+text = "Exit
+"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wh415")
+}
+
+[node name="SoundPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_leotu")
+
+[connection signal="button_down" from="Background" to="." method="_on_background_button_down"]
+[connection signal="button_down" from="RootPanel/VBox/RestartButton" to="." method="_on_restart_button_button_down"]
+[connection signal="mouse_entered" from="RootPanel/VBox/RestartButton" to="." method="_play_button_hover_sound"]
+[connection signal="button_down" from="RootPanel/VBox/MainMenuButton" to="." method="_on_main_menu_button_button_down"]
+[connection signal="mouse_entered" from="RootPanel/VBox/MainMenuButton" to="." method="_play_button_hover_sound"]
+[connection signal="button_down" from="RootPanel/VBox/OptionsButton" to="." method="_on_options_button_button_down"]
+[connection signal="mouse_entered" from="RootPanel/VBox/OptionsButton" to="." method="_play_button_hover_sound"]
+[connection signal="button_down" from="RootPanel/VBox/ExitButton" to="." method="_on_exit_button_button_down"]
+[connection signal="mouse_entered" from="RootPanel/VBox/ExitButton" to="." method="_play_button_hover_sound"]

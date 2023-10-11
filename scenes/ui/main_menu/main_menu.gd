@@ -2,17 +2,17 @@ extends CanvasLayer
 
 
 const Assets = preload("res://scenes/global/assets.gd")
+const Methods = preload("res://scenes/global/methods.gd")
 
-@onready var music_player = $MusicPlayer2D
 @onready var sound_player = $SoundPlayer2D
 
 
 # Used for receive settings data form main.gd
-var setting_dict : Dictionary
+var option_dict : Dictionary
 var player_data_list : Array[Dictionary]
 var enemy_data_list : Array[Dictionary]
 var map_data_list : Array[Dictionary]
-
+var music_player : AudioStreamPlayer2D
 
 func _pause_anim():
 	$VirtualGuy.pause()
@@ -39,17 +39,30 @@ func _ready():
 	$PinkMan.play("Idle")
 	$NinjaFrog.play("Idle")
 	
+	music_player = get_tree().get_first_node_in_group("main").get_music_player()
+	
+	var json_file = FileAccess.open(Assets.path_local_options, FileAccess.READ)
+	option_dict = JSON.parse_string(json_file.get_as_text())
+	json_file.close()
+	
+	# Read data from csv
+	Methods.load_csv_to_array(Assets.path_player_table, player_data_list)
+	Methods.load_csv_to_array(Assets.path_enemy_table, enemy_data_list)
+	Methods.load_csv_to_array(Assets.path_map_table, map_data_list)
+	
+	_apply_settings()
+	
 
 func _apply_settings():
-	if setting_dict["OpenSounds"]:
+	if option_dict["OpenSounds"]:
 		loud()
 
 
-func _on_setting_button_button_down():
+func _on_options_button_button_down():
 	_play_button_down_sound()
-	var setting_menu_scene = Assets.tscn_setting_menu.instantiate()
-	setting_menu_scene.call("init_settings", setting_dict)
-	add_child(setting_menu_scene)
+	var options_scene = Assets.tscn_options.instantiate()
+	options_scene.call("init_options", option_dict)
+	add_child(options_scene)
 
 
 func _on_start_button_button_down():
@@ -73,15 +86,15 @@ func _on_collection_button_button_down():
 	add_child(collection_scene)
 	
 	
-func quit_game():
+func exit_game():
 	get_tree().quit()
 	
 	
-func _on_quit_button_button_down():
+func _on_exit_button_button_down():
 	_play_button_down_sound()
-	var quit_popup_scene = Assets.tscn_popup.instantiate()
-	quit_popup_scene.call("init_popup", "Are you sure to quit game?", quit_game)
-	add_child(quit_popup_scene)
+	var exit_popup_scene = Assets.tscn_popup.instantiate()
+	exit_popup_scene.call("init_popup", "Are you sure to exit game?", exit_game)
+	add_child(exit_popup_scene)
 
 	
 func mute():

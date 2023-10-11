@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://b4u2qo88qcyp8"]
+
+[ext_resource type="Texture2D" uid="uid://dij2oujani33l" path="res://assets/textures/character/player/pink_man/pink_man_idle_32x32.png" id="1_yfgb3"]
+
+[resource]
+atlas = ExtResource("1_yfgb3")
+region = Rect2(0, 0, 32, 32)

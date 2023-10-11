@@ -2,9 +2,9 @@ extends Node
 
 
 # File path
-const path_local_settings = "user://settings.json"
+const path_local_options = "user://options.json"
 const path_tile_coords = "res://assets/data/used_tile_coords.json"
-const path_default_settings = "res://assets/data/default_settings.json"
+const path_default_options = "res://assets/data/default_options.json"
 const path_player_table = "res://assets/data/player_table.csv"
 const path_enemy_table = "res://assets/data/enemy_table.csv"
 const path_map_table = "res://assets/data/map_table.csv"
@@ -16,7 +16,7 @@ const dir_data = "res://assets/data/"
 const dir_player_actions = "res://scenes/character/player/actions/"
 const dir_enemy_actions = "res://scenes/character/enemy/actions/"
 # Scene
-const tscn_setting_menu = preload("res://scenes/ui/main_menu/setting_menu.tscn")
+const tscn_options = preload("res://scenes/ui/main_menu/options.tscn")
 const tscn_popup = preload("res://scenes/ui/main_menu/popup.tscn")
 const tscn_pick_player = preload("res://scenes/ui/pick_player/pick_player.tscn")
 const tscn_credits = preload("res://scenes/ui/main_menu/credits.tscn")
@@ -28,6 +28,8 @@ const tscn_player = preload("res://scenes/character/player/player.tscn")
 const tscn_map = preload("res://scenes/level/map.tscn")
 const tscn_enemy = preload("res://scenes/character/enemy/enemy.tscn")
 const tscn_map_item = preload("res://scenes/ui/pick_player/map_item.tscn")
+const tscn_pause_menu = preload("res://scenes/ui/game/pause_menu.tscn")
+const tscn_main_menu = preload("res://scenes/ui/main_menu/main_menu.tscn")
 # Audio
 const a_button_down = preload("res://assets/sounds/button_down.mp3")
 const a_button_hover = preload("res://assets/sounds/button_hover.mp3")
@@ -43,3 +45,4 @@ const tres_sf_ninja_frog = preload("res://tress/sf_ninja_frog.tres")
 const tres_sf_mask_dude = preload("res://tress/sf_mask_dude.tres")
 const tres_sf_pink_man = preload("res://tress/sf_pink_man.tres")
 const tres_virtual_guy = preload("res://tress/sf_virtual_guy.tres")
+const tres_sbf_ui_transparent_mask = preload("res://tress/sbf_ui_transparent_mask.tres")

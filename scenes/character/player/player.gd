@@ -16,6 +16,8 @@ var previous_exp := 0.0
 var witticism_dict : Dictionary
 var current_witticism_pool : Array
 var talk_speed : float = 1.0
+# Used for UI
+var icon : Texture2D
 
 func _ready():
 	_init_character()
@@ -38,6 +40,7 @@ func _process(_delta):
 	
 
 func init(player_data : Dictionary):
+	icon = load(Assets.dir_tres + player_data["icon_tres"])
 	var sprite_frames_path = Assets.dir_tres + player_data["sprite_frames_tres"]
 	var sprite_frames = load(sprite_frames_path)
 	$AnimatedSprite2D.sprite_frames = sprite_frames
@@ -132,7 +135,15 @@ func _on_effect_animator_animation_finished():
 	$EffectAnimator.hide()
 
 
+func get_rand_witticism() -> String:
+	return current_witticism_pool.pick_random()
+
+
 func _on_timer_timeout():
 	# Emit talk signal to update witticism in PlayerState
 	talk.emit(current_witticism_pool.pick_random())
 	$Timer.start(randf_range(talk_speed, 30.0))
+	
+	
+func get_sprite_frames():
+	return $AnimatedSprite2D.sprite_frames

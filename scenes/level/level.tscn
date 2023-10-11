@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dn0hu0t1ava4g" path="res://scenes/ui/transition.tscn" id="2_hfusr"]
 [ext_resource type="PackedScene" uid="uid://gkjsdqs815fl" path="res://scenes/ui/player_state/player_state.tscn" id="3_ecgvc"]
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" groups=["level"]]
 script = ExtResource("1_gxo63")
 metadata/_edit_vertical_guides_ = []
 

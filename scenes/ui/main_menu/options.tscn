@@ -1,13 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://d1cbkidjpwlj2"]
 
-[ext_resource type="Script" path="res://scenes/ui/main_menu/setting_menu.gd" id="1_8vr4a"]
-[ext_resource type="Texture2D" uid="uid://dn3kvp5esi4rr" path="res://assets/textures/icons/speaker.png" id="2_2q1hs"]
-[ext_resource type="Texture2D" uid="uid://whrrinl8cnuj" path="res://assets/textures/icons/full_screen.png" id="2_rxhah"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wcnfv"]
-bg_color = Color(0, 0, 0, 0.705882)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xsfgx"]
+[ext_resource type="Script" path="res://scenes/ui/main_menu/options.gd" id="1_vf2fm"]
+[ext_resource type="Texture2D" uid="uid://whrrinl8cnuj" path="res://assets/textures/icons/full_screen.png" id="2_e8u0w"]
+[ext_resource type="StyleBox" uid="uid://1spqcg31jdx2" path="res://tress/sbf_ui_dark_mask.tres" id="2_sdhw2"]
+[ext_resource type="StyleBox" uid="uid://dibwpul5ku25j" path="res://tress/sbe_default.tres" id="3_3nje2"]
+[ext_resource type="Texture2D" uid="uid://dn3kvp5esi4rr" path="res://assets/textures/icons/speaker.png" id="3_d1jg6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uai8i"]
 
@@ -17,7 +14,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Background/ColorRect:position")
+tracks/0/path = NodePath("RootPanel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -33,7 +30,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Background/ColorRect:position")
+tracks/0/path = NodePath("RootPanel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -48,7 +45,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Background/ColorRect/VBoxContainer/UpBox/SoundsButton:rotation")
+tracks/0/path = NodePath("RootPanel/VBoxContainer/UpBox/SoundsButton:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -60,7 +57,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Background/ColorRect:position")
+tracks/1/path = NodePath("RootPanel:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -77,8 +74,8 @@ _data = {
 "RESET": SubResource("Animation_ndqi4")
 }
 
-[node name="SettingMenu" type="CanvasLayer"]
-script = ExtResource("1_8vr4a")
+[node name="Options" type="CanvasLayer"]
+script = ExtResource("1_vf2fm")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_group_ = true
 
@@ -88,20 +85,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_wcnfv")
-theme_override_styles/hover = SubResource("StyleBoxFlat_wcnfv")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_wcnfv")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_wcnfv")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_xsfgx")
+theme_override_styles/normal = ExtResource("2_sdhw2")
+theme_override_styles/hover = ExtResource("2_sdhw2")
+theme_override_styles/pressed = ExtResource("2_sdhw2")
+theme_override_styles/disabled = ExtResource("2_sdhw2")
+theme_override_styles/focus = ExtResource("3_3nje2")
 
-[node name="ColorRect" type="ColorRect" parent="Background"]
+[node name="RootPanel" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(400, 0)
-layout_mode = 0
 offset_left = -400.0
 offset_bottom = 648.0
 color = Color(0.223529, 0.243137, 0.27451, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/ColorRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="RootPanel"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -109,45 +105,45 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UpBox" type="HBoxContainer" parent="Background/ColorRect/VBoxContainer"]
+[node name="UpBox" type="HBoxContainer" parent="RootPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="FullScreenButton" type="Button" parent="Background/ColorRect/VBoxContainer/UpBox"]
+[node name="FullScreenButton" type="Button" parent="RootPanel/VBoxContainer/UpBox"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_uai8i")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_uai8i")
-icon = ExtResource("2_rxhah")
+icon = ExtResource("2_e8u0w")
 flat = true
 
-[node name="SoundsButton" type="Button" parent="Background/ColorRect/VBoxContainer/UpBox"]
+[node name="SoundsButton" type="Button" parent="RootPanel/VBoxContainer/UpBox"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_uai8i")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_uai8i")
-icon = ExtResource("2_2q1hs")
+icon = ExtResource("3_d1jg6")
 flat = true
 text_overrun_behavior = 3
 
-[node name="DownBox" type="HBoxContainer" parent="Background/ColorRect/VBoxContainer"]
+[node name="DownBox" type="HBoxContainer" parent="RootPanel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="LangBox" type="VBoxContainer" parent="Background/ColorRect/VBoxContainer/DownBox"]
+[node name="LangBox" type="VBoxContainer" parent="RootPanel/VBoxContainer/DownBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="Background/ColorRect/VBoxContainer/DownBox/LangBox"]
+[node name="Label" type="Label" parent="RootPanel/VBoxContainer/DownBox/LangBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Language"
 horizontal_alignment = 1
 
-[node name="LangSelector" type="OptionButton" parent="Background/ColorRect/VBoxContainer/DownBox/LangBox"]
+[node name="LangSelector" type="OptionButton" parent="RootPanel/VBoxContainer/DownBox/LangBox"]
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -163,17 +159,17 @@ popup/item_1/id = 1
 popup/item_2/text = "English"
 popup/item_2/id = 2
 
-[node name="EffectBox" type="VBoxContainer" parent="Background/ColorRect/VBoxContainer/DownBox"]
+[node name="EffectBox" type="VBoxContainer" parent="RootPanel/VBoxContainer/DownBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label2" type="Label" parent="Background/ColorRect/VBoxContainer/DownBox/EffectBox"]
+[node name="Label2" type="Label" parent="RootPanel/VBoxContainer/DownBox/EffectBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Effect"
 horizontal_alignment = 1
 
-[node name="EffectSelector" type="OptionButton" parent="Background/ColorRect/VBoxContainer/DownBox/EffectBox"]
+[node name="EffectSelector" type="OptionButton" parent="RootPanel/VBoxContainer/DownBox/EffectBox"]
 custom_minimum_size = Vector2(100, 40)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -197,7 +193,7 @@ libraries = {
 [node name="SoundPlayer2D" type="AudioStreamPlayer2D" parent="." groups=["sound"]]
 
 [connection signal="button_down" from="Background" to="." method="_on_background_button_down"]
-[connection signal="button_down" from="Background/ColorRect/VBoxContainer/UpBox/FullScreenButton" to="." method="_on_full_screen_button_button_down"]
-[connection signal="button_down" from="Background/ColorRect/VBoxContainer/UpBox/SoundsButton" to="." method="_on_sounds_button_button_down"]
-[connection signal="item_selected" from="Background/ColorRect/VBoxContainer/DownBox/LangBox/LangSelector" to="." method="_on_lang_selector_item_selected"]
-[connection signal="item_selected" from="Background/ColorRect/VBoxContainer/DownBox/EffectBox/EffectSelector" to="." method="_on_effect_selector_item_selected"]
+[connection signal="button_down" from="RootPanel/VBoxContainer/UpBox/FullScreenButton" to="." method="_on_full_screen_button_button_down"]
+[connection signal="button_down" from="RootPanel/VBoxContainer/UpBox/SoundsButton" to="." method="_on_sounds_button_button_down"]
+[connection signal="item_selected" from="RootPanel/VBoxContainer/DownBox/LangBox/LangSelector" to="." method="_on_lang_selector_item_selected"]
+[connection signal="item_selected" from="RootPanel/VBoxContainer/DownBox/EffectBox/EffectSelector" to="." method="_on_effect_selector_item_selected"]

@@ -15,7 +15,7 @@ func _ready():
 
 
 func init_popup(message : String, confirm_callback : Callable, cancel_callback : Callable = _cancel):
-	$Background/ColorRect/VBoxContainer/MessageText.set_text(message)
+	$RootPanel/VBoxContainer/MessageText.set_text(message)
 	self.connect("confirm", confirm_callback)
 	self.connect("cancel", cancel_callback)
 

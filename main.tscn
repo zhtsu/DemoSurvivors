@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnpucq324a4kl"]
+[gd_scene load_steps=5 format=3 uid="uid://dnpucq324a4kl"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_y1odt"]
-[ext_resource type="PackedScene" uid="uid://svdqnhmua150" path="res://scenes/ui/main_menu.tscn" id="3_0lsp7"]
+[ext_resource type="PackedScene" uid="uid://svdqnhmua150" path="res://scenes/ui/main_menu/main_menu.tscn" id="3_0lsp7"]
 [ext_resource type="PackedScene" uid="uid://l13fitcsct4h" path="res://scenes/ui/viewport_effect.tscn" id="3_0syhx"]
+[ext_resource type="AudioStream" uid="uid://btafleilp2jc5" path="res://assets/musics/dongcidaci.wav" id="4_5713w"]
 
 [node name="Main" type="Node" groups=["main"]]
 script = ExtResource("1_y1odt")
@@ -11,3 +12,6 @@ script = ExtResource("1_y1odt")
 
 [node name="ViewportEffect" parent="." instance=ExtResource("3_0syhx")]
 visible = false
+
+[node name="MusicPlayer2D" type="AudioStreamPlayer2D" parent="." groups=["music"]]
+stream = ExtResource("4_5713w")
