@@ -54,7 +54,7 @@ func _ready():
 	
 
 func _apply_settings():
-	if option_dict["OpenSounds"]:
+	if option_dict["OpenSounds"] and not music_player.playing:
 		loud()
 
 

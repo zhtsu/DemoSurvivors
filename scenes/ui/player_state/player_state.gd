@@ -23,7 +23,7 @@ func _update_witticism(talk_content : String):
 
 func _on_timer_timeout():
 	game_time_secs += 1
-	var mins = game_time_secs / 60
+	var mins = float(game_time_secs) / 60
 	var secs = game_time_secs % 60
 	$Main/Body/Time.text = "%02d : %02d " % [mins, secs]
 
@@ -35,8 +35,9 @@ func _on_talk_button_button_down():
 
 func _on_pause_button_button_down():
 	_play_button_down_sound()
+	await $SoundPlayer2D.finished
 	var pause_menu = Assets.tscn_pause_menu.instantiate()
-	add_child(pause_menu)
+	get_tree().get_first_node_in_group("main").add_child(pause_menu)
 	
 	
 func _play_button_down_sound():

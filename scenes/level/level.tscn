@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://gkjsdqs815fl" path="res://scenes/ui/player_state/player_state.tscn" id="3_ecgvc"]
 
 [node name="Level" type="Node2D" groups=["level"]]
+process_mode = 1
 script = ExtResource("1_gxo63")
 metadata/_edit_vertical_guides_ = []
 

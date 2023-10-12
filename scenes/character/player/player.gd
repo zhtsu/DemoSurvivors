@@ -11,7 +11,7 @@ signal level_up
 const Assets = preload("res://scenes/global/assets.gd")
 
 var previous_hp := 100.0
-var exp := 0.0
+var level_exp := 0.0
 var previous_exp := 0.0
 var witticism_dict : Dictionary
 var current_witticism_pool : Array

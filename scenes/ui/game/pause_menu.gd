@@ -6,24 +6,28 @@ const Assets = preload("res://scenes/global/assets.gd")
 
 func _ready():
 	$AnimationPlayer.play("Enter")
-
+	get_tree().paused = true
 
 func _on_background_button_down():
 	_play_button_down_sound()
 	$AnimationPlayer.play("Exit")
 	await $AnimationPlayer.animation_finished
+	get_tree().paused = false
 	queue_free()
 
 
 func _on_restart_button_button_down():
+	get_tree().paused = false
 	_play_button_down_sound()
 
 
 func _on_main_menu_button_button_down():
+	get_tree().paused = false
 	_play_button_down_sound()
 	var main_menu = Assets.tscn_main_menu.instantiate()
 	get_tree().get_first_node_in_group("main").add_child(main_menu)
 	get_tree().get_first_node_in_group("level").queue_free()
+	queue_free()
 
 
 func _on_options_button_button_down():

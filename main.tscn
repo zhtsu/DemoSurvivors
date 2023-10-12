@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://btafleilp2jc5" path="res://assets/musics/dongcidaci.wav" id="4_5713w"]
 
 [node name="Main" type="Node" groups=["main"]]
+process_mode = 3
 script = ExtResource("1_y1odt")
 
 [node name="MainMenu" parent="." instance=ExtResource("3_0lsp7")]
