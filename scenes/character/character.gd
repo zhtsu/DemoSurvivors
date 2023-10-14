@@ -20,8 +20,8 @@ var magical_def : float = 0.0
 var physical_crit_bonus : float = 0.0
 var magical_crit_bonus : float = 0.0
 # 0.0 ~ 1.0
-var physical_crit_prob : float = 0.0
-var magical_crit_prob : float = 0.0
+var physical_crit_chance : float = 0.0
+var magical_crit_chance : float = 0.0
 
 @export var spawn_position = Vector2(0, 0)
 
@@ -33,3 +33,8 @@ func _init_character():
 	position = spawn_position
 	size = $CollisionShape2D.shape.get_rect().size
 	
+
+# Make sure call this function once before _ready()
+# Otherwise, the action script will not work
+func _set_action_gdscript(script : Script):
+	$Action.set_script(script)

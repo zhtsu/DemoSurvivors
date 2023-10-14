@@ -1,10 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dr54axxmlxwrb"]
+[gd_scene load_steps=3 format=3 uid="uid://dr54axxmlxwrb"]
 
+[ext_resource type="Script" path="res://scenes/utility/hit_box.gd" id="1_gt6ak"]
 [ext_resource type="Shape2D" uid="uid://nbnjlrf0xk3t" path="res://tress/rcs_character.tres" id="1_trblt"]
 
 [node name="Hitbox" type="Area2D"]
 collision_layer = 0
 collision_mask = 0
+script = ExtResource("1_gt6ak")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = ExtResource("1_trblt")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

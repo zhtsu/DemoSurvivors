@@ -1,2 +1,2 @@
-name,id,sprite_frames_tres,gdscript,size,type,speed,physical_ATK,physical_DEF,magical_ATK,magical_DEF,physical_crit_bonus,physical_crit_prob,magical_crit_bonus,magical_crit_prob,use_default_collision,collision_shape_tres
-Chicken,1001,sf_chicken.tres,track_the_player.gd,Normal,Common,2,1,1,1,1,0.05,0.05,0.05,0.05,TRUE,null
+name,sprite_frames_tres,gdscript,size,type,speed,physical_ATK,physical_DEF,magical_ATK,magical_DEF,physical_crit_bonus,physical_crit_chance,magical_crit_bonus,magical_crit_chance,use_custom_shape,custom_shape_tres
+Chicken,sf_chicken.tres,track_the_player.gd,Normal,Common,2,1,1,1,1,0.05,0.05,0.05,0.05,FALSE,null

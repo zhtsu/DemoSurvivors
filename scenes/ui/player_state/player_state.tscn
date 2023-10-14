@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://gkjsdqs815fl"]
+[gd_scene load_steps=12 format=3 uid="uid://gkjsdqs815fl"]
 
 [ext_resource type="Script" path="res://scenes/ui/player_state/player_state.gd" id="1_1uj4t"]
-[ext_resource type="PackedScene" uid="uid://blggg6gw6laco" path="res://scenes/ui/player_state/gift_box.tscn" id="2_y3715"]
+[ext_resource type="PackedScene" uid="uid://blggg6gw6laco" path="res://scenes/ui/player_state/item_state_box.tscn" id="2_y3715"]
 [ext_resource type="Texture2D" uid="uid://gykabd80sfkg" path="res://tress/at_icon_ninja_frog.tres" id="3_anyct"]
 [ext_resource type="Texture2D" uid="uid://cfqxjgatk1jmu" path="res://assets/textures/icons/arrow_button.png" id="3_ypfxi"]
+[ext_resource type="PackedScene" uid="uid://g2oww8ykssaf" path="res://scenes/ui/player_state/property_bar.tscn" id="4_ghvcw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bgjd7"]
 
@@ -96,21 +97,81 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_56bkv")
 [node name="AbilityBox" parent="Main/Body" instance=ExtResource("2_y3715")]
 layout_mode = 2
 
-[node name="TalkButton" type="Button" parent="Main/Body"]
+[node name="Box" type="VBoxContainer" parent="Main/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBox" type="HBoxContainer" parent="Main/Body/Box"]
+layout_mode = 2
+
+[node name="ShowPropButton" type="Button" parent="Main/Body/Box/HBox"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 0
 size_flags_vertical = 0
 focus_mode = 0
 icon = ExtResource("3_anyct")
 expand_icon = true
 
-[node name="Witticism" type="Label" parent="Main/Body"]
+[node name="Witticism" type="Label" parent="Main/Body/Box/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 12
 vertical_alignment = 2
+
+[node name="PropertyBox" type="VBoxContainer" parent="Main/Body/Box"]
+layout_mode = 2
+
+[node name="H5" type="HBoxContainer" parent="Main/Body/Box/PropertyBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HP" parent="Main/Body/Box/PropertyBox/H5" instance=ExtResource("4_ghvcw")]
+layout_mode = 2
+
+[node name="Speed" parent="Main/Body/Box/PropertyBox/H5" instance=ExtResource("4_ghvcw")]
+layout_mode = 2
+
+[node name="H1" type="HBoxContainer" parent="Main/Body/Box/PropertyBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="PATK" parent="Main/Body/Box/PropertyBox/H1" instance=ExtResource("4_ghvcw")]
+layout_mode = 2
+
+[node name="PDEF" parent="Main/Body/Box/PropertyBox/H1" instance=ExtResource("4_ghvcw")]
+layout_mode = 2
+
+[node name="H2" type="HBoxContainer" parent="Main/Body/Box/PropertyBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MATK" parent="Main/Body/Box/PropertyBox/H2" instance=ExtResource("4_ghvcw")]
+layout_mode = 2
+
+[node name="MDEF" parent="Main/Body/Box/PropertyBox/H2" instance=ExtResource("4_ghvcw")]
+layout_mode = 2
+
+[node name="H3" type="HBoxContainer" parent="Main/Body/Box/PropertyBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="PCritC" parent="Main/Body/Box/PropertyBox/H3" instance=ExtResource("4_ghvcw")]
+layout_mode = 2
+
+[node name="PCritB" parent="Main/Body/Box/PropertyBox/H3" instance=ExtResource("4_ghvcw")]
+layout_mode = 2
+
+[node name="H4" type="HBoxContainer" parent="Main/Body/Box/PropertyBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MCritC" parent="Main/Body/Box/PropertyBox/H4" instance=ExtResource("4_ghvcw")]
+layout_mode = 2
+
+[node name="MCritB" parent="Main/Body/Box/PropertyBox/H4" instance=ExtResource("4_ghvcw")]
+layout_mode = 2
 
 [node name="Time" type="Label" parent="Main/Body"]
 layout_mode = 2
@@ -142,10 +203,10 @@ libraries = {
 
 [node name="Timer" type="Timer" parent="."]
 
-[node name="SoundPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
 
-[connection signal="button_down" from="Main/Body/TalkButton" to="." method="_on_talk_button_button_down"]
-[connection signal="mouse_entered" from="Main/Body/TalkButton" to="." method="_play_button_hover_sound"]
+[connection signal="button_down" from="Main/Body/Box/HBox/ShowPropButton" to="." method="_on_show_prop_button_button_down"]
+[connection signal="mouse_entered" from="Main/Body/Box/HBox/ShowPropButton" to="." method="_play_button_hover_sound"]
 [connection signal="button_down" from="Main/Body/PauseButton" to="." method="_on_pause_button_button_down"]
 [connection signal="mouse_entered" from="Main/Body/PauseButton" to="." method="_play_button_hover_sound"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -10,7 +10,7 @@ var max_player_count = 0
 var selected_player_idx = 0
 var selected_map_name = "Grass"
 
-@onready var sound_player = $SoundPlayer2D
+@onready var sound_player = $SoundPlayer
 @onready var ui_player_anim = $Control/Panel/VBoxContainer/HBoxContainer/PlayerBox/PlayerAnim
 @onready var ui_player_name = $Control/Panel/VBoxContainer/PlayerName
 @onready var ui_player_list = $Control/Panel/VBoxContainer/Scroller/PlayerList

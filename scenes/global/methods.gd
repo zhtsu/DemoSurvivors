@@ -22,11 +22,11 @@ static func load_csv_to_array(csv_file_path : String, out_list : Array) -> void:
 	csv_file.close()
 	
 	
-static func cal_crit_atk(base_atk : float, crit_prob : float, crit_bonus : float) -> Dictionary:
+static func cal_crit_atk(base_atk : float, crit_rate : float, crit_bonus : float) -> Dictionary:
 	var additional_atk = 0.0
 	var crit = false
-
-	if randf_range(0.0, 1.0) < crit_prob:
+	
+	if randf_range(0.0, 1.0) < crit_rate:
 		crit = true
 		additional_atk = base_atk * randf_range(0.0, crit_bonus)
 	

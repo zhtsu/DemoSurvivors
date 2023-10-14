@@ -1,5 +1,13 @@
 extends Node2D
 
+class_name Item
+
+
+const Enums = preload("res://scenes/global/enums.gd")
+
+# Weapon provides attribute bonuses to player
+# Ability provides special effect to player (eg. Player can heal HP from attacks)
+var type := Enums.ItemType.Weapon
 
 @export var physical_atk = 0.0
 @export var magical_atk = 0.0
@@ -10,8 +18,17 @@ extends Node2D
 @export var physical_crit_bonus = 0.0
 @export var magical_crit_bonus = 0.0
 # 0.0 ~ 1.0
-@export var physical_crit_prob = 0.0
-@export var magical_crit_prob = 0.0
+@export var physical_crit_rate = 0.0
+@export var magical_crit_rate = 0.0
 
+
+# Make sure call this function once before _ready()
+# Otherwise, the action script will not work
+func _set_action_gdscript(action_script : Script):
+	$Action.set_script(action_script)
+
+
+func _ready():
+	pass
 
 

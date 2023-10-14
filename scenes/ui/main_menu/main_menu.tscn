@@ -122,7 +122,7 @@ texture_pressed = ExtResource("6_4b3ub")
 texture_hover = ExtResource("7_ijk6a")
 texture_click_mask = SubResource("BitMap_od42s")
 
-[node name="SoundPlayer2D" type="AudioStreamPlayer2D" parent="." groups=["sound"]]
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="." groups=["sound"]]
 
 [connection signal="button_down" from="CenterBox/MenuItems/StartButton" to="." method="_on_start_button_button_down"]
 [connection signal="mouse_entered" from="CenterBox/MenuItems/StartButton" to="." method="_play_button_hover_sound"]

@@ -1,25 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://djf7l7gkecg7b"]
+[gd_scene load_steps=8 format=3 uid="uid://djf7l7gkecg7b"]
 
-[ext_resource type="Script" path="res://scenes/ui/game/pause_menu.gd" id="1_ohnr2"]
+[ext_resource type="Script" path="res://scenes/ui/game/pause_menu.gd" id="1_iv7rv"]
 [ext_resource type="StyleBox" uid="uid://1spqcg31jdx2" path="res://tress/sbf_ui_dark_mask.tres" id="1_px7gx"]
 [ext_resource type="StyleBox" uid="uid://dibwpul5ku25j" path="res://tress/sbe_default.tres" id="2_yrlbi"]
 [ext_resource type="AudioStream" uid="uid://bxodhr4xud0hs" path="res://assets/sounds/button_down.mp3" id="4_leotu"]
-
-[sub_resource type="Animation" id="Animation_35cfj"]
-resource_name = "Enter"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RootPanel:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_gw3y0"]
 resource_name = "Exit"
@@ -34,7 +18,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(0, 0)]
+"values": [Vector2(1, 1), Vector2(0.2, 0.2)]
 }
 
 [sub_resource type="Animation" id="Animation_3765g"]
@@ -55,14 +39,12 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wh415"]
 _data = {
-"Enter": SubResource("Animation_35cfj"),
 "Exit": SubResource("Animation_gw3y0"),
 "RESET": SubResource("Animation_3765g")
 }
 
 [node name="PauseMenu" type="CanvasLayer"]
-process_mode = 2
-script = ExtResource("1_ohnr2")
+script = ExtResource("1_iv7rv")
 
 [node name="Background" type="Button" parent="."]
 anchors_preset = 15
@@ -138,7 +120,7 @@ libraries = {
 "": SubResource("AnimationLibrary_wh415")
 }
 
-[node name="SoundPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_leotu")
 
 [connection signal="button_down" from="Background" to="." method="_on_background_button_down"]

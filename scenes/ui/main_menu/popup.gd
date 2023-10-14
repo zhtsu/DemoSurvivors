@@ -6,7 +6,7 @@ signal cancel
 
 const Assets = preload("res://scenes/global/assets.gd")
 
-@onready var sound_player = $SoundPlayer2D
+@onready var sound_player = $SoundPlayer
 
 
 # Called when the node enters the scene tree for the first time.

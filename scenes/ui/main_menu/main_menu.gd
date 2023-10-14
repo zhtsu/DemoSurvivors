@@ -4,7 +4,7 @@ extends CanvasLayer
 const Assets = preload("res://scenes/global/assets.gd")
 const Methods = preload("res://scenes/global/methods.gd")
 
-@onready var sound_player = $SoundPlayer2D
+@onready var sound_player = $SoundPlayer
 
 
 # Used for receive settings data form main.gd
@@ -12,7 +12,7 @@ var option_dict : Dictionary
 var player_data_list : Array[Dictionary]
 var enemy_data_list : Array[Dictionary]
 var map_data_list : Array[Dictionary]
-var music_player : AudioStreamPlayer2D
+var music_player : AudioStreamPlayer
 
 func _pause_anim():
 	$VirtualGuy.pause()

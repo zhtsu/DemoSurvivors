@@ -5,7 +5,6 @@ const Assets = preload("res://scenes/global/assets.gd")
 
 
 func _ready():
-	$AnimationPlayer.play("Enter")
 	get_tree().paused = true
 
 func _on_background_button_down():
@@ -53,11 +52,11 @@ func _on_exit_button_button_down():
 	
 
 func _play_button_down_sound():
-	$SoundPlayer2D.stream = Assets.a_button_down
-	$SoundPlayer2D.play()
+	$SoundPlayer.stream = Assets.a_button_down
+	$SoundPlayer.play()
 
 	
 func _play_button_hover_sound():
-	$SoundPlayer2D.stream = Assets.a_button_hover
-	$SoundPlayer2D.play()
+	$SoundPlayer.stream = Assets.a_button_hover
+	$SoundPlayer.play()
 

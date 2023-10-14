@@ -7,8 +7,6 @@ const Assets = preload("res://scenes/global/assets.gd")
 
 var enemy_size = Enums.EnemySize.Normal
 var enemy_type = Enums.EnemyType.Common
-# Used to save enemy ai logic callback function
-var action_script : Script = null
 
 func _ready():
 	_init_character()
@@ -22,7 +20,7 @@ func init(enemy_data : Dictionary):
 	$AnimatedSprite2D.sprite_frames = sprite_frames
 	if not enemy_data["gdscript"] == "null":
 		var gdscript_path = Assets.dir_enemy_actions + enemy_data["gdscript"]
-		action_script = load(gdscript_path)
+		_set_action_gdscript(load(gdscript_path))
 	enemy_size = Enums.EnemySize.get(enemy_data["size"])
 	enemy_type = Enums.EnemyType.get(enemy_data["type"])
 	character_name = enemy_data["name"]
@@ -32,17 +30,13 @@ func init(enemy_data : Dictionary):
 	magical_atk = float(enemy_data["magical_DEF"])
 	magical_def = float(enemy_data["magical_DEF"])
 	physical_crit_bonus = float(enemy_data["physical_crit_bonus"])
-	physical_crit_prob = float(enemy_data["physical_crit_prob"])
+	physical_crit_chance = float(enemy_data["physical_crit_chance"])
 	magical_crit_bonus = float(enemy_data["magical_crit_bonus"])
-	magical_crit_prob = float(enemy_data["magical_crit_prob"])
+	magical_crit_chance = float(enemy_data["magical_crit_chance"])
 
 
 func _physics_process(_delta):
 	_update_enemy_flip()
-	
-	if not action_script == null:
-		action_script.call("action", self)
-	
 	move_and_collide(Vector2.ZERO)
 	
 func _update_enemy_flip():

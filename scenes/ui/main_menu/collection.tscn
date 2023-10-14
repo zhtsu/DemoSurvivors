@@ -150,7 +150,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "这是道具的详细描述，你可以在这里看到道具的来源、以及如何使用这些你可能会感兴趣的信息"
 
-[node name="SoundPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_hjpf8")
 
 [connection signal="button_down" from="Background" to="." method="_on_background_button_down"]

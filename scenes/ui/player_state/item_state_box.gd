@@ -46,10 +46,14 @@ func _on_button_button_down():
 	
 	
 func _play_button_down_sound():
-	$SoundPlayer2D.stream = Assets.a_button_down
-	$SoundPlayer2D.play()
+	$SoundPlayer.stream = Assets.a_button_down
+	$SoundPlayer.play()
 	
 	
 func _play_button_hover_sound():
-	$SoundPlayer2D.stream = Assets.a_button_hover
-	$SoundPlayer2D.play()
+	$SoundPlayer.stream = Assets.a_button_hover
+	$SoundPlayer.play()
+	
+	
+func add_and_update_item_state():
+	pass

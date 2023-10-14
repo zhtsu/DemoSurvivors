@@ -33,6 +33,12 @@ enum EnemyType
 	Boss
 }
 
+enum ItemType
+{
+	Ability,
+	Weapon
+}
+
 enum EViewportEffect
 {
 	Normal,

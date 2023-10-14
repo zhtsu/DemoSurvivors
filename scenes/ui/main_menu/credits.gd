@@ -45,7 +45,7 @@ func _ready():
 	
 
 func _on_background_button_down():
-	$SoundPlayer2D.play()
+	$SoundPlayer.play()
 	$AnimationPlayer.play("Exit")
 	await $AnimationPlayer.animation_finished
 	queue_free()

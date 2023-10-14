@@ -3,8 +3,8 @@ extends Character
 class_name Player
 
 
-signal damage(causer : Enemy, ability : Ability)
-signal talk(witticism : String)
+signal damage(causer : Enemy)
+signal speak(witticism : String)
 signal add_exp(amount : int)
 signal level_up
 
@@ -19,6 +19,7 @@ var talk_speed : float = 1.0
 # Used for UI
 var icon : Texture2D
 
+
 func _ready():
 	_init_character()
 	$HpBar.hide()
@@ -27,7 +28,7 @@ func _ready():
 	await $EffectAnimator.animation_finished
 	$HpBar.show()
 	current_witticism_pool = witticism_dict["Common"]
-	talk.emit(current_witticism_pool.pick_random())
+	speak.emit(current_witticism_pool.pick_random())
 	$Timer.start(randf_range(talk_speed, 30.0))
 	
 
@@ -51,9 +52,9 @@ func init(player_data : Dictionary):
 	magical_atk = float(player_data["magical_DEF"])
 	magical_def = float(player_data["magical_DEF"])
 	physical_crit_bonus = float(player_data["physical_crit_bonus"])
-	physical_crit_prob = float(player_data["physical_crit_prob"])
+	physical_crit_chance = float(player_data["physical_crit_chance"])
 	magical_crit_bonus = float(player_data["magical_crit_bonus"])
-	magical_crit_prob = float(player_data["magical_crit_prob"])
+	magical_crit_chance = float(player_data["magical_crit_chance"])
 	# Load witticisms data
 	var witticism_json_path = Assets.dir_data + player_data["witticisms_json"]
 	var json_file = FileAccess.open(witticism_json_path, FileAccess.READ)
@@ -141,7 +142,7 @@ func get_rand_witticism() -> String:
 
 func _on_timer_timeout():
 	# Emit talk signal to update witticism in PlayerState
-	talk.emit(current_witticism_pool.pick_random())
+	speak.emit(current_witticism_pool.pick_random())
 	$Timer.start(randf_range(talk_speed, 30.0))
 	
 	

@@ -128,7 +128,7 @@ libraries = {
 "": SubResource("AnimationLibrary_m452b")
 }
 
-[node name="SoundPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="button_down" from="Background" to="." method="_on_background_button_down"]
 [connection signal="button_down" from="RootPanel/VBoxContainer/HBoxContainer/ConfirmButton" to="." method="_on_confirm_button_button_down"]

@@ -1,8 +1,6 @@
 extends Node
 
 
-class_name Ability
-
 var ability_name = "Collide"
 
 var physical_atk : float = 0.0

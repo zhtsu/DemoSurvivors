@@ -1,0 +1,2 @@
+name,icon_tres,gdscript,physical_ATK,physical_DEF,magical_ATK,magical_DEF,physical_crit_bonus,physical_crit_chance,magical_crit_bonus,magical_crit_chance
+Dagger¡¤Ninja,at_weapon_dagger_ninja.tres,null,1,1,0,0,0.05,0.05,0,0

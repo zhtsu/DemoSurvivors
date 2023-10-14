@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://g2oww8ykssaf"]
+
+[ext_resource type="Script" path="res://scenes/ui/player_state/property_bar.gd" id="1_t43oa"]
+
+[node name="PropertyBar" type="HBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
+offset_right = 11.0
+offset_bottom = 23.0
+script = ExtResource("1_t43oa")
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Property"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = ": "
+
+[node name="Value" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "0.0"

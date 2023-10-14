@@ -30,6 +30,7 @@ const tscn_enemy = preload("res://scenes/character/enemy/enemy.tscn")
 const tscn_map_item = preload("res://scenes/ui/pick_player/map_item.tscn")
 const tscn_pause_menu = preload("res://scenes/ui/game/pause_menu.tscn")
 const tscn_main_menu = preload("res://scenes/ui/main_menu/main_menu.tscn")
+const tscn_item = preload("res://scenes/item/item.tscn")
 # Audio
 const a_button_down = preload("res://assets/sounds/button_down.mp3")
 const a_button_hover = preload("res://assets/sounds/button_hover.mp3")

@@ -8,6 +8,7 @@
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("2_32uur")
+spawn_position = null
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("3_tus4h")

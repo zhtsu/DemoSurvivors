@@ -26,7 +26,7 @@ func _ready():
 	
 	# Make sure the function below called after modifying setting_dict 
 	_apply_viewport_effect()
-	$MusicPlayer2D.play()
+	$MusicPlayer.play()
 
 
 func _apply_viewport_effect():
@@ -34,6 +34,6 @@ func _apply_viewport_effect():
 	
 	
 func get_music_player() -> AudioStreamPlayer2D:
-	return $MusicPlayer2D
+	return $MusicPlayer
 
 

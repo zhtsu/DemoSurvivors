@@ -56,6 +56,7 @@ Right={
 2d_physics/layer_6="PlayerHurtBox"
 2d_physics/layer_7="EnemyHitBox"
 2d_physics/layer_8="EnemyHurtBox"
+2d_physics/layer_9="Projectile"
 
 [rendering]
 

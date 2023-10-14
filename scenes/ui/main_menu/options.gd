@@ -8,7 +8,7 @@ var option_dict : Dictionary
 @onready var sounds_button = $RootPanel/VBoxContainer/UpBox/SoundsButton
 @onready var language_combo_box = $RootPanel/VBoxContainer/DownBox/LangBox/LangSelector
 @onready var effect_combo_box = $RootPanel/VBoxContainer/DownBox/EffectBox/EffectSelector
-@onready var sound_player = $SoundPlayer2D
+@onready var sound_player = $SoundPlayer
 
 
 # Called when the node enters the scene tree for the first time.

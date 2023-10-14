@@ -319,7 +319,7 @@ icon = ExtResource("6_6cprd")
 icon_alignment = 2
 expand_icon = true
 
-[node name="SoundPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="Control/Panel/VBoxContainer/HBoxContainer/LeftSwitch" to="." method="_on_left_switch_pressed"]
 [connection signal="pressed" from="Control/Panel/VBoxContainer/HBoxContainer/RightSwitch" to="." method="_on_right_switch_pressed"]
