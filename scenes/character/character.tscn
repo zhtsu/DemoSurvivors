@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dxx2elvn8s6am"]
+[gd_scene load_steps=38 format=3 uid="uid://dxx2elvn8s6am"]
 
 [ext_resource type="Script" path="res://scenes/character/character.gd" id="1_htsf6"]
 [ext_resource type="Texture2D" uid="uid://o15w0120jtfw" path="res://assets/textures/character/player/ninja_frog/ninja_frog_damage_32x32.png" id="2_tnsv4"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dvnu0yef01425" path="res://assets/textures/character/player/ninja_frog/ninja_frog_walk_32x32.png" id="4_r4q1k"]
 [ext_resource type="Shape2D" uid="uid://nbnjlrf0xk3t" path="res://tress/rcs_character.tres" id="5_ch6dq"]
 [ext_resource type="PackedScene" uid="uid://b25bl7m7n1nor" path="res://scenes/utility/action.tscn" id="7_2hda5"]
-[ext_resource type="PackedScene" uid="uid://dc682hpft1so" path="res://scenes/utility/hurt_box.tscn" id="7_d70sc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yidut"]
 atlas = ExtResource("2_tnsv4")
@@ -261,9 +260,5 @@ animation = &"Idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 shape = ExtResource("5_ch6dq")
-
-[node name="HurtBox" parent="." instance=ExtResource("7_d70sc")]
-visible = false
-position = Vector2(0, 4)
 
 [node name="Action" parent="." instance=ExtResource("7_2hda5")]

@@ -1,6 +1,5 @@
-extends Node2D
-
 class_name Item
+extends Node2D
 
 
 const Enums = preload("res://scenes/global/enums.gd")

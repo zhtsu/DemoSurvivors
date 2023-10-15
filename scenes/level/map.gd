@@ -1,6 +1,5 @@
-extends TileMap
-
 class_name Map
+extends TileMap
 
 
 const Assets = preload("res://scenes/global/assets.gd")
@@ -8,7 +7,7 @@ const Assets = preload("res://scenes/global/assets.gd")
 # 16 x 16
 const tile_size := 16
 # 648 / 16
-const tile_max_row := 20
+const tile_max_row := 24
 # 1152 / 16
 const tile_max_col := 34
 

@@ -1,6 +1,5 @@
-extends Character
-
 class_name Enemy
+extends Character
 
 
 const Assets = preload("res://scenes/global/assets.gd")

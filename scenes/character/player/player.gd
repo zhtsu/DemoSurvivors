@@ -1,12 +1,12 @@
-extends Character
-
 class_name Player
+extends Character
 
 
 signal damage(causer : Enemy)
 signal speak(witticism : String)
-signal add_exp(amount : int)
+signal exp_added(amount : int)
 signal level_up
+signal item_added(item_name : String)
 
 const Assets = preload("res://scenes/global/assets.gd")
 
@@ -20,6 +20,14 @@ var talk_speed : float = 1.0
 var icon : Texture2D
 
 
+func _update_hp():
+	$HpBar.value = hp
+
+
+func _create_item_from_name(item_name : String):
+	item_added.emit(item_name)
+	
+
 func _ready():
 	_init_character()
 	$HpBar.hide()
@@ -30,6 +38,7 @@ func _ready():
 	current_witticism_pool = witticism_dict["Common"]
 	speak.emit(current_witticism_pool.pick_random())
 	$Timer.start(randf_range(talk_speed, 30.0))
+	_update_hp()
 	
 
 func _process(_delta):
@@ -148,3 +157,5 @@ func _on_timer_timeout():
 	
 func get_sprite_frames():
 	return $AnimatedSprite2D.sprite_frames
+
+

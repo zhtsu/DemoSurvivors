@@ -52,9 +52,11 @@ func _on_timer_timeout():
 
 
 func _on_show_prop_button_button_down():
-	_play_button_down_sound()
-	show_property = not show_property
-	_update_prop_box()
+	#_play_button_down_sound()
+	#show_property = not show_property
+	#_update_prop_box()
+	var ui_pick_item = Assets.tscn_pick_item.instantiate()
+	add_child(ui_pick_item)
 
 
 func _on_pause_button_button_down():

@@ -1,6 +1,6 @@
+class_name Character
 extends CharacterBody2D
 
-class_name Character
 
 const Enums = preload("res://scenes/global/enums.gd")
 #

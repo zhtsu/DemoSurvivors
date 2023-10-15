@@ -127,10 +127,6 @@ position = Vector2(269, 204)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("2_wf8m5")
-spawn_position = null
-
-[node name="HurtBox" parent="." index="2"]
-collision_layer = 32
 
 [node name="EffectAnimator" type="AnimatedSprite2D" parent="." index="3"]
 visible = false

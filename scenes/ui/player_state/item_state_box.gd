@@ -23,7 +23,7 @@ func _ready():
 		$Grid.position.x = 100.0
 
 
-func _process(delta):
+func _process(_delta):
 	pass
 
 

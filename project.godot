@@ -19,6 +19,10 @@ config/icon="res://icon.png"
 
 window/stretch/mode="canvas_items"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 Left={

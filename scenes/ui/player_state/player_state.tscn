@@ -15,8 +15,9 @@ bg_color = Color(0.360784, 0.384314, 0.396078, 1)
 
 [sub_resource type="Animation" id="Animation_qm3pq"]
 resource_name = "ExpBarGradualColor"
-length = 0.6
+length = 0.3
 loop_mode = 1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -24,7 +25,7 @@ tracks/0/path = NodePath("Main/ExpBar:theme_override_styles/fill:bg_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6),
+"times": PackedFloat32Array(0, 0.15, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 0.384314, 0.396078, 1), Color(0.360784, 1, 0.396078, 1), Color(0.360784, 0.384314, 1, 1)]
@@ -196,7 +197,8 @@ layout_mode = 2
 theme_override_constants/separation = 0
 theme_override_styles/separator = SubResource("StyleBoxEmpty_56bkv")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["player_state_anim_player"]]
+process_mode = 3
 libraries = {
 "": SubResource("AnimationLibrary_6tlyj")
 }
