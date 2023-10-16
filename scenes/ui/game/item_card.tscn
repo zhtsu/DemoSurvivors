@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3ch61msnptyv"]
+[gd_scene load_steps=9 format=3 uid="uid://b3ch61msnptyv"]
 
 [ext_resource type="Script" path="res://scenes/ui/game/item_card.gd" id="1_k02gh"]
 [ext_resource type="Texture2D" uid="uid://b04u1vn7fwn8h" path="res://assets/textures/items/item_icon_wood.png" id="2_qo8yi"]
@@ -24,18 +24,48 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_xf6df"]
+[sub_resource type="Animation" id="Animation_ac4nx"]
 resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_bxtk1"]
+resource_name = "Hover"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gc3lh"]
 _data = {
 "Enter": SubResource("Animation_v52yr"),
-"RESET": SubResource("Animation_xf6df")
+"Hover": SubResource("Animation_bxtk1"),
+"RESET": SubResource("Animation_ac4nx")
 }
 
 [node name="ItemCard" type="Button"]
-custom_minimum_size = Vector2(200, 260)
-offset_right = 200.0
+custom_minimum_size = Vector2(180, 260)
+offset_right = 180.0
 offset_bottom = 260.0
 pivot_offset = Vector2(100, 130)
 focus_mode = 0
@@ -86,3 +116,4 @@ libraries = {
 
 [connection signal="button_down" from="." to="." method="_on_button_down"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

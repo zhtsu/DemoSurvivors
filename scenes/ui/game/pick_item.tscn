@@ -39,8 +39,6 @@ _data = {
 
 [node name="PickItem" type="CanvasLayer"]
 process_mode = 2
-scale = Vector2(0, 0)
-transform = Transform2D(0, 0, 0, 0, 0, 0)
 script = ExtResource("1_nt6nc")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -125,7 +123,7 @@ anchor_bottom = 1.0
 offset_top = -20.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="ItemCard" parent="RootPanel/HBox/ColorRect/CardBox" instance=ExtResource("3_tngdm")]

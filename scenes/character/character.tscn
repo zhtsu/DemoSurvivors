@@ -262,3 +262,5 @@ position = Vector2(0, 4)
 shape = ExtResource("5_ch6dq")
 
 [node name="Action" parent="." instance=ExtResource("7_2hda5")]
+
+[node name="Timer" type="Timer" parent="."]

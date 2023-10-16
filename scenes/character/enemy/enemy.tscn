@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bgpgu24gsg723"]
+[gd_scene load_steps=6 format=3 uid="uid://bgpgu24gsg723"]
 
 [ext_resource type="PackedScene" uid="uid://dxx2elvn8s6am" path="res://scenes/character/character.tscn" id="1_vsqam"]
 [ext_resource type="Script" path="res://scenes/character/enemy/enemy.gd" id="2_32uur"]
 [ext_resource type="SpriteFrames" uid="uid://cyf75cipcs1wy" path="res://tress/sf_chicken.tres" id="3_tus4h"]
+[ext_resource type="Script" path="res://scenes/utility/hit_box.gd" id="4_hkswn"]
+[ext_resource type="Shape2D" uid="uid://nbnjlrf0xk3t" path="res://tress/rcs_character.tres" id="5_22826"]
 
 [node name="Enemy" groups=["enemy"] instance=ExtResource("1_vsqam")]
 collision_layer = 4
@@ -13,3 +15,10 @@ script = ExtResource("2_32uur")
 sprite_frames = ExtResource("3_tus4h")
 animation = &"Walk"
 frame_progress = 0.509783
+
+[node name="HitBox" type="Area2D" parent="." index="3"]
+position = Vector2(0, 4)
+script = ExtResource("4_hkswn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" index="0"]
+shape = ExtResource("5_22826")

@@ -2,11 +2,11 @@ class_name Player
 extends Character
 
 
-signal damage(causer : Enemy)
 signal speak(witticism : String)
 signal exp_added(amount : int)
 signal level_up
 signal item_added(item_name : String)
+signal property_updated
 
 const Assets = preload("res://scenes/global/assets.gd")
 
@@ -20,8 +20,14 @@ var talk_speed : float = 1.0
 var icon : Texture2D
 
 
+func _damage_process(damage_value : int):
+	hp -= damage_value
+	_update_hp()
+	
+
 func _update_hp():
 	$HpBar.value = hp
+	property_updated.emit()
 
 
 func _create_item_from_name(item_name : String):
@@ -40,13 +46,6 @@ func _ready():
 	$Timer.start(randf_range(talk_speed, 30.0))
 	_update_hp()
 	
-
-func _process(_delta):
-	_update_player_animation()
-	
-	if not previous_hp == hp:
-		$HpBar.value = hp
-	previous_hp = hp
 	
 
 func init(player_data : Dictionary):
@@ -77,6 +76,7 @@ func set_position_smoothing(enabled : bool = true):
 
 func _physics_process(delta):
 	_update_move(delta)
+	_update_player_animation()
 	
 	
 func appearing():
@@ -103,6 +103,11 @@ func _update_player_animation():
 		$AnimatedSprite2D.hide()
 		$EffectAnimator.show()
 		$EffectAnimator.play("Disappearing")
+		
+	if state == ECharacterState.Damage:
+		$AnimatedSprite2D.play("Damage")
+		return
+	
 	#
 	if direction == ECharacterDirection.Right:
 		$AnimatedSprite2D.flip_h = false
@@ -111,7 +116,8 @@ func _update_player_animation():
 
 
 func _update_move(delta):
-	if state == ECharacterState.Appearing or state == ECharacterState.Disappearing:
+	if state == ECharacterState.Appearing or \
+	   state == ECharacterState.Disappearing:
 		return
 	
 	velocity = Vector2.ZERO
@@ -127,15 +133,16 @@ func _update_move(delta):
 	
 	position += velocity.normalized() * speed * 50 * delta
 	
-	if velocity.length() > 0:
-		state = ECharacterState.Walk
-	else:
-		state = ECharacterState.Idle
-	
-	if velocity.x > 0:
-		direction = ECharacterDirection.Right
-	elif velocity.x < 0:
-		direction = ECharacterDirection.Left
+	if not state == ECharacterState.Damage:
+		if velocity.length() > 0:
+			state = ECharacterState.Walk
+		else:
+			state = ECharacterState.Idle
+		
+		if velocity.x > 0:
+			direction = ECharacterDirection.Right
+		elif velocity.x < 0:
+			direction = ECharacterDirection.Left
 		
 	move_and_collide(Vector2.ZERO)
 

@@ -31,3 +31,8 @@ func _on_button_down():
 
 func _on_mouse_entered():
 	_play_button_hover_sound()
+	$AnimationPlayer.play("Hover")
+
+
+func _on_mouse_exited():
+	$AnimationPlayer.play_backwards("Hover")

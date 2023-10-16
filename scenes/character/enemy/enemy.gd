@@ -54,6 +54,3 @@ func _update_enemy_flip():
 	if direction != previous_direction:
 		scale.x *= -1
 
-
-func _on_hitbox_body_entered(_sbody):
-	pass # Replace with function body.

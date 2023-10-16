@@ -12,6 +12,7 @@ func init(in_player : Player):
 	$Main/Body/Box/HBox/ShowPropButton.icon = player.icon
 	_update_props()
 	player.connect("speak", _update_witticism)
+	player.connect("property_updated", _update_props)
 
 
 func _update_prop_box():
@@ -52,11 +53,9 @@ func _on_timer_timeout():
 
 
 func _on_show_prop_button_button_down():
-	#_play_button_down_sound()
-	#show_property = not show_property
-	#_update_prop_box()
-	var ui_pick_item = Assets.tscn_pick_item.instantiate()
-	add_child(ui_pick_item)
+	_play_button_down_sound()
+	show_property = not show_property
+	_update_prop_box()
 
 
 func _on_pause_button_button_down():
