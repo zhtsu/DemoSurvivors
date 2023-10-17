@@ -3,11 +3,6 @@ extends Area2D
 
 
 const Methods = preload("res://scenes/global/methods.gd")
-
-
-func _init():
-	collision_layer = 0
-	collision_mask = 16
 	
 	
 

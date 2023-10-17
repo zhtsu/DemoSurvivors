@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c61enk61qyuvn"]
+[gd_scene load_steps=7 format=3 uid="uid://c61enk61qyuvn"]
 
 [ext_resource type="Script" path="res://scenes/ui/main_menu/collection.gd" id="1_yki37"]
 [ext_resource type="AudioStream" uid="uid://bxodhr4xud0hs" path="res://assets/sounds/button_down.mp3" id="2_hjpf8"]
@@ -16,23 +16,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(326, -648), Vector2(326, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_uy3g8"]
-resource_name = "Exit"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(326, 0), Vector2(326, -648)]
+"values": [Vector2(276, -648), Vector2(276, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_wd5dm"]
@@ -54,7 +38,6 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_246ak"]
 _data = {
 "Enter": SubResource("Animation_qgsjk"),
-"Exit": SubResource("Animation_uy3g8"),
 "RESET": SubResource("Animation_wd5dm")
 }
 
@@ -82,14 +65,14 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_dvslh")
 shortcut_feedback = false
 
 [node name="Control" type="Control" parent="."]
-custom_minimum_size = Vector2(500, 648)
+custom_minimum_size = Vector2(600, 648)
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 326.0
+offset_left = -250.0
 offset_top = -648.0
-offset_right = 826.0
+offset_right = 350.0
 offset_bottom = 0.000976563
 grow_horizontal = 2
 metadata/_edit_group_ = true
@@ -134,8 +117,21 @@ custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 color = Color(0.176471, 0.176471, 0.176471, 1)
 
+[node name="Label" type="Label" parent="Control/Content/Detail"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 26.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "道具名称"
+horizontal_alignment = 1
+
 [node name="Text" type="RichTextLabel" parent="Control/Content/Detail"]
-custom_minimum_size = Vector2(400, 120)
+custom_minimum_size = Vector2(500, 120)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

@@ -162,6 +162,8 @@ show_percentage = false
 
 [node name="HurtBox" type="Area2D" parent="." index="7"]
 position = Vector2(0, 4)
+collision_layer = 0
+collision_mask = 64
 script = ExtResource("6_dj3v1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" index="0"]

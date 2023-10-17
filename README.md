@@ -1,5 +1,10 @@
 # Demo Survivors
-A Vampire Survivor like game made by Godot Engine
+A Vampire Survivors like game made by Godot Engine
+
+## Environment
+
+- Windows 11
+- Godot 4.0.3
 
 ## Screenshots
 
