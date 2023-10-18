@@ -22,7 +22,7 @@ static func load_csv_to_array(csv_file_path : String, out_list : Array) -> void:
 	csv_file.close()
 	
 	
-static func cal_damage(hit_prop_dict : Dictionary, hurt_prop_dict : Dictionary):
+static func cal_damage(hit_prop_dict : Dictionary, hurt_prop_dict : Dictionary) -> int:
 	# Hit
 	var hit_physical_atk : float = hit_prop_dict["physical_atk"]
 	var hit_magical_atk : float = hit_prop_dict["magical_atk"]

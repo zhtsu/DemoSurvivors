@@ -1,15 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://dc84kvnhdauu8"]
 
 [ext_resource type="Script" path="res://scenes/item/item.gd" id="1_fkpwn"]
-[ext_resource type="Texture2D" uid="uid://cnpbfcheo2oub" path="res://tress/at_weapon_dagger_ninja.tres" id="2_bk681"]
 [ext_resource type="PackedScene" uid="uid://b25bl7m7n1nor" path="res://scenes/utility/action.tscn" id="3_s42dq"]
+[ext_resource type="Script" path="res://scenes/item/actions/homemade_projectile.gd" id="4_1jbxe"]
 
 [node name="Item" type="Node2D" groups=["item"]]
 position = Vector2(20, 20)
 script = ExtResource("1_fkpwn")
 metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_bk681")
-
 [node name="Action" parent="." instance=ExtResource("3_s42dq")]
+script = ExtResource("4_1jbxe")

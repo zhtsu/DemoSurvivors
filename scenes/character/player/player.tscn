@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://olrjehh0du76"]
+[gd_scene load_steps=26 format=3 uid="uid://olrjehh0du76"]
 
 [ext_resource type="PackedScene" uid="uid://dxx2elvn8s6am" path="res://scenes/character/character.tscn" id="1_utw0w"]
 [ext_resource type="Script" path="res://scenes/character/player/player.gd" id="2_wf8m5"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://qmmepafb2pjf" path="res://scenes/utility/effect_camera.tscn" id="5_wg3ay"]
 [ext_resource type="Script" path="res://scenes/utility/hurt_box.gd" id="6_dj3v1"]
 [ext_resource type="Shape2D" uid="uid://nbnjlrf0xk3t" path="res://tress/rcs_character.tres" id="7_2hqbp"]
+[ext_resource type="PackedScene" uid="uid://dc84kvnhdauu8" path="res://scenes/item/item.tscn" id="8_py5xh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aib1i"]
 atlas = ExtResource("3_jxbrf")
@@ -168,6 +169,8 @@ script = ExtResource("6_dj3v1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" index="0"]
 shape = ExtResource("7_2hqbp")
+
+[node name="Item" parent="." index="8" instance=ExtResource("8_py5xh")]
 
 [connection signal="animation_finished" from="EffectAnimator" to="." method="_on_effect_animator_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

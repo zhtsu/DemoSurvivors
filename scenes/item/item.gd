@@ -20,6 +20,7 @@ var type := Enums.ItemType.Weapon
 @export var physical_crit_rate = 0.0
 @export var magical_crit_rate = 0.0
 
+var icon : Texture2D
 
 # Make sure call this function once before _ready()
 # Otherwise, the action script will not work

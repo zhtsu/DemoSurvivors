@@ -12,13 +12,13 @@ const Assets = preload("res://scenes/global/assets.gd")
 
 var previous_hp := 100.0
 var level_exp := 0.0
-var previous_exp := 0.0
 var witticism_dict : Dictionary
 var current_witticism_pool : Array
 var talk_speed : float = 1.0
 # Used for UI
 var icon : Texture2D
-
+# Used for projectile
+var previous_velocity : Vector2 = Vector2(0.0, 0.0)
 
 func _damage_process(damage_value : int):
 	hp -= damage_value
@@ -120,8 +120,10 @@ func _update_move(delta):
 	   state == ECharacterState.Disappearing:
 		return
 	
+	if not velocity == Vector2.ZERO:
+		previous_velocity = velocity
+		
 	velocity = Vector2.ZERO
-	
 	if Input.is_action_pressed("Up"):
 		velocity.y = -1
 	elif Input.is_action_pressed("Down"):
@@ -164,5 +166,4 @@ func _on_timer_timeout():
 	
 func get_sprite_frames():
 	return $AnimatedSprite2D.sprite_frames
-
 
