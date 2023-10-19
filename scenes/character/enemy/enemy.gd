@@ -11,6 +11,8 @@ func _ready():
 	_init_character()
 	$AnimatedSprite2D.play("Walk")
 	direction = ECharacterDirection.Left
+	# TEST
+	hp = 8
 
 
 func init(enemy_data : Dictionary):
@@ -36,6 +38,13 @@ func init(enemy_data : Dictionary):
 
 func _physics_process(_delta):
 	_update_enemy_flip()
+	
+	if hp <= 0:
+		var particles_emitter = Assets.tscn_particles_emitter.instantiate()
+		particles_emitter.position = position
+		get_tree().get_first_node_in_group("level").add_child(particles_emitter)
+		queue_free()
+	
 	move_and_collide(Vector2.ZERO)
 	
 func _update_enemy_flip():

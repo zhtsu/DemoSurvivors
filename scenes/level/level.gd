@@ -26,6 +26,7 @@ func _ready():
 	active_player.init(player_data)
 	active_player.spawn_position = Vector2(576, 324)
 	active_player.call("set_position_smoothing", false)
+	active_player.connect("game_over", _game_over)
 	add_child(active_player)
 	# Init player state using created player
 	$PlayerState.call("init", active_player)
@@ -49,4 +50,10 @@ func _hide_transition():
 	$Transition.hide()
 	if (active_player != null):
 		active_player.call("set_position_smoothing", true)
+		
+		
+func _game_over():
+	var ui_game_over = Assets.tscn_game_over.instantiate()
+	get_tree().paused = true
+	add_child(ui_game_over)
 

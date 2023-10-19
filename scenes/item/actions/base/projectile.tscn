@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjyrwp7xgijvk"]
+[gd_scene load_steps=6 format=3 uid="uid://cjyrwp7xgijvk"]
 
 [ext_resource type="Script" path="res://scenes/item/actions/base/projectile.gd" id="1_mxfsa"]
 [ext_resource type="Texture2D" uid="uid://ckyftvk7stajr" path="res://tress/at_ability_homemade_projectile.tres" id="2_b2g07"]
 [ext_resource type="Script" path="res://scenes/utility/hit_box.gd" id="3_uqdo5"]
+[ext_resource type="AudioStream" uid="uid://cah7725fquumu" path="res://assets/sounds/homemade_projectile.mp3" id="4_dd5tm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvgei"]
 size = Vector2(26, 26)
@@ -24,6 +25,10 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_gvgei")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_dd5tm")
+volume_db = -12.0
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

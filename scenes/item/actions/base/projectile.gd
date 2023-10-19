@@ -1,3 +1,4 @@
+class_name Projectile
 extends Node2D
 
 
@@ -20,6 +21,8 @@ func init(in_spawn_position : Vector2, in_velocity : Vector2, in_speed : float):
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	position = spawn_position
+	
+	$SoundPlayer.play()
 
 
 func _physics_process(_delta):
@@ -32,8 +35,10 @@ func _physics_process(_delta):
 func _on_hit_box_area_entered(area):
 	if area.owner is Enemy:
 		var damage_value = Methods.cal_damage(player.get_prop_dict(), area.owner.get_prop_dict())
-		print_debug("Projectile hitting enemy", damage_value)
+		print_debug("Projectile hitting enemy: ", damage_value)
 		area.owner.take_damage(damage_value)
+	
+	queue_free()
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():

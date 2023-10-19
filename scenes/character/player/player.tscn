@@ -135,11 +135,8 @@ script = ExtResource("2_wf8m5")
 animation = &"Walk"
 
 [node name="EffectAnimator" type="AnimatedSprite2D" parent="." index="3"]
-visible = false
 sprite_frames = SubResource("SpriteFrames_nilxs")
-animation = &"Disappearing"
-frame = 6
-frame_progress = 1.0
+animation = &"Appearing"
 
 [node name="EffectCamera" parent="." index="4" instance=ExtResource("5_wg3ay")]
 position_smoothing_enabled = true

@@ -7,6 +7,7 @@ signal exp_added(amount : int)
 signal level_up
 signal item_added(item_name : String)
 signal property_updated
+signal game_over
 
 const Assets = preload("res://scenes/global/assets.gd")
 
@@ -37,9 +38,11 @@ func _create_item_from_name(item_name : String):
 func _ready():
 	_init_character()
 	$HpBar.hide()
-	$EffectAnimator.hide()
-	appearing()
+	$AnimatedSprite2D.hide()
+	state = ECharacterState.Appearing
+	$EffectAnimator.play("Appearing")
 	await $EffectAnimator.animation_finished
+	$AnimatedSprite2D.show()
 	$HpBar.show()
 	current_witticism_pool = witticism_dict["Common"]
 	speak.emit(current_witticism_pool.pick_random())
@@ -75,16 +78,18 @@ func set_position_smoothing(enabled : bool = true):
 	
 
 func _physics_process(delta):
-	_update_move(delta)
-	_update_player_animation()
+	if hp <= 0:
+		state = ECharacterState.Disappearing
+		$AnimatedSprite2D.hide()
+		$EffectAnimator.show()
+		$EffectAnimator.play("Disappearing")
+		await $EffectAnimator.animation_finished
+		hide()
+		game_over.emit()
 	
-	
-func appearing():
-	state = ECharacterState.Appearing
-
-
-func disappearing():
-	state = ECharacterState.Disappearing
+	if not state == ECharacterState.Appearing or state == ECharacterState.Disappearing:
+		_update_move(delta)
+		_update_player_animation()
 
 
 func _update_player_animation():
@@ -95,20 +100,6 @@ func _update_player_animation():
 	elif state == ECharacterState.Damage:
 		$AnimatedSprite2D.play("Damage")
 	#
-	elif state == ECharacterState.Appearing:
-		$AnimatedSprite2D.hide()
-		$EffectAnimator.show()
-		$EffectAnimator.play("Appearing")
-	elif state == ECharacterState.Disappearing:
-		$AnimatedSprite2D.hide()
-		$EffectAnimator.show()
-		$EffectAnimator.play("Disappearing")
-		
-	if state == ECharacterState.Damage:
-		$AnimatedSprite2D.play("Damage")
-		return
-	
-	#
 	if direction == ECharacterDirection.Right:
 		$AnimatedSprite2D.flip_h = false
 	elif direction == ECharacterDirection.Left:
@@ -116,10 +107,6 @@ func _update_player_animation():
 
 
 func _update_move(delta):
-	if state == ECharacterState.Appearing or \
-	   state == ECharacterState.Disappearing:
-		return
-	
 	if not velocity == Vector2.ZERO:
 		previous_velocity = velocity
 		
