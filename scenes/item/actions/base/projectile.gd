@@ -32,7 +32,10 @@ func _physics_process(_delta):
 	
 
 
-func _on_hit_box_area_entered(area):
+func _on_hit_box_area_entered(area : HurtBox):
+	if area == null:
+		return
+	
 	if area.owner is Enemy:
 		var damage_value = Methods.cal_damage(player.get_prop_dict(), area.owner.get_prop_dict())
 		print_debug("Projectile hitting enemy: ", damage_value)
@@ -42,4 +45,8 @@ func _on_hit_box_area_entered(area):
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()
+
+
+func _on_hit_box_body_entered(_body):
 	queue_free()

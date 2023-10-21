@@ -22,6 +22,7 @@ func init_popup(message : String, confirm_callback : Callable, cancel_callback :
 
 func _on_confirm_button_button_down():
 	_play_button_down_sound()
+	await $SoundPlayer.finished
 	emit_signal("confirm")
 
 

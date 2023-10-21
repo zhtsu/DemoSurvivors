@@ -49,6 +49,9 @@ func _physics_process(_delta):
 	
 func _update_enemy_flip():
 	var player = get_tree().get_first_node_in_group("player")
+	if player == null:
+		return
+	
 	var player_size : Vector2 = player.size
 	var player_pos : Vector2 = player.position
 	

@@ -13,6 +13,8 @@ func _ready():
 func _physics_process(_delta):
 	if not owner is Enemy:
 		return
+	if player == null:
+		return
 	
 	var offset : Vector2 = player.position - enemy_self.position
 	var distance = player.position.distance_to(enemy_self.position)

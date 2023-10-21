@@ -7,10 +7,12 @@ var player : Player
 var game_time_secs := 0
 var show_property = false
 
+
 func init(in_player : Player):
 	player = in_player
 	$Main/Body/Box/HBox/ShowPropButton.icon = player.icon
 	_update_props()
+	_update_exp_bar()
 	player.connect("speak", _update_witticism)
 	player.connect("property_updated", _update_props)
 
@@ -34,6 +36,9 @@ func _update_props():
 	$Main/Body/Box/PropertyBox/H4/MCritC.call("set_property", "Magical Crit Chance", String.num(player.magical_crit_chance))
 	$Main/Body/Box/PropertyBox/H4/MCritB.call("set_property", "Magical Crit Bonus", String.num(player.magical_crit_bonus))
 
+
+func _update_exp_bar():
+	$Main/ExpBar.value = player.current_exp
 
 
 func _ready():
@@ -64,7 +69,7 @@ func _on_pause_button_button_down():
 	await $SoundPlayer.finished
 	$Main/Body/PauseButton.disabled = false
 	var pause_menu = Assets.tscn_pause_menu.instantiate()
-	get_tree().get_first_node_in_group("main").add_child(pause_menu)
+	add_child(pause_menu)
 	
 	
 func _play_button_down_sound():

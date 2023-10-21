@@ -1,6 +1,9 @@
 extends Node
 
 
+const Assets = preload("res://scenes/global/assets.gd")
+
+
 static func load_csv_to_array(csv_file_path : String, out_list : Array) -> void:
 	out_list.clear()
 	var csv_file = FileAccess.open(csv_file_path, FileAccess.READ)
@@ -63,3 +66,30 @@ static func cal_atk_with_crit(base_atk : float, crit_chance : float, crit_bonus 
 	
 	return result
 	
+static func switch_scene(current_scene : Node, to_scene : Node, use_transition : bool = false):
+	var main_loop = Engine.get_main_loop()
+	var scene_tree = main_loop as SceneTree;
+	var game_main = scene_tree.get_first_node_in_group("main") as Main
+	
+	if use_transition == true:
+		seed(randi())
+		var current_transition = Assets.tscn_transition.instantiate()
+		var rng = RandomNumberGenerator.new()
+		var rg_color = Color.from_hsv(
+				rng.randf_range(0.4, 0.6),
+				rng.randf_range(0.4, 0.6),
+				rng.randf_range(0.4, 0.6))
+		current_transition.call("init", rg_color, false)
+		current_transition.connect("finished",
+		func():
+			game_main.remove_child(current_scene)
+			var to_transition = Assets.tscn_transition.instantiate()
+			to_transition.call("init", rg_color, true)
+			to_transition.connect("finished", func() : scene_tree.paused = false)
+			to_scene.add_child(to_transition)
+			game_main.add_child(to_scene)
+		)
+		current_scene.add_child(current_transition)
+	else:
+		game_main.remove_child(current_scene)
+		game_main.add_child(to_scene)

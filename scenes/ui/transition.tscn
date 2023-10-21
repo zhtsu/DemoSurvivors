@@ -51,6 +51,7 @@ _data = {
 }
 
 [node name="Transition" type="CanvasLayer"]
+process_mode = 3
 layer = 2
 script = ExtResource("2_yqu1k")
 
@@ -69,5 +70,3 @@ color = Color(0.298039, 0.298039, 0.298039, 1)
 libraries = {
 "": SubResource("AnimationLibrary_52ye7")
 }
-
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

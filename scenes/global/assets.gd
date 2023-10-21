@@ -34,6 +34,7 @@ const tscn_item = preload("res://scenes/item/item.tscn")
 const tscn_pick_item = preload("res://scenes/ui/game/pick_item.tscn")
 const tscn_particles_emitter = preload("res://scenes/utility/particles_emitter.tscn")
 const tscn_game_over = preload("res://scenes/ui/game/game_over.tscn")
+const tscn_camera = preload("res://scenes/utility/effect_camera.tscn")
 # Audio
 const a_button_down = preload("res://assets/sounds/button_down.mp3")
 const a_button_hover = preload("res://assets/sounds/button_hover.mp3")

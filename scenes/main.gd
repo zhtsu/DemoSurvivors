@@ -1,3 +1,4 @@
+class_name Main
 extends Node
 
 const Assets = preload("res://scenes/global/assets.gd")

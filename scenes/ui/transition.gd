@@ -1,3 +1,4 @@
+class_name Transition
 extends CanvasLayer
 
 
@@ -8,9 +9,10 @@ signal finished
 @export var color : Color = Color.DARK_GRAY
 
 
-func init(in_reverse : bool, in_color : Color):
+func init(in_color : Color, in_reverse : bool):
 	reverse = in_reverse
 	color = in_color
+	
 	
 func display():
 	$ColorRect.material.set_shader_parameter("color", color)
@@ -19,10 +21,11 @@ func display():
 	else:
 		$AnimationPlayer.play("Enter")
 		
+	await $AnimationPlayer.animation_finished
+	finished.emit()
+	queue_free()
+	
 	
 func _ready():
 	display()
 
-
-func _on_animation_player_animation_finished(_anim_name):
-	finished.emit()

@@ -2,6 +2,7 @@ extends CanvasLayer
 
 
 const Assets = preload("res://scenes/global/assets.gd")
+const Methods = preload("res://scenes/global/methods.gd")
 
 var player_data_list : Array[Dictionary]
 var enemy_data_list : Array[Dictionary]
@@ -149,29 +150,11 @@ func _on_back_button_pressed():
 	await $AnimationPlayer.animation_finished
 	queue_free()
 
-
-# Uesd for pass color to level's transition from current transition
-var rg_color : Color = Color.GRAY
-
 func _on_start_button_pressed():
-	seed(randi())
 	_play_button_down_sound()
-	var transition_scene = Assets.tscn_transition.instantiate()
-	var rng = RandomNumberGenerator.new()
-	rg_color = Color.from_hsv(
-			rng.randf_range(0.4, 0.6),
-			rng.randf_range(0.4, 0.6),
-			rng.randf_range(0.4, 0.6))
-	transition_scene.call("init", false, rg_color)
-	transition_scene.connect("finished", _create_game_level)
-	add_child(transition_scene)
-	
-	
-func _create_game_level():
+	# Create game level
 	var level_scene = Assets.tscn_level.instantiate()
-	level_scene.call("init", selected_map_name)
-	level_scene.call("init_transition", rg_color)
-	# Create player data dictionary what easy to use
-	level_scene.player_data = player_data_list[selected_player_idx]
-	get_tree().get_first_node_in_group("main").add_child(level_scene)
-	get_tree().get_first_node_in_group("main_menu").queue_free()
+	level_scene.call("init", selected_map_name, player_data_list[selected_player_idx])
+	var main_menu = get_tree().get_first_node_in_group("main_menu")
+	Methods.switch_scene(main_menu, level_scene, true)
+	

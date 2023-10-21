@@ -10,15 +10,10 @@ var active_player : Player
 var active_map : Map
 var resource_density := 0.1
 
-func init(in_map_name : String):
+func init(in_map_name : String, in_player_data : Dictionary):
 	map_name = in_map_name
-
-
-func init_transition(in_color : Color):
-	$Transition.call("init", true, in_color)
-	$Transition.connect("finished", _hide_transition)
-	$Transition.call("display")
-
+	player_data = in_player_data
+	
 
 func _ready():
 	# Create player
@@ -45,15 +40,10 @@ func _ready():
 		enemy.init(enemy_data)
 		enemy.spawn_position = Vector2(500, 300)
 		add_child(enemy)
-	
-func _hide_transition():
-	$Transition.hide()
-	if (active_player != null):
-		active_player.call("set_position_smoothing", true)
 		
 		
 func _game_over():
-	var ui_game_over = Assets.tscn_game_over.instantiate()
 	get_tree().paused = true
+	var ui_game_over = Assets.tscn_game_over.instantiate()
 	add_child(ui_game_over)
 

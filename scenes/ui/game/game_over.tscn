@@ -74,21 +74,20 @@ offset_top = -324.0
 offset_right = 1152.0
 color = Color(1, 1, 1, 0)
 
-[node name="GameOver" type="Label" parent="Up"]
+[node name="YouDied" type="Label" parent="Up"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -240.5
-offset_top = -144.0
-offset_right = 240.5
-offset_bottom = -31.0
+offset_left = -172.5
+offset_top = -113.0
+offset_right = 172.5
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 80
-text = "GAME OVER"
+text = "You Died"
 
 [node name="Down" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(0, 324)
@@ -136,3 +135,10 @@ horizontal_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_wnj0c")
 }
+
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="button_down" from="Down/VBox/Buttons/ReviveButton" to="." method="_on_revive_button_button_down"]
+[connection signal="mouse_entered" from="Down/VBox/Buttons/ReviveButton" to="." method="_play_button_hover_sound"]
+[connection signal="button_down" from="Down/VBox/Buttons/QuitButton" to="." method="_on_quit_button_button_down"]
+[connection signal="mouse_entered" from="Down/VBox/Buttons/QuitButton" to="." method="_play_button_hover_sound"]

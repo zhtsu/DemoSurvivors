@@ -3,16 +3,15 @@ extends Character
 
 
 signal speak(witticism : String)
-signal exp_added(amount : int)
 signal level_up
-signal item_added(item_name : String)
-signal property_updated
 signal game_over
+signal property_updated
+signal exp_added
 
 const Assets = preload("res://scenes/global/assets.gd")
 
-var previous_hp := 100.0
-var level_exp := 0.0
+var current_level_up_required_exp := 10
+var current_exp := 0
 var witticism_dict : Dictionary
 var current_witticism_pool : Array
 var talk_speed : float = 1.0
@@ -23,16 +22,17 @@ var previous_velocity : Vector2 = Vector2(0.0, 0.0)
 
 func _damage_process(damage_value : int):
 	hp -= damage_value
-	_update_hp()
+	_update_hp_bar()
 	
 
-func _update_hp():
+func _update_hp_bar():
 	$HpBar.value = hp
 	property_updated.emit()
-
-
-func _create_item_from_name(item_name : String):
-	item_added.emit(item_name)
+	
+	
+func _add_exp(exp_amount : int):
+	current_exp += exp_amount
+	exp_added.emit()
 	
 
 func _ready():
@@ -47,7 +47,7 @@ func _ready():
 	current_witticism_pool = witticism_dict["Common"]
 	speak.emit(current_witticism_pool.pick_random())
 	$Timer.start(randf_range(talk_speed, 30.0))
-	_update_hp()
+	_update_hp_bar()
 	
 	
 
@@ -137,6 +137,7 @@ func _update_move(delta):
 
 func _on_effect_animator_animation_finished():
 	state = ECharacterState.Idle
+	set_position_smoothing(true)
 	$AnimatedSprite2D.show()
 	$EffectAnimator.hide()
 
@@ -153,4 +154,8 @@ func _on_timer_timeout():
 	
 func get_sprite_frames():
 	return $AnimatedSprite2D.sprite_frames
+	
+	
+func get_camera():
+	return $EffectCamera
 
