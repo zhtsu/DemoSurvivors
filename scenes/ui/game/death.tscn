@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dfnysapuemvfn"]
 
-[ext_resource type="Script" path="res://scenes/ui/game/game_over.gd" id="1_1aihg"]
+[ext_resource type="Script" path="res://scenes/ui/game/death.gd" id="1_1aihg"]
 
 [sub_resource type="Animation" id="Animation_tgnum"]
 resource_name = "Enter"
@@ -82,8 +82,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -172.5
-offset_top = -113.0
+offset_top = -164.0
 offset_right = 172.5
+offset_bottom = -51.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 80
@@ -104,7 +105,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 100
+theme_override_constants/separation = 40
 
 [node name="Buttons" type="HBoxContainer" parent="Down/VBox"]
 layout_mode = 2

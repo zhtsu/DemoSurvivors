@@ -3,16 +3,17 @@ extends Character
 
 
 const Assets = preload("res://scenes/global/assets.gd")
+const Methods = preload("res://scenes/global/methods.gd")
 
-var enemy_size = Enums.EnemySize.Normal
-var enemy_type = Enums.EnemyType.Common
+var enemy_size := Enums.EnemySize.Normal
+var enemy_type := Enums.EnemyType.Common
+var enemy_exp := 1
+
 
 func _ready():
 	_init_character()
 	$AnimatedSprite2D.play("Walk")
 	direction = ECharacterDirection.Left
-	# TEST
-	hp = 8
 
 
 func init(enemy_data : Dictionary):
@@ -26,6 +27,8 @@ func init(enemy_data : Dictionary):
 	enemy_type = Enums.EnemyType.get(enemy_data["type"])
 	character_name = enemy_data["name"]
 	speed = int(enemy_data["speed"])
+	hp = int(enemy_data["HP"])
+	enemy_exp = int(enemy_data["EXP"])
 	physical_atk = float(enemy_data["physical_ATK"])
 	physical_def = float(enemy_data["physical_DEF"])
 	magical_atk = float(enemy_data["magical_DEF"])
@@ -47,6 +50,7 @@ func _physics_process(_delta):
 	
 	move_and_collide(Vector2.ZERO)
 	
+	
 func _update_enemy_flip():
 	var player = get_tree().get_first_node_in_group("player")
 	if player == null:
@@ -65,4 +69,4 @@ func _update_enemy_flip():
 	
 	if direction != previous_direction:
 		scale.x *= -1
-
+	

@@ -27,22 +27,16 @@ func _on_main_menu_button_button_down():
 	
 
 func _back_to_main_menu():
-	get_tree().paused = false
-	var main_menu = Assets.tscn_main_menu.instantiate()
+	var main_menu = load(Assets.path_tscn_main_menu).instantiate()
 	var level_scene = get_tree().get_first_node_in_group("level")
 	Methods.switch_scene(level_scene, main_menu, true)
 	
 
 func _on_options_button_button_down():
 	_play_button_down_sound()
-	
-	var json_file = FileAccess.open(Assets.path_local_options, FileAccess.READ)
-	var option_dict = JSON.parse_string(json_file.get_as_text())
-	json_file.close()
-	
-	var options_scene = Assets.tscn_options.instantiate()
-	options_scene.call("init_options", option_dict)
+	var options_scene = load(Assets.path_tscn_options).instantiate()
 	add_child(options_scene)
+
 
 func exit_game():
 	get_tree().quit()

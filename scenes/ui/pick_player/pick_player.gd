@@ -4,9 +4,7 @@ extends CanvasLayer
 const Assets = preload("res://scenes/global/assets.gd")
 const Methods = preload("res://scenes/global/methods.gd")
 
-var player_data_list : Array[Dictionary]
-var enemy_data_list : Array[Dictionary]
-var map_data_list : Array[Dictionary]
+var MAIN : Main
 var max_player_count = 0
 var selected_player_idx = 0
 var selected_map_name = "Grass"
@@ -21,16 +19,17 @@ var selected_map_name = "Grass"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	MAIN = get_tree().get_first_node_in_group("main")
 	# Init back button's icon using reversed start button's icon
 	var start_icon = ui_start_btn.icon.get_image()
 	start_icon.flip_x()
 	ui_back_btn.icon = ImageTexture.create_from_image(start_icon)
 	$AnimationPlayer.play("Enter")
 	# Update player count
-	max_player_count = player_data_list.size()
+	max_player_count = MAIN.player_data_list.size()
 	# Init player list
-	for idx in player_data_list.size():
-		var player_data = player_data_list[idx]
+	for idx in MAIN.player_data_list.size():
+		var player_data = MAIN.player_data_list[idx]
 		var sprite_frames_path = Assets.dir_tres + player_data["sprite_frames_tres"]
 		var sprite_frames = load(sprite_frames_path)
 		var player_idx = idx
@@ -55,7 +54,7 @@ func _ready():
 		ui_player_name.text = "Character"
 	
 	# Init map items
-	for map_data in map_data_list:
+	for map_data in MAIN.map_data_list:
 		var map_item = Assets.tscn_map_item.instantiate()
 		map_item.init_map_item(
 			map_data["name"],
@@ -100,7 +99,7 @@ func _update_player_data(player_idx: int):
 		player_list[player_idx].grab_focus()
 		player_list[player_idx].play_anim("Idle")
 		
-	var player_data = player_data_list[player_idx]
+	var player_data = MAIN.player_data_list[player_idx]
 	var sprite_frames_path = Assets.dir_tres + player_data["sprite_frames_tres"]
 	var sprite_frames = load(sprite_frames_path)
 	var player_name = player_data["name"]
@@ -154,7 +153,7 @@ func _on_start_button_pressed():
 	_play_button_down_sound()
 	# Create game level
 	var level_scene = Assets.tscn_level.instantiate()
-	level_scene.call("init", selected_map_name, player_data_list[selected_player_idx])
+	level_scene.call("init", selected_map_name, MAIN.player_data_list[selected_player_idx])
 	var main_menu = get_tree().get_first_node_in_group("main_menu")
 	Methods.switch_scene(main_menu, level_scene, true)
 	

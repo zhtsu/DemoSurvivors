@@ -2,16 +2,12 @@ extends CanvasLayer
 
 
 const Assets = preload("res://scenes/global/assets.gd")
-const Methods = preload("res://scenes/global/methods.gd")
 
 @onready var sound_player = $SoundPlayer
 
 
-var option_dict : Dictionary
-var player_data_list : Array[Dictionary]
-var enemy_data_list : Array[Dictionary]
-var map_data_list : Array[Dictionary]
 var music_player : AudioStreamPlayer
+var MAIN : Main
 
 
 func _pause_anim():
@@ -29,6 +25,10 @@ func _play_anim():
 
 
 func _ready():
+	get_tree().paused = false
+	
+	MAIN = get_tree().get_first_node_in_group("main")
+	
 	# Create and add click mask to $GithubButton
 	$GithubButton.texture_click_mask.create_from_image_alpha(
 		$GithubButton.texture_normal.get_image()
@@ -39,38 +39,25 @@ func _ready():
 	$PinkMan.play("Idle")
 	$NinjaFrog.play("Idle")
 	
-	music_player = get_tree().get_first_node_in_group("main").get_music_player()
-	
-	var json_file = FileAccess.open(Assets.path_local_options, FileAccess.READ)
-	option_dict = JSON.parse_string(json_file.get_as_text())
-	json_file.close()
-	
-	# Read data from csv
-	Methods.load_csv_to_array(Assets.path_player_table, player_data_list)
-	Methods.load_csv_to_array(Assets.path_enemy_table, enemy_data_list)
-	Methods.load_csv_to_array(Assets.path_map_table, map_data_list)
+	music_player = MAIN.get_music_player()
 	
 	_apply_settings()
 	
 
 func _apply_settings():
-	if option_dict["OpenSounds"] and not music_player.playing:
+	if MAIN.option_dict["OpenSounds"] and not music_player.playing:
 		loud()
 
 
 func _on_options_button_button_down():
 	_play_button_down_sound()
 	var options_scene = Assets.tscn_options.instantiate()
-	options_scene.call("init_options", option_dict)
 	add_child(options_scene)
 
 
 func _on_start_button_button_down():
 	_play_button_down_sound()
 	var pick_player_scene = Assets.tscn_pick_player.instantiate()
-	pick_player_scene.player_data_list = player_data_list
-	pick_player_scene.enemy_data_list = enemy_data_list
-	pick_player_scene.map_data_list = map_data_list
 	add_child(pick_player_scene)
 
 

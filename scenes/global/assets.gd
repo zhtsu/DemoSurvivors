@@ -9,7 +9,8 @@ const path_player_table = "res://assets/data/player_table.csv"
 const path_enemy_table = "res://assets/data/enemy_table.csv"
 const path_map_table = "res://assets/data/map_table.csv"
 const path_tex_start = "res://assets/textures/icons/start.png"
-const path_tscn_map = "res://scenes/level/map.tscn"
+const path_tscn_options = "res://scenes/ui/main_menu/options.tscn"
+const path_tscn_main_menu = "res://scenes/ui/main_menu/main_menu.tscn"
 # Folder path
 const dir_tres = "res://tress/"
 const dir_data = "res://assets/data/"
@@ -33,8 +34,9 @@ const tscn_main_menu = preload("res://scenes/ui/main_menu/main_menu.tscn")
 const tscn_item = preload("res://scenes/item/item.tscn")
 const tscn_pick_item = preload("res://scenes/ui/game/pick_item.tscn")
 const tscn_particles_emitter = preload("res://scenes/utility/particles_emitter.tscn")
-const tscn_game_over = preload("res://scenes/ui/game/game_over.tscn")
+const tscn_death = preload("res://scenes/ui/game/death.tscn")
 const tscn_camera = preload("res://scenes/utility/effect_camera.tscn")
+const tscn_enemy_spawner = preload("res://scenes/level/enemy_spawner.tscn")
 # Audio
 const a_button_down = preload("res://assets/sounds/button_down.mp3")
 const a_button_hover = preload("res://assets/sounds/button_hover.mp3")

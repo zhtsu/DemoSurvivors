@@ -9,6 +9,7 @@ var player : Player
 @export var spawn_position : Vector2 = Vector2(0.0, 0.0)
 @export var velocity : Vector2 = Vector2(0.0, 0.0)
 @export var speed : float = 4
+var distance := 100.0
 var acceleration = 1
 
 
@@ -21,14 +22,15 @@ func init(in_spawn_position : Vector2, in_velocity : Vector2, in_speed : float):
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	position = spawn_position
-	
-	$SoundPlayer.play()
 
 
 func _physics_process(_delta):
 	var direction = Vector2.RIGHT.rotated(velocity.angle())
 	speed = min(speed + 2.0 * acceleration * acceleration, speed)
 	position += direction * speed
+	
+	if position.distance_to(spawn_position) > distance:
+		queue_free()
 	
 
 
@@ -38,7 +40,6 @@ func _on_hit_box_area_entered(area : HurtBox):
 	
 	if area.owner is Enemy:
 		var damage_value = Methods.cal_damage(player.get_prop_dict(), area.owner.get_prop_dict())
-		print_debug("Projectile hitting enemy: ", damage_value)
 		area.owner.take_damage(damage_value)
 	
 	queue_free()

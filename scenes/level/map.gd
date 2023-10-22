@@ -9,7 +9,7 @@ const tile_size := 16
 # 648 / 16
 const tile_max_row := 24
 # 1152 / 16
-const tile_max_col := 34
+const tile_max_col := 36
 
 # Initialization is required before use
 var player : Player

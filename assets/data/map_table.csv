@@ -1,5 +1,5 @@
 name,tile_set_tres,theme_color,enemies
-Grass,ts_map_grass,#618264,1001
+Grass,ts_map_grass,#618264,Chicken
 Cave,ts_map_cave,#BCA37F,null
 Desert,ts_map_desert,#FFCC70,null
 Tundra,ts_map_tundra,#AED2FF,null

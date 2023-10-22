@@ -4,11 +4,13 @@ extends Character
 
 signal speak(witticism : String)
 signal level_up
-signal game_over
+signal death
 signal property_updated
 signal exp_added
 
+
 const Assets = preload("res://scenes/global/assets.gd")
+const Methods = preload("res://scenes/global/methods.gd")
 
 var current_level_up_required_exp := 10
 var current_exp := 0
@@ -20,10 +22,6 @@ var icon : Texture2D
 # Used for projectile
 var previous_velocity : Vector2 = Vector2(0.0, 0.0)
 
-func _damage_process(damage_value : int):
-	hp -= damage_value
-	_update_hp_bar()
-	
 
 func _update_hp_bar():
 	$HpBar.value = hp
@@ -48,6 +46,7 @@ func _ready():
 	speak.emit(current_witticism_pool.pick_random())
 	$Timer.start(randf_range(talk_speed, 30.0))
 	_update_hp_bar()
+	damage.connect(_update_hp_bar)
 	
 	
 
@@ -60,7 +59,7 @@ func init(player_data : Dictionary):
 	speed = int(player_data["speed"])
 	physical_atk = float(player_data["physical_ATK"])
 	physical_def = float(player_data["physical_DEF"])
-	magical_atk = float(player_data["magical_DEF"])
+	magical_atk = float(player_data["magical_ATK"])
 	magical_def = float(player_data["magical_DEF"])
 	physical_crit_bonus = float(player_data["physical_crit_bonus"])
 	physical_crit_chance = float(player_data["physical_crit_chance"])
@@ -85,7 +84,7 @@ func _physics_process(delta):
 		$EffectAnimator.play("Disappearing")
 		await $EffectAnimator.animation_finished
 		hide()
-		game_over.emit()
+		death.emit()
 	
 	if not state == ECharacterState.Appearing or state == ECharacterState.Disappearing:
 		_update_move(delta)
@@ -159,3 +158,22 @@ func get_sprite_frames():
 func get_camera():
 	return $EffectCamera
 
+
+
+func _on_hurt_box_area_entered(hit_box : HitBox):
+	if hit_box == null:
+		return
+	
+	previous_entered_area = hit_box
+	
+	var damage_value : int
+	# Player is hit by an Enemy
+	if hit_box.owner is Enemy:
+		damage_value = Methods.cal_damage(hit_box.owner.get_prop_dict(), get_prop_dict())
+	
+	if hp > 0:
+		take_damage(damage_value)
+		
+		
+func get_enemy_spawn_location():
+	return $EffectCamera/Path2D/EnemySpawnLocation

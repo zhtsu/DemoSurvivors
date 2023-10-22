@@ -1,5 +1,5 @@
 name,icon_tres,sprite_frames_tres,gdscript,speed,physical_ATK,physical_DEF,magical_ATK,magical_DEF,physical_crit_bonus,physical_crit_chance,magical_crit_bonus,magical_crit_chance,use_custom_shape,custom_shape_tres,witticisms_json
 Ninja Frog,at_icon_ninja_frog.tres,sf_ninja_frog.tres,null,1,1,1,1,1,0.05,0.05,0.05,0.05,FALSE,null,witticisms_ninja_frog.json
-Mask Dude,at_icon_mask_dude.tres,sf_mask_dude.tres,null,1,1,1,1,1,0.05,0.05,0.05,0.05,FALSE,null,witticisms_mask_dude.json
-Pink Man,at_icon_pink_man.tres,sf_pink_man.tres,null,1,1,1,1,1,0.05,0.05,0.05,0.05,FALSE,null,witticisms_pink_man.json
-Virtual Guy,at_icon_virtual_guy.tres,sf_virtual_guy.tres,null,1,1,1,1,1,0.05,0.05,0.05,0.05,FALSE,null,witticisms_virtual_guy.json
+Mask Dude,at_icon_mask_dude.tres,sf_mask_dude.tres,null,2,0,0,3,0,0.05,0.05,0.05,0.05,FALSE,null,witticisms_mask_dude.json
+Pink Man,at_icon_pink_man.tres,sf_pink_man.tres,null,1,4,0,0,0,0.05,0.05,0.05,0.05,FALSE,null,witticisms_pink_man.json
+Virtual Guy,at_icon_virtual_guy.tres,sf_virtual_guy.tres,null,1,1,3,0,0,0.05,0.05,0.05,0.05,FALSE,null,witticisms_virtual_guy.json

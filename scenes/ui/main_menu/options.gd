@@ -2,7 +2,7 @@ extends CanvasLayer
 
 const Assets = preload("res://scenes/global/assets.gd")
 
-var option_dict : Dictionary
+var MAIN : Main
 
 @onready var full_screen_button = $RootPanel/VBoxContainer/UpBox/FullScreenButton
 @onready var sounds_button = $RootPanel/VBoxContainer/UpBox/SoundsButton
@@ -13,13 +13,10 @@ var option_dict : Dictionary
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	MAIN = get_tree().get_first_node_in_group("main")
 	self.show()
 	$AnimationPlayer.play("Enter")
 	_update_settings_ui()
-
-
-func init_options(in_options : Dictionary):
-	option_dict = in_options
 
 
 func _update_settings_ui():
@@ -29,17 +26,17 @@ func _update_settings_ui():
 	_update_effect_combo_box()
 
 func _update_language_combo_box():
-	var index : int = option_dict["Language"]
+	var index : int = MAIN.option_dict["Language"]
 	language_combo_box.select(index)
 	
 
 func _update_effect_combo_box():
-	var index : int = option_dict["Effect"]
+	var index : int = MAIN.option_dict["Effect"]
 	effect_combo_box.select(index)
 
 
 func _update_sounds_button_icon():
-	if option_dict["OpenSounds"]:
+	if MAIN.option_dict["OpenSounds"]:
 		sounds_button.icon = Assets.tex_loud
 	else:
 		sounds_button.icon = Assets.tex_mute
@@ -57,7 +54,7 @@ func _update_full_screen_button_icon():
 
 
 func _update_sounds_state():
-	if option_dict["OpenSounds"]:
+	if MAIN.option_dict["OpenSounds"]:
 		get_tree().get_first_node_in_group("main").get_music_player().play()
 	else:
 		get_tree().get_first_node_in_group("main").get_music_player().stop()
@@ -65,7 +62,7 @@ func _update_sounds_state():
 
 func _on_sounds_button_button_down():
 	_play_button_down_sound()
-	option_dict["OpenSounds"] = not option_dict["OpenSounds"]
+	MAIN.option_dict["OpenSounds"] = not MAIN.option_dict["OpenSounds"]
 	_update_sounds_button_icon()
 	_update_sounds_state()
 	
@@ -80,7 +77,7 @@ func _on_background_button_down():
 		
 func _save_updated_settings():
 	var options_json_file = FileAccess.open(Assets.path_local_options, FileAccess.WRITE)
-	options_json_file.store_line(JSON.stringify(option_dict, "\t"))
+	options_json_file.store_line(JSON.stringify(MAIN.option_dict, "\t"))
 	options_json_file.close()
 	
 
@@ -107,12 +104,12 @@ func _on_effect_selector_item_selected(index):
 	# 0 Normal
 	# 1 CRT
 	# 2 Gray
-	option_dict["Effect"] = index
+	MAIN.option_dict["Effect"] = index
 	var viewport_effect = get_tree().get_first_node_in_group("viewport_effect")
 	viewport_effect.call("active_viewport_effect", index)
 
 
 func _on_lang_selector_item_selected(index):
 	_play_button_down_sound()
-	option_dict["Language"] = index
+	MAIN.option_dict["Language"] = index
 	

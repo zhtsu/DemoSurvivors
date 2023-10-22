@@ -2,6 +2,9 @@ class_name Character
 extends CharacterBody2D
 
 
+signal damage
+
+
 const Enums = preload("res://scenes/global/enums.gd")
 #
 const ECharacterState = Enums.EState
@@ -24,6 +27,7 @@ var physical_crit_chance : float = 0.0
 var magical_crit_chance : float = 0.0
 
 var damage_interval := 0.2
+var enemy_has_damage_interval := false
 
 @export var spawn_position = Vector2(0, 0)
 
@@ -31,7 +35,7 @@ var direction = ECharacterDirection.Right
 var state = ECharacterState.Idle
 var size : Vector2
 # Used for process damage logic
-var previous_state = ECharacterState.Idle
+var previous_entered_area : HitBox
 
 
 func _init_character():
@@ -47,25 +51,20 @@ func _set_action_gdscript(script : Script):
 	
 
 func take_damage(damage_value : int):
-	if state == ECharacterState.Damage:
+	if self is Enemy:
+		hp -= damage_value
 		return
 	
-	previous_state = state
+	if state == ECharacterState.Damage:
+		state = ECharacterState.Idle
+		return
+	
 	state = ECharacterState.Damage
 	
-	_damage_process(damage_value)
-	
-	$Timer.start(damage_interval)
-	for connection in $Timer.get_signal_connection_list("timeout"):
-		$Timer.disconnect(connection["signal"].get_name(), connection["callable"])
-	$Timer.connect("timeout", _remove_damage_state)
-	
-	
-func _damage_process(damage_value : int):
 	hp -= damage_value
-
-func _remove_damage_state():
-	state = previous_state
+	
+	damage.emit()
+	$DamageTimer.start(damage_interval)
 
 
 func get_prop_dict():
@@ -79,3 +78,13 @@ func get_prop_dict():
 		"physical_crit_chance" : physical_crit_chance,
 		"magical_crit_chance" : magical_crit_chance
 	}
+
+
+
+func _on_damage_timer_timeout():
+	if $HurtBox.get_overlapping_areas().size() > 0:
+		$HurtBox.area_entered.emit(HitBox.new())
+
+
+func _on_hurt_box_area_exited(_area):
+	state = ECharacterState.Idle

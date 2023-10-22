@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dxx2elvn8s6am"]
+[gd_scene load_steps=40 format=3 uid="uid://dxx2elvn8s6am"]
 
 [ext_resource type="Script" path="res://scenes/character/character.gd" id="1_htsf6"]
 [ext_resource type="Texture2D" uid="uid://o15w0120jtfw" path="res://assets/textures/character/player/ninja_frog/ninja_frog_damage_32x32.png" id="2_tnsv4"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dvnu0yef01425" path="res://assets/textures/character/player/ninja_frog/ninja_frog_walk_32x32.png" id="4_r4q1k"]
 [ext_resource type="Shape2D" uid="uid://nbnjlrf0xk3t" path="res://tress/rcs_character.tres" id="5_ch6dq"]
 [ext_resource type="PackedScene" uid="uid://b25bl7m7n1nor" path="res://scenes/utility/action.tscn" id="7_2hda5"]
+[ext_resource type="Script" path="res://scenes/utility/hurt_box.gd" id="7_mveps"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yidut"]
 atlas = ExtResource("2_tnsv4")
@@ -245,6 +246,8 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_04v2k"]
+
 [node name="Character" type="CharacterBody2D" groups=["character"]]
 scale = Vector2(0.5, 0.5)
 collision_layer = 0
@@ -261,6 +264,18 @@ animation = &"Idle"
 position = Vector2(0, 4)
 shape = ExtResource("5_ch6dq")
 
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("7_mveps")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_04v2k")
+
+[node name="DamageTimer" type="Timer" parent="."]
+
 [node name="Action" parent="." instance=ExtResource("7_2hda5")]
 
-[node name="Timer" type="Timer" parent="."]
+[connection signal="area_exited" from="HurtBox" to="." method="_on_hurt_box_area_exited"]
+[connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

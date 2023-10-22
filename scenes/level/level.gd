@@ -1,3 +1,4 @@
+class_name Level
 extends Node2D
 
 const Enums = preload("res://scenes/global/enums.gd")
@@ -21,29 +22,22 @@ func _ready():
 	active_player.init(player_data)
 	active_player.spawn_position = Vector2(576, 324)
 	active_player.call("set_position_smoothing", false)
-	active_player.connect("game_over", _game_over)
+	active_player.connect("death", _pop_death_menu)
 	add_child(active_player)
 	# Init player state using created player
 	$PlayerState.call("init", active_player)
+	# Init enemy spawner
+	var enemy_spawner = Assets.tscn_enemy_spawner.instantiate()
+	enemy_spawner.call("init", map_name, active_player, self)
+	add_child(enemy_spawner)
 	# Create map
-	# Use load() instead of the preload() what in Assets to avoid cyclic reference
-	var tscn_map_res = load(Assets.path_tscn_map)
-	active_map = tscn_map_res.instantiate()
+	active_map = Assets.tscn_map.instantiate()
 	active_map.init(active_player, map_name)
 	add_child(active_map)
 	
-	# Test
-	var enemy_list : Array = []
-	Methods.load_csv_to_array(Assets.path_enemy_table, enemy_list)
-	for enemy_data in enemy_list:
-		var enemy = Assets.tscn_enemy.instantiate()
-		enemy.init(enemy_data)
-		enemy.spawn_position = Vector2(500, 300)
-		add_child(enemy)
-		
-		
-func _game_over():
+	
+func _pop_death_menu():
 	get_tree().paused = true
-	var ui_game_over = Assets.tscn_game_over.instantiate()
-	add_child(ui_game_over)
+	var ui_death = Assets.tscn_death.instantiate()
+	add_child(ui_death)
 

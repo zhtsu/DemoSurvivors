@@ -85,7 +85,6 @@ static func switch_scene(current_scene : Node, to_scene : Node, use_transition :
 			game_main.remove_child(current_scene)
 			var to_transition = Assets.tscn_transition.instantiate()
 			to_transition.call("init", rg_color, true)
-			to_transition.connect("finished", func() : scene_tree.paused = false)
 			to_scene.add_child(to_transition)
 			game_main.add_child(to_scene)
 		)
