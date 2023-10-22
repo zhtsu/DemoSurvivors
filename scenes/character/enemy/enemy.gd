@@ -7,7 +7,7 @@ const Methods = preload("res://scenes/global/methods.gd")
 
 var enemy_size := Enums.EnemySize.Normal
 var enemy_type := Enums.EnemyType.Common
-var enemy_exp := 1
+var exp_volume := 1
 
 
 func _ready():
@@ -28,7 +28,7 @@ func init(enemy_data : Dictionary):
 	character_name = enemy_data["name"]
 	speed = int(enemy_data["speed"])
 	hp = int(enemy_data["HP"])
-	enemy_exp = int(enemy_data["EXP"])
+	exp_volume = int(enemy_data["EXP"])
 	physical_atk = float(enemy_data["physical_ATK"])
 	physical_def = float(enemy_data["physical_DEF"])
 	magical_atk = float(enemy_data["magical_DEF"])
@@ -43,10 +43,7 @@ func _physics_process(_delta):
 	_update_enemy_flip()
 	
 	if hp <= 0:
-		var particles_emitter = Assets.tscn_particles_emitter.instantiate()
-		particles_emitter.position = position
-		get_tree().get_first_node_in_group("level").add_child(particles_emitter)
-		queue_free()
+		_destroy_enemy()
 	
 	move_and_collide(Vector2.ZERO)
 	
@@ -70,3 +67,15 @@ func _update_enemy_flip():
 	if direction != previous_direction:
 		scale.x *= -1
 	
+
+func _destroy_enemy():
+	# Create EXP stone
+	var exp_stone = Assets.tscn_exp_stone.instantiate()
+	exp_stone.exp_volume = exp_volume
+	exp_stone.position = position
+	get_tree().get_first_node_in_group("level").add_child(exp_stone)
+	# Death blood particles
+	var particles_emitter = Assets.tscn_particles_emitter.instantiate()
+	particles_emitter.position = position
+	get_tree().get_first_node_in_group("level").add_child(particles_emitter)
+	queue_free()

@@ -1,0 +1,13 @@
+[gd_scene load_steps=5 format=3 uid="uid://8s4akigknjt2"]
+
+[ext_resource type="PackedScene" uid="uid://dc84kvnhdauu8" path="res://scenes/item/item.tscn" id="1_g3syj"]
+[ext_resource type="Script" path="res://scenes/item/ability/ability.gd" id="2_6cgn8"]
+[ext_resource type="PackedScene" uid="uid://b25bl7m7n1nor" path="res://scenes/utility/action.tscn" id="3_1rovo"]
+[ext_resource type="Script" path="res://scenes/item/ability/actions/homemade_projectile.gd" id="4_dxab4"]
+
+[node name="Ability" instance=ExtResource("1_g3syj")]
+script = ExtResource("2_6cgn8")
+active = false
+
+[node name="Action" parent="." index="1" instance=ExtResource("3_1rovo")]
+script = ExtResource("4_dxab4")

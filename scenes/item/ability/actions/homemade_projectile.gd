@@ -1,16 +1,16 @@
 extends Node
 
 
-const tscn_projectile = preload("res://scenes/item/actions/base/projectile.tscn")
+const tscn_projectile = preload("res://scenes/item/ability/actions/base/projectile.tscn")
 
-var item_self : Item
+var ability_self : Ability
 var player : Player
 var timer : Timer
 var sound_player : AudioStreamPlayer
 
 
 func _ready():
-	item_self = owner as Item
+	ability_self = owner as Ability
 	player = get_tree().get_first_node_in_group("player")
 	
 	sound_player = AudioStreamPlayer.new()
@@ -25,6 +25,9 @@ func _ready():
 
 
 func _shoot():
+	if ability_self.active == false:
+		return
+	
 	sound_player.play()
 	var projectile = tscn_projectile.instantiate()
 	projectile.init(player.position, player.previous_velocity, 4)

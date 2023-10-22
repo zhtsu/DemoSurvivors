@@ -50,6 +50,7 @@ func _spawn_enemy():
 	var random_position = Vector2(x, y)
 	
 	var enemy_data = MAIN.enemy_data_list[0]
+	
 	var enemy = tscn_enemy.instantiate()
 	enemy.call("init", enemy_data)
 	enemy.spawn_position = random_position

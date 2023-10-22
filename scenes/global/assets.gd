@@ -37,6 +37,7 @@ const tscn_particles_emitter = preload("res://scenes/utility/particles_emitter.t
 const tscn_death = preload("res://scenes/ui/game/death.tscn")
 const tscn_camera = preload("res://scenes/utility/effect_camera.tscn")
 const tscn_enemy_spawner = preload("res://scenes/level/enemy_spawner.tscn")
+const tscn_exp_stone = preload("res://scenes/item/loot/exp_stone.tscn")
 # Audio
 const a_button_down = preload("res://assets/sounds/button_down.mp3")
 const a_button_hover = preload("res://assets/sounds/button_hover.mp3")

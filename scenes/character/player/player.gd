@@ -3,17 +3,19 @@ extends Character
 
 
 signal speak(witticism : String)
-signal level_up
+signal level_up(current_level : int)
 signal death
 signal property_updated
 signal exp_added
+signal item_added(item : Item)
 
 
 const Assets = preload("res://scenes/global/assets.gd")
 const Methods = preload("res://scenes/global/methods.gd")
 
 var current_level_up_required_exp := 10
-var current_exp := 0
+var current_exp : int = 0
+var current_level : int = 0
 var witticism_dict : Dictionary
 var current_witticism_pool : Array
 var talk_speed : float = 1.0
@@ -28,7 +30,7 @@ func _update_hp_bar():
 	property_updated.emit()
 	
 	
-func _add_exp(exp_amount : int):
+func add_exp(exp_amount : int):
 	current_exp += exp_amount
 	exp_added.emit()
 	
@@ -85,6 +87,13 @@ func _physics_process(delta):
 		await $EffectAnimator.animation_finished
 		hide()
 		death.emit()
+		
+	while current_exp >= current_level_up_required_exp:
+		current_exp -= current_level_up_required_exp
+		current_level += 1
+		var added_required_exp = float(current_level_up_required_exp) * (1.0 + (float(current_level) * 0.2))
+		current_level_up_required_exp += int(added_required_exp)
+		level_up.emit(current_level)
 	
 	if not state == ECharacterState.Appearing or state == ECharacterState.Disappearing:
 		_update_move(delta)
@@ -164,6 +173,12 @@ func _on_hurt_box_area_entered(hit_box : HitBox):
 	if hit_box == null:
 		return
 	
+	# Pick up item
+	if hit_box.owner is ExpStone:
+		add_exp(hit_box.owner.exp_volume)
+		hit_box.owner.queue_free()
+		return
+	
 	previous_entered_area = hit_box
 	
 	var damage_value : int
@@ -177,3 +192,17 @@ func _on_hurt_box_area_entered(hit_box : HitBox):
 		
 func get_enemy_spawn_location():
 	return $EffectCamera/Path2D/EnemySpawnLocation
+	
+	
+	
+func add_item(item : Item):
+	if item is ExpStone:
+		add_exp(item.exp_volume)
+		return
+	elif item is Ability:
+		pass
+	elif item is Weapon:
+		pass
+		
+	add_child(item)
+	item_added.emit(item)

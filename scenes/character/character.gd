@@ -83,7 +83,7 @@ func get_prop_dict():
 
 func _on_damage_timer_timeout():
 	if $HurtBox.get_overlapping_areas().size() > 0:
-		$HurtBox.area_entered.emit(HitBox.new())
+		$HurtBox.area_entered.emit(previous_entered_area)
 
 
 func _on_hurt_box_area_exited(_area):

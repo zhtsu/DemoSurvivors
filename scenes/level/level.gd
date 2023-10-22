@@ -40,4 +40,4 @@ func _pop_death_menu():
 	get_tree().paused = true
 	var ui_death = Assets.tscn_death.instantiate()
 	add_child(ui_death)
-
+	

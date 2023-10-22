@@ -1,13 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://dc84kvnhdauu8"]
+[gd_scene load_steps=5 format=3 uid="uid://dc84kvnhdauu8"]
 
 [ext_resource type="Script" path="res://scenes/item/item.gd" id="1_fkpwn"]
-[ext_resource type="PackedScene" uid="uid://b25bl7m7n1nor" path="res://scenes/utility/action.tscn" id="3_s42dq"]
-[ext_resource type="Script" path="res://scenes/item/actions/homemade_projectile.gd" id="4_1jbxe"]
+[ext_resource type="Texture2D" uid="uid://covbhycho63s5" path="res://tress/at_loot_exp_stone_black.tres" id="2_f3n22"]
+[ext_resource type="Script" path="res://scenes/utility/hit_box.gd" id="3_ydvhu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3rwgf"]
+radius = 12.0
 
 [node name="Item" type="Node2D" groups=["item"]]
 position = Vector2(20, 20)
 script = ExtResource("1_fkpwn")
 metadata/_edit_group_ = true
 
-[node name="Action" parent="." instance=ExtResource("3_s42dq")]
-script = ExtResource("4_1jbxe")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_f3n22")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("3_ydvhu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3rwgf")

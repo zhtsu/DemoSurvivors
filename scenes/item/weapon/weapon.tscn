@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvt2dxnujikha"]
+
+[ext_resource type="PackedScene" uid="uid://dc84kvnhdauu8" path="res://scenes/item/item.tscn" id="1_hv5u7"]
+[ext_resource type="Script" path="res://scenes/item/weapon/weapon.gd" id="2_vg5of"]
+
+[node name="Weapon" instance=ExtResource("1_hv5u7")]
+script = ExtResource("2_vg5of")
+physical_atk = 0.0
+magical_atk = 0.0
+physical_def = 0.0
+magical_def = 0.0
+physical_crit_bonus = 0.0
+magical_crit_bonus = 0.0
+physical_crit_chance = 0.0
+magical_crit_chance = 0.0
+active = null

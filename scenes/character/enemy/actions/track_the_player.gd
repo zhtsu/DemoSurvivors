@@ -7,7 +7,7 @@ var player : Player
 
 # Enemy use the Encircle tracking when distance greater than track_way_distance
 # Otherwise use the player's position as the tracking target
-var track_way_distance := 200.0
+var track_way_distance := 100.0
 var encircle_position_offset : Vector2
 
 

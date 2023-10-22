@@ -11,10 +11,27 @@ var show_property = false
 func init(in_player : Player):
 	player = in_player
 	$Main/Body/Box/HBox/ShowPropButton.icon = player.icon
+	$Main/ExpBar.max_value = player.current_level_up_required_exp
 	_update_props()
 	_update_exp_bar()
 	player.connect("speak", _update_witticism)
 	player.connect("property_updated", _update_props)
+	player.connect("exp_added", _update_exp_bar)
+	player.connect("level_up", _pop_pick_item)
+
+
+func _pop_pick_item(_current_level : int):
+	_update_current_level_text()
+	var pick_item = Assets.tscn_pick_item.instantiate()
+	pick_item.connect("pick_completed", _pick_item_completed)
+	add_child(pick_item)
+
+
+func _pick_item_completed(item_data : Dictionary):
+	_update_exp_bar()
+	
+	if item_data.is_empty():
+		return
 
 
 func _update_prop_box():
@@ -38,7 +55,13 @@ func _update_props():
 
 
 func _update_exp_bar():
+	print_debug(player.current_level_up_required_exp)
+	$Main/ExpBar.max_value = player.current_level_up_required_exp
 	$Main/ExpBar.value = player.current_exp
+
+
+func _update_current_level_text():
+	$Main/ExpBar/CurrentLevel.text = "Level: %d" % player.current_level
 
 
 func _ready():

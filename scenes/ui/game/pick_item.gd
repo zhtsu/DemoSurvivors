@@ -1,6 +1,9 @@
 extends CanvasLayer
 
 
+signal pick_completed(item_data : Dictionary)
+
+
 const Assets = preload("res://scenes/global/assets.gd")
 var player_state_anim_player : AnimationPlayer
 
@@ -36,7 +39,8 @@ func _on_skip_button_button_down():
 
 func _on_reroll_button_mouse_entered():
 	_play_button_hover_sound()
-
+	
 
 func _on_skip_button_mouse_entered():
 	_play_button_hover_sound()
+	pick_completed.emit({})
