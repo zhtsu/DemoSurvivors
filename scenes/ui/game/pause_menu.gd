@@ -38,14 +38,14 @@ func _on_options_button_button_down():
 	add_child(options_scene)
 
 
-func exit_game():
+func _exit():
 	get_tree().quit()
 	
 	
 func _on_exit_button_button_down():
 	_play_button_down_sound()
 	var exit_popup_scene = Assets.tscn_popup.instantiate()
-	exit_popup_scene.call("init_popup", "Are you sure to exit game?", exit_game)
+	exit_popup_scene.call("init_popup", "Are you sure to exit?", _exit)
 	add_child(exit_popup_scene)
 	
 

@@ -9,6 +9,7 @@ var map_name : String
 var level : Level
 var player : Player
 var spawn_interval := 2.0
+var spawn_count := 4
 var max_enemy_count := 100
 var current_enemy_count = 0
 
@@ -25,7 +26,7 @@ func _ready():
 
 
 func _spawn_enemy():
-	if current_enemy_count == max_enemy_count:
+	if current_enemy_count >= max_enemy_count:
 		return
 	
 	# Viewport size
@@ -43,19 +44,21 @@ func _spawn_enemy():
 		Vector4(right_top.x, right_top.y, right_bottom.x, right_bottom.y)
 	]
 
-	# Random pick edge and position in the edge
-	var rpe = edges.pick_random() as Vector4
-	var x = randf_range(rpe.x, rpe.z)
-	var y = randf_range(rpe.y, rpe.w)
-	var random_position = Vector2(x, y)
-	
-	var enemy_data = MAIN.enemy_data_list[0]
-	
-	var enemy = tscn_enemy.instantiate()
-	enemy.call("init", enemy_data)
-	enemy.spawn_position = random_position
-	get_tree().get_first_node_in_group("level").add_child(enemy)
-	current_enemy_count += 1
+
+	for i in spawn_count:
+		# Random pick edge and position in the edge
+		var rpe = edges.pick_random() as Vector4
+		var x = randf_range(rpe.x, rpe.z)
+		var y = randf_range(rpe.y, rpe.w)
+		var random_position = Vector2(x, y)
+		
+		var enemy_data = MAIN.enemy_data_list[0]
+		
+		var enemy = tscn_enemy.instantiate()
+		enemy.call("init", enemy_data)
+		enemy.spawn_position = random_position
+		get_tree().get_first_node_in_group("level").add_child(enemy)
+		current_enemy_count += 1
 	
 	$Timer.start(spawn_interval)
 	

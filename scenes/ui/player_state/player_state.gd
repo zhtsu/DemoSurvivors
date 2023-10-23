@@ -55,7 +55,6 @@ func _update_props():
 
 
 func _update_exp_bar():
-	print_debug(player.current_level_up_required_exp)
 	$Main/ExpBar.max_value = player.current_level_up_required_exp
 	$Main/ExpBar.value = player.current_exp
 
