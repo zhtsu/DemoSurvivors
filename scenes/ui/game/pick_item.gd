@@ -34,6 +34,7 @@ func _on_skip_button_button_down():
 	$AnimationPlayer.play_backwards("Enter")
 	await $AnimationPlayer.animation_finished
 	get_tree().paused = false
+	pick_completed.emit({})
 	queue_free()
 
 
@@ -43,4 +44,3 @@ func _on_reroll_button_mouse_entered():
 
 func _on_skip_button_mouse_entered():
 	_play_button_hover_sound()
-	pick_completed.emit({})

@@ -38,6 +38,7 @@ func _on_area_2d_area_exited(hurt_box : HurtBox):
 
 
 func _on_timer_timeout():
+	$EffectAnimPlayer.play("Discharge")
 	for enemy in attacking_enemy_list:
 		var damage_value = Methods.cal_damage(player.get_prop_dict(), enemy.get_prop_dict())
 		enemy.take_damage(damage_value * 0.4)
