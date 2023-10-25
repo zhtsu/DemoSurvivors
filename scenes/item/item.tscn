@@ -1,19 +1,18 @@
 [gd_scene load_steps=5 format=3 uid="uid://dc84kvnhdauu8"]
 
 [ext_resource type="Script" path="res://scenes/item/item.gd" id="1_fkpwn"]
-[ext_resource type="Texture2D" uid="uid://covbhycho63s5" path="res://tress/at_loot_exp_stone_black.tres" id="2_f3n22"]
+[ext_resource type="Texture2D" uid="uid://bx4si0b40vkjy" path="res://tress/at_ability_summon.tres" id="2_871um"]
 [ext_resource type="Script" path="res://scenes/utility/hit_box.gd" id="3_ydvhu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3rwgf"]
 radius = 12.0
 
 [node name="Item" type="Node2D" groups=["item"]]
-position = Vector2(20, 20)
 script = ExtResource("1_fkpwn")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_f3n22")
+texture = ExtResource("2_871um")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8

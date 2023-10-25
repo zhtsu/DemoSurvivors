@@ -56,6 +56,7 @@ func _spawn_enemy():
 		
 		var enemy = tscn_enemy.instantiate()
 		enemy.call("init", enemy_data)
+		enemy.connect("destroyed", _on_enemy_destroyed)
 		enemy.spawn_position = random_position
 		get_tree().get_first_node_in_group("level").add_child(enemy)
 		current_enemy_count += 1
@@ -63,7 +64,9 @@ func _spawn_enemy():
 	$Timer.start(spawn_interval)
 	
 	
-	
+func _on_enemy_destroyed():
+	current_enemy_count -= 1
+
 	
 func _on_timer_timeout():
 	_spawn_enemy()

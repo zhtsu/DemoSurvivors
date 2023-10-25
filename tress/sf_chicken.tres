@@ -97,7 +97,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_miyfa")
 }],
-"loop": true,
+"loop": false,
 "name": &"Damage",
 "speed": 10.0
 }, {
@@ -144,7 +144,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_jeayp")
 }],
-"loop": true,
+"loop": false,
 "name": &"Walk",
 "speed": 10.0
 }]

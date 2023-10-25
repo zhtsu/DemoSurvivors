@@ -25,7 +25,7 @@ static func load_csv_to_array(csv_file_path : String, out_list : Array) -> void:
 	csv_file.close()
 	
 	
-static func cal_damage(hit_prop_dict : Dictionary, hurt_prop_dict : Dictionary) -> int:
+static func cal_damage(hit_prop_dict : Dictionary, hurt_prop_dict : Dictionary) -> float:
 	# Hit
 	var hit_physical_atk : float = hit_prop_dict["physical_atk"]
 	var hit_magical_atk : float = hit_prop_dict["magical_atk"]
@@ -43,10 +43,10 @@ static func cal_damage(hit_prop_dict : Dictionary, hurt_prop_dict : Dictionary) 
 	var physical_damage = hit_physical_atk_result["Value"] - hurt_physical_def
 	var magical_damage = hit_magical_atk_result["Value"] - hurt_magical_def
 	
-	if physical_damage < 0:
-		physical_damage = 0
-	if magical_damage < 0:
-		magical_damage = 0
+	if physical_damage < 0.0:
+		physical_damage = 0.0
+	if magical_damage < 0.0:
+		magical_damage = 0.0
 	
 	return physical_damage + magical_damage
 	

@@ -15,17 +15,17 @@ extends Node2D
 @export var item_name : String = "Item"
 
 
-func init(in_item_name : String = "Item", in_icon : Texture2D = null,
-		  in_pickable : bool = false):
+func init(in_item_name : String = "Item", in_pickable : bool = false,
+		  in_icon : Texture2D = null):
 	item_name = in_item_name
-	icon = in_icon
-	$Sprite2D.texture = icon
 	pickable = in_pickable
+	if not in_icon == null:
+		icon = in_icon
+		$Sprite2D.texture = icon
 	
-
-func _ready():
 	if pickable == false:
 		$Sprite2D.hide()
 		$Area2D.monitoring = false
 		$Area2D.monitorable = false
-
+	
+	

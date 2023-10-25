@@ -27,5 +27,4 @@ func _ready():
 	elif exp_volume >= 100:
 		at_loot_exp_stone = at_loot_exp_stone_black
 		
-	super.init("EXP", at_loot_exp_stone, true)
-
+	super.init("EXP Stone", true, at_loot_exp_stone)

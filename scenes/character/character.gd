@@ -11,8 +11,8 @@ const ECharacterState = Enums.EState
 const ECharacterDirection = Enums.EDirection
 
 var character_name = "角色名称"
-var speed : int = 1
-var hp : int = 100
+var speed : float = 1
+var hp : float = 100.0
 
 var physical_atk : float = 0.0
 var magical_atk : float = 0.0
@@ -26,16 +26,14 @@ var magical_crit_bonus : float = 0.0
 var physical_crit_chance : float = 0.0
 var magical_crit_chance : float = 0.0
 
+var enable_damage_interval := true
 var damage_interval := 0.2
-var enemy_has_damage_interval := false
 
 @export var spawn_position = Vector2(0, 0)
 
 var direction = ECharacterDirection.Right
 var state = ECharacterState.Idle
 var size : Vector2
-# Used for process damage logic
-var previous_entered_area : HitBox
 
 
 func _init_character():
@@ -50,13 +48,11 @@ func _set_action_gdscript(script : Script):
 	
 	
 
-func take_damage(damage_value : int):
-	if self is Enemy:
-		hp -= damage_value
-		return
-	
+func take_damage(damage_value : float):
 	if state == ECharacterState.Damage:
 		state = ECharacterState.Idle
+		if self is Enemy:
+			state = ECharacterState.Walk
 		return
 	
 	state = ECharacterState.Damage
@@ -64,7 +60,11 @@ func take_damage(damage_value : int):
 	hp -= damage_value
 	
 	damage.emit()
-	$DamageTimer.start(damage_interval)
+	
+	if enable_damage_interval:
+		$DamageTimer.start(damage_interval)
+	else:
+		$DamageTimer.start(0.1)
 
 
 func get_prop_dict():
@@ -82,9 +82,17 @@ func get_prop_dict():
 
 
 func _on_damage_timer_timeout():
-	if $HurtBox.get_overlapping_areas().size() > 0:
-		$HurtBox.area_entered.emit(previous_entered_area)
+	var overlapping_areas = $HurtBox.get_overlapping_areas()
+	if overlapping_areas.size() > 0:
+		for hit_box in overlapping_areas:
+			$HurtBox.area_entered.emit(hit_box)
+	else:
+		state = ECharacterState.Idle
+		if self is Enemy:
+			state = ECharacterState.Walk
 
 
 func _on_hurt_box_area_exited(_area):
 	state = ECharacterState.Idle
+	if self is Enemy:
+		state = ECharacterState.Walk

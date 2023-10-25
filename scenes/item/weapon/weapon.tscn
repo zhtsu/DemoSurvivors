@@ -13,4 +13,3 @@ physical_crit_bonus = 0.0
 magical_crit_bonus = 0.0
 physical_crit_chance = 0.0
 magical_crit_chance = 0.0
-active = null

@@ -34,13 +34,13 @@ func _physics_process(_delta):
 	
 
 
-func _on_hit_box_area_entered(area : HurtBox):
-	if area == null:
+func _on_hit_box_area_entered(hurt_box : HurtBox):
+	if hurt_box == null:
 		return
 	
-	if area.owner is Enemy:
-		var damage_value = Methods.cal_damage(player.get_prop_dict(), area.owner.get_prop_dict())
-		area.owner.take_damage(damage_value)
+	if hurt_box.owner is Enemy:
+		var damage_value = Methods.cal_damage(player.get_prop_dict(), hurt_box.owner.get_prop_dict())
+		hurt_box.owner.take_damage(damage_value)
 	
 	queue_free()
 

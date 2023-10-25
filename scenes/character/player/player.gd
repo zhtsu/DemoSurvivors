@@ -179,9 +179,7 @@ func _on_hurt_box_area_entered(hit_box : HitBox):
 		hit_box.owner.queue_free()
 		return
 	
-	previous_entered_area = hit_box
-	
-	var damage_value : int
+	var damage_value : float
 	# Player is hit by an Enemy
 	if hit_box.owner is Enemy:
 		damage_value = Methods.cal_damage(hit_box.owner.get_prop_dict(), get_prop_dict())
@@ -199,8 +197,6 @@ func add_item(item : Item):
 	if item is ExpStone:
 		add_exp(item.exp_volume)
 		return
-	elif item is Ability:
-		pass
 	elif item is Weapon:
 		pass
 		

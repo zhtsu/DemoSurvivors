@@ -42,7 +42,7 @@ func _update_prop_box():
 
 
 func _update_props():
-	$Main/Body/Box/PropertyBox/H5/HP.call("set_property", "HP", String.num(player.hp))
+	$Main/Body/Box/PropertyBox/H5/HP.call("set_property", "HP", String.num_int64(int(player.hp)))
 	$Main/Body/Box/PropertyBox/H5/Speed.call("set_property", "Speed", String.num(player.speed))
 	$Main/Body/Box/PropertyBox/H1/PATK.call("set_property", "Physical ATK", String.num(player.physical_atk))
 	$Main/Body/Box/PropertyBox/H1/PDEF.call("set_property", "Physical DEF", String.num(player.physical_def))

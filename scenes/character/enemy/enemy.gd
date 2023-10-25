@@ -2,6 +2,9 @@ class_name Enemy
 extends Character
 
 
+signal destroyed
+
+
 const Assets = preload("res://scenes/global/assets.gd")
 const Methods = preload("res://scenes/global/methods.gd")
 
@@ -27,7 +30,7 @@ func init(enemy_data : Dictionary):
 	enemy_type = Enums.EnemyType.get(enemy_data["type"])
 	character_name = enemy_data["name"]
 	speed = int(enemy_data["speed"])
-	hp = int(enemy_data["HP"])
+	hp = float(enemy_data["HP"])
 	exp_volume = int(enemy_data["EXP"])
 	physical_atk = float(enemy_data["physical_ATK"])
 	physical_def = float(enemy_data["physical_DEF"])
@@ -37,10 +40,20 @@ func init(enemy_data : Dictionary):
 	physical_crit_chance = float(enemy_data["physical_crit_chance"])
 	magical_crit_bonus = float(enemy_data["magical_crit_bonus"])
 	magical_crit_chance = float(enemy_data["magical_crit_chance"])
+	enable_damage_interval = false
+	state = ECharacterState.Walk
+	
+
+func _update_enemy_animation():
+	if state == ECharacterState.Walk:
+		$AnimatedSprite2D.play("Walk")
+	elif state == ECharacterState.Damage:
+		$AnimatedSprite2D.play("Damage")
 
 
 func _physics_process(_delta):
 	_update_enemy_flip()
+	_update_enemy_animation()
 	
 	if hp <= 0:
 		_destroy_enemy()
@@ -78,4 +91,6 @@ func _destroy_enemy():
 	var particles_emitter = Assets.tscn_particles_emitter.instantiate()
 	particles_emitter.position = position
 	get_tree().get_first_node_in_group("level").add_child(particles_emitter)
+	destroyed.emit()
 	queue_free()
+	
