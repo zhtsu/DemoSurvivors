@@ -1,28 +1,25 @@
 [gd_scene load_steps=5 format=3 uid="uid://cjyrwp7xgijvk"]
 
-[ext_resource type="Script" path="res://scenes/item/ability/base/projectile.gd" id="1_we75d"]
-[ext_resource type="Texture2D" uid="uid://ckyftvk7stajr" path="res://tress/at_ability_lapidation.tres" id="2_ept0h"]
-[ext_resource type="Script" path="res://scenes/utility/hit_box.gd" id="3_v8vtj"]
+[ext_resource type="Script" path="res://scenes/item/ability/lapidation/projectile.gd" id="1_nchk6"]
+[ext_resource type="Texture2D" uid="uid://ckyftvk7stajr" path="res://tress/at_ability_lapidation.tres" id="2_i4s6m"]
+[ext_resource type="Script" path="res://scenes/utility/hit_box.gd" id="3_1kp21"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvgei"]
-size = Vector2(26, 26)
+[sub_resource type="CircleShape2D" id="CircleShape2D_4110k"]
 
-[node name="Projectile" type="Node2D"]
+[node name="LapidationProjectile" type="Node2D"]
 scale = Vector2(0.2, 0.2)
-script = ExtResource("1_we75d")
+script = ExtResource("1_nchk6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_ept0h")
+texture = ExtResource("2_i4s6m")
 
 [node name="HitBox" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 collision_mask = 129
-script = ExtResource("3_v8vtj")
+script = ExtResource("3_1kp21")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_gvgei")
+shape = SubResource("CircleShape2D_4110k")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 

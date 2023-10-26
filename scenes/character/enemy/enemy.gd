@@ -12,9 +12,11 @@ var enemy_size := Enums.EnemySize.Normal
 var enemy_type := Enums.EnemyType.Common
 var exp_volume := 1
 
+var MAIN : Main
 
 func _ready():
 	_init_character()
+	MAIN = get_tree().get_first_node_in_group("main")
 	$AnimatedSprite2D.play("Walk")
 	direction = ECharacterDirection.Left
 
@@ -40,7 +42,6 @@ func init(enemy_data : Dictionary):
 	physical_crit_chance = float(enemy_data["physical_crit_chance"])
 	magical_crit_bonus = float(enemy_data["magical_crit_bonus"])
 	magical_crit_chance = float(enemy_data["magical_crit_chance"])
-	enable_damage_interval = false
 	state = ECharacterState.Walk
 	
 
@@ -55,7 +56,7 @@ func _physics_process(_delta):
 	_update_enemy_flip()
 	_update_enemy_animation()
 	
-	if hp <= 0:
+	if hp <= 0.0:
 		_destroy_enemy()
 	
 	move_and_collide(Vector2.ZERO)
@@ -91,6 +92,16 @@ func _destroy_enemy():
 	var particles_emitter = Assets.tscn_particles_emitter.instantiate()
 	particles_emitter.position = position
 	get_tree().get_first_node_in_group("level").add_child(particles_emitter)
+	MAIN.visible_enemy_list.erase(self)
 	destroyed.emit()
 	queue_free()
 	
+
+
+func _on_visible_on_screen_notifier_2d_screen_entered():
+	MAIN.visible_enemy_list.append(self)
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	MAIN.visible_enemy_list.erase(self)
+

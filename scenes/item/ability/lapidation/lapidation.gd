@@ -1,7 +1,7 @@
-extends Item
+extends Ability
 
 
-const tscn_projectile = preload("res://scenes/item/ability/base/projectile.tscn")
+const tscn_projectile = preload("res://scenes/item/ability/lapidation/projectile.tscn")
 
 var player : Player
 
@@ -10,7 +10,7 @@ var player : Player
 
 
 func _init():
-	super.init("Homemade Projectile", false)
+	super.init("Lapidation", false)
 	
 
 func _ready():

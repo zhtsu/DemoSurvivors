@@ -26,7 +26,6 @@ var magical_crit_bonus : float = 0.0
 var physical_crit_chance : float = 0.0
 var magical_crit_chance : float = 0.0
 
-var enable_damage_interval := true
 var damage_interval := 0.2
 
 @export var spawn_position = Vector2(0, 0)
@@ -61,10 +60,7 @@ func take_damage(damage_value : float):
 	
 	damage.emit()
 	
-	if enable_damage_interval:
-		$DamageTimer.start(damage_interval)
-	else:
-		$DamageTimer.start(0.1)
+	$DamageTimer.start(damage_interval)
 
 
 func get_prop_dict():

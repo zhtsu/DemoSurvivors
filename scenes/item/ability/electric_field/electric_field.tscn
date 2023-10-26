@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cmfqtosl0xcn3"]
 
-[ext_resource type="PackedScene" uid="uid://dc84kvnhdauu8" path="res://scenes/item/item.tscn" id="1_qhpoo"]
-[ext_resource type="Script" path="res://scenes/item/ability/electric_field/electric_field.gd" id="2_cf8w6"]
+[ext_resource type="PackedScene" uid="uid://cn4km1kr2hqtw" path="res://scenes/item/ability/ability.tscn" id="1_mc17k"]
+[ext_resource type="Script" path="res://scenes/item/ability/electric_field/electric_field.gd" id="2_jegiw"]
 [ext_resource type="Texture2D" uid="uid://c283yvi84xsuh" path="res://tress/at_ability_electric_field.tres" id="3_jeww4"]
 [ext_resource type="Script" path="res://scenes/utility/hit_box.gd" id="4_swala"]
 
@@ -60,9 +60,9 @@ _data = {
 "Discharge": SubResource("Animation_i4lkj")
 }
 
-[node name="ElectricField" instance=ExtResource("1_qhpoo")]
+[node name="ElectricField" instance=ExtResource("1_mc17k")]
 scale = Vector2(5, 5)
-script = ExtResource("2_cf8w6")
+script = ExtResource("2_jegiw")
 
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(0, 1, 1, 1)
@@ -115,8 +115,6 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_lwne6")
 }
-
-[node name="Timer" type="Timer" parent="." index="5"]
 
 [connection signal="area_entered" from="ElectricFieldArea/Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="ElectricFieldArea/Area2D" to="." method="_on_area_2d_area_exited"]

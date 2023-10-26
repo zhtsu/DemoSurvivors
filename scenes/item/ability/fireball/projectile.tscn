@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://bqju6lokhlai5"]
+
+[ext_resource type="Script" path="res://scenes/item/ability/fireball/projectile.gd" id="1_ms0gx"]
+[ext_resource type="Texture2D" uid="uid://bxscapliib7f1" path="res://assets/textures/effects/light.png" id="2_ifm2h"]
+[ext_resource type="Script" path="res://scenes/utility/hit_box.gd" id="3_efeuj"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_b0nwb"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_qrpee"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_8n72b"]
+curve = SubResource("Curve_qrpee")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mpbhh"]
+particle_flag_disable_z = true
+direction = Vector3(1, 1, 1)
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 0.0
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_8n72b")
+color = Color(1, 0, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qxhdn"]
+
+[node name="FireballProjectile" type="Node2D"]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_ms0gx")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+material = SubResource("CanvasItemMaterial_b0nwb")
+texture = ExtResource("2_ifm2h")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_b0nwb")
+process_material = SubResource("ParticleProcessMaterial_mpbhh")
+texture = ExtResource("2_ifm2h")
+
+[node name="HitBox" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 129
+script = ExtResource("3_efeuj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_qxhdn")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

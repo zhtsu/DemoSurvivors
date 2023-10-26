@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn4km1kr2hqtw"]
+
+[ext_resource type="PackedScene" uid="uid://dc84kvnhdauu8" path="res://scenes/item/item.tscn" id="1_8moee"]
+[ext_resource type="Script" path="res://scenes/item/ability/ability.gd" id="2_n4icx"]
+
+[node name="Ability" instance=ExtResource("1_8moee")]
+script = ExtResource("2_n4icx")
+
+[node name="SoundPlayer" type="AudioStreamPlayer" parent="." index="2"]
+
+[node name="Timer" type="Timer" parent="." index="3"]

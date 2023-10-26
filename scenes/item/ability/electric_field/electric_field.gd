@@ -1,4 +1,4 @@
-extends Item
+extends Ability
 
 
 const Methods = preload("res://scenes/global/methods.gd")

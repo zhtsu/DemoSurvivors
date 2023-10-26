@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://olrjehh0du76"]
+[gd_scene load_steps=26 format=3 uid="uid://olrjehh0du76"]
 
 [ext_resource type="PackedScene" uid="uid://dxx2elvn8s6am" path="res://scenes/character/character.tscn" id="1_utw0w"]
 [ext_resource type="Script" path="res://scenes/character/player/player.gd" id="2_86v6x"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://brwx0uwmh51od" path="res://scenes/item/ability/lapidation/lapidation.tscn" id="5_kcghx"]
 [ext_resource type="PackedScene" uid="uid://qmmepafb2pjf" path="res://scenes/utility/effect_camera.tscn" id="5_wg3ay"]
 [ext_resource type="PackedScene" uid="uid://cmfqtosl0xcn3" path="res://scenes/item/ability/electric_field/electric_field.tscn" id="6_3i74b"]
+[ext_resource type="PackedScene" uid="uid://cainuudg0dlsq" path="res://scenes/item/ability/fireball/fireball.tscn" id="8_52e8w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aib1i"]
 atlas = ExtResource("3_jxbrf")
@@ -162,9 +163,12 @@ show_percentage = false
 
 [node name="Timer" type="Timer" parent="." index="7"]
 
-[node name="ElectricField" parent="." index="9" instance=ExtResource("6_3i74b")]
+[node name="Fireball" parent="." index="9" instance=ExtResource("8_52e8w")]
 
-[node name="Lapidation" parent="." index="10" instance=ExtResource("5_kcghx")]
+[node name="ElectricField" parent="." index="10" instance=ExtResource("6_3i74b")]
+
+[node name="Lapidation" parent="." index="11" instance=ExtResource("5_kcghx")]
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="animation_finished" from="EffectAnimator" to="." method="_on_effect_animator_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

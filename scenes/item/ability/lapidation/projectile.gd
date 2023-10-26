@@ -1,9 +1,7 @@
-class_name Projectile
 extends Node2D
 
 
 const Methods = preload("res://scenes/global/methods.gd")
-
 
 var player : Player
 @export var spawn_position : Vector2 = Vector2(0.0, 0.0)

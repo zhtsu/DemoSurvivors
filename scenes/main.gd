@@ -8,7 +8,8 @@ var option_dict : Dictionary
 var player_data_list : Array[Dictionary]
 var enemy_data_list : Array[Dictionary]
 var map_data_list : Array[Dictionary]
-
+#
+var visible_enemy_list : Array[Enemy]
 
 func _ready():
 	var default_settings : Dictionary
