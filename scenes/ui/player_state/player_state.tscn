@@ -52,7 +52,7 @@ _data = {
 "RESET": SubResource("Animation_vf3w5")
 }
 
-[node name="PlayerState" type="CanvasLayer"]
+[node name="PlayerState" type="CanvasLayer" groups=["player_state"]]
 script = ExtResource("1_1uj4t")
 
 [node name="Main" type="VBoxContainer" parent="."]

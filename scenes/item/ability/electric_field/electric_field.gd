@@ -13,12 +13,13 @@ var attacking_enemy_list : Array[Enemy]
 
 func _init():
 	super.init("Electric Field", false)
+	$Sprite2D.modulate = Color.DEEP_SKY_BLUE
 
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
 	animation_player.play("Rotate")
-	timer.start(1.0)
+	timer.start(cooldown)
 	
 
 func _on_area_2d_area_entered(hurt_box : HurtBox):
@@ -38,8 +39,8 @@ func _on_area_2d_area_exited(hurt_box : HurtBox):
 
 
 func _on_timer_timeout():
-	$EffectAnimPlayer.play("Discharge")
+	$EffectAnimPlayer.play("Attack")
 	for enemy in attacking_enemy_list:
 		var damage_value = Methods.cal_damage(player.get_prop_dict(), enemy.get_prop_dict())
-		enemy.take_damage(damage_value * 0.4)
+		enemy.take_damage(damage_value * damage_scale)
 

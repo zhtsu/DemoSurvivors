@@ -19,7 +19,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(276, -648), Vector2(276, 0)]
+"values": [Vector2(326, -648), Vector2(326, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_wd5dm"]
@@ -60,14 +60,14 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_dvslh")
 shortcut_feedback = false
 
 [node name="Control" type="Control" parent="."]
-custom_minimum_size = Vector2(600, 648)
+custom_minimum_size = Vector2(500, 648)
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = 326.0
 offset_top = -648.0
-offset_right = 926.0
+offset_right = 826.0
 offset_bottom = 0.000976563
 grow_horizontal = 2
 metadata/_edit_group_ = true
@@ -108,7 +108,7 @@ theme_override_constants/v_separation = 10
 columns = 6
 
 [node name="Detail" type="ColorRect" parent="Control/Content"]
-custom_minimum_size = Vector2(0, 180)
+custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
 color = Color(0.176471, 0.176471, 0.176471, 1)
 
@@ -126,17 +126,17 @@ text = "道具名称"
 horizontal_alignment = 1
 
 [node name="Text" type="RichTextLabel" parent="Control/Content/Detail"]
-custom_minimum_size = Vector2(500, 120)
+custom_minimum_size = Vector2(460, 100)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -230.0
+offset_top = -40.0
+offset_right = 230.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "这是道具的详细描述，你可以在这里看到道具的来源、以及如何使用这些你可能会感兴趣的信息"

@@ -45,3 +45,12 @@ enum ECameraEffect
 	Expand,
 	Shock
 }
+
+
+enum EDamageType
+{
+	None,
+	Physical,
+	Magical,
+	Both
+}

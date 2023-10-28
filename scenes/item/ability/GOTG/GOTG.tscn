@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cktvi7esb7jb"]
+
+[ext_resource type="PackedScene" uid="uid://cn4km1kr2hqtw" path="res://scenes/item/ability/ability.tscn" id="1_0kwq7"]
+[ext_resource type="Script" path="res://scenes/item/ability/GOTG/GOTG.gd" id="2_1nc63"]
+
+[node name="GOTG" instance=ExtResource("1_0kwq7")]
+script = ExtResource("2_1nc63")
+pickable = null
+icon = null
+item_name = null

@@ -7,6 +7,9 @@ var player : Player
 var game_time_secs := 0
 var show_property = false
 
+@onready var ability_box = $Main/Body/AbilityBox
+@onready var weapon_box = $Main/Body/WeaponBox
+
 
 func init(in_player : Player):
 	player = in_player
@@ -14,24 +17,23 @@ func init(in_player : Player):
 	$Main/ExpBar.max_value = player.current_level_up_required_exp
 	_update_props()
 	_update_exp_bar()
+	_update_item_box()
 	player.connect("speak", _update_witticism)
 	player.connect("property_updated", _update_props)
 	player.connect("exp_added", _update_exp_bar)
-	player.connect("level_up", _pop_pick_item)
+	player.connect("level_up", _update_current_level_text)
+	player.connect("item_added", _on_item_added)
 
 
-func _pop_pick_item(_current_level : int):
-	_update_current_level_text()
-	var pick_item = Assets.tscn_pick_item.instantiate()
-	pick_item.connect("pick_completed", _pick_item_completed)
-	add_child(pick_item)
-
-
-func _pick_item_completed(item_data : Dictionary):
-	_update_exp_bar()
+func _update_item_box():
+	ability_box.update(player.ability_inventory)
+	weapon_box.update(player.weapon_inventory)
 	
-	if item_data.is_empty():
-		return
+func _on_item_added(item : Item):
+	if item is Ability:
+		ability_box.update(player.ability_inventory)
+	elif item is Weapon:
+		weapon_box.update(player.weapon_inventory)
 
 
 func _update_prop_box():
@@ -59,8 +61,8 @@ func _update_exp_bar():
 	$Main/ExpBar.value = player.current_exp
 
 
-func _update_current_level_text():
-	$Main/ExpBar/CurrentLevel.text = "Level: %d" % player.current_level
+func _update_current_level_text(current_level : int):
+	$Main/ExpBar/CurrentLevel.text = "Level: %d" % current_level
 
 
 func _ready():

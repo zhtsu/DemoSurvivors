@@ -6,6 +6,7 @@
 
 [node name="Fireball" instance=ExtResource("1_mc17k")]
 script = ExtResource("2_rrf2n")
+pickable = false
 
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(1, 0, 0, 1)

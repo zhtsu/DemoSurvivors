@@ -8,13 +8,14 @@ const path_default_options = "res://assets/data/default_options.json"
 const path_player_table = "res://assets/data/player_table.csv"
 const path_enemy_table = "res://assets/data/enemy_table.csv"
 const path_map_table = "res://assets/data/map_table.csv"
+const path_ability_table = "res://assets/data/ability_table.csv"
 const path_tex_start = "res://assets/textures/icons/start.png"
 const path_tscn_options = "res://scenes/ui/main_menu/options.tscn"
 const path_tscn_main_menu = "res://scenes/ui/main_menu/main_menu.tscn"
 # Folder path
 const dir_tres = "res://tress/"
 const dir_data = "res://assets/data/"
-const dir_player_actions = "res://scenes/character/player/actions/"
+const dir_ability = "res://scenes/item/ability/"
 const dir_enemy_actions = "res://scenes/character/enemy/actions/"
 # Scene
 const tscn_options = preload("res://scenes/ui/main_menu/options.tscn")
@@ -31,13 +32,14 @@ const tscn_enemy = preload("res://scenes/character/enemy/enemy.tscn")
 const tscn_map_item = preload("res://scenes/ui/pick_player/map_item.tscn")
 const tscn_pause_menu = preload("res://scenes/ui/game/pause_menu.tscn")
 const tscn_main_menu = preload("res://scenes/ui/main_menu/main_menu.tscn")
-const tscn_item = preload("res://scenes/item/item.tscn")
+const tscn_item_state = preload("res://scenes/ui/player_state/item_state.tscn")
 const tscn_pick_item = preload("res://scenes/ui/game/pick_item.tscn")
 const tscn_particles_emitter = preload("res://scenes/utility/particles_emitter.tscn")
 const tscn_death = preload("res://scenes/ui/game/death.tscn")
 const tscn_camera = preload("res://scenes/utility/effect_camera.tscn")
 const tscn_enemy_spawner = preload("res://scenes/level/enemy_spawner.tscn")
-const tscn_exp_stone = preload("res://scenes/item/loot/exp_stone/exp_stone.tscn")
+const tscn_exp_stone = preload("res://scenes/item/consumables/exp_stone/exp_stone.tscn")
+const tscn_GOTG = preload("res://scenes/item/ability/GOTG/GOTG.tscn")
 # Audio
 const a_button_down = preload("res://assets/sounds/button_down.mp3")
 const a_button_hover = preload("res://assets/sounds/button_hover.mp3")

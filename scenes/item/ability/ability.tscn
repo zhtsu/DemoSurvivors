@@ -5,6 +5,7 @@
 
 [node name="Ability" instance=ExtResource("1_8moee")]
 script = ExtResource("2_n4icx")
+pickable = null
 
 [node name="SoundPlayer" type="AudioStreamPlayer" parent="." index="2"]
 

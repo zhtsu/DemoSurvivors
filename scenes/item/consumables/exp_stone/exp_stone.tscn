@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddgiuqjmienfm"]
 
 [ext_resource type="PackedScene" uid="uid://dc84kvnhdauu8" path="res://scenes/item/item.tscn" id="1_0flcb"]
-[ext_resource type="Script" path="res://scenes/item/loot/exp_stone/exp_stone.gd" id="2_6kly8"]
+[ext_resource type="Script" path="res://scenes/item/consumables/exp_stone/exp_stone.gd" id="2_6kly8"]
 
 [node name="ExpStone" instance=ExtResource("1_0flcb")]
 z_index = -1

@@ -8,8 +8,17 @@ var option_dict : Dictionary
 var player_data_list : Array[Dictionary]
 var enemy_data_list : Array[Dictionary]
 var map_data_list : Array[Dictionary]
+var ability_data_list : Array[Dictionary]
 #
 var visible_enemy_list : Array[Enemy]
+
+
+func find_ability_data(ability_name : String) -> Dictionary:
+	for ability in ability_data_list:
+		if ability["name"] == ability_name:
+			return ability
+	return {}
+
 
 func _ready():
 	var default_settings : Dictionary
@@ -37,6 +46,7 @@ func _ready():
 	Methods.load_csv_to_array(Assets.path_player_table, player_data_list)
 	Methods.load_csv_to_array(Assets.path_enemy_table, enemy_data_list)
 	Methods.load_csv_to_array(Assets.path_map_table, map_data_list)
+	Methods.load_csv_to_array(Assets.path_ability_table, ability_data_list)
 	
 	var main_menu = Assets.tscn_main_menu.instantiate()
 	add_child(main_menu)

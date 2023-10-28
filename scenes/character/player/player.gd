@@ -7,7 +7,7 @@ signal level_up(current_level : int)
 signal death
 signal property_updated
 signal exp_added
-signal item_added(item : Item)
+signal item_added(ability : Item)
 
 
 const Assets = preload("res://scenes/global/assets.gd")
@@ -23,6 +23,16 @@ var talk_speed : float = 1.0
 var icon : Texture2D
 # Used for projectile
 var previous_velocity : Vector2 = Vector2(0.0, 0.0)
+
+var ability_inventory : Array[Item]
+var weapon_inventory : Array[Item]
+
+
+func has_ability(ability_name : String) -> bool:
+	for ability in ability_inventory:
+		if ability.item_name == ability_name:
+			return true
+	return false
 
 
 func _update_hp_bar():
@@ -46,19 +56,18 @@ func _ready():
 	$HpBar.show()
 	current_witticism_pool = witticism_dict["Common"]
 	speak.emit(current_witticism_pool.pick_random())
-	$Timer.start(randf_range(talk_speed, 30.0))
+	$Timer.start(randf_range(talk_speed, 20.0))
 	_update_hp_bar()
 	damage.connect(_update_hp_bar)
 	
-	
 
-func init(player_data : Dictionary):
+func init(player_data : Dictionary, MAIN : Main):
 	icon = load(Assets.dir_tres + player_data["icon_tres"])
 	var sprite_frames_path = Assets.dir_tres + player_data["sprite_frames_tres"]
 	var sprite_frames = load(sprite_frames_path)
 	$AnimatedSprite2D.sprite_frames = sprite_frames
 	character_name = player_data["name"]
-	speed = int(player_data["speed"])
+	speed = float(player_data["speed"])
 	physical_atk = float(player_data["physical_ATK"])
 	physical_def = float(player_data["physical_DEF"])
 	magical_atk = float(player_data["magical_ATK"])
@@ -72,7 +81,17 @@ func init(player_data : Dictionary):
 	var json_file = FileAccess.open(witticism_json_path, FileAccess.READ)
 	witticism_dict = JSON.parse_string(json_file.get_as_text())
 	json_file.close()
-	
+	# Create default ability and weapon
+	var gift_of_the_gods = Assets.tscn_GOTG.instantiate()
+	var gotg_ability_data = MAIN.find_ability_data("Gift of the gods")
+	gift_of_the_gods.init_ability(gotg_ability_data)
+	add_item(gift_of_the_gods)
+	var default_ability_data = MAIN.find_ability_data(player_data["ability"])
+	if not default_ability_data.is_empty():
+		var default_ability_path = Assets.dir_ability + default_ability_data["tscn"]
+		var default_ability : Ability = load(default_ability_path).instantiate()
+		default_ability.init_ability(default_ability_data)
+		add_item(default_ability)
 
 func set_position_smoothing(enabled : bool = true):
 	$EffectCamera.position_smoothing_enabled = enabled
@@ -143,6 +162,7 @@ func _update_move(delta):
 		
 	move_and_collide(Vector2.ZERO)
 
+
 func _on_effect_animator_animation_finished():
 	state = ECharacterState.Idle
 	set_position_smoothing(true)
@@ -157,7 +177,7 @@ func get_rand_witticism() -> String:
 func _on_timer_timeout():
 	# Emit talk signal to update witticism in PlayerState
 	speak.emit(current_witticism_pool.pick_random())
-	$Timer.start(randf_range(talk_speed, 30.0))
+	$Timer.start(randf_range(talk_speed, 20.0))
 	
 	
 func get_sprite_frames():
@@ -197,8 +217,11 @@ func add_item(item : Item):
 	if item is ExpStone:
 		add_exp(item.exp_volume)
 		return
+		
+	if item is Ability:
+		ability_inventory.append(item)
 	elif item is Weapon:
-		pass
+		weapon_inventory.append(item)
 		
 	add_child(item)
 	item_added.emit(item)

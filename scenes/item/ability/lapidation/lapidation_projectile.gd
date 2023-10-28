@@ -1,20 +1,10 @@
-extends Node2D
+extends Projectile
 
 
 const Methods = preload("res://scenes/global/methods.gd")
 
 var player : Player
-@export var spawn_position : Vector2 = Vector2(0.0, 0.0)
-@export var velocity : Vector2 = Vector2(0.0, 0.0)
-@export var speed : float = 4
-var distance := 100.0
 var acceleration = 1
-
-
-func init(in_spawn_position : Vector2, in_velocity : Vector2, in_speed : float):
-	spawn_position = in_spawn_position
-	velocity = in_velocity
-	speed = in_speed
 
 
 func _ready():
@@ -24,7 +14,6 @@ func _ready():
 
 func _physics_process(_delta):
 	var direction = Vector2.RIGHT.rotated(velocity.angle())
-	speed = min(speed + 2.0 * acceleration * acceleration, speed)
 	position += direction * speed
 	
 	if position.distance_to(spawn_position) > distance:
@@ -38,7 +27,7 @@ func _on_hit_box_area_entered(hurt_box : HurtBox):
 	
 	if hurt_box.owner is Enemy:
 		var damage_value = Methods.cal_damage(player.get_prop_dict(), hurt_box.owner.get_prop_dict())
-		hurt_box.owner.take_damage(damage_value)
+		hurt_box.owner.take_damage(damage_value * damage_scale)
 	
 	queue_free()
 

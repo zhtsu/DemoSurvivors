@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfde5jwnv3plw"]
+
+[ext_resource type="PackedScene" uid="uid://cn4km1kr2hqtw" path="res://scenes/item/ability/ability.tscn" id="1_pggvm"]
+[ext_resource type="Script" path="res://scenes/item/ability/GWTD/GWTD.gd" id="2_eyv50"]
+
+[node name="GWTD" instance=ExtResource("1_pggvm")]
+script = ExtResource("2_eyv50")

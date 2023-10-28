@@ -78,6 +78,7 @@ func get_prop_dict():
 
 
 func _on_damage_timer_timeout():
+	$DamageTimer.stop()
 	var overlapping_areas = $HurtBox.get_overlapping_areas()
 	if overlapping_areas.size() > 0:
 		for hit_box in overlapping_areas:

@@ -11,15 +11,18 @@ var active_player : Player
 var active_map : Map
 var resource_density := 0.1
 
+
 func init(in_map_name : String, in_player_data : Dictionary):
 	map_name = in_map_name
 	player_data = in_player_data
 	
 
 func _ready():
+	var MAIN = get_tree().get_first_node_in_group("main")
+	MAIN.visible_enemy_list.clear()
 	# Create player
 	active_player = Assets.tscn_player.instantiate()
-	active_player.init(player_data)
+	active_player.init(player_data, MAIN)
 	active_player.spawn_position = Vector2(576, 324)
 	active_player.call("set_position_smoothing", false)
 	active_player.connect("death", _pop_death_menu)

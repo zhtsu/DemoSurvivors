@@ -13,10 +13,12 @@ var enemy_type := Enums.EnemyType.Common
 var exp_volume := 1
 
 var MAIN : Main
+var player : Player
 
 func _ready():
 	_init_character()
 	MAIN = get_tree().get_first_node_in_group("main")
+	player = get_tree().get_first_node_in_group("player")
 	$AnimatedSprite2D.play("Walk")
 	direction = ECharacterDirection.Left
 
@@ -57,16 +59,15 @@ func _physics_process(_delta):
 	_update_enemy_animation()
 	
 	if hp <= 0.0:
-		_destroy_enemy()
+		_destroy_self()
+	if position.distance_to(player.position) > 600.0:
+		_destroy_self()
+	
 	
 	move_and_collide(Vector2.ZERO)
 	
 	
 func _update_enemy_flip():
-	var player = get_tree().get_first_node_in_group("player")
-	if player == null:
-		return
-	
 	var player_size : Vector2 = player.size
 	var player_pos : Vector2 = player.position
 	
@@ -82,7 +83,7 @@ func _update_enemy_flip():
 		scale.x *= -1
 	
 
-func _destroy_enemy():
+func _destroy_self():
 	# Create EXP stone
 	var exp_stone = Assets.tscn_exp_stone.instantiate()
 	exp_stone.exp_volume = exp_volume
@@ -99,9 +100,11 @@ func _destroy_enemy():
 
 
 func _on_visible_on_screen_notifier_2d_screen_entered():
-	MAIN.visible_enemy_list.append(self)
+	if not MAIN.visible_enemy_list.has(self):
+		MAIN.visible_enemy_list.append(self)
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
-	MAIN.visible_enemy_list.erase(self)
+	if MAIN.visible_enemy_list.has(self):
+		MAIN.visible_enemy_list.erase(self)
 

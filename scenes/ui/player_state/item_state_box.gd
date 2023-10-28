@@ -55,5 +55,14 @@ func _play_button_hover_sound():
 	$SoundPlayer.play()
 	
 	
-func add_and_update_item_state():
-	pass
+func update(item_list : Array[Item]):
+	clear()
+	for item in item_list:
+		var item_state = Assets.tscn_item_state.instantiate()
+		item_state.set_item_state(item)
+		$Grid.add_child(item_state)
+		
+		
+func clear():
+	for child in $Grid.get_children():
+		$Grid.remove_child(child)

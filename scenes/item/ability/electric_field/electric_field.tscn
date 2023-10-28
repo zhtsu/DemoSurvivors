@@ -40,29 +40,42 @@ _data = {
 }
 
 [sub_resource type="Animation" id="Animation_i4lkj"]
-resource_name = "Discharge"
-length = 0.2
+resource_name = "Attack"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ElectricFieldArea:scale")
+tracks/0/path = NodePath("ElectricFieldArea/Area2D/Effect:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(1.1, 1.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ElectricFieldArea/Area2D/Effect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lwne6"]
 _data = {
-"Discharge": SubResource("Animation_i4lkj")
+"Attack": SubResource("Animation_i4lkj")
 }
 
 [node name="ElectricField" instance=ExtResource("1_mc17k")]
 scale = Vector2(5, 5)
 script = ExtResource("2_jegiw")
+pickable = false
 
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(0, 1, 1, 1)
@@ -81,7 +94,7 @@ script = ExtResource("4_swala")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ElectricFieldArea/Area2D" index="0"]
 shape = SubResource("RectangleShape2D_2f2hu")
 
-[node name="Control" type="Control" parent="ElectricFieldArea/Area2D" index="1"]
+[node name="RectEdge" type="Control" parent="ElectricFieldArea/Area2D" index="1"]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -91,7 +104,34 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="ElectricFieldArea/Area2D/Control" index="0"]
+[node name="Panel" type="Panel" parent="ElectricFieldArea/Area2D/RectEdge" index="0"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_83anl")
+
+[node name="Effect" type="Control" parent="ElectricFieldArea/Area2D" index="2"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="ElectricFieldArea/Area2D/Effect" index="0"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
