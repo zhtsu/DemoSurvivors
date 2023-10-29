@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://ox3b0l5fh5q3"]
+
+[ext_resource type="PackedScene" uid="uid://cn4km1kr2hqtw" path="res://scenes/item/ability/ability.tscn" id="1_75k2m"]
+[ext_resource type="Script" path="res://scenes/item/ability/magnetism/magnetism.gd" id="2_inb5w"]
+
+[node name="Magnetism" instance=ExtResource("1_75k2m")]
+script = ExtResource("2_inb5w")
+pickable = false

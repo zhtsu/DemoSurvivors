@@ -11,6 +11,7 @@ var map_data_list : Array[Dictionary]
 var ability_data_list : Array[Dictionary]
 #
 var visible_enemy_list : Array[Enemy]
+var enemy_death_sound_pool : Array[OnceSound]
 
 
 func find_ability_data(ability_name : String) -> Dictionary:

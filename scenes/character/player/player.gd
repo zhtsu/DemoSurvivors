@@ -86,6 +86,10 @@ func init(player_data : Dictionary, MAIN : Main):
 	var gotg_ability_data = MAIN.find_ability_data("Gift of the gods")
 	gift_of_the_gods.init_ability(gotg_ability_data)
 	add_item(gift_of_the_gods)
+	var magnetism = Assets.tscn_magnetism.instantiate()
+	var magnetism_data = MAIN.find_ability_data("Magnetism")
+	magnetism.init_ability(magnetism_data)
+	add_item(magnetism)
 	var default_ability_data = MAIN.find_ability_data(player_data["ability"])
 	if not default_ability_data.is_empty():
 		var default_ability_path = Assets.dir_ability + default_ability_data["tscn"]

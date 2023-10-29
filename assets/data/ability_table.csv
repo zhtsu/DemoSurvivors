@@ -5,3 +5,4 @@ Lapidation,at_ability_lapidation.tres,lapidation/lapidation.tscn,2,4,Physical,1,
 Fireball,at_ability_fireball.tres,fireball/fireball.tscn,2,4,Magical,0.4,-10000
 Electric Field,at_ability_electric_field.tres,electric_field/electric_field.tscn,1,0,Magical,0.6,60
 Summon,at_ability_summon.tres,summon/summon.tscn,-10000,0,Both,0.2,100
+Magnetism,at_ability_magnetism.tres,magnetism/magnetism.tscn,-10000,1,None,-10000,10

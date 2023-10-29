@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cainuudg0dlsq"]
+[gd_scene load_steps=5 format=3 uid="uid://cainuudg0dlsq"]
 
 [ext_resource type="PackedScene" uid="uid://cn4km1kr2hqtw" path="res://scenes/item/ability/ability.tscn" id="1_mc17k"]
 [ext_resource type="Script" path="res://scenes/item/ability/fireball/fireball.gd" id="2_rrf2n"]
 [ext_resource type="Texture2D" uid="uid://wy8dqyhxipiv" path="res://tress/at_ability_fireball.tres" id="3_t47qh"]
+[ext_resource type="AudioStream" uid="uid://cindsagn6t3ek" path="res://assets/sounds/fireball.mp3" id="4_d4k4t"]
 
 [node name="Fireball" instance=ExtResource("1_mc17k")]
 script = ExtResource("2_rrf2n")
@@ -14,3 +15,7 @@ texture = ExtResource("3_t47qh")
 
 [node name="Area2D" parent="." index="1"]
 visible = false
+
+[node name="SoundPlayer" parent="." index="2"]
+stream = ExtResource("4_d4k4t")
+volume_db = -24.0

@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://brwx0uwmh51od"]
+[gd_scene load_steps=4 format=3 uid="uid://brwx0uwmh51od"]
 
 [ext_resource type="PackedScene" uid="uid://cn4km1kr2hqtw" path="res://scenes/item/ability/ability.tscn" id="1_mc17k"]
 [ext_resource type="Script" path="res://scenes/item/ability/lapidation/lapidation.gd" id="2_8a3bv"]
+[ext_resource type="AudioStream" uid="uid://cah7725fquumu" path="res://assets/sounds/projectile.mp3" id="3_0y25h"]
 
 [node name="Lapidation" instance=ExtResource("1_mc17k")]
 script = ExtResource("2_8a3bv")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = null
+
+[node name="SoundPlayer" parent="." index="2"]
+stream = ExtResource("3_0y25h")
+volume_db = -12.0

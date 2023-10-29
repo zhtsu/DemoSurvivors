@@ -40,9 +40,12 @@ const tscn_camera = preload("res://scenes/utility/effect_camera.tscn")
 const tscn_enemy_spawner = preload("res://scenes/level/enemy_spawner.tscn")
 const tscn_exp_stone = preload("res://scenes/item/consumables/exp_stone/exp_stone.tscn")
 const tscn_GOTG = preload("res://scenes/item/ability/GOTG/GOTG.tscn")
+const tscn_once_sound = preload("res://scenes/utility/once_sound.tscn")
+const tscn_magnetism = preload("res://scenes/item/ability/magnetism/magnetism.tscn")
 # Audio
 const a_button_down = preload("res://assets/sounds/button_down.mp3")
 const a_button_hover = preload("res://assets/sounds/button_hover.mp3")
+const a_enemy_death = preload("res://assets/sounds/enemy_death.mp3")
 # Texture
 const tex_loud = preload("res://assets/textures/icons/speaker.png")
 const tex_mute = preload("res://assets/textures/icons/speaker_crossed.png")
