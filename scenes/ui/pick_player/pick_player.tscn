@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ctjk5gnnswmro"]
+[gd_scene load_steps=25 format=3 uid="uid://ctjk5gnnswmro"]
 
 [ext_resource type="Script" path="res://scenes/ui/pick_player/pick_player.gd" id="1_b43f7"]
 [ext_resource type="PackedScene" uid="uid://b1etet1gv6g34" path="res://scenes/ui/pick_player/map_display.tscn" id="2_ji0p0"]
@@ -6,6 +6,7 @@
 [ext_resource type="SpriteFrames" uid="uid://olstouu8ajg" path="res://tress/sf_ninja_frog.tres" id="4_otodd"]
 [ext_resource type="Texture2D" uid="uid://df6vyq1rsihq4" path="res://assets/textures/icons/arrow_right.png" id="5_shgld"]
 [ext_resource type="Texture2D" uid="uid://bnrc8r4wfq47j" path="res://assets/textures/icons/double_arrow_button.png" id="6_6cprd"]
+[ext_resource type="PackedScene" uid="uid://udtbrww8posx" path="res://scenes/ui/player_state/item_state.tscn" id="7_uudkl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jtfq"]
 bg_color = Color(0.223529, 0.243137, 0.27451, 0.501961)
@@ -39,21 +40,11 @@ font_size = 40
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h3c7j"]
 
-[sub_resource type="Animation" id="Animation_b1jxm"]
-resource_name = "Enter"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -648), Vector2(0, 0)]
-}
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kd08d"]
+content_margin_left = 24.0
+content_margin_right = 24.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d2pvw"]
 
 [sub_resource type="Animation" id="Animation_op22g"]
 resource_name = "Exit"
@@ -89,7 +80,6 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8vxu8"]
 _data = {
-"Enter": SubResource("Animation_b1jxm"),
 "Exit": SubResource("Animation_op22g"),
 "RESET": SubResource("Animation_v5rbb")
 }
@@ -240,11 +230,11 @@ text = "Back"
 icon = ExtResource("6_6cprd")
 expand_icon = true
 
-[node name="Abilities" type="Panel" parent="Control/Panel/LeftBox"]
+[node name="Attributes" type="Panel" parent="Control/Panel/LeftBox"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HSeparator" type="HSeparator" parent="Control/Panel/LeftBox/Abilities"]
+[node name="HSeparator" type="HSeparator" parent="Control/Panel/LeftBox/Attributes"]
 custom_minimum_size = Vector2(0, 4)
 layout_mode = 1
 anchors_preset = 10
@@ -253,14 +243,101 @@ offset_bottom = 4.0
 grow_horizontal = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_h3c7j")
 
-[node name="Label3" type="Label" parent="Control/Panel/LeftBox/Abilities"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/LeftBox/Attributes"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Panel/LeftBox/Attributes/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kd08d")
+
+[node name="PropItems" type="VBoxContainer" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSeparator3" type="HSeparator" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_d2pvw")
+
+[node name="Physical" type="Label" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Physical"
+
+[node name="PATK" type="Label" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems"]
+layout_mode = 2
+text = "ATK: 0"
+
+[node name="PDEF" type="Label" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems"]
+layout_mode = 2
+text = "DEF: 0"
+
+[node name="PCritChance" type="Label" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems"]
+layout_mode = 2
+text = "Crit Chance: 0"
+
+[node name="PCritBonus" type="Label" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems"]
+layout_mode = 2
+text = "Crit Bonus: 0"
+
+[node name="HSeparator2" type="HSeparator" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems"]
+layout_mode = 2
+
+[node name="Magical" type="Label" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Magical"
+
+[node name="MATK" type="Label" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems"]
+layout_mode = 2
+text = "ATK: 0"
+
+[node name="MDEF" type="Label" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems"]
+layout_mode = 2
+text = "DEF: 0"
+
+[node name="MCritChance" type="Label" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems"]
+layout_mode = 2
+text = "Crit Chance: 0"
+
+[node name="MCritBonus" type="Label" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems"]
+layout_mode = 2
+text = "Crit Bonus: 0"
+
+[node name="HSeparator" type="HSeparator" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems"]
+layout_mode = 2
+
+[node name="Speed" type="Label" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems"]
+layout_mode = 2
+text = "Speed: "
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Panel/LeftBox/Attributes/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="AbilityState" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/HBoxContainer" instance=ExtResource("7_uudkl")]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="WeaponState" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/HBoxContainer" instance=ExtResource("7_uudkl")]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+
+[node name="AttributesTitle" type="Label" parent="Control/Panel/LeftBox/Attributes/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-offset_top = 396.0
-offset_right = 200.0
-offset_bottom = 446.0
 theme_override_font_sizes/font_size = 30
-text = "Abilities"
+text = "Attributes"
 horizontal_alignment = 1
 
 [node name="RightBox" type="VBoxContainer" parent="Control/Panel"]

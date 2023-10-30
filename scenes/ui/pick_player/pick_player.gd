@@ -16,6 +16,18 @@ var selected_map_name = "Grass"
 @onready var ui_map_list = $Control/Panel/RightBox/Maps/VBoxContainer/ScrollContainer/MapItems
 @onready var ui_back_btn = $Control/Panel/LeftBox/BackButton
 @onready var ui_start_btn = $Control/Panel/RightBox/StartButton
+@onready var ui_p_atk = $Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems/PATK
+@onready var ui_p_def = $Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems/PDEF
+@onready var ui_p_crit_chance = $Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems/PCritChance
+@onready var ui_p_crit_bonus = $Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems/PCritBonus
+@onready var ui_m_atk = $Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems/MATK
+@onready var ui_m_def = $Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems/MDEF
+@onready var ui_m_crit_chance = $Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems/MCritChance
+@onready var ui_m_crit_bonus = $Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems/MCritBonus
+@onready var ui_speed = $Control/Panel/LeftBox/Attributes/VBoxContainer/ScrollContainer/PropItems/Speed
+@onready var ui_ability_state = $Control/Panel/LeftBox/Attributes/VBoxContainer/HBoxContainer/AbilityState
+@onready var ui_weapon_state = $Control/Panel/LeftBox/Attributes/VBoxContainer/HBoxContainer/WeaponState
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,7 +36,7 @@ func _ready():
 	var start_icon = ui_start_btn.icon.get_image()
 	start_icon.flip_x()
 	ui_back_btn.icon = ImageTexture.create_from_image(start_icon)
-	$AnimationPlayer.play("Enter")
+	$AnimationPlayer.play_backwards("Exit")
 	# Update player count
 	max_player_count = MAIN.player_data_list.size()
 	# Init player list
@@ -49,6 +61,8 @@ func _ready():
 		ui_player_anim.sprite_frames = player_list[0].get_player_sprite_frames()
 		ui_player_anim.play("Walk")
 		ui_player_name.text = player_list[0].player_name
+		# Init player attributes
+		_set_player_attributes(MAIN.player_data_list[0])
 	else:
 		ui_player_anim.sprite_frames = null
 		ui_player_name.text = "Character"
@@ -109,6 +123,8 @@ func _update_player_data(player_idx: int):
 
 	ui_player_anim.play("Walk")
 
+	_set_player_attributes(player_data)
+
 func _on_player_item_clicked(player_idx : int):
 	if player_idx == selected_player_idx:
 		return
@@ -157,3 +173,21 @@ func _on_start_button_pressed():
 	var main_menu = get_tree().get_first_node_in_group("main_menu")
 	Methods.switch_scene(main_menu, level_scene, true)
 	
+	
+func _set_player_attributes(player_data : Dictionary):
+	ui_p_atk.text = "ATK: %.2f" % float(player_data["physical_ATK"])
+	ui_p_def.text = "DEF: %.2f" % float(player_data["physical_DEF"])
+	ui_p_crit_chance.text = "Crit Chance: %.2f" % float(player_data["physical_crit_chance"])
+	ui_p_crit_bonus.text =  "Crit Bonus: %.2f" % float(player_data["physical_crit_bonus"])
+	ui_m_atk.text = "ATK: %.2f" % float(player_data["magical_ATK"])
+	ui_m_def.text = "DEF: %.2f" % float(player_data["magical_DEF"])
+	ui_m_crit_chance.text = "Crit Chance: %.2f" % float(player_data["magical_crit_chance"])
+	ui_m_crit_bonus.text =  "Crit Bonus: %.2f" % float(player_data["magical_crit_bonus"])
+	ui_speed.text = "Speed: %.2f" % float(player_data["speed"])
+	if not player_data["ability"] == "null":
+		var ability_data = MAIN.find_ability_data(player_data["ability"])
+		var ability = load(Assets.dir_ability + ability_data["tscn"]).instantiate()
+		ability.init_ability(ability_data)
+		ui_ability_state.set_item_state(ability)
+	if not player_data["weapon"] == "null":
+		pass
