@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ctjk5gnnswmro"]
+[gd_scene load_steps=26 format=3 uid="uid://ctjk5gnnswmro"]
 
 [ext_resource type="Script" path="res://scenes/ui/pick_player/pick_player.gd" id="1_b43f7"]
 [ext_resource type="PackedScene" uid="uid://b1etet1gv6g34" path="res://scenes/ui/pick_player/map_display.tscn" id="2_ji0p0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://df6vyq1rsihq4" path="res://assets/textures/icons/arrow_right.png" id="5_shgld"]
 [ext_resource type="Texture2D" uid="uid://bnrc8r4wfq47j" path="res://assets/textures/icons/double_arrow_button.png" id="6_6cprd"]
 [ext_resource type="PackedScene" uid="uid://udtbrww8posx" path="res://scenes/ui/player_state/item_state.tscn" id="7_uudkl"]
+[ext_resource type="StyleBox" uid="uid://dibwpul5ku25j" path="res://tress/sbe_default.tres" id="8_eik1u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jtfq"]
 bg_color = Color(0.223529, 0.243137, 0.27451, 0.501961)
@@ -323,10 +324,23 @@ text = "Speed: "
 layout_mode = 2
 size_flags_horizontal = 4
 
+[node name="Label" type="Label" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "A "
+
 [node name="AbilityState" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/HBoxContainer" instance=ExtResource("7_uudkl")]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
+
+[node name="VSeparator" type="VSeparator" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(12, 0)
+layout_mode = 2
+theme_override_styles/separator = ExtResource("8_eik1u")
+
+[node name="Label2" type="Label" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "W "
 
 [node name="WeaponState" parent="Control/Panel/LeftBox/Attributes/VBoxContainer/HBoxContainer" instance=ExtResource("7_uudkl")]
 layout_mode = 2

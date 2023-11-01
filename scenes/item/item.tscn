@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dc84kvnhdauu8"]
 
 [ext_resource type="Script" path="res://scenes/item/item.gd" id="1_fkpwn"]
-[ext_resource type="Texture2D" uid="uid://d10faqbumkiow" path="res://tress/at_ability_magnetism.tres" id="2_oj4ur"]
+[ext_resource type="Texture2D" uid="uid://b62rm0idotlti" path="res://tress/at_weapon_thunder_blade.tres" id="2_bmu46"]
 [ext_resource type="Script" path="res://scenes/utility/hit_box.gd" id="3_ydvhu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3rwgf"]
@@ -12,7 +12,7 @@ script = ExtResource("1_fkpwn")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_oj4ur")
+texture = ExtResource("2_bmu46")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8

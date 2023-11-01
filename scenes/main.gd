@@ -9,6 +9,7 @@ var player_data_list : Array[Dictionary]
 var enemy_data_list : Array[Dictionary]
 var map_data_list : Array[Dictionary]
 var ability_data_list : Array[Dictionary]
+var weapon_data_list : Array[Dictionary]
 #
 var visible_enemy_list : Array[Enemy]
 var enemy_death_sound_pool : Array[OnceSound]
@@ -18,6 +19,13 @@ func find_ability_data(ability_name : String) -> Dictionary:
 	for ability in ability_data_list:
 		if ability["name"] == ability_name:
 			return ability
+	return {}
+
+
+func find_weapon_data(weapon_name : String) -> Dictionary:
+	for weapon in weapon_data_list:
+		if weapon["name"] == weapon_name:
+			return weapon
 	return {}
 
 
@@ -48,6 +56,7 @@ func _ready():
 	Methods.load_csv_to_array(Assets.path_enemy_table, enemy_data_list)
 	Methods.load_csv_to_array(Assets.path_map_table, map_data_list)
 	Methods.load_csv_to_array(Assets.path_ability_table, ability_data_list)
+	Methods.load_csv_to_array(Assets.path_weapon_table, weapon_data_list)
 	
 	var main_menu = Assets.tscn_main_menu.instantiate()
 	add_child(main_menu)

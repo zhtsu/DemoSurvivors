@@ -9,6 +9,7 @@ const path_player_table = "res://assets/data/player_table.csv"
 const path_enemy_table = "res://assets/data/enemy_table.csv"
 const path_map_table = "res://assets/data/map_table.csv"
 const path_ability_table = "res://assets/data/ability_table.csv"
+const path_weapon_table = "res://assets/data/weapon_table.csv"
 const path_tex_start = "res://assets/textures/icons/start.png"
 const path_tscn_options = "res://scenes/ui/main_menu/options.tscn"
 const path_tscn_main_menu = "res://scenes/ui/main_menu/main_menu.tscn"
@@ -42,6 +43,7 @@ const tscn_exp_stone = preload("res://scenes/item/consumables/exp_stone/exp_ston
 const tscn_GOTG = preload("res://scenes/item/ability/GOTG/GOTG.tscn")
 const tscn_once_sound = preload("res://scenes/utility/once_sound.tscn")
 const tscn_magnetism = preload("res://scenes/item/ability/magnetism/magnetism.tscn")
+const tscn_weapon = preload("res://scenes/item/weapon/weapon.tscn")
 # Audio
 const a_button_down = preload("res://assets/sounds/button_down.mp3")
 const a_button_hover = preload("res://assets/sounds/button_hover.mp3")

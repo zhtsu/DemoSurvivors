@@ -86,16 +86,19 @@ func init(player_data : Dictionary, MAIN : Main):
 	var gotg_ability_data = MAIN.find_ability_data("Gift of the gods")
 	gift_of_the_gods.init_ability(gotg_ability_data)
 	add_item(gift_of_the_gods)
-	var magnetism = Assets.tscn_magnetism.instantiate()
-	var magnetism_data = MAIN.find_ability_data("Magnetism")
-	magnetism.init_ability(magnetism_data)
-	add_item(magnetism)
+	# Default Ability
 	var default_ability_data = MAIN.find_ability_data(player_data["ability"])
 	if not default_ability_data.is_empty():
 		var default_ability_path = Assets.dir_ability + default_ability_data["tscn"]
 		var default_ability : Ability = load(default_ability_path).instantiate()
 		default_ability.init_ability(default_ability_data)
 		add_item(default_ability)
+	# Default Weapon
+	var default_weapon_data = MAIN.find_weapon_data(player_data["weapon"])
+	if not default_weapon_data.is_empty():
+		var default_weapon : Weapon = Assets.tscn_weapon.instantiate()
+		default_weapon.init_weapon(default_weapon_data)
+		add_item(default_weapon)
 
 func set_position_smoothing(enabled : bool = true):
 	$EffectCamera.position_smoothing_enabled = enabled
@@ -114,7 +117,7 @@ func _physics_process(delta):
 	while current_exp >= current_level_up_required_exp:
 		current_exp -= current_level_up_required_exp
 		current_level += 1
-		var added_required_exp = float(current_level_up_required_exp) * (1.0 + (float(current_level) * 0.2))
+		var added_required_exp = float(current_level_up_required_exp) * 0.4
 		current_level_up_required_exp += int(added_required_exp)
 		level_up.emit(current_level)
 	

@@ -1,2 +1,13 @@
-name,icon_tres,gdscript,physical_ATK,physical_DEF,magical_ATK,magical_DEF,physical_crit_bonus,physical_crit_chance,magical_crit_bonus,magical_crit_chance
-Dagger¡¤Ninja,at_weapon_dagger_ninja.tres,null,1,1,0,0,0.05,0.05,0,0
+name,icon,physical_ATK,physical_DEF,magical_ATK,magical_DEF,physical_crit_bonus,physical_crit_chance,magical_crit_bonus,magical_crit_chance
+Dagger,at_weapon_dagger.tres,1,1,0,0,0.05,0.05,0,0
+Blue Wand,at_weapon_blue_wand.tres,0,0,0,0,0,0,0,0
+Green Wand,at_weapon_green_wand.tres,0,0,0,0,0,0,0,0
+Hammer,at_weapon_hammer.tres,0,0,0,0,0,0,0,0
+Khaki Wand,at_weapon_khaki_wand.tres,0,0,0,0,0,0,0,0
+Lucky Dice,at_weapon_lucky_dice.tres,0,0,0,0,0,0,0,0
+Lucky Shorts,at_weapon_lucky_shorts.tres,0,0,0,0,0,0,0,0
+Red Wand,at_weapon_red_wand.tres,0,0,0,0,0,0,0,0
+Ring,at_weapon_ring.tres,0,0,0,0,0,0,0,0
+Twin Blade,at_weapon_twin_blade.tres,0,0,0,0,0,0,0,0
+Whip,at_weapon_whip.tres,0,0,0,0,0,0,0,0
+Wood Wand,at_weapon_wood_wand.tres,0,0,0,0,0,0,0,0

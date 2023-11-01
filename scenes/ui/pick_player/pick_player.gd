@@ -190,4 +190,7 @@ func _set_player_attributes(player_data : Dictionary):
 		ability.init_ability(ability_data)
 		ui_ability_state.set_item_state(ability)
 	if not player_data["weapon"] == "null":
-		pass
+		var weapon_data = MAIN.find_weapon_data(player_data["weapon"])
+		var weapon = Assets.tscn_weapon.instantiate()
+		weapon.init_weapon(weapon_data)
+		ui_weapon_state.set_item_state(weapon)

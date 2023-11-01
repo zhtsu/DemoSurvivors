@@ -11,5 +11,11 @@ func set_item_state(item : Item):
 	
 	$TextureRect.modulate = item.color()
 	$Level.text = String.num_int64(item.level)
-	tooltip_text = item.item_name
+	
+	var type_prefix : String
+	if item is Weapon:
+		type_prefix = "[Weapon] "
+	elif item is Ability:
+		type_prefix = "[Ability] "
+	tooltip_text = type_prefix + item.item_name
 	

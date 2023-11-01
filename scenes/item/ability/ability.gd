@@ -11,8 +11,7 @@ var damage_type : Enums.EDamageType = Enums.EDamageType.Physical
 var damage_scale : float = 1.0
 var distance : float = 100.0
 
-#in_item_name : String = "Item", in_pickable : bool = false,
-#		  in_icon : Texture2D = null
+
 func init_ability(ability_data : Dictionary):
 	var ability_icon = load(Assets.dir_tres + ability_data["icon"]) as Texture2D
 	super.init(ability_data["name"], false, ability_icon)
