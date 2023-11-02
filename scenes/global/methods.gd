@@ -2,6 +2,7 @@ extends Node
 
 
 const Assets = preload("res://scenes/global/assets.gd")
+const Enums = preload("res://scenes/global/enums.gd")
 
 
 static func load_csv_to_array(csv_file_path : String, out_list : Array) -> void:
@@ -25,7 +26,7 @@ static func load_csv_to_array(csv_file_path : String, out_list : Array) -> void:
 	csv_file.close()
 	
 	
-static func cal_damage(hit_prop_dict : Dictionary, hurt_prop_dict : Dictionary) -> float:
+static func cal_damage(hit_prop_dict : Dictionary, hurt_prop_dict : Dictionary, damage_type : Enums.EDamageType) -> Dictionary:
 	# Hit
 	var hit_physical_atk : float = hit_prop_dict["physical_atk"]
 	var hit_magical_atk : float = hit_prop_dict["magical_atk"]
@@ -48,7 +49,20 @@ static func cal_damage(hit_prop_dict : Dictionary, hurt_prop_dict : Dictionary) 
 	if magical_damage < 0.0:
 		magical_damage = 0.0
 	
-	return physical_damage + magical_damage
+	if damage_type == Enums.EDamageType.Physical:
+		return {
+			"Value": physical_damage,
+			"Crit": bool(hit_physical_atk_result["Crit"]),
+			"Type": int(damage_type)
+		}
+	elif damage_type == Enums.EDamageType.Magical:
+		return {
+			"Value": magical_damage,
+			"Crit": bool(hit_magical_atk_result["Crit"]),
+			"Type": int(damage_type)
+		}
+	else:
+		return {}
 	
 	
 static func cal_atk_with_crit(base_atk : float, crit_chance : float, crit_bonus : float) -> Dictionary:

@@ -20,6 +20,7 @@ func init(in_map_name : String, in_player_data : Dictionary):
 func _ready():
 	var MAIN = get_tree().get_first_node_in_group("main")
 	MAIN.visible_enemy_list.clear()
+	MAIN.enemy_death_sound_pool.clear()
 	# Create player
 	active_player = Assets.tscn_player.instantiate()
 	active_player.init(player_data, MAIN)

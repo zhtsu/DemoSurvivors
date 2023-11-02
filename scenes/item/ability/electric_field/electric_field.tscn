@@ -76,7 +76,6 @@ _data = {
 [node name="ElectricField" instance=ExtResource("1_mc17k")]
 scale = Vector2(5, 5)
 script = ExtResource("2_jegiw")
-pickable = false
 
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(0, 1, 1, 1)

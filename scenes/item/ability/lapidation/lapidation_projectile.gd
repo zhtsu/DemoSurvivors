@@ -26,8 +26,12 @@ func _on_hit_box_area_entered(hurt_box : HurtBox):
 		return
 	
 	if hurt_box.owner is Enemy:
-		var damage_value = Methods.cal_damage(player.get_prop_dict(), hurt_box.owner.get_prop_dict())
-		hurt_box.owner.take_damage(damage_value * damage_scale)
+		var damage_data = Methods.cal_damage(
+			player.get_prop_dict(),
+			hurt_box.owner.get_prop_dict(),
+			Enums.EDamageType.Physical
+		)
+		hurt_box.owner.take_damage(damage_data)
 	
 	queue_free()
 

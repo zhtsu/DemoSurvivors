@@ -206,13 +206,15 @@ func _on_hurt_box_area_entered(hit_box : HitBox):
 		hit_box.owner.queue_free()
 		return
 	
-	var damage_value : float
 	# Player is hit by an Enemy
 	if hit_box.owner is Enemy:
-		damage_value = Methods.cal_damage(hit_box.owner.get_prop_dict(), get_prop_dict())
-	
-	if hp > 0:
-		take_damage(damage_value)
+		var damage_data = Methods.cal_damage(
+			hit_box.owner.get_prop_dict(),
+			get_prop_dict(),
+			hit_box.owner.damage_type
+		)
+		if hp > 0:
+			take_damage(damage_data)
 		
 		
 func get_enemy_spawn_location():

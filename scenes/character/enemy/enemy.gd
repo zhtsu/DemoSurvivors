@@ -10,6 +10,7 @@ const Methods = preload("res://scenes/global/methods.gd")
 
 var enemy_size := Enums.EnemySize.Normal
 var enemy_type := Enums.EnemyType.Common
+var damage_type := Enums.EDamageType.Physical
 var exp_volume := 1
 
 var MAIN : Main

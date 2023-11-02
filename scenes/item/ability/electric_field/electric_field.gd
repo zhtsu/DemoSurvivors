@@ -37,6 +37,10 @@ func _on_timer_timeout():
 	$EffectAnimPlayer.play("Attack")
 	$SoundPlayer.play()
 	for enemy in attacking_enemy_list:
-		var damage_value = Methods.cal_damage(player.get_prop_dict(), enemy.get_prop_dict())
-		enemy.take_damage(damage_value * damage_scale)
+		var damage_data = Methods.cal_damage(
+			player.get_prop_dict(),
+			enemy.get_prop_dict(),
+			Enums.EDamageType.Magical
+		)
+		enemy.take_damage(damage_data)
 

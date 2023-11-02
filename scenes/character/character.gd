@@ -4,8 +4,8 @@ extends CharacterBody2D
 
 signal damage
 
-
 const Enums = preload("res://scenes/global/enums.gd")
+const tscn_damage_popup = preload("res://scenes/utility/damage_popup.tscn")
 #
 const ECharacterState = Enums.EState
 const ECharacterDirection = Enums.EDirection
@@ -46,8 +46,7 @@ func _set_action_gdscript(script : Script):
 	$Action.set_script(script)
 	
 	
-
-func take_damage(damage_value : float):
+func take_damage(damage_data : Dictionary):
 	if state == ECharacterState.Damage:
 		state = ECharacterState.Idle
 		if self is Enemy:
@@ -56,10 +55,18 @@ func take_damage(damage_value : float):
 	
 	state = ECharacterState.Damage
 	
+	var damage_value = float(damage_data["Value"])
+	var damage_type = Enums.EDamageType.values()[int(damage_data["Type"])]
+	var is_crit = bool(damage_data["Crit"])
+	
+	if self is Enemy:
+		var damage_popup = tscn_damage_popup.instantiate()
+		damage_popup.init(damage_value, damage_type, is_crit)
+		damage_popup.position = position
+		get_tree().get_first_node_in_group("level").add_child(damage_popup)
+	
 	hp -= damage_value
-	
 	damage.emit()
-	
 	$DamageTimer.start(damage_interval)
 
 
