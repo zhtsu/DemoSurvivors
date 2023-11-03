@@ -25,6 +25,10 @@ func init(in_player : Player):
 	player.connect("item_added", _on_item_added)
 
 
+func reset_expbar():
+	$Main/ExpBar.value = 0
+	
+
 func _update_item_box():
 	ability_box.update(player.ability_inventory)
 	weapon_box.update(player.weapon_inventory)

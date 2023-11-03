@@ -31,6 +31,8 @@ func init(enemy_data : Dictionary):
 	if not enemy_data["gdscript"] == "null":
 		var gdscript_path = Assets.dir_enemy_actions + enemy_data["gdscript"]
 		_set_action_gdscript(load(gdscript_path))
+	if enemy_data["flying"] == "TRUE":
+		self.set_collision_mask_value(1, false)
 	enemy_size = Enums.EnemySize.get(enemy_data["size"])
 	enemy_type = Enums.EnemyType.get(enemy_data["type"])
 	character_name = enemy_data["name"]

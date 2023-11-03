@@ -1,2 +1,6 @@
-name,sprite_frames_tres,gdscript,size,type,EXP,HP,speed,physical_ATK,physical_DEF,magical_ATK,magical_DEF,physical_crit_bonus,physical_crit_chance,magical_crit_bonus,magical_crit_chance,use_custom_shape,custom_shape_tres
-Chicken,sf_chicken.tres,track_the_player.gd,Normal,Common,1,1,4,4,0,0,0,0.05,0.05,0,0,FALSE,null
+name,sprite_frames_tres,gdscript,size,type,flying,EXP,HP,speed,physical_ATK,physical_DEF,magical_ATK,magical_DEF,physical_crit_bonus,physical_crit_chance,magical_crit_bonus,magical_crit_chance,use_custom_shape,custom_shape_tres
+Chicken,sf_chicken.tres,surround_player.gd,Normal,Common,FALSE,1,1,3.6,4,0,0,0,0.05,0.05,0,0,FALSE,null
+Blue Bird,sf_blue_bird.tres,rush_to_player.gd,Normal,Common,TRUE,1,1,10,4,0,0,0,0.05,0.05,0,0,FALSE,null
+Bunny,sf_bunny.tres,surround_player.gd,Normal,Common,FALSE,4,2,6,10,0,0,0,0,0,0,0,FALSE,null
+Chameleon,sf_chameleon.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Angry Pigs,sf_angry_pig.tres,rush_to_player.gd,Normal,Common,TRUE,1,1,10,4,0,0,0,0.05,0.05,0,,,

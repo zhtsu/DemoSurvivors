@@ -29,6 +29,13 @@ func find_weapon_data(weapon_name : String) -> Dictionary:
 	return {}
 
 
+func find_map_data(map_name : String) -> Dictionary:
+	for map in map_data_list:
+		if map["name"] == map_name:
+			return map
+	return {}
+
+
 func _ready():
 	var default_settings : Dictionary
 	var json_file = FileAccess.open(Assets.path_default_options, FileAccess.READ)
@@ -63,7 +70,6 @@ func _ready():
 	
 	# Make sure the function below called after modifying setting_dict 
 	_apply_viewport_effect()
-	$MusicPlayer.play()
 
 
 func _apply_viewport_effect():
@@ -73,4 +79,11 @@ func _apply_viewport_effect():
 func get_music_player() -> AudioStreamPlayer:
 	return $MusicPlayer
 
+
+func set_bgm(bgm_name : String, db : float = 0):
+	var bgm_path = Assets.dir_music + bgm_name
+	$MusicPlayer.stop()
+	$MusicPlayer.stream = load(bgm_path)
+	$MusicPlayer.volume_db = db
+	$MusicPlayer.play()
 

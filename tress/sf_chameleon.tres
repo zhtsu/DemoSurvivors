@@ -1,0 +1,108 @@
+[gd_resource type="SpriteFrames" load_steps=16 format=3 uid="uid://bw8xnvk0ow271"]
+
+[ext_resource type="Texture2D" uid="uid://btncjoe37if1o" path="res://assets/textures/character/enemy/chameleon/chameleon_damage_84x38.png" id="1_6iukq"]
+[ext_resource type="Texture2D" uid="uid://fqywntnxxpaa" path="res://assets/textures/character/enemy/chameleon/chameleon_walk_84x38.png" id="1_ai1aj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iicb8"]
+atlas = ExtResource("1_6iukq")
+region = Rect2(43, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swaat"]
+atlas = ExtResource("1_6iukq")
+region = Rect2(127, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pphjo"]
+atlas = ExtResource("1_6iukq")
+region = Rect2(211, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c0yi"]
+atlas = ExtResource("1_6iukq")
+region = Rect2(295, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1pfh"]
+atlas = ExtResource("1_6iukq")
+region = Rect2(379, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klx0s"]
+atlas = ExtResource("1_ai1aj")
+region = Rect2(46, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0d5vy"]
+atlas = ExtResource("1_ai1aj")
+region = Rect2(130, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_petga"]
+atlas = ExtResource("1_ai1aj")
+region = Rect2(214, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jr4q8"]
+atlas = ExtResource("1_ai1aj")
+region = Rect2(298, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl4xf"]
+atlas = ExtResource("1_ai1aj")
+region = Rect2(382, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0362t"]
+atlas = ExtResource("1_ai1aj")
+region = Rect2(466, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvqwt"]
+atlas = ExtResource("1_ai1aj")
+region = Rect2(550, 0, 38, 38)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffk64"]
+atlas = ExtResource("1_ai1aj")
+region = Rect2(634, 0, 38, 38)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iicb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swaat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pphjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c0yi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1pfh")
+}],
+"loop": true,
+"name": &"Damage",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klx0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0d5vy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_petga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jr4q8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl4xf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0362t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvqwt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffk64")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 12.0
+}]

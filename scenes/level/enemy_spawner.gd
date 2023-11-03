@@ -52,7 +52,7 @@ func _spawn_enemy():
 		var y = randf_range(rpe.y, rpe.w)
 		var random_position = Vector2(x, y)
 		
-		var enemy_data = MAIN.enemy_data_list[0]
+		var enemy_data = MAIN.enemy_data_list[randi() % 5]
 		
 		var enemy = tscn_enemy.instantiate()
 		enemy.call("init", enemy_data)

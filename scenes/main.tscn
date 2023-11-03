@@ -13,3 +13,4 @@ visible = false
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="." groups=["music"]]
 stream = ExtResource("4_5713w")
+volume_db = -12.0

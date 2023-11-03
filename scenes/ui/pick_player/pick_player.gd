@@ -169,7 +169,9 @@ func _on_start_button_pressed():
 	_play_button_down_sound()
 	# Create game level
 	var level_scene = Assets.tscn_level.instantiate()
-	level_scene.call("init", selected_map_name, MAIN.player_data_list[selected_player_idx])
+	level_scene.call("init", 
+		MAIN.find_map_data(selected_map_name),
+		MAIN.player_data_list[selected_player_idx])
 	var main_menu = get_tree().get_first_node_in_group("main_menu")
 	Methods.switch_scene(main_menu, level_scene, true)
 	

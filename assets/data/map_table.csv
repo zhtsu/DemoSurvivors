@@ -1,6 +1,6 @@
-name,tile_set_tres,theme_color,enemies
-Grass,ts_map_grass,#618264,Chicken
-Cave,ts_map_cave,#BCA37F,null
-Desert,ts_map_desert,#FFCC70,null
-Tundra,ts_map_tundra,#AED2FF,null
-Tower,ts_map_tower,#7D7C7C,null
+name,tile_set_tres,BGM,theme_color,enemies
+Grass,ts_map_grass,goshin.mp3,#618264,Chicken
+Cave,ts_map_cave,koubouittai.mp3,#BCA37F,null
+Desert,ts_map_desert,punipunikeihou.mp3,#FFCC70,null
+Tundra,ts_map_tundra,shinrisen.mp3,#AED2FF,null
+Tower,ts_map_tower,sonomigiteni.mp3,#7D7C7C,null

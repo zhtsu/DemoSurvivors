@@ -16,6 +16,7 @@ const path_tscn_main_menu = "res://scenes/ui/main_menu/main_menu.tscn"
 # Folder path
 const dir_tres = "res://tress/"
 const dir_data = "res://assets/data/"
+const dir_music = "res://assets/musics/"
 const dir_ability = "res://scenes/item/ability/"
 const dir_enemy_actions = "res://scenes/character/enemy/actions/"
 # Scene

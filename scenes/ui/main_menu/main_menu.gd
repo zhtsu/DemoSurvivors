@@ -40,6 +40,7 @@ func _ready():
 	$NinjaFrog.play("Idle")
 	
 	music_player = MAIN.get_music_player()
+	MAIN.set_bgm("dongcidaci.wav", -6)
 	
 	_apply_settings()
 	
