@@ -14,7 +14,12 @@ const path_tex_start = "res://assets/textures/icons/start.png"
 const path_tscn_options = "res://scenes/ui/main_menu/options.tscn"
 const path_tscn_main_menu = "res://scenes/ui/main_menu/main_menu.tscn"
 # Folder path
-const dir_tres = "res://tress/"
+const dir_tres_weapon = "res://tress/weapon/"
+const dir_tres_ability = "res://tress/ability/"
+const dir_tres_loot = "res://tress/loot/"
+const dir_tres_misc = "res://tress/misc/"
+const dir_tres_player = "res://tress/player/"
+const dir_tres_enemy = "res://tress/enemy/"
 const dir_data = "res://assets/data/"
 const dir_music = "res://assets/musics/"
 const dir_ability = "res://scenes/item/ability/"
@@ -49,16 +54,20 @@ const tscn_weapon = preload("res://scenes/item/weapon/weapon.tscn")
 const a_button_down = preload("res://assets/sounds/button_down.mp3")
 const a_button_hover = preload("res://assets/sounds/button_hover.mp3")
 const a_enemy_death = preload("res://assets/sounds/enemy_death.mp3")
+const a_player_damage = preload("res://assets/sounds/player_damage.mp3")
 # Texture
 const tex_loud = preload("res://assets/textures/icons/speaker.png")
 const tex_mute = preload("res://assets/textures/icons/speaker_crossed.png")
 const tex_full_screen = preload("res://assets/textures/icons/full_screen.png")
 const tex_normal_screen = preload("res://assets/textures/icons/normal_screen.png")
 # .tres
-const tres_sm_effect_crt = preload("res://tress/sm_effect_crt.tres")
-const tres_sm_effect_gray = preload("res://tress/sm_effect_gray.tres")
-const tres_sf_ninja_frog = preload("res://tress/sf_ninja_frog.tres")
-const tres_sf_mask_dude = preload("res://tress/sf_mask_dude.tres")
-const tres_sf_pink_man = preload("res://tress/sf_pink_man.tres")
-const tres_virtual_guy = preload("res://tress/sf_virtual_guy.tres")
-const tres_sbf_ui_transparent_mask = preload("res://tress/sbf_ui_transparent_mask.tres")
+# Misc
+const tres_sm_effect_crt = preload("res://tress/misc/sm_effect_crt.tres")
+const tres_sm_effect_gray = preload("res://tress/misc/sm_effect_gray.tres")
+const tres_sbf_ui_transparent_mask = preload("res://tress/misc/sbf_ui_transparent_mask.tres")
+# Player
+const tres_sf_ninja_frog = preload("res://tress/player/sf_ninja_frog.tres")
+const tres_sf_mask_dude = preload("res://tress/player/sf_mask_dude.tres")
+const tres_sf_pink_man = preload("res://tress/player/sf_pink_man.tres")
+const tres_virtual_guy = preload("res://tress/player/sf_virtual_guy.tres")
+

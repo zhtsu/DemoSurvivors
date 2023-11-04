@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c5pec1yggatge"]
 
-[ext_resource type="SpriteFrames" uid="uid://b3un7wvxfwqk4" path="res://tress/sf_mask_dude.tres" id="1_jfaul"]
+[ext_resource type="SpriteFrames" uid="uid://b3un7wvxfwqk4" path="res://tress/player/sf_mask_dude.tres" id="1_jfaul"]
 [ext_resource type="Script" path="res://scenes/ui/pick_player/player_item.gd" id="1_xt1xx"]
 
 [node name="PlayerItem" type="Button"]

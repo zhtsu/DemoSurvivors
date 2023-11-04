@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://udtbrww8posx"]
 
 [ext_resource type="Script" path="res://scenes/ui/player_state/item_state.gd" id="1_m2mlm"]
-[ext_resource type="Texture2D" uid="uid://dlb43ccstig1" path="res://tress/at_ability_gift_of_the_gods.tres" id="2_fykvn"]
+[ext_resource type="Texture2D" uid="uid://dlb43ccstig1" path="res://tress/ability/at_ability_gift_of_the_gods.tres" id="2_fykvn"]
 
 [node name="ItemState" type="Panel"]
 custom_minimum_size = Vector2(32, 32)

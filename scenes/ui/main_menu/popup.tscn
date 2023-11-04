@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=3 uid="uid://5mgkvudu6ww8"]
 
 [ext_resource type="Script" path="res://scenes/ui/main_menu/popup.gd" id="1_br5ca"]
-[ext_resource type="StyleBox" uid="uid://1spqcg31jdx2" path="res://tress/sbf_ui_dark_mask.tres" id="2_yhsq1"]
-[ext_resource type="StyleBox" uid="uid://dibwpul5ku25j" path="res://tress/sbe_default.tres" id="3_egy48"]
+[ext_resource type="StyleBox" uid="uid://1spqcg31jdx2" path="res://tress/misc/sbf_ui_dark_mask.tres" id="2_4nmj4"]
+[ext_resource type="StyleBox" uid="uid://dibwpul5ku25j" path="res://tress/misc/sbe_default.tres" id="3_2lkh6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tjr8i"]
 font_size = 30
@@ -66,6 +66,7 @@ _data = {
 }
 
 [node name="Popup" type="CanvasLayer"]
+layer = 4
 script = ExtResource("1_br5ca")
 metadata/_edit_group_ = true
 
@@ -75,11 +76,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/normal = ExtResource("2_yhsq1")
-theme_override_styles/hover = ExtResource("2_yhsq1")
-theme_override_styles/pressed = ExtResource("2_yhsq1")
-theme_override_styles/disabled = ExtResource("2_yhsq1")
-theme_override_styles/focus = ExtResource("3_egy48")
+theme_override_styles/normal = ExtResource("2_4nmj4")
+theme_override_styles/hover = ExtResource("2_4nmj4")
+theme_override_styles/pressed = ExtResource("2_4nmj4")
+theme_override_styles/disabled = ExtResource("2_4nmj4")
+theme_override_styles/focus = ExtResource("3_2lkh6")
 
 [node name="RootPanel" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(500, 300)

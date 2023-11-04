@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b8m6oax5f0p26"]
 
 [ext_resource type="Script" path="res://scenes/utility/particles_emitter.gd" id="1_0pmtj"]
-[ext_resource type="Material" uid="uid://ceilcwql062fv" path="res://tress/ppm_enemy_death.tres" id="1_iyi7p"]
+[ext_resource type="Material" uid="uid://ceilcwql062fv" path="res://tress/misc/ppm_enemy_death.tres" id="1_iyi7p"]
 
 [node name="ParticlesEmitter" type="Node2D"]
 script = ExtResource("1_0pmtj")

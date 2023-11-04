@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scenes/ui/game/pick_item.gd" id="1_nt6nc"]
 [ext_resource type="PackedScene" uid="uid://b3ch61msnptyv" path="res://scenes/ui/game/item_card.tscn" id="3_tngdm"]
-[ext_resource type="StyleBox" uid="uid://dibwpul5ku25j" path="res://tress/sbe_default.tres" id="3_xismj"]
 [ext_resource type="Shader" path="res://shaders/show.gdshader" id="4_lsvw0"]
+[ext_resource type="StyleBox" uid="uid://dibwpul5ku25j" path="res://tress/misc/sbe_default.tres" id="4_msgq8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4xcxd"]
 shader = ExtResource("4_lsvw0")
@@ -141,7 +141,7 @@ layout_mode = 2
 [node name="VSeparator2" type="VSeparator" parent="RootPanel/HBox"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
-theme_override_styles/separator = ExtResource("3_xismj")
+theme_override_styles/separator = ExtResource("4_msgq8")
 
 [node name="ButtonBar" type="VBoxContainer" parent="RootPanel/HBox"]
 layout_mode = 2
@@ -174,7 +174,7 @@ layout_mode = 2
 [node name="VSeparator" type="VSeparator" parent="RootPanel/HBox"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
-theme_override_styles/separator = ExtResource("3_xismj")
+theme_override_styles/separator = ExtResource("4_msgq8")
 
 [node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
 

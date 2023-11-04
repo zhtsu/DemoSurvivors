@@ -21,6 +21,7 @@ func _ready():
 	var MAIN : Main = get_tree().get_first_node_in_group("main")
 	MAIN.visible_enemy_list.clear()
 	MAIN.enemy_death_sound_pool.clear()
+	MAIN.player_damage_sound_pool.clear()
 	# Create player
 	active_player = Assets.tscn_player.instantiate()
 	active_player.init(player_data, MAIN)
@@ -40,7 +41,7 @@ func _ready():
 	MAIN.set_bgm(map_bgm, -12)
 	# Init enemy spawner
 	var enemy_spawner = Assets.tscn_enemy_spawner.instantiate()
-	enemy_spawner.call("init", map_name, active_player, self)
+	enemy_spawner.call("init", map_data, active_player, self)
 	add_child(enemy_spawner)
 	
 	

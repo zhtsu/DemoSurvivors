@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/ui/game/item_card.gd" id="1_k02gh"]
 [ext_resource type="Texture2D" uid="uid://b04u1vn7fwn8h" path="res://assets/textures/items/item_icon_wood.png" id="2_qo8yi"]
-[ext_resource type="Texture2D" uid="uid://dlb43ccstig1" path="res://tress/at_ability_gift_of_the_gods.tres" id="2_ub18j"]
+[ext_resource type="Texture2D" uid="uid://dlb43ccstig1" path="res://tress/ability/at_ability_gift_of_the_gods.tres" id="2_ub18j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvsxq"]
 atlas = ExtResource("2_qo8yi")

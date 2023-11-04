@@ -62,8 +62,8 @@ func _ready():
 	
 
 func init(player_data : Dictionary, MAIN : Main):
-	icon = load(Assets.dir_tres + player_data["icon_tres"])
-	var sprite_frames_path = Assets.dir_tres + player_data["sprite_frames_tres"]
+	icon = load(Assets.dir_tres_player + player_data["icon"])
+	var sprite_frames_path = Assets.dir_tres_player + player_data["sprite_frames_tres"]
 	var sprite_frames = load(sprite_frames_path)
 	$AnimatedSprite2D.sprite_frames = sprite_frames
 	character_name = player_data["name"]

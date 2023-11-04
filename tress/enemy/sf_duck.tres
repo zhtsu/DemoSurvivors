@@ -1,0 +1,59 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://dntgjnogqh72b"]
+
+[ext_resource type="Texture2D" uid="uid://71dmeb1vbuvk" path="res://assets/textures/character/enemy/duck/duck_damage_36x36.png" id="1_c8pm6"]
+[ext_resource type="Texture2D" uid="uid://bywv07pmdilou" path="res://assets/textures/character/enemy/duck/duck_walk_0.png" id="2_hui87"]
+[ext_resource type="Texture2D" uid="uid://7j7di1k0eaj6" path="res://assets/textures/character/enemy/duck/duck_walk_1.png" id="3_eydc7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugodq"]
+atlas = ExtResource("1_c8pm6")
+region = Rect2(0, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw2x4"]
+atlas = ExtResource("1_c8pm6")
+region = Rect2(36, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6swnm"]
+atlas = ExtResource("1_c8pm6")
+region = Rect2(72, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0w37i"]
+atlas = ExtResource("1_c8pm6")
+region = Rect2(108, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51xba"]
+atlas = ExtResource("1_c8pm6")
+region = Rect2(144, 0, 36, 36)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugodq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bw2x4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6swnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0w37i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51xba")
+}],
+"loop": true,
+"name": &"Damage",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hui87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_eydc7")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 4.0
+}]

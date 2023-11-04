@@ -3,6 +3,7 @@ extends CanvasLayer
 
 const Assets = preload("res://scenes/global/assets.gd")
 
+var MAIN : Main
 var player : Player
 var game_time_secs := 0
 var show_property = false
@@ -23,10 +24,16 @@ func init(in_player : Player):
 	player.connect("exp_added", _update_exp_bar)
 	player.connect("level_up", _update_current_level_text)
 	player.connect("item_added", _on_item_added)
+	player.connect("damage", _on_player_damage)
 
 
 func reset_expbar():
 	$Main/ExpBar.value = 0
+	
+	
+func _on_player_damage():
+	$AnimationPlayer.play("PlayerDamage")
+	_player_player_damage_sound()
 	
 
 func _update_item_box():
@@ -70,6 +77,7 @@ func _update_current_level_text(current_level : int):
 
 
 func _ready():
+	MAIN = get_tree().get_first_node_in_group("main")
 	$Timer.start(1.0)
 	_update_prop_box()
 
@@ -104,6 +112,14 @@ func _play_button_down_sound():
 	$SoundPlayer.stream = Assets.a_button_down
 	$SoundPlayer.play()
 	
+	
+func _player_player_damage_sound():
+	if MAIN.player_damage_sound_pool.is_empty():
+		var damage_sound = Assets.tscn_once_sound.instantiate()
+		damage_sound.init(Assets.a_player_damage, -12)
+		MAIN.player_damage_sound_pool.append(damage_sound)
+		get_tree().get_first_node_in_group("level").add_child(damage_sound)
+		
 	
 func _play_button_hover_sound():
 	$SoundPlayer.stream = Assets.a_button_hover

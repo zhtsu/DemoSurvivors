@@ -1,6 +1,6 @@
 {
     "Grass": {
-        "ResPath": "res://tress/ts_map_grass.tres",
+        "ResPath": "res://tress/map/ts_map_grass.tres",
         "Source": 0,
         "Ground": [
             [8, 39], [9, 39], [8, 40], [9, 40],
@@ -15,7 +15,7 @@
     },
 
     "Desert": {
-        "ResPath": "res://tress/ts_map_desert.tres",
+        "ResPath": "res://tress/map/ts_map_desert.tres",
         "Source": 0,
         "Ground": [
             [8, 39], [9, 39], [8, 40], [9, 40],
@@ -29,7 +29,7 @@
     },
 
     "Cave": {
-        "ResPath": "res://tress/ts_map_cave.tres",
+        "ResPath": "res://tress/map/ts_map_cave.tres",
         "Source": 1,
         "Ground": [
             [35, 11], [36, 11], [35, 12], [36, 12],
@@ -45,7 +45,7 @@
     },
 
     "Tower": {
-        "ResPath": "res://tress/ts_map_tower.tres",
+        "ResPath": "res://tress/map/ts_map_tower.tres",
         "Source": 3,
         "Ground": [
             [2, 3]
@@ -56,7 +56,7 @@
     },
     
     "Tundra": {
-        "ResPath": "res://tress/ts_map_tundra.tres",
+        "ResPath": "res://tress/map/ts_map_tundra.tres",
         "Source": 0,
         "Ground": [
             [8, 18], [9, 18], [8, 19], [9, 19],

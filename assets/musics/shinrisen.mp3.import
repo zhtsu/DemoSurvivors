@@ -12,8 +12,8 @@ dest_files=["res://.godot/imported/shinrisen.mp3-343c6c79c3ebbc614e48b4fe52c2e14
 
 [params]
 
-loop=false
-loop_offset=0
-bpm=0
+loop=true
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

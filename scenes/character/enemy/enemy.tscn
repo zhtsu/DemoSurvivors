@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgpgu24gsg723"]
+[gd_scene load_steps=6 format=3 uid="uid://bgpgu24gsg723"]
 
 [ext_resource type="PackedScene" uid="uid://dxx2elvn8s6am" path="res://scenes/character/character.tscn" id="1_vsqam"]
 [ext_resource type="Script" path="res://scenes/character/enemy/enemy.gd" id="2_nnuxe"]
-[ext_resource type="SpriteFrames" uid="uid://ddbffav2787u0" path="res://tress/sf_angry_pig.tres" id="3_ysqn6"]
 [ext_resource type="Script" path="res://scenes/utility/hit_box.gd" id="4_hkswn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2w8b3"]
@@ -16,9 +15,7 @@ collision_mask = 7
 script = ExtResource("2_nnuxe")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-sprite_frames = ExtResource("3_ysqn6")
 animation = &"Walk"
-frame_progress = 0.153348
 
 [node name="CollisionShape2D" parent="." index="1"]
 visible = false

@@ -1,0 +1,108 @@
+[gd_resource type="SpriteFrames" load_steps=16 format=3 uid="uid://beaganxitfgfw"]
+
+[ext_resource type="Texture2D" uid="uid://bwvsle6ovuh8v" path="res://assets/textures/character/enemy/fat_bird/fat_bird_damage_40x48.png" id="1_imsh0"]
+[ext_resource type="Texture2D" uid="uid://br38dmsnwt5em" path="res://assets/textures/character/enemy/fat_bird/fat_bird_walk_40x48.png" id="2_gmf4k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5h7p"]
+atlas = ExtResource("1_imsh0")
+region = Rect2(0, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmh36"]
+atlas = ExtResource("1_imsh0")
+region = Rect2(40, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_syjkj"]
+atlas = ExtResource("1_imsh0")
+region = Rect2(80, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlpqw"]
+atlas = ExtResource("1_imsh0")
+region = Rect2(120, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u00oj"]
+atlas = ExtResource("1_imsh0")
+region = Rect2(160, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4hvh"]
+atlas = ExtResource("2_gmf4k")
+region = Rect2(0, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkxml"]
+atlas = ExtResource("2_gmf4k")
+region = Rect2(40, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q78q0"]
+atlas = ExtResource("2_gmf4k")
+region = Rect2(80, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lw51e"]
+atlas = ExtResource("2_gmf4k")
+region = Rect2(120, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dk3yb"]
+atlas = ExtResource("2_gmf4k")
+region = Rect2(160, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlj5v"]
+atlas = ExtResource("2_gmf4k")
+region = Rect2(200, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3i1w6"]
+atlas = ExtResource("2_gmf4k")
+region = Rect2(240, 0, 40, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3bdg"]
+atlas = ExtResource("2_gmf4k")
+region = Rect2(280, 0, 40, 48)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5h7p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmh36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_syjkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlpqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u00oj")
+}],
+"loop": true,
+"name": &"Damage",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4hvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkxml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q78q0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lw51e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dk3yb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlj5v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3i1w6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3bdg")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 10.0
+}]

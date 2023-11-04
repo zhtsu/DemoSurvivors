@@ -42,7 +42,7 @@ func _ready():
 	# Init player list
 	for idx in MAIN.player_data_list.size():
 		var player_data = MAIN.player_data_list[idx]
-		var sprite_frames_path = Assets.dir_tres + player_data["sprite_frames_tres"]
+		var sprite_frames_path = Assets.dir_tres_player + player_data["sprite_frames_tres"]
 		var sprite_frames = load(sprite_frames_path)
 		var player_idx = idx
 		var player_name = player_data["name"]
@@ -114,7 +114,7 @@ func _update_player_data(player_idx: int):
 		player_list[player_idx].play_anim("Idle")
 		
 	var player_data = MAIN.player_data_list[player_idx]
-	var sprite_frames_path = Assets.dir_tres + player_data["sprite_frames_tres"]
+	var sprite_frames_path = Assets.dir_tres_player + player_data["sprite_frames_tres"]
 	var sprite_frames = load(sprite_frames_path)
 	var player_name = player_data["name"]
 	

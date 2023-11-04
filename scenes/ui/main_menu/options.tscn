@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://d1cbkidjpwlj2"]
 
 [ext_resource type="Script" path="res://scenes/ui/main_menu/options.gd" id="1_vf2fm"]
+[ext_resource type="StyleBox" uid="uid://1spqcg31jdx2" path="res://tress/misc/sbf_ui_dark_mask.tres" id="2_d1bf0"]
 [ext_resource type="Texture2D" uid="uid://whrrinl8cnuj" path="res://assets/textures/icons/full_screen.png" id="2_e8u0w"]
-[ext_resource type="StyleBox" uid="uid://1spqcg31jdx2" path="res://tress/sbf_ui_dark_mask.tres" id="2_sdhw2"]
-[ext_resource type="StyleBox" uid="uid://dibwpul5ku25j" path="res://tress/sbe_default.tres" id="3_3nje2"]
 [ext_resource type="Texture2D" uid="uid://4gibwqj51tjf" path="res://assets/textures/icons/speaker.png" id="3_d1jg6"]
+[ext_resource type="StyleBox" uid="uid://dibwpul5ku25j" path="res://tress/misc/sbe_default.tres" id="3_rkbb7"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uai8i"]
 
@@ -75,6 +75,7 @@ _data = {
 }
 
 [node name="Options" type="CanvasLayer"]
+layer = 5
 script = ExtResource("1_vf2fm")
 metadata/_edit_use_anchors_ = true
 metadata/_edit_group_ = true
@@ -85,11 +86,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/normal = ExtResource("2_sdhw2")
-theme_override_styles/hover = ExtResource("2_sdhw2")
-theme_override_styles/pressed = ExtResource("2_sdhw2")
-theme_override_styles/disabled = ExtResource("2_sdhw2")
-theme_override_styles/focus = ExtResource("3_3nje2")
+theme_override_styles/normal = ExtResource("2_d1bf0")
+theme_override_styles/hover = ExtResource("2_d1bf0")
+theme_override_styles/pressed = ExtResource("2_d1bf0")
+theme_override_styles/disabled = ExtResource("2_d1bf0")
+theme_override_styles/focus = ExtResource("3_rkbb7")
 
 [node name="RootPanel" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(400, 0)

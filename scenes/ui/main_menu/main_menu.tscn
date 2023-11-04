@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://svdqnhmua150"]
 
 [ext_resource type="Script" path="res://scenes/ui/main_menu/main_menu.gd" id="1_qrbyj"]
-[ext_resource type="SpriteFrames" uid="uid://b4l4u8hv0e76u" path="res://tress/sf_virtual_guy.tres" id="2_8enfk"]
-[ext_resource type="SpriteFrames" uid="uid://b3un7wvxfwqk4" path="res://tress/sf_mask_dude.tres" id="3_aro7d"]
-[ext_resource type="SpriteFrames" uid="uid://cymrkuak3piea" path="res://tress/sf_pink_man.tres" id="4_4pvcs"]
-[ext_resource type="SpriteFrames" uid="uid://olstouu8ajg" path="res://tress/sf_ninja_frog.tres" id="5_umd4a"]
+[ext_resource type="SpriteFrames" uid="uid://b4l4u8hv0e76u" path="res://tress/player/sf_virtual_guy.tres" id="2_8enfk"]
+[ext_resource type="SpriteFrames" uid="uid://b3un7wvxfwqk4" path="res://tress/player/sf_mask_dude.tres" id="3_aro7d"]
+[ext_resource type="SpriteFrames" uid="uid://cymrkuak3piea" path="res://tress/player/sf_pink_man.tres" id="4_4pvcs"]
+[ext_resource type="SpriteFrames" uid="uid://olstouu8ajg" path="res://tress/player/sf_ninja_frog.tres" id="5_umd4a"]
 [ext_resource type="Texture2D" uid="uid://t0spyes74828" path="res://assets/textures/icons/github_corner.svg" id="6_4b3ub"]
 [ext_resource type="Texture2D" uid="uid://bvevpwfw2opvv" path="res://assets/textures/icons/github_corner_white.svg" id="7_ijk6a"]
 

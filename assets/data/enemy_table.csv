@@ -3,4 +3,19 @@ Chicken,sf_chicken.tres,surround_player.gd,Normal,Common,FALSE,1,1,3.6,4,0,0,0,0
 Blue Bird,sf_blue_bird.tres,rush_to_player.gd,Normal,Common,TRUE,1,1,10,4,0,0,0,0.05,0.05,0,0,FALSE,null
 Bunny,sf_bunny.tres,surround_player.gd,Normal,Common,FALSE,4,2,6,10,0,0,0,0,0,0,0,FALSE,null
 Chameleon,sf_chameleon.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
-Angry Pigs,sf_angry_pig.tres,rush_to_player.gd,Normal,Common,TRUE,1,1,10,4,0,0,0,0.05,0.05,0,,,
+Angry Pigs,sf_angry_pig.tres,rush_to_player.gd,Normal,Common,TRUE,1,1,10,4,0,0,0,0.05,0.05,0,0,FALSE,null
+Bat,sf_bat.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Bee,sf_bee.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Duck,sf_duck.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Fat Bird,sf_fat_bird.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Ghost,sf_ghost.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Mushroom,sf_mushroom.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Plant,sf_plant.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Radish,sf_radish.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Rino,sf_rino.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Rock,sf_rock.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Skull,sf_skull.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Slime,sf_slime.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Snail,sf_snail.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Trunk,sf_trunk.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Turtle,sf_turtle.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null

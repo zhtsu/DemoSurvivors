@@ -2,12 +2,12 @@ class_name ExpStone
 extends Item
 
 
-const at_loot_exp_stone_green = preload("res://tress/at_loot_exp_stone_green.tres")
-const at_loot_exp_stone_blue = preload("res://tress/at_loot_exp_stone_blue.tres")
-const at_loot_exp_stone_orange = preload("res://tress/at_loot_exp_stone_orange.tres")
-const at_loot_exp_stone_red = preload("res://tress/at_loot_exp_stone_red.tres")
-const at_loot_exp_stone_purple = preload("res://tress/at_loot_exp_stone_purple.tres")
-const at_loot_exp_stone_black = preload("res://tress/at_loot_exp_stone_black.tres")
+const at_loot_exp_stone_green = preload("res://tress/loot/at_loot_exp_stone_green.tres")
+const at_loot_exp_stone_blue = preload("res://tress/loot/at_loot_exp_stone_blue.tres")
+const at_loot_exp_stone_orange = preload("res://tress/loot/at_loot_exp_stone_orange.tres")
+const at_loot_exp_stone_red = preload("res://tress/loot/at_loot_exp_stone_red.tres")
+const at_loot_exp_stone_purple = preload("res://tress/loot/at_loot_exp_stone_purple.tres")
+const at_loot_exp_stone_black = preload("res://tress/loot/at_loot_exp_stone_black.tres")
 
 @export var exp_volume : int
 

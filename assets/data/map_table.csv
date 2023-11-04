@@ -1,6 +1,6 @@
-name,tile_set_tres,BGM,theme_color,enemies
-Grass,ts_map_grass,goshin.mp3,#618264,Chicken
-Cave,ts_map_cave,koubouittai.mp3,#BCA37F,null
-Desert,ts_map_desert,punipunikeihou.mp3,#FFCC70,null
-Tundra,ts_map_tundra,shinrisen.mp3,#AED2FF,null
-Tower,ts_map_tower,sonomigiteni.mp3,#7D7C7C,null
+name,tile_set_tres,BGM,theme_color,BOSS,enemies
+Grass,ts_map_grass,koubouittai.mp3,#618264,Angry Pig,Chicken|Bee|Radish|Duck
+Cave,ts_map_cave,goshin.mp3,#BCA37F,Mushroom,Bat|Ghost|Slime|Snail
+Desert,ts_map_desert,punipunikeihou.mp3,#FFCC70,Skull,Rock|Rino|Chameleon|Trunk
+Tundra,ts_map_tundra,shinrisen.mp3,#AED2FF,Turtle,Fat Bird|Bunny|Blue Bird|Plant
+Tower,ts_map_tower,sonomigiteni.mp3,#7D7C7C,ALL,ALL

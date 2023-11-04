@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="DemoSurvivors"
+config/name="Demo Survivors"
+config/description="A Vampire Survivors like game made with Godot Engine"
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.png"

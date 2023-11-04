@@ -25,7 +25,7 @@ func _ready():
 
 
 func init(enemy_data : Dictionary):
-	var sprite_frames_path = Assets.dir_tres + enemy_data["sprite_frames_tres"]
+	var sprite_frames_path = Assets.dir_tres_enemy + enemy_data["sprite_frames_tres"]
 	var sprite_frames = load(sprite_frames_path)
 	$AnimatedSprite2D.sprite_frames = sprite_frames
 	if not enemy_data["gdscript"] == "null":
@@ -70,7 +70,6 @@ func _physics_process(_delta):
 		_destroy_self()
 	if position.distance_to(player.position) > 600.0:
 		_destroy_self()
-	
 	
 	move_and_collide(Vector2.ZERO)
 	

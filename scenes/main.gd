@@ -13,27 +13,7 @@ var weapon_data_list : Array[Dictionary]
 #
 var visible_enemy_list : Array[Enemy]
 var enemy_death_sound_pool : Array[OnceSound]
-
-
-func find_ability_data(ability_name : String) -> Dictionary:
-	for ability in ability_data_list:
-		if ability["name"] == ability_name:
-			return ability
-	return {}
-
-
-func find_weapon_data(weapon_name : String) -> Dictionary:
-	for weapon in weapon_data_list:
-		if weapon["name"] == weapon_name:
-			return weapon
-	return {}
-
-
-func find_map_data(map_name : String) -> Dictionary:
-	for map in map_data_list:
-		if map["name"] == map_name:
-			return map
-	return {}
+var player_damage_sound_pool : Array[OnceSound]
 
 
 func _ready():
@@ -86,4 +66,32 @@ func set_bgm(bgm_name : String, db : float = 0):
 	$MusicPlayer.stream = load(bgm_path)
 	$MusicPlayer.volume_db = db
 	$MusicPlayer.play()
+	
+	
+func find_ability_data(ability_name : String) -> Dictionary:
+	for ability in ability_data_list:
+		if ability["name"] == ability_name:
+			return ability
+	return {}
+
+
+func find_enemy_data(enemy_name : String) -> Dictionary:
+	for enemy in enemy_data_list:
+		if enemy["name"] == enemy_name:
+			return enemy
+	return {}
+
+
+func find_weapon_data(weapon_name : String) -> Dictionary:
+	for weapon in weapon_data_list:
+		if weapon["name"] == weapon_name:
+			return weapon
+	return {}
+
+
+func find_map_data(map_name : String) -> Dictionary:
+	for map in map_data_list:
+		if map["name"] == map_name:
+			return map
+	return {}
 

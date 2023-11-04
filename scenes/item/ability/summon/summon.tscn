@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cn4km1kr2hqtw" path="res://scenes/item/ability/ability.tscn" id="1_mc17k"]
 [ext_resource type="Script" path="res://scenes/item/ability/summon/summon.gd" id="2_qoipx"]
-[ext_resource type="Texture2D" uid="uid://wy8dqyhxipiv" path="res://tress/at_ability_fireball.tres" id="3_b850c"]
+[ext_resource type="Texture2D" uid="uid://wy8dqyhxipiv" path="res://tress/ability/at_ability_fireball.tres" id="3_b850c"]
 
 [node name="Summon" instance=ExtResource("1_mc17k")]
 script = ExtResource("2_qoipx")

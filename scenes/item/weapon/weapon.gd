@@ -19,7 +19,7 @@ const Assets = preload("res://scenes/global/assets.gd")
 
 
 func init_weapon(weapon_data : Dictionary):
-	var weapon_icon = load(Assets.dir_tres + weapon_data["icon"]) as Texture2D
+	var weapon_icon = load(Assets.dir_tres_weapon + weapon_data["icon"]) as Texture2D
 	super.init(weapon_data["name"], false, weapon_icon)
 	physical_atk = float(weapon_data["physical_ATK"])
 	magical_atk = float(weapon_data["magical_ATK"])
