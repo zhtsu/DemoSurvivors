@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8m6oax5f0p26"]
+
+[ext_resource type="Script" path="res://scenes/utility/particles_emitter/particles_emitter.gd" id="1_0pmtj"]
+[ext_resource type="Material" uid="uid://ceilcwql062fv" path="res://tress/misc/ppm_enemy_death.tres" id="1_iyi7p"]
+
+[node name="ParticlesEmitter" type="Node2D"]
+script = ExtResource("1_0pmtj")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 40
+process_material = ExtResource("1_iyi7p")
+explosiveness = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

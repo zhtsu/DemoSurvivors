@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://bej6utookkmff"]
+
+[ext_resource type="Script" path="res://scenes/utility/joystick/joystick.gd" id="1_684j1"]
+[ext_resource type="Script" path="res://scenes/utility/joystick/knob.gd" id="1_yjayr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7lo3g"]
+draw_center = false
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 120
+corner_radius_top_right = 120
+corner_radius_bottom_right = 120
+corner_radius_bottom_left = 120
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hkx47"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5xjw0"]
+radius = 120.0
+
+[node name="Joystick" type="Node2D"]
+script = ExtResource("1_684j1")
+
+[node name="Ring" type="Panel" parent="."]
+custom_minimum_size = Vector2(240, 240)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -120.0
+offset_right = 120.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(120, 120)
+theme_override_styles/panel = SubResource("StyleBoxFlat_7lo3g")
+
+[node name="Knob" type="Node2D" parent="."]
+script = ExtResource("1_yjayr")
+
+[node name="KnobPanel" type="Panel" parent="Knob"]
+custom_minimum_size = Vector2(80, 80)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hkx47")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+shape = SubResource("CircleShape2D_5xjw0")
+
+[connection signal="pressed" from="TouchScreenButton" to="Knob" method="_on_touch_screen_button_pressed"]
+[connection signal="released" from="TouchScreenButton" to="Knob" method="_on_touch_screen_button_released"]

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cn4km1kr2hqtw" path="res://scenes/item/ability/ability.tscn" id="1_mc17k"]
 [ext_resource type="Script" path="res://scenes/item/ability/electric_field/electric_field.gd" id="2_jegiw"]
 [ext_resource type="Texture2D" uid="uid://c283yvi84xsuh" path="res://tress/ability/at_ability_electric_field.tres" id="3_jeww4"]
-[ext_resource type="Script" path="res://scenes/utility/hit_box.gd" id="4_swala"]
+[ext_resource type="Script" path="res://scenes/utility/interface/hit_box.gd" id="4_swala"]
 [ext_resource type="AudioStream" uid="uid://caj7rpp7wooop" path="res://assets/sounds/electric_field.mp3" id="5_qbfkt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2f2hu"]

@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://qmmepafb2pjf"]
+
+[ext_resource type="Script" path="res://scenes/utility/effect_camera/effect_camera.gd" id="1_0m1q6"]
+
+[sub_resource type="Animation" id="Animation_spk3w"]
+resource_name = "Expand"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(2.8, 2.8), Vector2(3.2, 3.2), Vector2(3, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_fiph8"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l4k0l"]
+resource_name = "Shock"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(40, 40), Vector2(-40, -40), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_36s8p"]
+_data = {
+"Expand": SubResource("Animation_spk3w"),
+"RESET": SubResource("Animation_fiph8"),
+"Shock": SubResource("Animation_l4k0l")
+}
+
+[node name="EffectCamera" type="Camera2D"]
+zoom = Vector2(2.4, 2.4)
+script = ExtResource("1_0m1q6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_36s8p")
+}

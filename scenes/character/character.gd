@@ -5,7 +5,7 @@ extends CharacterBody2D
 signal damage
 
 const Enums = preload("res://scenes/global/enums.gd")
-const tscn_damage_popup = preload("res://scenes/utility/damage_popup.tscn")
+const tscn_damage_popup = preload("res://scenes/utility/damage_popup/damage_popup.tscn")
 #
 const ECharacterState = Enums.EState
 const ECharacterDirection = Enums.EDirection

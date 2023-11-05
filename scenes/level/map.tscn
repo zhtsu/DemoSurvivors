@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://8bodj81s01j0" path="res://tress/map/ts_map_tower.tres" id="1_5tnms"]
 [ext_resource type="Script" path="res://scenes/level/map.gd" id="2_7ro5y"]
-[ext_resource type="PackedScene" uid="uid://qmmepafb2pjf" path="res://scenes/utility/effect_camera.tscn" id="2_uvsug"]
+[ext_resource type="PackedScene" uid="uid://qmmepafb2pjf" path="res://scenes/utility/effect_camera/effect_camera.tscn" id="2_uvsug"]
 
 [node name="Map" type="TileMap"]
 z_index = -1

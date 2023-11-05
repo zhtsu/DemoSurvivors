@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/item/ability/fireball/fireball_projectile.gd" id="1_ms0gx"]
 [ext_resource type="Texture2D" uid="uid://bxscapliib7f1" path="res://assets/textures/effects/light.png" id="2_ifm2h"]
-[ext_resource type="Script" path="res://scenes/utility/hit_box.gd" id="3_efeuj"]
+[ext_resource type="Script" path="res://scenes/utility/interface/hit_box.gd" id="3_efeuj"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_b0nwb"]
 blend_mode = 1

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dxx2elvn8s6am" path="res://scenes/character/character.tscn" id="1_vsqam"]
 [ext_resource type="Script" path="res://scenes/character/enemy/enemy.gd" id="2_nnuxe"]
-[ext_resource type="Script" path="res://scenes/utility/hit_box.gd" id="4_hkswn"]
+[ext_resource type="Script" path="res://scenes/utility/interface/hit_box.gd" id="3_27jkj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2w8b3"]
 
@@ -30,7 +30,7 @@ visible = false
 position = Vector2(0, 4)
 collision_layer = 64
 collision_mask = 0
-script = ExtResource("4_hkswn")
+script = ExtResource("3_27jkj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource("CircleShape2D_3vr0l")
