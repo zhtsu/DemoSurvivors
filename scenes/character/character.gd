@@ -55,19 +55,33 @@ func take_damage(damage_data : Dictionary):
 	
 	state = ECharacterState.Damage
 	
-	var damage_value = float(damage_data["Value"])
-	var damage_type = Enums.EDamageType.values()[int(damage_data["Type"])]
-	var is_crit = bool(damage_data["Crit"])
-	
 	if self is Enemy:
-		var damage_popup = tscn_damage_popup.instantiate()
-		damage_popup.init(damage_value, damage_type, is_crit)
-		damage_popup.position = position
-		get_tree().get_first_node_in_group("level").add_child(damage_popup)
+		_popup_damage_value(damage_data)
 	
-	hp -= damage_value
+	hp -= float(damage_data["Value"])
 	damage.emit()
 	$DamageTimer.start(damage_interval)
+
+
+func _popup_damage_value(damage_data : Dictionary):
+	var damage_type = Enums.EDamageType.values()[int(damage_data["Type"])]
+	if damage_type == Enums.EDamageType.Both:
+		var physical_damage_value = damage_data["PhysicalValue"]
+		var physical_crit = damage_data["PhysicalCrit"]
+		_create_damage_popup(physical_damage_value, Enums.EDamageType.Physical, physical_crit)
+		var magical_damage_value = damage_data["MagicalValue"]
+		var magical_crit = damage_data["PhysicalCrit"]
+		_create_damage_popup(magical_damage_value, Enums.EDamageType.Magical, magical_crit)
+	else:
+		var damage_value = float(damage_data["Value"])
+		var is_crit = bool(damage_data["Crit"])
+		_create_damage_popup(damage_value, damage_type, is_crit)
+
+func _create_damage_popup(damage_value : float, damage_type : Enums.EDamageType, is_crit : bool):
+	var damage_popup = tscn_damage_popup.instantiate()
+	damage_popup.init(damage_value, damage_type, is_crit)
+	damage_popup.position = position
+	get_tree().get_first_node_in_group("level").add_child(damage_popup)
 
 
 func get_prop_dict():

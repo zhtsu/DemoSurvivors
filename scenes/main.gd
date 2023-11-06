@@ -10,10 +10,13 @@ var enemy_data_list : Array[Dictionary]
 var map_data_list : Array[Dictionary]
 var ability_data_list : Array[Dictionary]
 var weapon_data_list : Array[Dictionary]
-#
+
 var visible_enemy_list : Array[Enemy]
-var enemy_death_sound_pool : Array[OnceSound]
-var player_damage_sound_pool : Array[OnceSound]
+# Only one element can exist
+# Used to make sure create only one sound 
+# when multiple enemies die at the same time
+var enemy_death_sound_array : Array[OnceSound]
+var player_damage_sound_array : Array[OnceSound]
 
 
 func _ready():

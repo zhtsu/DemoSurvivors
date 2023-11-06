@@ -13,7 +13,7 @@ signal item_added(ability : Item)
 const Assets = preload("res://scenes/global/assets.gd")
 const Methods = preload("res://scenes/global/methods.gd")
 
-var current_level_up_required_exp := 10
+var current_level_up_required_exp := 100
 var current_exp : int = 0
 var current_level : int = 0
 var witticism_dict : Dictionary

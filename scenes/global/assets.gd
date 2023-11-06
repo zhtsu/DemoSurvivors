@@ -14,6 +14,7 @@ const path_tex_start = "res://assets/textures/icons/start.png"
 const path_tscn_options = "res://scenes/ui/main_menu/options.tscn"
 const path_tscn_main_menu = "res://scenes/ui/main_menu/main_menu.tscn"
 # Folder path
+const dir_tres = "res://tress/"
 const dir_tres_weapon = "res://tress/weapon/"
 const dir_tres_ability = "res://tress/ability/"
 const dir_tres_loot = "res://tress/loot/"
@@ -50,6 +51,7 @@ const tscn_GOTG = preload("res://scenes/item/ability/GOTG/GOTG.tscn")
 const tscn_once_sound = preload("res://scenes/utility/once_sound/once_sound.tscn")
 const tscn_magnetism = preload("res://scenes/item/ability/magnetism/magnetism.tscn")
 const tscn_weapon = preload("res://scenes/item/weapon/weapon.tscn")
+const tscn_collection_item = preload("res://scenes/ui/main_menu/collection_item.tscn")
 # Audio
 const a_button_down = preload("res://assets/sounds/button_down.mp3")
 const a_button_hover = preload("res://assets/sounds/button_hover.mp3")

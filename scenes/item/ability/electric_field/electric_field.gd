@@ -40,7 +40,7 @@ func _on_timer_timeout():
 		var damage_data = Methods.cal_damage(
 			player.get_prop_dict(),
 			enemy.get_prop_dict(),
-			Enums.EDamageType.Magical
+			Enums.EDamageType.Both
 		)
 		enemy.take_damage(damage_data)
 

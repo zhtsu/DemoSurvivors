@@ -62,7 +62,14 @@ static func cal_damage(hit_prop_dict : Dictionary, hurt_prop_dict : Dictionary, 
 			"Type": int(damage_type)
 		}
 	else:
-		return {}
+		return {
+			"Value": physical_damage + magical_damage,
+			"PhysicalValue": physical_damage,
+			"PhysicalCrit": bool(hit_physical_atk_result["Crit"]),
+			"MagicalValue": magical_damage,
+			"MagicalCrit": bool(hit_magical_atk_result["Crit"]),
+			"Type": int(damage_type)
+		}
 	
 	
 static func cal_atk_with_crit(base_atk : float, crit_chance : float, crit_bonus : float) -> Dictionary:

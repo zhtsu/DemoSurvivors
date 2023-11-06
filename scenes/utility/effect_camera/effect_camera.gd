@@ -1,3 +1,4 @@
+class_name EffectCamera
 extends Camera2D
 
 

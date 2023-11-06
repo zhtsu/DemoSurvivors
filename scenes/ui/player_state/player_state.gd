@@ -77,11 +77,6 @@ func _update_current_level_text(current_level : int):
 
 
 func _ready():
-	if OS.has_feature("android"):
-		$Joystick.show()
-	else:
-		$Joystick.hide()
-	
 	MAIN = get_tree().get_first_node_in_group("main")
 	$Timer.start(1.0)
 	_update_prop_box()
@@ -119,10 +114,10 @@ func _play_button_down_sound():
 	
 	
 func _player_player_damage_sound():
-	if MAIN.player_damage_sound_pool.is_empty():
+	if MAIN.player_damage_sound_array.is_empty():
 		var damage_sound = Assets.tscn_once_sound.instantiate()
 		damage_sound.init(Assets.a_player_damage, -12)
-		MAIN.player_damage_sound_pool.append(damage_sound)
+		MAIN.player_damage_sound_array.append(damage_sound)
 		get_tree().get_first_node_in_group("level").add_child(damage_sound)
 		
 	

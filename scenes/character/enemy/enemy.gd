@@ -62,10 +62,10 @@ func _physics_process(_delta):
 	_update_enemy_animation()
 	
 	if hp <= 0.0:
-		if MAIN.enemy_death_sound_pool.is_empty():
+		if MAIN.enemy_death_sound_array.is_empty():
 			var death_sound = Assets.tscn_once_sound.instantiate()
 			death_sound.init(Assets.a_enemy_death, -24.0)
-			MAIN.enemy_death_sound_pool.append(death_sound)
+			MAIN.enemy_death_sound_array.append(death_sound)
 			get_tree().get_first_node_in_group("level").add_child(death_sound)
 		_destroy_self()
 	if position.distance_to(player.position) > 600.0:
@@ -93,9 +93,10 @@ func _update_enemy_flip():
 func _destroy_self():
 	# Create EXP stone
 	var exp_stone = Assets.tscn_exp_stone.instantiate()
-	exp_stone.exp_volume = exp_volume
-	exp_stone.position = position
-	get_tree().get_first_node_in_group("level").add_child(exp_stone)
+	exp_stone.exp_volume = randi_range(0, exp_volume)
+	if exp_stone.exp_volume > float(exp_volume) / 2:
+		exp_stone.position = position
+		get_tree().get_first_node_in_group("level").add_child(exp_stone)
 	# Death blood particles
 	var particles_emitter = Assets.tscn_particles_emitter.instantiate()
 	particles_emitter.position = position

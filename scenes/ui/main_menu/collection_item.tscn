@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://csvio3owybx5r"]
+[gd_scene load_steps=4 format=3 uid="uid://csvio3owybx5r"]
 
-[ext_resource type="Texture2D" uid="uid://whrrinl8cnuj" path="res://assets/textures/icons/full_screen.png" id="1_sbyf0"]
-[ext_resource type="Texture2D" uid="uid://dn3kvp5esi4rr" path="res://assets/textures/icons/speaker.png" id="2_8uh6s"]
+[ext_resource type="Texture2D" uid="uid://b4jy7mhdsw1bf" path="res://tress/misc/at_collection_item_background.tres" id="1_85uc2"]
+[ext_resource type="Texture2D" uid="uid://b62rm0idotlti" path="res://tress/weapon/at_weapon_thunder_blade.tres" id="2_4sbqp"]
+[ext_resource type="Script" path="res://scenes/ui/main_menu/collection_item.gd" id="2_cxgr0"]
 
 [node name="CollectionItem" type="TextureButton"]
 custom_minimum_size = Vector2(70, 70)
 offset_right = 8.0
 offset_bottom = 8.0
-texture_normal = ExtResource("1_sbyf0")
+texture_normal = ExtResource("1_85uc2")
 stretch_mode = 0
+script = ExtResource("2_cxgr0")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -24,5 +26,5 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_8uh6s")
+texture = ExtResource("2_4sbqp")
 expand_mode = 1

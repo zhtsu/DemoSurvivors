@@ -245,7 +245,7 @@ libraries = {
 [node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="Joystick" parent="." instance=ExtResource("6_5ucgs")]
-position = Vector2(143, 510)
+position = Vector2(200, 448)
 
 [connection signal="button_down" from="Main/Body/Box/HBox/ShowPropButton" to="." method="_on_show_prop_button_button_down"]
 [connection signal="mouse_entered" from="Main/Body/Box/HBox/ShowPropButton" to="." method="_play_button_hover_sound"]
