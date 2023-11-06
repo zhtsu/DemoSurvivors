@@ -77,6 +77,11 @@ func _update_current_level_text(current_level : int):
 
 
 func _ready():
+	if OS.has_feature("android"):
+		$Joystick.show()
+	else:
+		$Joystick.hide()
+	
 	MAIN = get_tree().get_first_node_in_group("main")
 	$Timer.start(1.0)
 	_update_prop_box()
