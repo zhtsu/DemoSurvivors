@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cmi5qcgvoyr7f"]
+
+[ext_resource type="Texture2D" uid="uid://b6jpb83dsj6lv" path="res://assets/textures/character/enemy/angry_pig/angry_pig_idle_36x30.png" id="1_kxrtj"]
+
+[resource]
+atlas = ExtResource("1_kxrtj")
+region = Rect2(0, 0, 36, 30)

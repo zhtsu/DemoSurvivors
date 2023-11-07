@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cv43y8044fxja"]
+
+[ext_resource type="Texture2D" uid="uid://fqywntnxxpaa" path="res://assets/textures/character/enemy/chameleon/chameleon_walk_84x38.png" id="1_7o5xh"]
+
+[resource]
+atlas = ExtResource("1_7o5xh")
+region = Rect2(44, 0, 38, 38)

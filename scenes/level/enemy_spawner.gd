@@ -30,6 +30,10 @@ func _ready():
 		spawned_enemy_data_list.append(MAIN.find_enemy_data(enemy_name))
 		
 	_spawn_enemy()
+	
+	$SpawnTimer.start(spawn_interval)
+	$AddMaxEnemyCountTimer.start()
+	$AddSpawnCountTimer.start()
 
 
 func _spawn_enemy():
@@ -51,6 +55,7 @@ func _spawn_enemy():
 		Vector4(right_top.x, right_top.y, right_bottom.x, right_bottom.y)
 	]
 		
+	print_debug(current_enemy_count)
 	for i in spawn_count:
 		# Random pick edge and position in the edge
 		var rpe = edges.pick_random() as Vector4
@@ -65,13 +70,13 @@ func _spawn_enemy():
 			enemy_data = spawned_enemy_data_list.pick_random()
 		
 		var enemy = tscn_enemy.instantiate()
+		if current_enemy_count > 300:
+			enemy.set_enable_collision(false)
 		enemy.call("init", enemy_data)
 		enemy.connect("destroyed", _on_enemy_destroyed)
 		enemy.spawn_position = random_position
 		get_tree().get_first_node_in_group("level").add_child(enemy)
 		current_enemy_count += 1
-	
-	$Timer.start(spawn_interval)
 	
 	
 func _on_enemy_destroyed():
@@ -80,3 +85,12 @@ func _on_enemy_destroyed():
 	
 func _on_timer_timeout():
 	_spawn_enemy()
+
+
+func _on_add_max_enemy_count_timer_timeout():
+	max_enemy_count += 1
+
+
+func _on_add_spawn_count_timer_timeout():
+	spawn_count *= 2
+	max_enemy_count *= 2

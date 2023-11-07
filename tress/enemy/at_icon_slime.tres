@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://b54xhq25nqyhj"]
+
+[ext_resource type="Texture2D" uid="uid://ygdbnh5jtuh8" path="res://assets/textures/character/enemy/slime/slime_walk_44x30.png" id="1_m8ivw"]
+
+[resource]
+atlas = ExtResource("1_m8ivw")
+region = Rect2(0, 0, 44, 30)

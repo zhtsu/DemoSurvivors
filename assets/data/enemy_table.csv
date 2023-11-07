@@ -1,21 +1,21 @@
 name,sprite_frames_tres,icon,gdscript,size,type,flying,EXP,HP,speed,physical_ATK,physical_DEF,magical_ATK,magical_DEF,physical_crit_bonus,physical_crit_chance,magical_crit_bonus,magical_crit_chance,use_custom_shape,custom_shape_tres
-Chicken,sf_chicken.tres,,surround_player.gd,Normal,Common,FALSE,10,1,3.6,4,0,0,0,0.05,0.05,0,0,FALSE,null
-Blue Bird,sf_blue_bird.tres,,rush_to_player.gd,Normal,Common,TRUE,1,1,10,4,0,0,0,0.05,0.05,0,0,FALSE,null
-Bunny,sf_bunny.tres,,surround_player.gd,Normal,Common,FALSE,4,2,6,10,0,0,0,0,0,0,0,FALSE,null
-Chameleon,sf_chameleon.tres,,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
-Angry Pigs,sf_angry_pig.tres,,rush_to_player.gd,Normal,Common,TRUE,1,1,10,4,0,0,0,0.05,0.05,0,0,FALSE,null
-Bat,sf_bat.tres,,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
-Bee,sf_bee.tres,,surround_player.gd,Normal,Common,FALSE,200,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
-Duck,sf_duck.tres,,surround_player.gd,Normal,Common,FALSE,100,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
-Fat Bird,sf_fat_bird.tres,,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
-Ghost,sf_ghost.tres,,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
-Mushroom,sf_mushroom.tres,,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
-Plant,sf_plant.tres,,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
-Radish,sf_radish.tres,,surround_player.gd,Normal,Common,FALSE,60,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
-Rino,sf_rino.tres,,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
-Rock,sf_rock.tres,,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
-Skull,sf_skull.tres,,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
-Slime,sf_slime.tres,,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
-Snail,sf_snail.tres,,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
-Trunk,sf_trunk.tres,,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
-Turtle,sf_turtle.tres,,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Chicken,sf_chicken.tres,at_icon_chicken.tres,surround_player.gd,Normal,Common,FALSE,10,1,3.6,4,0,0,0,0.05,0.05,0,0,FALSE,null
+Blue Bird,sf_blue_bird.tres,at_icon_blue_bird.tres,rush_to_player.gd,Normal,Common,TRUE,1,1,10,4,0,0,0,0.05,0.05,0,0,FALSE,null
+Bunny,sf_bunny.tres,at_icon_bunny.tres,surround_player.gd,Normal,Common,FALSE,4,2,6,10,0,0,0,0,0,0,0,FALSE,null
+Chameleon,sf_chameleon.tres,at_icon_chameleon.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Angry Pigs,sf_angry_pig.tres,at_icon_angry_pig.tres,rush_to_player.gd,Normal,Common,TRUE,1,1,10,4,0,0,0,0.05,0.05,0,0,FALSE,null
+Bat,sf_bat.tres,at_icon_bat.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Bee,sf_bee.tres,at_icon_bee.tres,surround_player.gd,Normal,Common,FALSE,200,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Duck,sf_duck.tres,at_icon_duck.tres,surround_player.gd,Normal,Common,FALSE,100,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Fat Bird,sf_fat_bird.tres,at_icon_fat_bird.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Ghost,sf_ghost.tres,at_icon_ghost.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Mushroom,sf_mushroom.tres,at_icon_mushroom.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Plant,sf_plant.tres,at_icon_plant.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Radish,sf_radish.tres,at_icon_radish.tres,surround_player.gd,Normal,Common,FALSE,60,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Rino,sf_rino.tres,at_icon_rino.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Rock,sf_rock.tres,at_icon_rock.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Skull,sf_skull.tres,at_icon_skull.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Slime,sf_slime.tres,at_icon_slime.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Snail,sf_snail.tres,at_icon_snail.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Trunk,sf_trunk.tres,at_icon_trunk.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null
+Turtle,sf_turtle.tres,at_icon_turtle.tres,surround_player.gd,Normal,Common,FALSE,1,6,3.6,4,0,6,0,0.05,0.05,0,0,FALSE,null

@@ -2,9 +2,9 @@ extends Node
 
 
 # File path
-const path_local_options = "user://options.json"
+const path_local_user_data = "user://user_data.json"
 const path_tile_coords = "res://assets/data/used_tile_coords.json"
-const path_default_options = "res://assets/data/default_options.json"
+const path_default_user_data = "res://assets/data/default_user_data.json"
 const path_player_table = "res://assets/data/player_table.csv"
 const path_enemy_table = "res://assets/data/enemy_table.csv"
 const path_map_table = "res://assets/data/map_table.csv"

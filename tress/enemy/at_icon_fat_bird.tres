@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://ckn2dxist7otl"]
+
+[ext_resource type="Texture2D" uid="uid://br38dmsnwt5em" path="res://assets/textures/character/enemy/fat_bird/fat_bird_walk_40x48.png" id="1_nnn0s"]
+
+[resource]
+atlas = ExtResource("1_nnn0s")
+region = Rect2(0, 0, 40, 48)

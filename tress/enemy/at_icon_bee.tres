@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://b8mr5n0j2hvlc"]
+
+[ext_resource type="Texture2D" uid="uid://da7fty7f4gpm0" path="res://assets/textures/character/enemy/bee/bee_walk_36x34.png" id="1_qsr7q"]
+
+[resource]
+atlas = ExtResource("1_qsr7q")
+region = Rect2(0, 0, 36, 34)

@@ -46,7 +46,7 @@ func _ready():
 	
 
 func _apply_settings():
-	if MAIN.option_dict["OpenSounds"] and not music_player.playing:
+	if MAIN.user_data_dict["OpenSounds"] and not music_player.playing:
 		loud()
 
 

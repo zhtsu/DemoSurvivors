@@ -26,17 +26,17 @@ func _update_settings_ui():
 	_update_effect_combo_box()
 
 func _update_language_combo_box():
-	var index : int = MAIN.option_dict["Language"]
+	var index : int = MAIN.user_data_dict["Language"]
 	language_combo_box.select(index)
 	
 
 func _update_effect_combo_box():
-	var index : int = MAIN.option_dict["Effect"]
+	var index : int = MAIN.user_data_dict["Effect"]
 	effect_combo_box.select(index)
 
 
 func _update_sounds_button_icon():
-	if MAIN.option_dict["OpenSounds"]:
+	if MAIN.user_data_dict["OpenSounds"]:
 		sounds_button.icon = Assets.tex_loud
 	else:
 		sounds_button.icon = Assets.tex_mute
@@ -54,7 +54,7 @@ func _update_full_screen_button_icon():
 
 
 func _update_sounds_state():
-	if MAIN.option_dict["OpenSounds"]:
+	if MAIN.user_data_dict["OpenSounds"]:
 		get_tree().get_first_node_in_group("main").get_music_player().play()
 	else:
 		get_tree().get_first_node_in_group("main").get_music_player().stop()
@@ -62,7 +62,7 @@ func _update_sounds_state():
 
 func _on_sounds_button_button_down():
 	_play_button_down_sound()
-	MAIN.option_dict["OpenSounds"] = not MAIN.option_dict["OpenSounds"]
+	MAIN.user_data_dict["OpenSounds"] = not MAIN.user_data_dict["OpenSounds"]
 	_update_sounds_button_icon()
 	_update_sounds_state()
 	
@@ -76,9 +76,9 @@ func _on_background_button_down():
 		
 		
 func _save_updated_settings():
-	var options_json_file = FileAccess.open(Assets.path_local_options, FileAccess.WRITE)
-	options_json_file.store_line(JSON.stringify(MAIN.option_dict, "\t"))
-	options_json_file.close()
+	var user_data_json_file = FileAccess.open(Assets.path_local_user_data, FileAccess.WRITE)
+	user_data_json_file.store_line(JSON.stringify(MAIN.user_data_dict, "\t"))
+	user_data_json_file.close()
 	
 
 func _update_full_screen():

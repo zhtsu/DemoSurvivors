@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://csvio3owybx5r"]
 
 [ext_resource type="Texture2D" uid="uid://b4jy7mhdsw1bf" path="res://tress/misc/at_collection_item_background.tres" id="1_85uc2"]
-[ext_resource type="Texture2D" uid="uid://b62rm0idotlti" path="res://tress/weapon/at_weapon_thunder_blade.tres" id="2_4sbqp"]
 [ext_resource type="Script" path="res://scenes/ui/main_menu/collection_item.gd" id="2_cxgr0"]
+[ext_resource type="Texture2D" uid="uid://dhjrrk6ojik10" path="res://tress/enemy/at_icon_turtle.tres" id="3_ghq7f"]
 
 [node name="CollectionItem" type="TextureButton"]
 custom_minimum_size = Vector2(70, 70)
@@ -19,12 +19,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -22.0
+offset_top = -13.0
+offset_right = 22.0
+offset_bottom = 13.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_4sbqp")
-expand_mode = 1
+texture = ExtResource("3_ghq7f")
+stretch_mode = 2

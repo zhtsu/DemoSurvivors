@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://clyk4x34yeboj"]
+
+[ext_resource type="Texture2D" uid="uid://bdwl640e2r787" path="res://assets/textures/character/enemy/bat/bat_walk_46x30.png" id="1_wkhgg"]
+
+[resource]
+atlas = ExtResource("1_wkhgg")
+region = Rect2(0, 0, 46, 30)

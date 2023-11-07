@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://cpyfb1d1baqju"]
+
+[ext_resource type="Texture2D" uid="uid://cktfur64du4sh" path="res://assets/textures/character/enemy/ghost/ghost_walk_44x30.png" id="1_0bvyq"]
+
+[resource]
+atlas = ExtResource("1_0bvyq")
+region = Rect2(0, 0, 44, 30)

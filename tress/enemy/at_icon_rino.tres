@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bam4l474wwd3f"]
+
+[ext_resource type="Texture2D" uid="uid://cdnkl3jx6rykq" path="res://assets/textures/character/enemy/rino/rino_walk_52x34.png" id="1_j5k5w"]
+
+[resource]
+atlas = ExtResource("1_j5k5w")
+region = Rect2(0, 0, 52, 34)

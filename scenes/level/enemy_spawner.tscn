@@ -5,6 +5,13 @@
 [node name="EnemySpawner" type="Node"]
 script = ExtResource("1_c0r3c")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="SpawnTimer" type="Timer" parent="."]
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="AddMaxEnemyCountTimer" type="Timer" parent="."]
+
+[node name="AddSpawnCountTimer" type="Timer" parent="."]
+wait_time = 30.0
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="AddMaxEnemyCountTimer" to="." method="_on_add_max_enemy_count_timer_timeout"]
+[connection signal="timeout" from="AddSpawnCountTimer" to="." method="_on_add_spawn_count_timer_timeout"]

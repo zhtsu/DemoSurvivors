@@ -98,21 +98,33 @@ func _destroy_self():
 		exp_stone.position = position
 		get_tree().get_first_node_in_group("level").add_child(exp_stone)
 	# Death blood particles
-	var particles_emitter = Assets.tscn_particles_emitter.instantiate()
-	particles_emitter.position = position
-	get_tree().get_first_node_in_group("level").add_child(particles_emitter)
+	if MAIN.particles_emitter_array.size() < 10:
+		var particles_emitter = Assets.tscn_particles_emitter.instantiate()
+		particles_emitter.position = position
+		MAIN.particles_emitter_array.append(particles_emitter)
+		get_tree().get_first_node_in_group("level").add_child(particles_emitter)
+	
 	MAIN.visible_enemy_list.erase(self)
 	destroyed.emit()
 	queue_free()
 	
 
+func set_enable_collision(enable : bool):
+	if enable:
+		$CollisionShape2D.disabled = true
+	else:
+		$CollisionShape2D.disabled = true
+
 
 func _on_visible_on_screen_notifier_2d_screen_entered():
 	if not MAIN.visible_enemy_list.has(self):
 		MAIN.visible_enemy_list.append(self)
+		set_enable_collision(true)
+		
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	if MAIN.visible_enemy_list.has(self):
 		MAIN.visible_enemy_list.erase(self)
+		set_enable_collision(false)
 

@@ -7,6 +7,7 @@ const Assets = preload("res://scenes/global/assets.gd")
 @onready var player_grid = $Control/Content/Scroller/VBoxContainer/PlayerGrid
 @onready var weapon_grid = $Control/Content/Scroller/VBoxContainer/WeaponGrid
 @onready var ability_grid = $Control/Content/Scroller/VBoxContainer/AbilityGrid
+@onready var enemy_grid = $Control/Content/Scroller/VBoxContainer/EnemyGrid
 
 var MAIN : Main
 
@@ -24,7 +25,7 @@ func _ready():
 	_create_collection_items(MAIN.player_data_list, "player", player_grid)
 	_create_collection_items(MAIN.weapon_data_list, "weapon", weapon_grid)
 	_create_collection_items(MAIN.ability_data_list, "ability", ability_grid)
-	#_create_collection_items(MAIN.enemy_data_list, "enemy")
+	_create_collection_items(MAIN.enemy_data_list, "enemy", enemy_grid)
 	
 	$AnimationPlayer.play_backwards("Exit")
 

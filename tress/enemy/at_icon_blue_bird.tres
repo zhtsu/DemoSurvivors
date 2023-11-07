@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://wp4xu60ld4xk"]
+
+[ext_resource type="Texture2D" uid="uid://bkgirxeia6puc" path="res://assets/textures/character/enemy/blue_bird/blue_bird_walk_32x32.png" id="1_q2lhe"]
+
+[resource]
+atlas = ExtResource("1_q2lhe")
+region = Rect2(0, 0, 32, 32)

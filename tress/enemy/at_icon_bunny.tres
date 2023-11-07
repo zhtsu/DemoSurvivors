@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bc0ub3gdcsh6n"]
+
+[ext_resource type="Texture2D" uid="uid://rvn1vuik351o" path="res://assets/textures/character/enemy/bunny/bunny_walk_34x44.png" id="1_gmqwn"]
+
+[resource]
+atlas = ExtResource("1_gmqwn")
+region = Rect2(204, 0, 34, 44)

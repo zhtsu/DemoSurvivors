@@ -22,6 +22,7 @@ func _ready():
 	MAIN.visible_enemy_list.clear()
 	MAIN.enemy_death_sound_array.clear()
 	MAIN.player_damage_sound_array.clear()
+	MAIN.particles_emitter_array.clear()
 	# Create player
 	active_player = Assets.tscn_player.instantiate()
 	active_player.init(player_data, MAIN)
