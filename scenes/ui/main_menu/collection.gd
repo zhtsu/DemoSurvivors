@@ -8,13 +8,16 @@ const Assets = preload("res://scenes/global/assets.gd")
 @onready var weapon_grid = $Control/Content/Scroller/VBoxContainer/WeaponGrid
 @onready var ability_grid = $Control/Content/Scroller/VBoxContainer/AbilityGrid
 @onready var enemy_grid = $Control/Content/Scroller/VBoxContainer/EnemyGrid
+@onready var item_name = $Control/Content/Detail/Name
 
 var MAIN : Main
+var selected_item : CollectionItem = null
 
 
 func _create_collection_items(data_list : Array[Dictionary], data_type : String, grid):
 	for data in data_list:
 		var item = Assets.tscn_collection_item.instantiate()
+		item.connect("clicked", _on_collection_clicked)
 		var icon_path = Assets.dir_tres + data_type + "/" + data["icon"]
 		item.init(data["name"], icon_path)
 		grid.add_child(item)
@@ -35,3 +38,11 @@ func _on_background_button_down():
 	$AnimationPlayer.play("Exit")
 	await $AnimationPlayer.animation_finished
 	self.queue_free()
+
+
+func _on_collection_clicked(collection_item : CollectionItem):
+	if not selected_item == null:
+		selected_item.hide_hover()
+		
+	selected_item = collection_item
+	item_name.text = selected_item.collection_item_name

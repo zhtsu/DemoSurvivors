@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://csvio3owybx5r"]
+[gd_scene load_steps=6 format=3 uid="uid://csvio3owybx5r"]
 
 [ext_resource type="Texture2D" uid="uid://b4jy7mhdsw1bf" path="res://tress/misc/at_collection_item_background.tres" id="1_85uc2"]
 [ext_resource type="Script" path="res://scenes/ui/main_menu/collection_item.gd" id="2_cxgr0"]
 [ext_resource type="Texture2D" uid="uid://dhjrrk6ojik10" path="res://tress/enemy/at_icon_turtle.tres" id="3_ghq7f"]
+[ext_resource type="Texture2D" uid="uid://whrrinl8cnuj" path="res://assets/textures/icons/full_screen.png" id="4_wgimv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r2xu7"]
+texture = ExtResource("4_wgimv")
+region_rect = Rect2(4, 4, 48, 48)
 
 [node name="CollectionItem" type="TextureButton"]
 custom_minimum_size = Vector2(70, 70)
@@ -28,3 +33,14 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_ghq7f")
 stretch_mode = 2
+
+[node name="Hover" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_r2xu7")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
