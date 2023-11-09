@@ -27,6 +27,15 @@ func init(in_player : Player):
 	player.connect("damage", _on_player_damage)
 
 
+func _process(_delta):
+	$FPS.text = "FPS: " + str(Engine.get_frames_per_second())
+	if Engine.get_frames_per_second() < 30:
+		$FPS.modulate = Color.RED
+	else:
+		$FPS.modulate = Color.WHITE
+	$EnemyCount.text = "Enemies: " + str(get_tree().get_first_node_in_group("enemy_spawner").current_enemy_count)
+
+
 func reset_expbar():
 	$Main/ExpBar.value = 0
 	

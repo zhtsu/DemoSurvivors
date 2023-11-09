@@ -1,0 +1,13 @@
+[gd_resource type="Shortcut" load_steps=3 format=3 uid="uid://dao7bqgblgc23"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_85bsr"]
+device = -1
+keycode = 68
+unicode = 100
+
+[sub_resource type="InputEventKey" id="InputEventKey_mmf7s"]
+device = -1
+keycode = 4194321
+
+[resource]
+events = [SubResource("InputEventKey_85bsr"), SubResource("InputEventKey_mmf7s")]

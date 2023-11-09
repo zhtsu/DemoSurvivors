@@ -5,6 +5,7 @@ const Assets = preload("res://scenes/global/assets.gd")
 const Methods = preload("res://scenes/global/methods.gd")
 
 var user_data_dict : Dictionary
+var introductions : Dictionary
 var player_data_list : Array[Dictionary]
 var enemy_data_list : Array[Dictionary]
 var map_data_list : Array[Dictionary]
@@ -45,6 +46,11 @@ func _ready():
 	Methods.load_csv_to_array(Assets.path_ability_table, ability_data_list)
 	Methods.load_csv_to_array(Assets.path_weapon_table, weapon_data_list)
 	
+	# Read introduction data
+	json_file = FileAccess.open(Assets.path_introductions, FileAccess.READ)
+	introductions = JSON.parse_string(json_file.get_as_text())
+	json_file.close()
+	
 	var main_menu = Assets.tscn_main_menu.instantiate()
 	add_child(main_menu)
 	
@@ -60,12 +66,13 @@ func get_music_player() -> AudioStreamPlayer:
 	return $MusicPlayer
 
 
-func set_bgm(bgm_name : String, db : float = 0):
+func set_bgm(bgm_name : String, db : float = 0, play : bool = true):
 	var bgm_path = Assets.dir_music + bgm_name
 	$MusicPlayer.stop()
 	$MusicPlayer.stream = load(bgm_path)
 	$MusicPlayer.volume_db = db
-	$MusicPlayer.play()
+	if play:
+		$MusicPlayer.play()
 	
 	
 func find_ability_data(ability_name : String) -> Dictionary:
@@ -94,4 +101,9 @@ func find_map_data(map_name : String) -> Dictionary:
 		if map["name"] == map_name:
 			return map
 	return {}
+	
+	
+func find_introduction(item_name : String, item_type : String) -> String:
+	var intro_dict = introductions[item_type]
+	return intro_dict[item_name]
 

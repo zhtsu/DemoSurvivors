@@ -247,6 +247,29 @@ libraries = {
 [node name="Joystick" parent="." instance=ExtResource("6_5ucgs")]
 position = Vector2(200, 448)
 
+[node name="EnemyCount" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 60
+text = "Enemies: 0"
+
+[node name="FPS" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 60
+text = "FPS: 60"
+
 [connection signal="button_down" from="Main/Body/Box/HBox/ShowPropButton" to="." method="_on_show_prop_button_button_down"]
 [connection signal="mouse_entered" from="Main/Body/Box/HBox/ShowPropButton" to="." method="_play_button_hover_sound"]
 [connection signal="button_down" from="Main/Body/PauseButton" to="." method="_on_pause_button_button_down"]

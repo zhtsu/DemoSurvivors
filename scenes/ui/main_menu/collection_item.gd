@@ -5,14 +5,16 @@ extends TextureButton
 signal clicked(collection_item : CollectionItem)
 
 
-var collection_item_name : String = "Collection Item"
+var collection_item_name : String
+var collection_item_type : String
 var icon_texture : AtlasTexture
 
-func init(in_collection_item_name : String, icon_path : String):
-	collection_item_name = in_collection_item_name
+func init(in_name : String, icon_path : String, in_type : String):
+	collection_item_name = in_name
+	collection_item_type = in_type
 	icon_texture = load(icon_path)
 	$TextureRect.texture = icon_texture
-	if in_collection_item_name == "Electric Field":
+	if in_name == "Electric Field":
 		var flipped_icon = icon_texture.get_image()
 		flipped_icon.flip_x()
 		$TextureRect.texture = ImageTexture.create_from_image(flipped_icon)	
@@ -26,9 +28,12 @@ func _ready():
 
 
 func _on_button_down():
-	$Hover.show()
 	clicked.emit(self)
 	
 	
 func hide_hover():
 	$Hover.hide()
+	
+	
+func show_hover():
+	$Hover.show()

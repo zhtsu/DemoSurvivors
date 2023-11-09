@@ -3,6 +3,7 @@ extends Node
 
 # File path
 const path_local_user_data = "user://user_data.json"
+const path_introductions = "res://assets/data/introductions.json"
 const path_tile_coords = "res://assets/data/used_tile_coords.json"
 const path_default_user_data = "res://assets/data/default_user_data.json"
 const path_player_table = "res://assets/data/player_table.csv"
