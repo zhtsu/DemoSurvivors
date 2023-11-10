@@ -4,7 +4,6 @@ extends CanvasLayer
 signal confirm
 signal cancel
 
-const Assets = preload("res://scenes/global/assets.gd")
 
 @onready var sound_player = $SoundPlayer
 

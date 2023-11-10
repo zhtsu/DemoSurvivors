@@ -5,7 +5,6 @@ extends Node
 const tscn_enemy = preload("res://scenes/character/enemy/enemy.tscn")
 
 
-var MAIN : Main
 var map_data : Dictionary
 var level : Level
 var player : Player
@@ -23,11 +22,9 @@ func init(in_map_data : Dictionary, in_player : Player, in_level : Level):
 
 
 func _ready():
-	MAIN = get_tree().get_first_node_in_group("main")
-	
 	spawned_enemy_names = map_data["enemies"].rsplit("|", true, 100)
 	for enemy_name in spawned_enemy_names:
-		spawned_enemy_data_list.append(MAIN.find_enemy_data(enemy_name))
+		spawned_enemy_data_list.append(Data.find_enemy_data(enemy_name))
 		
 	_spawn_enemy()
 	
@@ -65,7 +62,7 @@ func _spawn_enemy():
 		
 		var enemy_data
 		if map_data["enemies"] == "ALL":
-			enemy_data = MAIN.enemy_data_list.pick_random()
+			enemy_data = Data.enemy_data_list.pick_random()
 		else:
 			enemy_data = spawned_enemy_data_list.pick_random()
 		

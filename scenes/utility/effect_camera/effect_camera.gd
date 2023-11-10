@@ -5,8 +5,6 @@ extends Camera2D
 signal close_to_map_edge
 
 
-const Enums = preload("res://scenes/global/enums.gd")
-
 const normal_zoom = Vector2(3.0, 3.0)
 
 	

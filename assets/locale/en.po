@@ -1,0 +1,34 @@
+# LANGUAGE translation for Demo Survivors
+#
+# FIRST AUTHOR < EMAIL @ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Demo Survivors\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2023-11-11 01:50+0800\n"
+"Last-Translator: <EMAIL@ADDRESS>\n"
+"Language-Team: English\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+
+msgid "Title"
+msgstr "Demo\nSurvivors"
+
+msgid "NewGame"
+msgstr "NewGame"
+
+msgid "Options"
+msgstr "Options"
+
+msgid "Collection"
+msgstr "Collection"
+
+msgid "Credits"
+msgstr "Credits"
+
+msgid "Exit"
+msgstr "Exit"

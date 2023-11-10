@@ -12,9 +12,8 @@ func _ready():
 
 
 func _on_finished():
-	var MAIN = get_tree().get_first_node_in_group("main") as Main
-	if MAIN.enemy_death_sound_array.has(self):
-		MAIN.enemy_death_sound_array.erase(self)
-	if MAIN.player_damage_sound_array.has(self):
-		MAIN.player_damage_sound_array.erase(self)
+	if Data.enemy_death_sound_array.has(self):
+		Data.enemy_death_sound_array.erase(self)
+	if Data.player_damage_sound_array.has(self):
+		Data.player_damage_sound_array.erase(self)
 	queue_free()

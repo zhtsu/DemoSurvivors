@@ -1,8 +1,6 @@
 extends Control
 
 
-const Assets = preload("res://scenes/global/assets.gd")
-
 var map_name : String = "Default"
 
 

@@ -1,8 +1,6 @@
 extends Ability
 
 
-const Methods = preload("res://scenes/global/methods.gd")
-
 var player : Player
 var attacking_enemy_list : Array[Enemy]
 
@@ -38,8 +36,8 @@ func _on_timer_timeout():
 	$SoundPlayer.play()
 	for enemy in attacking_enemy_list:
 		var damage_data = Methods.cal_damage(
-			player.get_prop_dict(),
-			enemy.get_prop_dict(),
+			player.attr,
+			enemy.attr,
 			Enums.EDamageType.Both
 		)
 		enemy.take_damage(damage_data)

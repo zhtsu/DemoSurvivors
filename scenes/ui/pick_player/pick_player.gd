@@ -1,10 +1,6 @@
 extends CanvasLayer
 
 
-const Assets = preload("res://scenes/global/assets.gd")
-const Methods = preload("res://scenes/global/methods.gd")
-
-var MAIN : Main
 var max_player_count = 0
 var selected_player_idx = 0
 var selected_map_name = "Grass"
@@ -29,19 +25,17 @@ var selected_map_name = "Grass"
 @onready var ui_weapon_state = $Control/Panel/LeftBox/Attributes/VBoxContainer/HBoxContainer/WeaponState
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	MAIN = get_tree().get_first_node_in_group("main")
 	# Init back button's icon using reversed start button's icon
 	var start_icon = ui_start_btn.icon.get_image()
 	start_icon.flip_x()
 	ui_back_btn.icon = ImageTexture.create_from_image(start_icon)
 	$AnimationPlayer.play_backwards("Exit")
 	# Update player count
-	max_player_count = MAIN.player_data_list.size()
+	max_player_count = Data.player_data_list.size()
 	# Init player list
-	for idx in MAIN.player_data_list.size():
-		var player_data = MAIN.player_data_list[idx]
+	for idx in Data.player_data_list.size():
+		var player_data = Data.player_data_list[idx]
 		var sprite_frames_path = Assets.dir_tres_player + player_data["sprite_frames_tres"]
 		var sprite_frames = load(sprite_frames_path)
 		var player_idx = idx
@@ -62,13 +56,13 @@ func _ready():
 		ui_player_anim.play("Walk")
 		ui_player_name.text = player_list[0].player_name
 		# Init player attributes
-		_set_player_attributes(MAIN.player_data_list[0])
+		_set_player_attributes(Data.player_data_list[0])
 	else:
 		ui_player_anim.sprite_frames = null
 		ui_player_name.text = "Character"
 	
 	# Init map items
-	for map_data in MAIN.map_data_list:
+	for map_data in Data.map_data_list:
 		var map_item = Assets.tscn_map_item.instantiate()
 		map_item.init_map_item(
 			map_data["name"],
@@ -113,7 +107,7 @@ func _update_player_data(player_idx: int):
 		player_list[player_idx].grab_focus()
 		player_list[player_idx].play_anim("Idle")
 		
-	var player_data = MAIN.player_data_list[player_idx]
+	var player_data = Data.player_data_list[player_idx]
 	var sprite_frames_path = Assets.dir_tres_player + player_data["sprite_frames_tres"]
 	var sprite_frames = load(sprite_frames_path)
 	var player_name = player_data["name"]
@@ -170,8 +164,8 @@ func _on_start_button_pressed():
 	# Create game level
 	var level_scene = Assets.tscn_level.instantiate()
 	level_scene.call("init", 
-		MAIN.find_map_data(selected_map_name),
-		MAIN.player_data_list[selected_player_idx])
+		Data.find_map_data(selected_map_name),
+		Data.player_data_list[selected_player_idx])
 	var main_menu = get_tree().get_first_node_in_group("main_menu")
 	Methods.switch_scene(main_menu, level_scene, true)
 	
@@ -187,12 +181,12 @@ func _set_player_attributes(player_data : Dictionary):
 	ui_m_crit_bonus.text =  "Crit Bonus: %.2f" % float(player_data["magical_crit_bonus"])
 	ui_speed.text = "Speed: %.2f" % float(player_data["speed"])
 	if not player_data["ability"] == "null":
-		var ability_data = MAIN.find_ability_data(player_data["ability"])
+		var ability_data = Data.find_ability_data(player_data["ability"])
 		var ability = load(Assets.dir_ability + ability_data["tscn"]).instantiate()
 		ability.init_ability(ability_data)
 		ui_ability_state.set_item_state(ability)
 	if not player_data["weapon"] == "null":
-		var weapon_data = MAIN.find_weapon_data(player_data["weapon"])
+		var weapon_data = Data.find_weapon_data(player_data["weapon"])
 		var weapon = Assets.tscn_weapon.instantiate()
 		weapon.init_weapon(weapon_data)
 		ui_weapon_state.set_item_state(weapon)

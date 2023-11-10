@@ -1,13 +1,17 @@
 extends CanvasLayer
 
 
-const Assets = preload("res://scenes/global/assets.gd")
-
 @onready var sound_player = $SoundPlayer
 
 
 var music_player : AudioStreamPlayer
-var MAIN : Main
+
+@onready var ui_title = $CenterBox/Title
+@onready var ui_start_button = $CenterBox/MenuItems/StartButton
+@onready var ui_options_button = $CenterBox/MenuItems/OptionsButton
+@onready var ui_collection_button = $CenterBox/MenuItems/CollectionButton
+@onready var ui_credits_button = $CenterBox/MenuItems/CreditsButton
+@onready var ui_exit_button = $CenterBox/MenuItems/ExitButton
 
 
 func _pause_anim():
@@ -26,9 +30,6 @@ func _play_anim():
 
 func _ready():
 	get_tree().paused = false
-	
-	MAIN = get_tree().get_first_node_in_group("main")
-	
 	# Create and add click mask to $GithubButton
 	$GithubButton.texture_click_mask.create_from_image_alpha(
 		$GithubButton.texture_normal.get_image()
@@ -39,6 +40,7 @@ func _ready():
 	$PinkMan.play("Idle")
 	$NinjaFrog.play("Idle")
 	
+	var MAIN = get_tree().get_first_node_in_group("main")
 	music_player = MAIN.get_music_player()
 	MAIN.set_bgm("dongcidaci.wav", -6, false)
 	
@@ -46,7 +48,7 @@ func _ready():
 	
 
 func _apply_settings():
-	if MAIN.user_data_dict["OpenSounds"] and not music_player.playing:
+	if Data.user_data_dict["OpenSounds"] and not music_player.playing:
 		loud()
 
 

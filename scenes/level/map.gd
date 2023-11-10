@@ -2,8 +2,6 @@ class_name Map
 extends TileMap
 
 
-const Assets = preload("res://scenes/global/assets.gd")
-
 # 16 x 16
 const tile_size := 16
 # 648 / 16

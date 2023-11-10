@@ -4,7 +4,6 @@ extends CanvasLayer
 signal pick_completed(item_data : Dictionary)
 
 
-const Assets = preload("res://scenes/global/assets.gd")
 var player_state_anim_player : AnimationPlayer
 
 func _ready():

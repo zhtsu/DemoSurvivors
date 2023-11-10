@@ -2,9 +2,6 @@ class_name Ability
 extends Item
 
 
-const Enums = preload("res://scenes/global/enums.gd")
-const Assets = preload("res://scenes/global/assets.gd")
-
 var cooldown : float = 2.0
 var speed : float = 1.0
 var damage_type : Enums.EDamageType = Enums.EDamageType.Physical

@@ -1,0 +1,32 @@
+# LANGUAGE translation for Demo Survivors
+#
+# FIRST AUTHOR < EMAIL @ADDRESS>, 2023.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Demo Survivors\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2023-11-11 01:48+0800\n"
+"Last-Translator: <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese\n"
+"Language: zh\n"
+
+msgid "Title"
+msgstr "样品\n幸存者"
+
+msgid "NewGame"
+msgstr "新游戏"
+
+msgid "Options"
+msgstr "设置"
+
+msgid "Collection"
+msgstr "收藏"
+
+msgid "Credits"
+msgstr "关于"
+
+msgid "Exit"
+msgstr "退出"

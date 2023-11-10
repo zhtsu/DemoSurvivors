@@ -1,8 +1,5 @@
 extends CanvasLayer
 
-const Assets = preload("res://scenes/global/assets.gd")
-
-var MAIN : Main
 
 @onready var full_screen_button = $RootPanel/VBoxContainer/UpBox/FullScreenButton
 @onready var sounds_button = $RootPanel/VBoxContainer/UpBox/SoundsButton
@@ -13,7 +10,6 @@ var MAIN : Main
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	MAIN = get_tree().get_first_node_in_group("main")
 	self.show()
 	$AnimationPlayer.play("Enter")
 	_update_settings_ui()
@@ -26,17 +22,17 @@ func _update_settings_ui():
 	_update_effect_combo_box()
 
 func _update_language_combo_box():
-	var index : int = MAIN.user_data_dict["Language"]
+	var index : int = Data.user_data_dict["Language"]
 	language_combo_box.select(index)
 	
 
 func _update_effect_combo_box():
-	var index : int = MAIN.user_data_dict["Effect"]
+	var index : int = Data.user_data_dict["Effect"]
 	effect_combo_box.select(index)
 
 
 func _update_sounds_button_icon():
-	if MAIN.user_data_dict["OpenSounds"]:
+	if Data.user_data_dict["OpenSounds"]:
 		sounds_button.icon = Assets.tex_loud
 	else:
 		sounds_button.icon = Assets.tex_mute
@@ -54,7 +50,7 @@ func _update_full_screen_button_icon():
 
 
 func _update_sounds_state():
-	if MAIN.user_data_dict["OpenSounds"]:
+	if Data.user_data_dict["OpenSounds"]:
 		get_tree().get_first_node_in_group("main").get_music_player().play()
 	else:
 		get_tree().get_first_node_in_group("main").get_music_player().stop()
@@ -62,7 +58,7 @@ func _update_sounds_state():
 
 func _on_sounds_button_button_down():
 	_play_button_down_sound()
-	MAIN.user_data_dict["OpenSounds"] = not MAIN.user_data_dict["OpenSounds"]
+	Data.user_data_dict["OpenSounds"] = not Data.user_data_dict["OpenSounds"]
 	_update_sounds_button_icon()
 	_update_sounds_state()
 	
@@ -77,7 +73,7 @@ func _on_background_button_down():
 		
 func _save_updated_settings():
 	var user_data_json_file = FileAccess.open(Assets.path_local_user_data, FileAccess.WRITE)
-	user_data_json_file.store_line(JSON.stringify(MAIN.user_data_dict, "\t"))
+	user_data_json_file.store_line(JSON.stringify(Data.user_data_dict, "\t"))
 	user_data_json_file.close()
 	
 
@@ -104,12 +100,13 @@ func _on_effect_selector_item_selected(index):
 	# 0 Normal
 	# 1 CRT
 	# 2 Gray
-	MAIN.option_dict["Effect"] = index
+	Data.option_dict["Effect"] = index
 	var viewport_effect = get_tree().get_first_node_in_group("viewport_effect")
 	viewport_effect.call("active_viewport_effect", index)
 
 
 func _on_lang_selector_item_selected(index):
 	_play_button_down_sound()
-	MAIN.option_dict["Language"] = index
+	Data.user_data_dict["Language"] = index
+	Methods.translate(index)
 	

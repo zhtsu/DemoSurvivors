@@ -4,9 +4,6 @@ extends Control
 signal created
 
 
-const Assets = preload("res://scenes/global/assets.gd")
-
-
 func _ready():
 	$AnimationPlayer.play("Enter")
 	await $AnimationPlayer.animation_finished

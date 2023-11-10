@@ -1,9 +1,6 @@
 extends CanvasLayer
 
 
-const Assets = preload("res://scenes/global/assets.gd")
-const Methods = preload("res://scenes/global/methods.gd")
-
 var revive_count : int = 0
 
 

@@ -1,11 +1,14 @@
 extends Node
 
 
-const Assets = preload("res://scenes/global/assets.gd")
-const Enums = preload("res://scenes/global/enums.gd")
+func translate(index : int):
+	if index == 0:
+		TranslationServer.set_locale("en")
+	elif index == 1:
+		TranslationServer.set_locale("zh")
 
 
-static func load_csv_to_array(csv_file_path : String, out_list : Array) -> void:
+func load_csv_to_array(csv_file_path : String, out_list : Array) -> void:
 	out_list.clear()
 	var csv_file = FileAccess.open(csv_file_path, FileAccess.READ)
 	# Generate dictionary from table data
@@ -26,53 +29,37 @@ static func load_csv_to_array(csv_file_path : String, out_list : Array) -> void:
 	csv_file.close()
 	
 	
-static func cal_damage(hit_prop_dict : Dictionary, hurt_prop_dict : Dictionary, damage_type : Enums.EDamageType) -> Dictionary:
-	# Hit
-	var hit_physical_atk : float = hit_prop_dict["physical_atk"]
-	var hit_magical_atk : float = hit_prop_dict["magical_atk"]
-	var hit_physical_crit_bonus : float = hit_prop_dict["physical_crit_bonus"]
-	var hit_magical_crit_bonus : float = hit_prop_dict["magical_crit_bonus"]
-	var hit_physical_crit_chance : float = hit_prop_dict["physical_crit_chance"]
-	var hit_magical_crit_chance : float = hit_prop_dict["magical_crit_chance"]
-	# Hurt
-	var hurt_physical_def : float = hurt_prop_dict["physical_def"]
-	var hurt_magical_def : float = hurt_prop_dict["magical_def"]
+func cal_damage(
+	hiter_attr : Structs.Attributes,
+	hurter_attr : Structs.Attributes,
+	damage_type : Enums.EDamageType) -> Structs.DamageData:
+	var hit_physical_atk_result = _cal_atk_with_crit(
+		hiter_attr.physical_atk,
+		hiter_attr.physical_crit_chance,
+		hiter_attr.physical_crit_bonus)
+	var hit_magical_atk_result = _cal_atk_with_crit(
+		hiter_attr.magical_atk,
+		hiter_attr.magical_crit_chance,
+		hiter_attr.magical_crit_bonus)
 	
-	var hit_physical_atk_result = cal_atk_with_crit(hit_physical_atk, hit_physical_crit_chance, hit_physical_crit_bonus)
-	var hit_magical_atk_result = cal_atk_with_crit(hit_magical_atk, hit_magical_crit_chance, hit_magical_crit_bonus)
-	
-	var physical_damage = hit_physical_atk_result["Value"] - hurt_physical_def
-	var magical_damage = hit_magical_atk_result["Value"] - hurt_magical_def
+	var physical_damage = hit_physical_atk_result["Value"] - hurter_attr.physical_def
+	var magical_damage = hit_magical_atk_result["Value"] - hurter_attr.magical_def
 	
 	if physical_damage < 0.0:
 		physical_damage = 0.0
 	if magical_damage < 0.0:
 		magical_damage = 0.0
 	
-	if damage_type == Enums.EDamageType.Physical:
-		return {
-			"Value": physical_damage,
-			"Crit": bool(hit_physical_atk_result["Crit"]),
-			"Type": int(damage_type)
-		}
-	elif damage_type == Enums.EDamageType.Magical:
-		return {
-			"Value": magical_damage,
-			"Crit": bool(hit_magical_atk_result["Crit"]),
-			"Type": int(damage_type)
-		}
-	else:
-		return {
-			"Value": physical_damage + magical_damage,
-			"PhysicalValue": physical_damage,
-			"PhysicalCrit": bool(hit_physical_atk_result["Crit"]),
-			"MagicalValue": magical_damage,
-			"MagicalCrit": bool(hit_magical_atk_result["Crit"]),
-			"Type": int(damage_type)
-		}
+	var result = Structs.DamageData.new()
+	result.type = damage_type
+	result.physical_damage = physical_damage
+	result.with_physical_crit = bool(hit_physical_atk_result["Crit"])
+	result.magical_damage = magical_damage
+	result.with_magical_crit = bool(hit_magical_atk_result["Crit"])
+	return result
 	
 	
-static func cal_atk_with_crit(base_atk : float, crit_chance : float, crit_bonus : float) -> Dictionary:
+func _cal_atk_with_crit(base_atk : float, crit_chance : float, crit_bonus : float) -> Dictionary:
 	var additional_atk = 0.0
 	var crit = false
 	
@@ -80,17 +67,15 @@ static func cal_atk_with_crit(base_atk : float, crit_chance : float, crit_bonus 
 		crit = true
 		additional_atk = base_atk * randf_range(0.0, crit_bonus)
 	
-	var result = {
+	return {
 		"Crit": crit,
 		"Value": base_atk + additional_atk
 	}
 	
-	return result
 	
-static func switch_scene(current_scene : Node, to_scene : Node, use_transition : bool = false):
-	var main_loop = Engine.get_main_loop()
-	var scene_tree = main_loop as SceneTree;
-	var game_main = scene_tree.get_first_node_in_group("main") as Main
+func switch_scene(current_scene : Node, to_scene : Node, use_transition : bool = false):
+	var scene_tree = get_tree();
+	var game_main = scene_tree.get_first_node_in_group("main")
 	
 	if use_transition == true:
 		seed(randi())

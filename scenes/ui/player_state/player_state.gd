@@ -1,9 +1,6 @@
 extends CanvasLayer
 
 
-const Assets = preload("res://scenes/global/assets.gd")
-
-var MAIN : Main
 var player : Player
 var game_time_secs := 0
 var show_property = false
@@ -66,14 +63,14 @@ func _update_prop_box():
 func _update_props():
 	$Main/Body/Box/PropertyBox/H5/HP.call("set_property", "HP", String.num_int64(int(player.hp)))
 	$Main/Body/Box/PropertyBox/H5/Speed.call("set_property", "Speed", String.num(player.speed))
-	$Main/Body/Box/PropertyBox/H1/PATK.call("set_property", "Physical ATK", String.num(player.physical_atk))
-	$Main/Body/Box/PropertyBox/H1/PDEF.call("set_property", "Physical DEF", String.num(player.physical_def))
-	$Main/Body/Box/PropertyBox/H2/MATK.call("set_property", "Magical ATK", String.num(player.magical_atk))
-	$Main/Body/Box/PropertyBox/H2/MDEF.call("set_property", "Magical DEF", String.num(player.magical_def))
-	$Main/Body/Box/PropertyBox/H3/PCritC.call("set_property", "Physical Crit Chance", String.num(player.physical_crit_chance))
-	$Main/Body/Box/PropertyBox/H3/PCritB.call("set_property", "Physical Crit Bonus", String.num(player.physical_crit_bonus))
-	$Main/Body/Box/PropertyBox/H4/MCritC.call("set_property", "Magical Crit Chance", String.num(player.magical_crit_chance))
-	$Main/Body/Box/PropertyBox/H4/MCritB.call("set_property", "Magical Crit Bonus", String.num(player.magical_crit_bonus))
+	$Main/Body/Box/PropertyBox/H1/PATK.call("set_property", "Physical ATK", String.num(player.attr.physical_atk))
+	$Main/Body/Box/PropertyBox/H1/PDEF.call("set_property", "Physical DEF", String.num(player.attr.physical_def))
+	$Main/Body/Box/PropertyBox/H2/MATK.call("set_property", "Magical ATK", String.num(player.attr.magical_atk))
+	$Main/Body/Box/PropertyBox/H2/MDEF.call("set_property", "Magical DEF", String.num(player.attr.magical_def))
+	$Main/Body/Box/PropertyBox/H3/PCritC.call("set_property", "Physical Crit Chance", String.num(player.attr.physical_crit_chance))
+	$Main/Body/Box/PropertyBox/H3/PCritB.call("set_property", "Physical Crit Bonus", String.num(player.attr.physical_crit_bonus))
+	$Main/Body/Box/PropertyBox/H4/MCritC.call("set_property", "Magical Crit Chance", String.num(player.attr.magical_crit_chance))
+	$Main/Body/Box/PropertyBox/H4/MCritB.call("set_property", "Magical Crit Bonus", String.num(player.attr.magical_crit_bonus))
 
 
 func _update_exp_bar():
@@ -86,7 +83,6 @@ func _update_current_level_text(current_level : int):
 
 
 func _ready():
-	MAIN = get_tree().get_first_node_in_group("main")
 	$Timer.start(1.0)
 	_update_prop_box()
 
@@ -123,10 +119,10 @@ func _play_button_down_sound():
 	
 	
 func _player_player_damage_sound():
-	if MAIN.player_damage_sound_array.is_empty():
+	if Data.player_damage_sound_array.is_empty():
 		var damage_sound = Assets.tscn_once_sound.instantiate()
 		damage_sound.init(Assets.a_player_damage, -12)
-		MAIN.player_damage_sound_array.append(damage_sound)
+		Data.player_damage_sound_array.append(damage_sound)
 		get_tree().get_first_node_in_group("level").add_child(damage_sound)
 		
 	

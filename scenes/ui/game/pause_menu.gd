@@ -1,10 +1,6 @@
 extends CanvasLayer
 
 
-const Assets = preload("res://scenes/global/assets.gd")
-const Methods = preload("res://scenes/global/methods.gd")
-
-
 func _ready():
 	get_tree().paused = true
 	$AnimationPlayer.play("RESET")

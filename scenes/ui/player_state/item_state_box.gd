@@ -6,7 +6,6 @@ signal clicked
 
 @export_enum("Left", "Right") var direction = 0
 
-const Assets = preload("res://scenes/global/assets.gd")
 var open := false
 
 

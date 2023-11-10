@@ -2,8 +2,6 @@ class_name Projectile
 extends Node2D
 
 
-const Enums = preload("res://scenes/global/enums.gd")
-
 var spawn_position : Vector2 = Vector2(0.0, 0.0)
 var velocity : Vector2 = Vector2(0.0, 0.0)
 var speed : float = 1.0

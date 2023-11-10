@@ -10,9 +10,6 @@ signal exp_added
 signal item_added(ability : Item)
 
 
-const Assets = preload("res://scenes/global/assets.gd")
-const Methods = preload("res://scenes/global/methods.gd")
-
 var current_level_up_required_exp := 100
 var current_exp : int = 0
 var current_level : int = 0
@@ -61,21 +58,21 @@ func _ready():
 	damage.connect(_update_hp_bar)
 	
 
-func init(player_data : Dictionary, MAIN : Main):
+func init(player_data : Dictionary):
 	icon = load(Assets.dir_tres_player + player_data["icon"])
 	var sprite_frames_path = Assets.dir_tres_player + player_data["sprite_frames_tres"]
 	var sprite_frames = load(sprite_frames_path)
 	$AnimatedSprite2D.sprite_frames = sprite_frames
 	character_name = player_data["name"]
 	speed = float(player_data["speed"])
-	physical_atk = float(player_data["physical_ATK"])
-	physical_def = float(player_data["physical_DEF"])
-	magical_atk = float(player_data["magical_ATK"])
-	magical_def = float(player_data["magical_DEF"])
-	physical_crit_bonus = float(player_data["physical_crit_bonus"])
-	physical_crit_chance = float(player_data["physical_crit_chance"])
-	magical_crit_bonus = float(player_data["magical_crit_bonus"])
-	magical_crit_chance = float(player_data["magical_crit_chance"])
+	attr.physical_atk = float(player_data["physical_ATK"])
+	attr.physical_def = float(player_data["physical_DEF"])
+	attr.magical_atk = float(player_data["magical_ATK"])
+	attr.magical_def = float(player_data["magical_DEF"])
+	attr.physical_crit_bonus = float(player_data["physical_crit_bonus"])
+	attr.physical_crit_chance = float(player_data["physical_crit_chance"])
+	attr.magical_crit_bonus = float(player_data["magical_crit_bonus"])
+	attr.magical_crit_chance = float(player_data["magical_crit_chance"])
 	# Load witticisms data
 	var witticism_json_path = Assets.dir_data + player_data["witticisms_json"]
 	var json_file = FileAccess.open(witticism_json_path, FileAccess.READ)
@@ -83,18 +80,18 @@ func init(player_data : Dictionary, MAIN : Main):
 	json_file.close()
 	# Create default ability and weapon
 	var gift_of_the_gods = Assets.tscn_GOTG.instantiate()
-	var gotg_ability_data = MAIN.find_ability_data("Gift of the gods")
+	var gotg_ability_data = Data.find_ability_data("Gift of the gods")
 	gift_of_the_gods.init_ability(gotg_ability_data)
 	add_item(gift_of_the_gods)
 	# Default Ability
-	var default_ability_data = MAIN.find_ability_data(player_data["ability"])
+	var default_ability_data = Data.find_ability_data(player_data["ability"])
 	if not default_ability_data.is_empty():
 		var default_ability_path = Assets.dir_ability + default_ability_data["tscn"]
 		var default_ability : Ability = load(default_ability_path).instantiate()
 		default_ability.init_ability(default_ability_data)
 		add_item(default_ability)
 	# Default Weapon
-	var default_weapon_data = MAIN.find_weapon_data(player_data["weapon"])
+	var default_weapon_data = Data.find_weapon_data(player_data["weapon"])
 	if not default_weapon_data.is_empty():
 		var default_weapon : Weapon = Assets.tscn_weapon.instantiate()
 		default_weapon.init_weapon(default_weapon_data)
@@ -209,8 +206,8 @@ func _on_hurt_box_area_entered(hit_box : HitBox):
 	# Player is hit by an Enemy
 	if hit_box.owner is Enemy:
 		var damage_data = Methods.cal_damage(
-			hit_box.owner.get_prop_dict(),
-			get_prop_dict(),
+			hit_box.owner.attr,
+			attr,
 			hit_box.owner.damage_type
 		)
 		if hp > 0:

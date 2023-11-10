@@ -1,7 +1,6 @@
 extends Marker2D
 
 
-const Enums = preload("res://scenes/global/enums.gd")
 func init(damage_value : float, damage_type : Enums.EDamageType, is_crit : bool = false):
 	$Label.text = String.num_int64(int(damage_value))
 	if damage_type == Enums.EDamageType.Physical:

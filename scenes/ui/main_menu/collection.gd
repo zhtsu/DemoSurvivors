@@ -2,7 +2,6 @@ extends CanvasLayer
 
 signal closed
 
-const Assets = preload("res://scenes/global/assets.gd")
 
 @onready var ui_player_grid = $Control/Content/Scroller/VBoxContainer/PlayerGrid
 @onready var ui_weapon_grid = $Control/Content/Scroller/VBoxContainer/WeaponGrid
@@ -11,7 +10,6 @@ const Assets = preload("res://scenes/global/assets.gd")
 @onready var ui_item_name = $Control/Content/Detail/Name
 @onready var ui_intro = $Control/Content/Detail/Text
 
-var MAIN : Main
 var selected_item : CollectionItem = null
 
 
@@ -25,11 +23,10 @@ func _create_collection_items(data_list : Array[Dictionary], data_type : String,
 
 
 func _ready():
-	MAIN = get_tree().get_first_node_in_group("main")
-	_create_collection_items(MAIN.player_data_list, "player", ui_player_grid)
-	_create_collection_items(MAIN.weapon_data_list, "weapon", ui_weapon_grid)
-	_create_collection_items(MAIN.ability_data_list, "ability", ui_ability_grid)
-	_create_collection_items(MAIN.enemy_data_list, "enemy", ui_enemy_grid)
+	_create_collection_items(Data.player_data_list, "player", ui_player_grid)
+	_create_collection_items(Data.weapon_data_list, "weapon", ui_weapon_grid)
+	_create_collection_items(Data.ability_data_list, "ability", ui_ability_grid)
+	_create_collection_items(Data.enemy_data_list, "enemy", ui_enemy_grid)
 	
 	# Default select the first item
 	selected_item = ui_player_grid.get_children()[0]
@@ -53,7 +50,7 @@ func _on_collection_clicked(collection_item : CollectionItem):
 	selected_item.show_hover()
 	ui_item_name.text = selected_item.collection_item_name
 	
-	ui_intro.text = MAIN.find_introduction(
+	ui_intro.text = Data.find_introduction(
 		selected_item.collection_item_name,
 		selected_item.collection_item_type
 	)

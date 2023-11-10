@@ -16,6 +16,14 @@ run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.png"
 
+[autoload]
+
+Assets="*res://scenes/global/assets.gd"
+Enums="*res://scenes/global/enums.gd"
+Structs="*res://scenes/global/structs.gd"
+Methods="*res://scenes/global/methods.gd"
+Data="*res://scenes/global/data.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"
@@ -23,6 +31,10 @@ window/stretch/mode="canvas_items"
 [filesystem]
 
 import/blender/enabled=false
+
+[gui]
+
+theme/custom_font="res://assets/fonts/SourceHanSansCN-Bold.otf"
 
 [input]
 
@@ -54,6 +66,11 @@ Right={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://assets/locale/en.po", "res://assets/locale/zh.po")
+locale/locale_filter_mode=0
 
 [layer_names]
 

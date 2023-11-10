@@ -1,8 +1,6 @@
 extends Projectile
 
 
-const Methods = preload("res://scenes/global/methods.gd")
-
 var player : Player
 var acceleration = 1
 
@@ -27,8 +25,8 @@ func _on_hit_box_area_entered(hurt_box : HurtBox):
 	
 	if hurt_box.owner is Enemy:
 		var damage_data = Methods.cal_damage(
-			player.get_prop_dict(),
-			hurt_box.owner.get_prop_dict(),
+			player.attr,
+			hurt_box.owner.attr,
 			Enums.EDamageType.Physical
 		)
 		hurt_box.owner.take_damage(damage_data)

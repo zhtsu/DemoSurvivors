@@ -59,15 +59,13 @@ metadata/_edit_group_ = true
 
 [node name="Title" type="Label" parent="CenterBox"]
 layout_mode = 2
-size_flags_horizontal = 4
-text = "Demo
-Survivors"
+size_flags_vertical = 0
+text = "Title"
 label_settings = SubResource("LabelSettings_25jgu")
 horizontal_alignment = 1
 
 [node name="MenuItems" type="VBoxContainer" parent="CenterBox"]
 layout_mode = 2
-size_flags_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 
@@ -105,8 +103,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_fsbkh")
 shortcut_in_tooltip = false
-text = "Exit
-"
+text = "Exit"
 
 [node name="GithubButton" type="TextureButton" parent="."]
 anchors_preset = 1
