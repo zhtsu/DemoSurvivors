@@ -61,16 +61,16 @@ func _update_prop_box():
 
 
 func _update_props():
-	$Main/Body/Box/PropertyBox/H5/HP.call("set_property", "HP", String.num_int64(int(player.hp)))
-	$Main/Body/Box/PropertyBox/H5/Speed.call("set_property", "Speed", String.num(player.speed))
-	$Main/Body/Box/PropertyBox/H1/PATK.call("set_property", "Physical ATK", String.num(player.attr.physical_atk))
-	$Main/Body/Box/PropertyBox/H1/PDEF.call("set_property", "Physical DEF", String.num(player.attr.physical_def))
-	$Main/Body/Box/PropertyBox/H2/MATK.call("set_property", "Magical ATK", String.num(player.attr.magical_atk))
-	$Main/Body/Box/PropertyBox/H2/MDEF.call("set_property", "Magical DEF", String.num(player.attr.magical_def))
-	$Main/Body/Box/PropertyBox/H3/PCritC.call("set_property", "Physical Crit Chance", String.num(player.attr.physical_crit_chance))
-	$Main/Body/Box/PropertyBox/H3/PCritB.call("set_property", "Physical Crit Bonus", String.num(player.attr.physical_crit_bonus))
-	$Main/Body/Box/PropertyBox/H4/MCritC.call("set_property", "Magical Crit Chance", String.num(player.attr.magical_crit_chance))
-	$Main/Body/Box/PropertyBox/H4/MCritB.call("set_property", "Magical Crit Bonus", String.num(player.attr.magical_crit_bonus))
+	$Main/Body/Box/PropertyBox/H5/HP.set_property("HP", String.num_int64(int(player.hp)), 12)
+	$Main/Body/Box/PropertyBox/H5/Speed.set_property("Speed", String.num(player.speed), 12)
+	$Main/Body/Box/PropertyBox/H1/PATK.set_property("Physical ATK", String.num(player.attr.physical_atk), 12)
+	$Main/Body/Box/PropertyBox/H1/PDEF.set_property("Physical DEF", String.num(player.attr.physical_def), 12)
+	$Main/Body/Box/PropertyBox/H2/MATK.set_property("Magical ATK", String.num(player.attr.magical_atk), 12)
+	$Main/Body/Box/PropertyBox/H2/MDEF.set_property("Magical DEF", String.num(player.attr.magical_def), 12)
+	$Main/Body/Box/PropertyBox/H3/PCritC.set_property("Physical Crit Chance", String.num(player.attr.physical_crit_chance), 12)
+	$Main/Body/Box/PropertyBox/H3/PCritB.set_property("Physical Crit Bonus", String.num(player.attr.physical_crit_bonus), 12)
+	$Main/Body/Box/PropertyBox/H4/MCritC.set_property("Magical Crit Chance", String.num(player.attr.magical_crit_chance), 12)
+	$Main/Body/Box/PropertyBox/H4/MCritB.set_property("Magical Crit Bonus", String.num(player.attr.magical_crit_bonus), 12)
 
 
 func _update_exp_bar():
@@ -79,7 +79,7 @@ func _update_exp_bar():
 
 
 func _update_current_level_text(current_level : int):
-	$Main/ExpBar/CurrentLevel.text = "Level: %d" % current_level
+	$Main/ExpBar/HBoxContainer/CurrentLevel.text = "%d" % current_level
 
 
 func _ready():

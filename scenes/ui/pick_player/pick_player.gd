@@ -171,15 +171,15 @@ func _on_start_button_pressed():
 	
 	
 func _set_player_attributes(player_data : Dictionary):
-	ui_p_atk.text = "ATK: %.2f" % float(player_data["physical_ATK"])
-	ui_p_def.text = "DEF: %.2f" % float(player_data["physical_DEF"])
-	ui_p_crit_chance.text = "Crit Chance: %.2f" % float(player_data["physical_crit_chance"])
-	ui_p_crit_bonus.text =  "Crit Bonus: %.2f" % float(player_data["physical_crit_bonus"])
-	ui_m_atk.text = "ATK: %.2f" % float(player_data["magical_ATK"])
-	ui_m_def.text = "DEF: %.2f" % float(player_data["magical_DEF"])
-	ui_m_crit_chance.text = "Crit Chance: %.2f" % float(player_data["magical_crit_chance"])
-	ui_m_crit_bonus.text =  "Crit Bonus: %.2f" % float(player_data["magical_crit_bonus"])
-	ui_speed.text = "Speed: %.2f" % float(player_data["speed"])
+	ui_p_atk.set_property("ATK", player_data["physical_ATK"])
+	ui_p_def.set_property("DEF", player_data["physical_DEF"])
+	ui_p_crit_chance.set_property("Crit Chance", player_data["physical_crit_chance"])
+	ui_p_crit_bonus.set_property("Crit Bonus", player_data["physical_crit_bonus"])
+	ui_m_atk.set_property("ATK", player_data["magical_ATK"])
+	ui_m_def.set_property("DEF", player_data["magical_DEF"])
+	ui_m_crit_chance.set_property("Crit Chance", player_data["magical_crit_chance"])
+	ui_m_crit_bonus.set_property("Crit Bonus", player_data["magical_crit_bonus"])
+	ui_speed.set_property("Speed", player_data["speed"])
 	if not player_data["ability"] == "null":
 		var ability_data = Data.find_ability_data(player_data["ability"])
 		var ability = load(Assets.dir_ability + ability_data["tscn"]).instantiate()

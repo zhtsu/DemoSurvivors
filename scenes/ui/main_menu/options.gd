@@ -100,7 +100,7 @@ func _on_effect_selector_item_selected(index):
 	# 0 Normal
 	# 1 CRT
 	# 2 Gray
-	Data.option_dict["Effect"] = index
+	Data.user_data_dict["Effect"] = index
 	var viewport_effect = get_tree().get_first_node_in_group("viewport_effect")
 	viewport_effect.call("active_viewport_effect", index)
 

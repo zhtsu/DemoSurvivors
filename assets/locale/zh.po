@@ -13,6 +13,10 @@ msgstr ""
 "Language-Team: Chinese\n"
 "Language: zh\n"
 
+############################
+# UI
+############################
+
 msgid "Title"
 msgstr "样品\n幸存者"
 
@@ -30,3 +34,170 @@ msgstr "关于"
 
 msgid "Exit"
 msgstr "退出"
+
+msgid "Effect"
+msgstr "效果"
+
+msgid "Normal"
+msgstr "正常"
+
+msgid "CRT"
+msgstr "阴极射线管"
+
+msgid "Gray"
+msgstr "灰度"
+
+msgid "MainMenu"
+msgstr "主菜单"
+
+msgid "Back"
+msgstr "返回"
+
+msgid "Start"
+msgstr "开始"
+
+msgid "Art"
+msgstr "美术"
+
+msgid "Programming"
+msgstr "程序"
+
+msgid "Music"
+msgstr "音乐"
+
+msgid "Sound"
+msgstr "音效"
+
+msgid "Continue"
+msgstr "继续"
+
+msgid "Yes"
+msgstr "确定"
+
+msgid "No"
+msgstr "取消"
+
+msgid "Maps"
+msgstr "地图"
+
+msgid "Attributes"
+msgstr "属性"
+
+msgid "Physical"
+msgstr "物理"
+
+msgid "Magical"
+msgstr "魔法"
+
+msgid "ATK"
+msgstr "攻击力"
+
+msgid "DEF"
+msgstr "防御力"
+
+msgid "Crit Bonus"
+msgstr "暴击加成"
+
+msgid "Crit Chance"
+msgstr "暴击几率"
+
+msgid "Speed"
+msgstr "移速"
+
+msgid "HP"
+msgstr "生命值"
+
+msgid "Physical ATK"
+msgstr "物理攻击力"
+
+msgid "Physical DEF"
+msgstr "物理防御力"
+
+msgid "Magical ATK"
+msgstr "魔法攻击力"
+
+msgid "Magical DEF"
+msgstr "魔法防御力"
+
+msgid "Physical Crit Chance"
+msgstr "物理暴击几率"
+
+msgid "Physical Crit Bonus"
+msgstr "物理暴击加成"
+
+msgid "Magical Crit Chance"
+msgstr "魔法暴击几率"
+
+msgid "Magical Crit Bonus"
+msgstr "魔法暴击加成"
+
+msgid "Level: "
+msgstr "等级: "
+
+msgid "A "
+msgstr "技 "
+
+msgid "W "
+msgstr "武 "
+
+msgid "Pick A Character"
+msgstr "选择角色"
+
+msgid "Are you sure to exit?"
+msgstr "确认要退出游戏吗？"
+
+msgid "Back to the main menu?"
+msgstr "确认返回主菜单吗？"
+
+msgid "Player"
+msgstr "角色"
+
+msgid "Enemy"
+msgstr "怪物"
+
+msgid "Ability"
+msgstr "技能"
+
+msgid "Weapon"
+msgstr "武器"
+
+msgid "Total Kill Count"
+msgstr "总共消灭怪物数量"
+
+msgid "Unlock"
+msgstr "已解锁收藏数量"
+
+############################
+# Map
+############################
+
+msgid "Grass"
+msgstr "草地"
+
+msgid "Cave"
+msgstr "洞穴"
+
+msgid "Desert"
+msgstr "沙漠"
+
+msgid "Tundra"
+msgstr "冰原"
+
+msgid "Tower"
+msgstr "塔"
+
+############################
+# Player and Enemy
+############################
+
+msgid "Ninja Frog"
+msgstr "忍者蛙"
+
+msgid "Mask Dude"
+msgstr "面具人"
+
+msgid "Pink Man"
+msgstr "粉男"
+
+msgid "Virtual Guy"
+msgstr "太空人"

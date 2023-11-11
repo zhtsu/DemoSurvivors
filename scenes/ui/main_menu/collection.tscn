@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c61enk61qyuvn"]
+[gd_scene load_steps=9 format=3 uid="uid://c61enk61qyuvn"]
 
 [ext_resource type="Script" path="res://scenes/ui/main_menu/collection.gd" id="1_yki37"]
 [ext_resource type="StyleBox" uid="uid://dibwpul5ku25j" path="res://tress/misc/sbe_default.tres" id="2_4t6t7"]
 [ext_resource type="AudioStream" uid="uid://bxodhr4xud0hs" path="res://assets/sounds/button_down.mp3" id="2_hjpf8"]
+[ext_resource type="PackedScene" uid="uid://g2oww8ykssaf" path="res://scenes/ui/player_state/property_bar.tscn" id="2_re4cg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dvslh"]
 bg_color = Color(0, 0, 0, 0.705882)
@@ -67,9 +68,9 @@ layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 326.0
+offset_left = -250.0
 offset_top = -648.0
-offset_right = 826.0
+offset_right = 250.0
 offset_bottom = 0.000976563
 grow_horizontal = 2
 metadata/_edit_group_ = true
@@ -105,18 +106,16 @@ layout_mode = 2
 layout_mode = 2
 alignment = 1
 
-[node name="TotalKillCount" type="Label" parent="Control/Content/HBoxContainer"]
+[node name="TotalKillCount" parent="Control/Content/HBoxContainer" instance=ExtResource("2_re4cg")]
 layout_mode = 2
 size_flags_horizontal = 6
-text = "Total Kill Count: 0"
 
 [node name="VSeparator" type="VSeparator" parent="Control/Content/HBoxContainer"]
 layout_mode = 2
 
-[node name="Unlock" type="Label" parent="Control/Content/HBoxContainer"]
+[node name="Unlock" parent="Control/Content/HBoxContainer" instance=ExtResource("2_re4cg")]
 layout_mode = 2
 size_flags_horizontal = 6
-text = "Unlock: 0 / 40"
 
 [node name="HSeparator2" type="HSeparator" parent="Control/Content"]
 layout_mode = 2

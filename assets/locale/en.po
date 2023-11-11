@@ -14,6 +14,9 @@ msgstr ""
 "Language: en\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+############################
+# UI
+############################
 
 msgid "Title"
 msgstr "Demo\nSurvivors"
@@ -32,3 +35,172 @@ msgstr "Credits"
 
 msgid "Exit"
 msgstr "Exit"
+
+msgid "Effect"
+msgstr "Effect"
+
+msgid "Normal"
+msgstr "Normal"
+
+msgid "CRT"
+msgstr "CRT"
+
+msgid "Gray"
+msgstr "Gray"
+
+msgid "MainMenu"
+msgstr "MainMenu"
+
+msgid "Back"
+msgstr "Back"
+
+msgid "Start"
+msgstr "Start"
+
+msgid "Art"
+msgstr "Art"
+
+msgid "Programming"
+msgstr "Programming"
+
+msgid "Music"
+msgstr "Music"
+
+msgid "Sound"
+msgstr "Sound"
+
+msgid "Continue"
+msgstr "Continue"
+
+msgid "Yes"
+msgstr "Yes"
+
+msgid "No"
+msgstr "No"
+
+msgid "Maps"
+msgstr "Maps"
+
+msgid "Attributes"
+msgstr "Attributes"
+
+msgid "Physical"
+msgstr "Physical"
+
+msgid "Magical"
+msgstr "Magical"
+
+msgid "ATK"
+msgstr "ATK"
+
+msgid "DEF"
+msgstr "DEF"
+
+msgid "Crit Bonus"
+msgstr "Crit Bonus"
+
+msgid "Crit Chance"
+msgstr "Crit Chance"
+
+msgid "Speed"
+msgstr "Speed"
+
+msgid "HP"
+msgstr "HP"
+
+msgid "Physical ATK"
+msgstr "Physical ATK"
+
+msgid "Physical DEF"
+msgstr "Physical DEF"
+
+msgid "Magical ATK"
+msgstr "Magical ATK"
+
+msgid "Magical DEF"
+msgstr "Magical DEF"
+
+msgid "Physical Crit Chance"
+msgstr "Physical Crit Chance"
+
+msgid "Physical Crit Bonus"
+msgstr "Physical Crit Bonus"
+
+msgid "Magical Crit Chance"
+msgstr "Magical Crit Chance"
+
+msgid "Magical Crit Bonus"
+msgstr "Magical Crit Bonus"
+
+msgid "Level: "
+msgstr "Level: "
+
+msgid "A "
+msgstr "A "
+
+msgid "W "
+msgstr "W "
+
+msgid "Pick A Character"
+msgstr "Pick A Character"
+
+msgid "Are you sure to exit?"
+msgstr "Are you sure to exit?"
+
+msgid "Back to the main menu?"
+msgstr "Back to the main menu?"
+
+msgid "Player"
+msgstr "Player"
+
+msgid "Enemy"
+msgstr "Enemy"
+
+msgid "Ability"
+msgstr "Ability"
+
+msgid "Weapon"
+msgstr "Weapon"
+
+msgid "Total Kill Count"
+msgstr "Total Kill Count"
+
+msgid "Unlock"
+msgstr "Unlock"
+
+############################
+# Map
+############################
+
+msgid "Grass"
+msgstr "Grass"
+
+msgid "Cave"
+msgstr "Cave"
+
+msgid "Desert"
+msgstr "Desert"
+
+msgid "Tundra"
+msgstr "Tundra"
+
+msgid "Tower"
+msgstr "Tower"
+
+############################
+# Player and Enemy
+############################
+
+msgid "Ninja Frog"
+msgstr "Ninja Frog"
+
+msgid "Mask Dude"
+msgstr "Mask Dude"
+
+msgid "Pink Man"
+msgstr "Pink Man"
+
+msgid "Virtual Guy"
+msgstr "Virtual Guy"
+
+

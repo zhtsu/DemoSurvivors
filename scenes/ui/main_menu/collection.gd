@@ -9,6 +9,8 @@ signal closed
 @onready var ui_enemy_grid = $Control/Content/Scroller/VBoxContainer/EnemyGrid
 @onready var ui_item_name = $Control/Content/Detail/Name
 @onready var ui_intro = $Control/Content/Detail/Text
+@onready var ui_total_kill_count = $Control/Content/HBoxContainer/TotalKillCount
+@onready var ui_unlock = $Control/Content/HBoxContainer/Unlock
 
 var selected_item : CollectionItem = null
 
@@ -32,6 +34,8 @@ func _ready():
 	selected_item = ui_player_grid.get_children()[0]
 	_on_collection_clicked(selected_item)
 	
+	ui_total_kill_count.set_property("Total Kill Count", "0")
+	ui_unlock.set_property("Unlock", "0")
 	$AnimationPlayer.play_backwards("Exit")
 
 func _on_background_button_down():
