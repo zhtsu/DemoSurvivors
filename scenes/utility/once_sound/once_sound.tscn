@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://c81l3wauguf41"]
-
-[ext_resource type="Script" path="res://scenes/utility/once_sound/once_sound.gd" id="1_c1gqo"]
-
-[node name="OnceSound" type="AudioStreamPlayer"]
-script = ExtResource("1_c1gqo")
-
-[connection signal="finished" from="." to="." method="_on_finished"]

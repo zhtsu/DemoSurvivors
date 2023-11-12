@@ -49,7 +49,6 @@ const tscn_camera = preload("res://scenes/utility/effect_camera/effect_camera.ts
 const tscn_enemy_spawner = preload("res://scenes/level/enemy_spawner.tscn")
 const tscn_exp_stone = preload("res://scenes/item/consumables/exp_stone/exp_stone.tscn")
 const tscn_GOTG = preload("res://scenes/item/ability/GOTG/GOTG.tscn")
-const tscn_once_sound = preload("res://scenes/utility/once_sound/once_sound.tscn")
 const tscn_magnetism = preload("res://scenes/item/ability/magnetism/magnetism.tscn")
 const tscn_weapon = preload("res://scenes/item/weapon/weapon.tscn")
 const tscn_collection_item = preload("res://scenes/ui/main_menu/collection_item.tscn")

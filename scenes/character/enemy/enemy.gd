@@ -55,11 +55,8 @@ func _physics_process(_delta):
 	_update_enemy_animation()
 	
 	if hp <= 0.0:
-		if Data.enemy_death_sound_array.is_empty():
-			var death_sound = Assets.tscn_once_sound.instantiate()
-			death_sound.init(Assets.a_enemy_death, -24.0)
-			Data.enemy_death_sound_array.append(death_sound)
-			get_tree().get_first_node_in_group("level").add_child(death_sound)
+		if not Data.enemy_death_sound.playing:
+			Data.enemy_death_sound.play()
 		_destroy_self()
 	if position.distance_to(player.position) > 600.0:
 		_destroy_self()

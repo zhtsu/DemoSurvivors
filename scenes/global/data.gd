@@ -10,11 +10,10 @@ var ability_data_list : Array[Dictionary]
 var weapon_data_list : Array[Dictionary]
 
 var visible_enemy_list : Array[Enemy]
-# Only one element can exist
-# Used to make sure create only one sound 
+# Used to make sure to play only one sound
 # when multiple enemies die at the same time
-var enemy_death_sound_array : Array[OnceSound]
-var player_damage_sound_array : Array[OnceSound]
+var enemy_death_sound := AudioStreamPlayer.new()
+var player_damage_sound := AudioStreamPlayer.new()
 var particles_emitter_array : Array[ParticlesEmitter]
 
 
@@ -47,6 +46,13 @@ func _ready():
 	json_file = FileAccess.open(Assets.path_introductions, FileAccess.READ)
 	introductions = JSON.parse_string(json_file.get_as_text())
 	json_file.close()
+	
+	enemy_death_sound.volume_db = -24
+	enemy_death_sound.stream = Assets.a_enemy_death
+	add_child(enemy_death_sound)
+	player_damage_sound.volume_db = -12
+	player_damage_sound.stream = Assets.a_player_damage
+	add_child(player_damage_sound)
 	
 	
 func find_ability_data(ability_name : String) -> Dictionary:

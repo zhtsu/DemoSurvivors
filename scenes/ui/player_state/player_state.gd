@@ -39,7 +39,8 @@ func reset_expbar():
 	
 func _on_player_damage():
 	$AnimationPlayer.play("PlayerDamage")
-	_player_player_damage_sound()
+	if not Data.player_damage_sound.playing:
+		Data.player_damage_sound.play()
 	
 
 func _update_item_box():
@@ -117,14 +118,6 @@ func _play_button_down_sound():
 	$SoundPlayer.stream = Assets.a_button_down
 	$SoundPlayer.play()
 	
-	
-func _player_player_damage_sound():
-	if Data.player_damage_sound_array.is_empty():
-		var damage_sound = Assets.tscn_once_sound.instantiate()
-		damage_sound.init(Assets.a_player_damage, -12)
-		Data.player_damage_sound_array.append(damage_sound)
-		get_tree().get_first_node_in_group("level").add_child(damage_sound)
-		
 	
 func _play_button_hover_sound():
 	$SoundPlayer.stream = Assets.a_button_hover
