@@ -129,6 +129,7 @@ collision_mask = 5
 script = ExtResource("2_453af")
 
 [node name="CollisionShape2D" parent="." index="1"]
+visible = false
 position = Vector2(0, 12)
 
 [node name="HurtBox" parent="." index="2"]

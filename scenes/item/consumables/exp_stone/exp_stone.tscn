@@ -7,7 +7,10 @@
 z_index = -1
 scale = Vector2(0.2, 0.2)
 script = ExtResource("2_6kly8")
-exp_volume = 0
 
 [node name="Area2D" parent="." index="1"]
 collision_mask = 2
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." index="2"]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

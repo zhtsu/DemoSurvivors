@@ -50,7 +50,6 @@ _data = {
 }
 
 [node name="DamagePopup" type="Marker2D"]
-modulate = Color(1, 1, 1, 0)
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_rjk5h")
 
@@ -76,3 +75,5 @@ autoplay = "Popup"
 libraries = {
 "": SubResource("AnimationLibrary_qungr")
 }
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

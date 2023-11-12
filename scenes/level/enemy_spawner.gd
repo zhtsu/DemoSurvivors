@@ -9,8 +9,9 @@ var map_data : Dictionary
 var level : Level
 var player : Player
 var spawn_interval := 2.0
-var spawn_count := 4
-var max_enemy_count := 100
+const MAX_ENEMY_NUM := 400
+const MAX_SPAWN_NUM := 40
+var spawn_num := 4
 var current_enemy_count = 0
 var spawned_enemy_names : PackedStringArray
 var spawned_enemy_data_list : Array[Dictionary]
@@ -29,12 +30,11 @@ func _ready():
 	_spawn_enemy()
 	
 	$SpawnTimer.start(spawn_interval)
-	$AddMaxEnemyCountTimer.start()
 	$AddSpawnCountTimer.start()
 
 
 func _spawn_enemy():
-	if current_enemy_count >= max_enemy_count:
+	if current_enemy_count >= MAX_ENEMY_NUM:
 		return
 	
 	# Viewport size
@@ -52,8 +52,7 @@ func _spawn_enemy():
 		Vector4(right_top.x, right_top.y, right_bottom.x, right_bottom.y)
 	]
 		
-	print_debug(current_enemy_count)
-	for i in spawn_count:
+	for i in spawn_num:
 		# Random pick edge and position in the edge
 		var rpe = edges.pick_random() as Vector4
 		var x = randf_range(rpe.x, rpe.z)
@@ -67,8 +66,6 @@ func _spawn_enemy():
 			enemy_data = spawned_enemy_data_list.pick_random()
 		
 		var enemy = tscn_enemy.instantiate()
-		if current_enemy_count > 300:
-			enemy.set_enable_collision(false)
 		enemy.call("init", enemy_data)
 		enemy.connect("destroyed", _on_enemy_destroyed)
 		enemy.spawn_position = random_position
@@ -84,10 +81,6 @@ func _on_timer_timeout():
 	_spawn_enemy()
 
 
-func _on_add_max_enemy_count_timer_timeout():
-	max_enemy_count += 1
-
-
 func _on_add_spawn_count_timer_timeout():
-	spawn_count *= 2
-	max_enemy_count *= 2
+	if spawn_num < MAX_SPAWN_NUM:
+		spawn_num *= 2

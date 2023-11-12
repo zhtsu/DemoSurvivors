@@ -41,7 +41,7 @@ func take_damage(damage_data : Structs.DamageData):
 	
 	state = ECharacterState.Damage
 	
-	if self is Enemy:
+	if self is Enemy and Data.damage_popup_array.size() < 20:
 		_popup_damage_value(damage_data)
 	
 	hp -= float(damage_data.physical_damage + damage_data.magical_damage)
@@ -72,12 +72,16 @@ func _popup_damage_value(damage_data : Structs.DamageData):
 
 func _create_damage_popup(damage_value : float, damage_type : Enums.EDamageType, is_crit : bool):
 	var damage_popup = tscn_damage_popup.instantiate()
+	Data.damage_popup_array.append(damage_popup)
 	damage_popup.init(damage_value, damage_type, is_crit)
 	damage_popup.position = position
 	get_tree().get_first_node_in_group("level").add_child(damage_popup)
 
 
 func _on_damage_timer_timeout():
+	if not ($HurtBox.monitoring and $HurtBox.monitorable):
+		return
+	
 	var overlapping_areas = $HurtBox.get_overlapping_areas()
 	if overlapping_areas.size() > 0:
 		for hit_box in overlapping_areas:

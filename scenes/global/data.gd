@@ -14,7 +14,10 @@ var visible_enemy_list : Array[Enemy]
 # when multiple enemies die at the same time
 var enemy_death_sound := AudioStreamPlayer.new()
 var player_damage_sound := AudioStreamPlayer.new()
+# Used to limit max corresponding object number
 var particles_emitter_array : Array[ParticlesEmitter]
+var damage_popup_array : Array[DamagePopup]
+var exp_stone_array : Array[ExpStone]
 
 
 func _ready():

@@ -53,15 +53,14 @@ func _update_enemy_animation():
 func _physics_process(_delta):
 	_update_enemy_flip()
 	_update_enemy_animation()
+	move_and_collide(Vector2.ZERO)
 	
 	if hp <= 0.0:
 		if not Data.enemy_death_sound.playing:
 			Data.enemy_death_sound.play()
 		_destroy_self()
-	if position.distance_to(player.position) > 600.0:
+	if position.distance_to(player.position) > 400.0:
 		_destroy_self()
-	
-	move_and_collide(Vector2.ZERO)
 	
 	
 func _update_enemy_flip():
@@ -82,16 +81,18 @@ func _update_enemy_flip():
 
 func _destroy_self():
 	# Create EXP stone
-	var exp_stone = Assets.tscn_exp_stone.instantiate()
-	exp_stone.exp_volume = randi_range(0, exp_volume)
-	if exp_stone.exp_volume > float(exp_volume) / 2:
-		exp_stone.position = position
-		get_tree().get_first_node_in_group("level").add_child(exp_stone)
+	if Data.exp_stone_array.size() < 100:
+		var exp_stone = Assets.tscn_exp_stone.instantiate()
+		exp_stone.exp_volume = randi_range(0, exp_volume)
+		if exp_stone.exp_volume > float(exp_volume) / 2:
+			exp_stone.position = position
+			Data.exp_stone_array.append(exp_stone)
+			get_tree().get_first_node_in_group("level").add_child(exp_stone)
 	# Death blood particles
 	if Data.particles_emitter_array.size() < 10:
 		var particles_emitter = Assets.tscn_particles_emitter.instantiate()
-		particles_emitter.position = position
 		Data.particles_emitter_array.append(particles_emitter)
+		particles_emitter.position = position
 		get_tree().get_first_node_in_group("level").add_child(particles_emitter)
 	
 	Data.visible_enemy_list.erase(self)
@@ -99,22 +100,23 @@ func _destroy_self():
 	queue_free()
 	
 
-func set_enable_collision(enable : bool):
-	if enable:
-		$CollisionShape2D.disabled = true
-	else:
-		$CollisionShape2D.disabled = true
+func set_collision_enable(enable : bool):
+	$CollisionShape2D.disabled = not enable
+	$HurtBox.monitoring = enable
+	$HurtBox.monitorable = enable
+	$HitBox.monitoring = enable
+	$HitBox.monitorable = enable
 
 
 func _on_visible_on_screen_notifier_2d_screen_entered():
 	if not Data.visible_enemy_list.has(self):
 		Data.visible_enemy_list.append(self)
-		set_enable_collision(true)
+		set_collision_enable(true)
 		
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	if Data.visible_enemy_list.has(self):
 		Data.visible_enemy_list.erase(self)
-		set_enable_collision(false)
+		set_collision_enable(false)
 

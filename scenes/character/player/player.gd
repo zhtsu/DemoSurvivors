@@ -200,6 +200,7 @@ func _on_hurt_box_area_entered(hit_box : HitBox):
 	# Pick up item
 	if hit_box.owner is ExpStone:
 		add_exp(hit_box.owner.exp_volume)
+		Data.exp_stone_array.erase(hit_box.owner)
 		hit_box.owner.queue_free()
 		return
 	

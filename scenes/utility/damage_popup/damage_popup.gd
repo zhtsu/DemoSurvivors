@@ -1,3 +1,4 @@
+class_name DamagePopup
 extends Marker2D
 
 
@@ -22,3 +23,5 @@ func _ready():
 	tween.tween_property(self, "position", position + _get_direction(), 0.75)
 
 
+func _on_animation_player_animation_finished(_anim_name):
+	Data.damage_popup_array.erase(self)

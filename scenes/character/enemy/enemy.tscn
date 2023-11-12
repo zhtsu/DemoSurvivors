@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://scenes/utility/interface/hit_box.gd" id="3_27jkj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2w8b3"]
+radius = 16.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3vr0l"]
 radius = 14.0
@@ -18,10 +19,10 @@ script = ExtResource("2_pa55q")
 animation = &"Walk"
 
 [node name="CollisionShape2D" parent="." index="1"]
-visible = false
 shape = SubResource("CircleShape2D_2w8b3")
 
 [node name="HurtBox" parent="." index="2"]
+visible = false
 collision_layer = 128
 
 [node name="HitBox" type="Area2D" parent="." index="3"]
