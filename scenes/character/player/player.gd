@@ -19,7 +19,7 @@ var talk_speed : float = 1.0
 # Used for UI
 var icon : Texture2D
 # Used for projectile
-var previous_velocity : Vector2 = Vector2(0.0, 0.0)
+var previous_velocity : Vector2 = Vector2(1.0, 0.0)
 
 var ability_inventory : Array[Item]
 var weapon_inventory : Array[Item]

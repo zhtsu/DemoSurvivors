@@ -2,18 +2,15 @@ class_name Projectile
 extends Node2D
 
 
-var spawn_position : Vector2 = Vector2(0.0, 0.0)
-var velocity : Vector2 = Vector2(0.0, 0.0)
-var speed : float = 1.0
-var distance : float = 100.0
-var damage_type : Enums.EDamageType = Enums.EDamageType.Physical
-var damage_scale : float = 1.0
+var data := Structs.ProjectileData.new()
 
 
-func init(in_spawn_position : Vector2, in_velocity : Vector2,
-		  in_speed : float, in_distance : float, in_damage_scale : float):
-	spawn_position = in_spawn_position
-	velocity = in_velocity
-	speed = in_speed
-	distance = in_distance
-	damage_scale = in_damage_scale
+func init(projectile_data : Structs.ProjectileData):
+	data.spawn_position = projectile_data.spawn_position
+	data.velocity = projectile_data.velocity
+	data.speed = projectile_data.speed
+	data.distance = projectile_data.distance
+	data.damage_type = projectile_data.damage_type
+	data.damage_scale = projectile_data.damage_scale
+	data.knockback_distance = projectile_data.knockback_distance
+	data.penertration = projectile_data.penertration

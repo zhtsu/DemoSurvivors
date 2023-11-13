@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgpgu24gsg723"]
+[gd_scene load_steps=7 format=3 uid="uid://bgpgu24gsg723"]
 
 [ext_resource type="PackedScene" uid="uid://dxx2elvn8s6am" path="res://scenes/character/character.tscn" id="1_vsqam"]
 [ext_resource type="Script" path="res://scenes/character/enemy/enemy.gd" id="2_pa55q"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2w8b3"]
 radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ihhho"]
+radius = 14.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3vr0l"]
 radius = 14.0
@@ -22,8 +25,10 @@ animation = &"Walk"
 shape = SubResource("CircleShape2D_2w8b3")
 
 [node name="HurtBox" parent="." index="2"]
-visible = false
 collision_layer = 128
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+shape = SubResource("CircleShape2D_ihhho")
 
 [node name="HitBox" type="Area2D" parent="." index="3"]
 visible = false
