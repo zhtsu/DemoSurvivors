@@ -203,4 +203,62 @@ msgstr "Pink Man"
 msgid "Virtual Guy"
 msgstr "Virtual Guy"
 
+msgid "Virtual Guy"
+msgstr "Virtual Guy"
 
+msgid "Chicken"
+msgstr "Chicken"
+
+msgid "Blue Bird"
+msgstr "Blud Bird"
+
+msgid "Bunny"
+msgstr "Bunny"
+
+msgid "Chameleon"
+msgstr "Chameleon"
+
+msgid "Angry Pigs"
+msgstr "Angry Pigs"
+
+msgid "Bat"
+msgstr "Bat"
+
+msgid "Duck"
+msgstr "Duck"
+
+msgid "Fat Bird"
+msgstr "Fat Bird"
+
+msgid "Ghost"
+msgstr "Ghost"
+
+msgid "Mushroom"
+msgstr "Mushroom"
+
+msgid "Plant"
+msgstr "Plant"
+
+msgid "Radish"
+msgstr "Radish"
+
+msgid "Rino"
+msgstr "Rino"
+
+msgid "Rock"
+msgstr "Rock"
+
+msgid "Skull"
+msgstr "Skull"
+
+msgid "Slime"
+msgstr "Slime"
+
+msgid "Snail"
+msgstr "Snail"
+
+msgid "Trunk"
+msgstr "Trunk"
+
+msgid "Turtle"
+msgstr "Turtle"
