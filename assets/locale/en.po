@@ -203,8 +203,8 @@ msgstr "Pink Man"
 msgid "Virtual Guy"
 msgstr "Virtual Guy"
 
-msgid "Virtual Guy"
-msgstr "Virtual Guy"
+msgid "Bee"
+msgstr "Bee"
 
 msgid "Chicken"
 msgstr "Chicken"

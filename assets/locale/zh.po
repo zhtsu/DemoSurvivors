@@ -201,3 +201,63 @@ msgstr "粉男"
 
 msgid "Virtual Guy"
 msgstr "太空人"
+
+msgid "Bee"
+msgstr "蜜蜂"
+
+msgid "Chicken"
+msgstr "又鸟"
+
+msgid "Blue Bird"
+msgstr "蓝雀"
+
+msgid "Bunny"
+msgstr "红兔子"
+
+msgid "Chameleon"
+msgstr "变色龙"
+
+msgid "Angry Pigs"
+msgstr "猪王"
+
+msgid "Bat"
+msgstr "蝙蝠"
+
+msgid "Duck"
+msgstr "达克"
+
+msgid "Fat Bird"
+msgstr "滑雪鸟"
+
+msgid "Ghost"
+msgstr "幽灵"
+
+msgid "Mushroom"
+msgstr "洞穴统治者"
+
+msgid "Plant"
+msgstr "活豌豆"
+
+msgid "Radish"
+msgstr "甜萝卜"
+
+msgid "Rino"
+msgstr "犀牛"
+
+msgid "Rock"
+msgstr "小石头"
+
+msgid "Skull"
+msgstr "炽焰颅骨"
+
+msgid "Slime"
+msgstr "史莱姆"
+
+msgid "Snail"
+msgstr "大蜗牛"
+
+msgid "Trunk"
+msgstr "活木头"
+
+msgid "Turtle"
+msgstr "图特"
