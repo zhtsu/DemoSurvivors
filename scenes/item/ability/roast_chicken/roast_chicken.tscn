@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://cirmmr6k1jj3r"]
+
+[ext_resource type="PackedScene" uid="uid://cn4km1kr2hqtw" path="res://scenes/item/ability/ability.tscn" id="1_hb56o"]
+[ext_resource type="Script" path="res://scenes/item/ability/roast_chicken/roast_chicken.gd" id="2_6icbi"]
+[ext_resource type="Texture2D" uid="uid://wdora27ude1n" path="res://tress/ability/at_ability_roast_chicken.tres" id="2_wjp0k"]
+
+[node name="Ability" instance=ExtResource("1_hb56o")]
+script = ExtResource("2_6icbi")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_wjp0k")

@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1eechxn825m0"]
+
+[ext_resource type="Script" path="res://scenes/item/ability/roast_chicken/roast_chicken_projectile.gd" id="1_y6mhm"]
+[ext_resource type="Texture2D" uid="uid://wdora27ude1n" path="res://tress/ability/at_ability_roast_chicken.tres" id="2_vxi1q"]
+[ext_resource type="Script" path="res://scenes/utility/interface/hit_box.gd" id="3_s1bb6"]
+
+[sub_resource type="Animation" id="Animation_s7uqu"]
+resource_name = "Scale"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pbg1j"]
+_data = {
+"Scale": SubResource("Animation_s7uqu")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eq8en"]
+
+[node name="RoastChickenProjectile" type="Node2D"]
+script = ExtResource("1_y6mhm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vxi1q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pbg1j")
+}
+
+[node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("3_s1bb6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_eq8en")

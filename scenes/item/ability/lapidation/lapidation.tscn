@@ -6,7 +6,6 @@
 
 [node name="Lapidation" instance=ExtResource("1_mc17k")]
 script = ExtResource("2_8a3bv")
-pickable = null
 
 [node name="Sprite2D" parent="." index="0"]
 texture = null

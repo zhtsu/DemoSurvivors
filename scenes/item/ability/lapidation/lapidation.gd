@@ -4,7 +4,7 @@ extends Ability
 const tscn_projectile = preload("res://scenes/item/ability/lapidation/lapidation_projectile.tscn")
 
 var player : Player
-var shoot_number := 4
+var shoot_number := 16
 var knockback_distance := 6.0
 var penertration := 2
 
@@ -31,7 +31,7 @@ func _shoot():
 		var projectile = tscn_projectile.instantiate()
 		var projectile_data := Structs.ProjectileData.new()
 		projectile_data.spawn_position = player.position
-		var angle = deg_to_rad(360.0 / (i + 1))
+		var angle = TAU / shoot_number * (i + 1)
 		projectile_data.velocity = player.previous_velocity.rotated(angle)
 		projectile_data.speed = speed
 		projectile_data.distance = distance
