@@ -51,7 +51,8 @@ func _ready():
 	await $EffectAnimator.animation_finished
 	$AnimatedSprite2D.show()
 	$HpBar.show()
-	current_witticism_pool = witticism_dict["Common"]
+	if witticism_dict.has("Common"):
+		current_witticism_pool = witticism_dict["Common"]
 	speak.emit(current_witticism_pool.pick_random())
 	$Timer.start(randf_range(talk_speed, 20.0))
 	_update_hp_bar()

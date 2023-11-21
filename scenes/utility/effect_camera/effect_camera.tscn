@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://qmmepafb2pjf"]
+[gd_scene load_steps=10 format=3 uid="uid://qmmepafb2pjf"]
 
 [ext_resource type="Script" path="res://scenes/utility/effect_camera/effect_camera.gd" id="1_0m1q6"]
 
@@ -56,11 +56,45 @@ _data = {
 "Shock": SubResource("Animation_l4k0l")
 }
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_02taf"]
+a = Vector2(207, -116)
+b = Vector2(-207, -116)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_hhr8g"]
+a = Vector2(-207, 116)
+b = Vector2(207, 116)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_c4p4l"]
+a = Vector2(-205, -349)
+b = Vector2(-205, -115)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_4o263"]
+a = Vector2(207, -349)
+b = Vector2(207, -115)
+
 [node name="EffectCamera" type="Camera2D"]
-zoom = Vector2(2.4, 2.4)
+zoom = Vector2(2.8, 2.8)
 script = ExtResource("1_0m1q6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_36s8p")
 }
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["camera_boundary"]]
+collision_layer = 256
+collision_mask = 0
+
+[node name="Top" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_02taf")
+
+[node name="Bottom" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_hhr8g")
+
+[node name="Left" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, 232)
+shape = SubResource("SegmentShape2D_c4p4l")
+
+[node name="Right" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1, 232)
+shape = SubResource("SegmentShape2D_4o263")

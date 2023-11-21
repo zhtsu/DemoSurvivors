@@ -1,11 +1,25 @@
 extends Projectile
 
 
-# Called when the node enters the scene tree for the first time.
+var reverse_rotation := false
+var velocity : Vector2 = Vector2(2.0, 2.0)
+
+
 func _ready():
-	pass # Replace with function body.
+	$AnimationPlayer.play("Rotate")
+	
+
+func _physics_process(delta):
+	position += velocity
+	
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _on_hit_box_body_entered(body):
+	if body.is_in_group("camera_boundary"):
+		velocity = velocity.bounce(velocity.normalized())
+		
+		reverse_rotation = not reverse_rotation
+		if reverse_rotation:
+			$AnimationPlayer.play_backwards("Rotate")
+		else:
+			$AnimationPlayer.play("Rotate")

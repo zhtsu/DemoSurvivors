@@ -4,8 +4,13 @@
 [ext_resource type="Script" path="res://scenes/item/ability/roast_chicken/roast_chicken.gd" id="2_6icbi"]
 [ext_resource type="Texture2D" uid="uid://wdora27ude1n" path="res://tress/ability/at_ability_roast_chicken.tres" id="2_wjp0k"]
 
-[node name="Ability" instance=ExtResource("1_hb56o")]
+[node name="RoastChicken" instance=ExtResource("1_hb56o")]
+scale = Vector2(0.6, 0.6)
 script = ExtResource("2_6icbi")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_wjp0k")
+
+[node name="Area2D" parent="." index="1"]
+collision_layer = 16
+collision_mask = 256
