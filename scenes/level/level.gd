@@ -17,6 +17,7 @@ func init(in_map_data : Dictionary, in_player_data : Dictionary):
 func _ready():
 	Data.visible_enemy_list.clear()
 	Data.particles_emitter_array.clear()
+	Data.damage_popup_array.clear()
 	# Create player
 	active_player = Assets.tscn_player.instantiate()
 	active_player.init(player_data)

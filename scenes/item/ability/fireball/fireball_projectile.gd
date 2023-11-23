@@ -9,7 +9,7 @@ var target_enemy : Enemy
 
 func _ready():
 	player = get_tree().get_first_node_in_group("player")
-	position = spawn_position
+	position = data.spawn_position
 	
 	_update_target_enemy()
 	
@@ -19,7 +19,7 @@ func _physics_process(_delta):
 		_update_target_enemy()
 		
 	var offset = target_enemy.position - position
-	position += offset.normalized() * speed
+	position += offset.normalized() * data.speed
 		
 	
 

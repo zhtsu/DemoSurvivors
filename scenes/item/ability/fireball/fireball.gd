@@ -27,7 +27,12 @@ func _shoot():
 		
 	sound_player.play()
 	var projectile = tscn_projectile.instantiate()
-	projectile.init(player.position, player.velocity, speed, distance, damage_scale)
+	var projectile_data := Structs.ProjectileData.new()
+	projectile_data.spawn_position = player.position
+	projectile_data.speed = speed
+	projectile_data.distance = distance
+	projectile_data.damage_scale = damage_scale
+	projectile.init(projectile_data)
 	get_tree().get_first_node_in_group("level").add_child(projectile)
 	
 	

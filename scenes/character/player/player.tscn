@@ -141,7 +141,6 @@ sprite_frames = SubResource("SpriteFrames_nilxs")
 animation = &"Appearing"
 
 [node name="EffectCamera" parent="." index="4" instance=ExtResource("5_wg3ay")]
-zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 position_smoothing_speed = 4.0
 
